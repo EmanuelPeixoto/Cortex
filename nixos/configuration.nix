@@ -9,10 +9,11 @@
       ./sound.nix
     ];
 
-  # Bootloader
+  # Boot
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = false;
+  boot.plymouth.enable = true;
 
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -85,6 +86,10 @@
     description = "Emanuel Peixoto";
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
+
+	fonts.fonts = with pkgs; [
+		(nerdfonts.override { fonts = [ "Meslo" ];})
+	];
 
   services = {
     #openssh.enable = true;
