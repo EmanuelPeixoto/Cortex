@@ -13,7 +13,6 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = false;
-  boot.plymouth.enable = true;
 
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
