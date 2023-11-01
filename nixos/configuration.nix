@@ -7,6 +7,7 @@
       ./apps.nix
       ./intel.nix
       ./sound.nix
+			./ngrok.nix
     ];
 
   # Boot
@@ -76,7 +77,7 @@
     };
   };
 
-  # Console Keymap
+  # Console keymap and font
   console.keyMap = "br-abnt2";
 
   users.users.emanuel = {
@@ -86,9 +87,18 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
-	fonts.fonts = with pkgs; [
-		(nerdfonts.override { fonts = [ "Meslo" ];})
-	];
+  fonts = {fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Meslo" ];})
+    ];
+		fontconfig = {
+      defaultFonts = {
+        serif = [ "MesloLGSNerdFontMono" ];
+        sansSerif = [ "MesloLGSNerdFont" ];
+        monospace = [ "MesloLGSNerdFont" ];
+      };
+    };
+  };
+
 
   services = {
     #openssh.enable = true;
@@ -99,6 +109,7 @@
     printing.enable = true;
     logind.lidSwitch = "lock";
     pcscd.enable = true;
+    teamviewer.enable = true;
   };
 
   programs.dconf.enable = true;
