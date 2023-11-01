@@ -30,6 +30,7 @@
   maim
   neofetch
   neovim
+	ngrok
   nload
   pamixer
   paprefs
