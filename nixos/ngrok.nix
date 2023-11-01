@@ -4,7 +4,7 @@
  systemd.user.services.ngrok = {
    description = "ngrok";
    serviceConfig = {
-     Type = "forking";
+     Type = "simple";
      ExecStart = "${pkgs.ngrok}/bin/ngrok tcp 22";
    };
 	 after = [ "network.target" ];
