@@ -25,12 +25,16 @@
   killall
   libpulseaudio
   libreoffice
+  libva-utils
   lm_sensors
   lshw
   maim
+  mesa-demos
+  mpv
   neofetch
   neovim
   ngrok
+  nmap
   nload
   pamixer
   paprefs
@@ -51,9 +55,11 @@
   usbutils
   vlc
   vscode
+  vulkan-tools
   wget
   xclip
   xfce.thunar
+  xorg.xinit
   yt-dlp
   zip
   ];

@@ -7,7 +7,7 @@
       ./apps.nix
       ./intel.nix
       ./sound.nix
-			./ngrok.nix
+      ./ngrok.nix
     ];
 
   # Boot
@@ -34,6 +34,8 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.enableFccUnlock = true;
+  systemd.services.ModemManager.enable = true;
 
   # Time Zone
   time.timeZone = "America/Sao_Paulo";
@@ -60,6 +62,7 @@
     xkbVariant = "";
 
     displayManager.lightdm.greeters.slick.enable = true;
+    desktopManager.xterm.enable = false;
 
     windowManager.i3.enable = true;
 
@@ -88,9 +91,9 @@
   };
 
   fonts = {fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ];})
+    (nerdfonts.override { fonts = [ "Meslo" ];})
     ];
-		fontconfig = {
+    fontconfig = {
       defaultFonts = {
         serif = [ "MesloLGSNerdFontMono" ];
         sansSerif = [ "MesloLGSNerdFont" ];
@@ -101,7 +104,7 @@
 
 
   services = {
-    #openssh.enable = true;
+    openssh.enable = true;
     vnstat.enable = true;
     blueman.enable = true;
     fprintd.enable = true;
@@ -123,8 +126,8 @@
   
   hardware.bluetooth.enable = true;
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 6600 ]; # MPD
+  networking.firewall.allowedUDPPorts = [ ];
 
   system.stateVersion = "23.05";
 
