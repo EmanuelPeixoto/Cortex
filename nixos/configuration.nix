@@ -109,7 +109,6 @@
     blueman.enable = true;
     fprintd.enable = true;
     upower.enable = true;
-    printing.enable = true;
     logind.lidSwitch = "lock";
     pcscd.enable = true;
     teamviewer.enable = true;
