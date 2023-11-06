@@ -11,6 +11,6 @@
    wantedBy = [ "default.target" ];
  };
 
- systemd.services.ngrok.enable = true;
+ systemd.services.ngrok.enable = false;
 
 }
