@@ -71,7 +71,7 @@
     tor-browser-bundle-bin
     ventoy-full
     vlc
-    warsow
+    #warsow
     wine
 
     # # Adds the 'hello' command to your environment. It prints a friendly

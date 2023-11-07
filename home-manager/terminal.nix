@@ -7,7 +7,7 @@
     enable = true;
     enableCompletion = true;
     enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
+    #syntaxHighlighting.enable = true;
     
     initExtra = "zsh /home/emanuel/NixOS/home-manager/motd";
 
