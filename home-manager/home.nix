@@ -50,6 +50,7 @@
     gimp
     git
 		go
+		gopls
     htop
 		jetbrains.goland
     kate
