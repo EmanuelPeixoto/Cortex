@@ -7,7 +7,7 @@
       ./apps.nix
       ./intel.nix
       ./sound.nix
-      ./ngrok.nix
+      #./ngrok.nix
     ];
 
   # Boot
@@ -18,7 +18,7 @@
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Hostname  
+  # Hostname
   networking.hostName = "nixos";
 
   # Hotspot
@@ -122,10 +122,10 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-  
+
   hardware.bluetooth.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 6600 ]; # MPD
+  networking.firewall.allowedTCPPorts = [ 6600 8080 ]; # MPD
   networking.firewall.allowedUDPPorts = [ ];
 
   system.stateVersion = "23.05";

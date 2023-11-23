@@ -21,8 +21,10 @@
   iftop
   insomnia
   jdk
+  jmtpfs
   kate
   killall
+  libmtp
   libpulseaudio
   libreoffice
   libva-utils
@@ -34,8 +36,8 @@
   neofetch
   neovim
   ngrok
-  nmap
   nload
+  nmap
   pamixer
   paprefs
   pavucontrol
