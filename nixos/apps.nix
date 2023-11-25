@@ -24,6 +24,7 @@
   jmtpfs
   kate
   killall
+  libfprint
   libmtp
   libpulseaudio
   libreoffice
