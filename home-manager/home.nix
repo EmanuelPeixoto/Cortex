@@ -4,13 +4,14 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel";
+  home.homeDirectory = "/home/emanuel/";
 
   imports =
     [
       #./nextcloud.nix
       ./terminal.nix
       ./nvim.nix
+      ./ngrok.nix
     ];
 
   # This value determines the Home Manager release that your configuration is
