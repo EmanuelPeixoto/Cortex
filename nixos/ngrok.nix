@@ -1,7 +1,7 @@
 {lib, config, pkgs, ... }:
 {
 
-services.ngrok = {
+systemd.user.services.ngrok = {
   description = "ngrok";
   serviceConfig = {
     Type = "simple";
