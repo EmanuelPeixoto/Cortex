@@ -5,7 +5,7 @@
   # manage.
   home.username = "emanuel";
   home.homeDirectory = "/home/emanuel";
-  
+
   imports =
     [
       #./nextcloud.nix
@@ -49,14 +49,14 @@
     firefox
     gimp
     git
-		go
-		gopls
+    go
+    gopls
     htop
-		jetbrains.goland
+    jetbrains.goland
     kate
     mixxx
-    modemmanager
     modem-manager-gui
+    modemmanager
     mpd-mpris
     ncmpcpp
     nginx
@@ -64,7 +64,7 @@
     obs-studio
     openshot-qt
     pciutils
-    polybar
+    polybarFull
     qbittorrent
     telegram-desktop
     thunderbird
@@ -72,7 +72,7 @@
     tor-browser-bundle-bin
     ventoy-full
     vlc
-    #warsow
+    warsow
     wine
 
     # # Adds the 'hello' command to your environment. It prints a friendly
