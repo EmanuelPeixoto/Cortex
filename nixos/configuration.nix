@@ -7,7 +7,6 @@
       ./apps.nix
       ./intel.nix
       ./sound.nix
-      #./ngrok.nix
     ];
 
   # Boot
