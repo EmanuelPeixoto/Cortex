@@ -11,7 +11,6 @@
       #./nextcloud.nix
       ./terminal.nix
       ./nvim.nix
-      ./ngrok.nix
     ];
 
   # This value determines the Home Manager release that your configuration is
@@ -52,6 +51,7 @@
     git
     go
     gopls
+    gotty
     htop
     jetbrains.goland
     kate
