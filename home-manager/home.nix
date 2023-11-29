@@ -42,10 +42,8 @@
     alacritty
     audacity
     brave
-    ccid
     discord
     dmenu
-    eww
     firefox
     gimp
     git
@@ -56,8 +54,6 @@
     jetbrains.goland
     kate
     mixxx
-    modem-manager-gui
-    modemmanager
     mpd-mpris
     ncmpcpp
     nginx
