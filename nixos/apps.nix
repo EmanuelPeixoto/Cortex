@@ -19,12 +19,10 @@
   home-manager
   htop
   iftop
-  insomnia
   jdk
   jmtpfs
   kate
   killall
-  libfprint
   libmtp
   libpulseaudio
   libreoffice
