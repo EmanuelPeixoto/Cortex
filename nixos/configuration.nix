@@ -34,8 +34,6 @@
 
   # Networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.enableFccUnlock = true;
-  systemd.services.ModemManager.enable = true;
 
   # Time Zone
   time.timeZone = "America/Sao_Paulo";
@@ -57,9 +55,11 @@
 
   services.xserver = {
     enable = true;
+    exportConfiguration = true;
 
     layout = "br";
     xkbVariant = "";
+    xkbModel = "";
 
     displayManager.lightdm.greeters.slick.enable = true;
     desktopManager.xterm.enable = false;
@@ -80,7 +80,7 @@
     };
   };
 
-  # Console keymap and font
+  # Console keymap
   console.keyMap = "br-abnt2";
 
   users.users.emanuel = {
@@ -110,7 +110,6 @@
     fprintd.enable = true;
     upower.enable = true;
     logind.lidSwitch = "lock";
-    pcscd.enable = true;
     teamviewer.enable = true;
   };
 
