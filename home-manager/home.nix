@@ -26,7 +26,7 @@
   # environment.
   home.sessionVariables = {
   EDITOR = "nvim";
-  BROWSER = "brave";
+  BROWSER = "firefox";
   TERMINAL = "alacritty";
   };
 
@@ -41,7 +41,6 @@
     aircrack-ng
     alacritty
     audacity
-    brave
     discord
     dmenu
     firefox
@@ -56,7 +55,6 @@
     mixxx
     mpd-mpris
     ncmpcpp
-    nginx
     nodejs_20
     obs-studio
     openshot-qt
