@@ -40,6 +40,8 @@
   home.packages = with pkgs; [
     aircrack-ng
     alacritty
+    arduino
+    arduino-cli
     audacity
     discord
     dmenu
