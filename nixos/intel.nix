@@ -2,9 +2,7 @@
 {
 
   #services.xserver.videoDrivers = [ "xf86-video-intel" ];
-  services.xserver.videoDrivers = [ "modesetting" ];
-
-  services.xserver.xrandrHeads = [ { output = "LVDS1"; primary = true; } "VGA1" ];
+  #services.xserver.videoDrivers = [ "modesetting" ];
 
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
