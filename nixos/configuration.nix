@@ -90,7 +90,7 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
-  fonts = {fonts = with pkgs; [
+  fonts = {packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Meslo" ];})
     ];
     fontconfig = {
@@ -107,8 +107,7 @@
     openssh.enable = true;
     vnstat.enable = true;
     blueman.enable = true;
-    fprintd.enable = true;
-    upower.enable = true;
+    # upower.enable = true;
     logind.lidSwitch = "lock";
     teamviewer.enable = true;
   };
