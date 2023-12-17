@@ -12,6 +12,7 @@
       ./terminal.nix
       ./nvim.nix
       ./polybar/polybar.nix
+      ./i3.nix
     ];
 
   # This value determines the Home Manager release that your configuration is
