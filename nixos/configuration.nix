@@ -5,9 +5,10 @@
     [
       ./hardware-configuration.nix
       ./apps.nix
+      ./hotspot.nix
       ./intel.nix
-      ./sound.nix
       ./ngrok.nix
+      ./sound.nix
     ];
 
   # Boot
@@ -21,16 +22,6 @@
   # Hostname
   networking.hostName = "nixos";
 
-  # Hotspot
-  /*services.create_ap = {
-    enable = true;
-    settings = {
-      INTERNET_IFACE = "enp9s0";
-      WIFI_IFACE = "wlp12s0";
-      SSID = "Computacao";
-      PASSPHRASE = "Rivera_SCTI";
-    };
-  };*/
 
   # Networking
   networking.networkmanager.enable = true;
@@ -107,7 +98,6 @@
     openssh.enable = true;
     vnstat.enable = true;
     blueman.enable = true;
-    # upower.enable = true;
     logind.lidSwitch = "lock";
     teamviewer.enable = true;
   };
