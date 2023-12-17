@@ -8,6 +8,7 @@
     [
       ./apps.nix
       ./i3.nix
+      ./mpd.nix
       ./nextcloud.nix
       ./nvim.nix
       ./polybar/polybar.nix
@@ -22,22 +23,6 @@
   TERMINAL = "alacritty";
   };
 
-
-  # Config MPD
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/home/emanuel/Musicas";
-    network.listenAddress = "any";
-    extraConfig = ''
-      audio_output {
-        type "pulse"
-        name "Pulseaudio"
-        server "127.0.0.1" # add this line - MPD must connect to the local sound server
-      }
-    '';
-  };
-
-  services.mpd-mpris.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
