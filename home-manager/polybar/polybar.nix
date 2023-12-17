@@ -2,7 +2,7 @@
 {
 
 
-#services.polybar.config = ./polybar.ini;
+services.polybar.config = ./polybar.ini;
 
 
 }
