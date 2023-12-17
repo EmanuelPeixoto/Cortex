@@ -6,7 +6,6 @@ let
   ccolor = "#4f4f4f";
   dcolor = "#ffffff";
   mod = "Mod4";
-  refresh_polybar = "polybar-msg cmd quit";
 
 in {
 xsession.windowManager.i3.enable = true;
@@ -69,12 +68,12 @@ xsession.windowManager.i3.config = {
 
   keybindings = {
     # Audio
-    "XF86AudioLowerVolume" = "exec --no-startup-id pamixer -d 2 --allow-boost --set-limit 125 && ${refresh_polybar}";
-    "XF86AudioRaiseVolume" = "exec --no-startup-id pamixer -i 2 --allow-boost --set-limit 125 && ${refresh_polybar}";
-    "XF86AudioMute" = "exec --no-startup-id pamixer --toggle-mute --allow-boost --set-limit 125 && ${refresh_polybar}";
-    "Control+XF86AudioLowerVolume" = "exec --no-startup-id playerctl previous && ${refresh_polybar}";
-    "Control+XF86AudioRaiseVolume" = "exec --no-startup-id playerctl next && ${refresh_polybar}";
-    "Control+XF86AudioMute" = "exec --no-startup-id playerctl play-pause && ${refresh_polybar}";
+    "XF86AudioLowerVolume" = "exec --no-startup-id pamixer -d 2 --allow-boost --set-limit 125";
+    "XF86AudioRaiseVolume" = "exec --no-startup-id pamixer -i 2 --allow-boost --set-limit 125";
+    "XF86AudioMute" = "exec --no-startup-id pamixer --toggle-mute --allow-boost --set-limit 125";
+    "Control+XF86AudioLowerVolume" = "exec --no-startup-id playerctl previous";
+    "Control+XF86AudioRaiseVolume" = "exec --no-startup-id playerctl next";
+    "Control+XF86AudioMute" = "exec --no-startup-id playerctl play-pause";
 
     # Terminal
     "${mod}+Return" = "exec alacritty";
