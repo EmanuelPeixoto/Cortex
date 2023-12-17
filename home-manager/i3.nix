@@ -200,7 +200,7 @@ xsession.windowManager.i3.config = {
       "$mod+r" = "mode default";
     };
   };
-
+  bars = [];
 };
 
 }
