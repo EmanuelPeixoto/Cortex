@@ -2,7 +2,11 @@
 {
 
 
-services.polybar.config = ./polybar.ini;
-
+services.polybar = {
+  package = pkgs.polybarFull;
+  enable = true;
+  script = "polybar barra &";
+  config = ./config.ini;
+};
 
 }

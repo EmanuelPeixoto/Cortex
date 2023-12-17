@@ -63,7 +63,6 @@
     obs-studio
     openshot-qt
     pciutils
-    polybarFull
     qbittorrent
     telegram-desktop
     thunderbird
