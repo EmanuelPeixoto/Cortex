@@ -27,7 +27,6 @@
     git
     glibc
     glxinfo
-    gnat
     gnumake
     gnupg
     go
@@ -41,19 +40,15 @@
     kate
     killall
     libmtp
-    libpulseaudio
     libreoffice
     libva-utils
     lm_sensors
     lshw
     maim
-    mesa-demos
     mixxx
-    mpd-mpris
     mpv
     ncmpcpp
     neofetch
-    neovim
     nload
     nmap
     nodejs_20
@@ -81,7 +76,6 @@
     usbutils
     ventoy-full
     vlc
-    vscode
     vulkan-tools
     wget
     wine
