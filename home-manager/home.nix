@@ -11,7 +11,7 @@
       #./nextcloud.nix
       ./terminal.nix
       ./nvim.nix
-      ./polybar.nix
+      ./polybar/polybar.nix
     ];
 
   # This value determines the Home Manager release that your configuration is
