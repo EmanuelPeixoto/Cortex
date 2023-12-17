@@ -12,10 +12,11 @@ in {
 xsession.windowManager.i3.enable = true;
 xsession.windowManager.i3.config = {
   modifier = mod;
+  defaultWorkspace = "workspace number 1";
   terminal = "alacritty";
 
   startup = [
-    {command = "exec $HOME/NixOS/home-manager/polybar/launch.sh"; always = true; notification = false;}
+    {command = "systemctl --user restart polybar"; always = true; notification = false;}
   ];
   window = {
     border = 1;
@@ -76,7 +77,7 @@ xsession.windowManager.i3.config = {
     "Control+XF86AudioMute" = "exec --no-startup-id playerctl play-pause && ${refresh_polybar}";
 
     # Terminal
-    "${mod}+Return" = "exec i3-sensible-terminal";
+    "${mod}+Return" = "exec alacritty";
 
     # Print screen
     "Print" = "exec maim -s -u | xclip -selection clipboard -t image/png -i";
@@ -199,7 +200,6 @@ xsession.windowManager.i3.config = {
       "$mod+r" = "mode default";
     };
   };
-
 
 };
 
