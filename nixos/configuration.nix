@@ -52,10 +52,13 @@
     xkbVariant = "";
     xkbModel = "";
 
-    displayManager.lightdm.greeters.slick.enable = true;
-    desktopManager.xterm.enable = false;
+    displayManager = {
+      lightdm.greeters.slick.enable = true;
+      defaultSession = "none+i3";
+    };
 
     windowManager.i3.enable = true;
+    desktopManager.xterm.enable = false;
 
     libinput = {
       enable = true;
