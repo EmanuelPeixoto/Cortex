@@ -51,6 +51,7 @@
     nload
     nmap
     nodejs_20
+    nomacs
     obs-studio
     openshot-qt
     pamixer

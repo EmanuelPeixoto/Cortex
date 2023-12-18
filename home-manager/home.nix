@@ -7,6 +7,7 @@
   imports =
     [
       ./apps.nix
+      ./dark_theme.nix
       ./i3.nix
       ./mpd.nix
       ./nextcloud.nix
