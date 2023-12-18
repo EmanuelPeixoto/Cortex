@@ -37,7 +37,6 @@
     iftop
     jdk
     jmtpfs
-    kate
     killall
     libmtp
     libreoffice
