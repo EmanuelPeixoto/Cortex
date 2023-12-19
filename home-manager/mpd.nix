@@ -4,7 +4,7 @@
 
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/emanuel/Musicas";
+    musicDirectory = "/home/emanuel/Nextcloud/Musicas";
     network.listenAddress = "any";
     extraConfig = ''
       audio_output {
