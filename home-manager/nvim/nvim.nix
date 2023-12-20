@@ -16,8 +16,8 @@
     extraPackages = with pkgs; [
       lua-language-server
       rnix-lsp
-      xclip
-      wl-clipboard
+      luajitPackages.lua-lsp
+      gopls
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -26,12 +26,16 @@
         plugin = nvim-lspconfig;
         config = toLuaFile ./plugins/lsp.lua;
       }
-
-      nvim-cmp
+      {
+        plugin = comment-nvim;
+        config = toLua "require(\"Comment\").setup()";
+      }
       {
         plugin = nvim-cmp;
         config = toLuaFile ./plugins/cmp.lua;
       }
+
+      nvim-cmp
       vim-nix
       neodev-nvim
       luasnip

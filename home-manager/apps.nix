@@ -30,7 +30,6 @@
     gnumake
     gnupg
     go
-    gopls
     gotty
     gparted
     htop
