@@ -27,6 +27,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('neodev').setup()
+
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -40,6 +41,24 @@ require('lspconfig').lua_ls.setup {
             telemetry = { enable = false },
         },
     }
+}
+
+require('lspconfig').gopls.setup{
+  on_attach = on_attach,
+    capabilities = capabilities,
+  root_dir = function()
+        return vim.loop.cwd()
+    end,
+  cmd = { "gopls" },
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
 }
 
 require('lspconfig').rnix.setup {
