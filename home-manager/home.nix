@@ -12,7 +12,7 @@
       ./i3.nix
       ./mpd.nix
       ./nextcloud.nix
-      ./nvim.nix
+      ./nvim/nvim.nix
       ./polybar/polybar.nix
       ./terminal.nix
     ];
