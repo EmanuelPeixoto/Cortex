@@ -67,7 +67,6 @@
     stress
     telegram-desktop
     tetex
-    texstudio
     thunderbird
     tor
     tor-browser-bundle-bin

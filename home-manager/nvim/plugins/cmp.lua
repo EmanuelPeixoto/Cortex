@@ -45,5 +45,6 @@ cmp.setup {
         { name = 'gopls'},
         { name = 'nixd'},
         { name = 'clangd'},
+        { name = 'texlab'},
     },
 }

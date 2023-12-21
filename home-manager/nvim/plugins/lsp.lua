@@ -61,12 +61,17 @@ require('lspconfig').gopls.setup{
   },
 }
 
-require('lspconfig').nixd.setup {
+require('lspconfig').nixd.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-require("lspconfig").clangd.setup({
+require("lspconfig").clangd.setup{
     on_attach = on_attach,
     capabilities = capabilities,
-})
+}
+
+require('lspconfig').texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
