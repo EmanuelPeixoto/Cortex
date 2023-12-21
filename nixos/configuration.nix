@@ -119,6 +119,6 @@
   networking.firewall.allowedTCPPorts = [ 6600 8080 ]; # MPD
   networking.firewall.allowedUDPPorts = [ ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
 }
