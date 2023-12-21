@@ -2,8 +2,9 @@
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-  home-manager
-  ngrok
+    git
+    home-manager
+    ngrok
   ];
 
 
