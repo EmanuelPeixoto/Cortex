@@ -15,7 +15,8 @@
 
     extraPackages = with pkgs; [
       lua-language-server
-      rnix-lsp
+      nixd
+      clang-tools
       luajitPackages.lua-lsp
       gopls
     ];
@@ -34,6 +35,14 @@
         plugin = nvim-cmp;
         config = toLuaFile ./plugins/cmp.lua;
       }
+      {
+        plugin = gruvbox-nvim;
+        config = "colorscheme gruvbox";
+      }
+      {
+        plugin = lualine-nvim;
+        config = toLua "require(\"lualine\").setup({icons_enabled = true,})";
+      }
 
       nvim-cmp
       vim-nix
@@ -41,6 +50,7 @@
       luasnip
       cmp-nvim-lsp
       cmp_luasnip
+      nvim-web-devicons
     ];
 
     extraLuaConfig = ''

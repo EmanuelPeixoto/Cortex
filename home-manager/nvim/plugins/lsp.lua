@@ -29,26 +29,26 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 require('neodev').setup()
 
 require('lspconfig').lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+  on_attach = on_attach,
+  capabilities = capabilities,
   root_dir = function()
-        return vim.loop.cwd()
-    end,
+    return vim.loop.cwd()
+  end,
   cmd = { "lua-lsp" },
     settings = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
     }
 }
 
 require('lspconfig').gopls.setup{
   on_attach = on_attach,
-    capabilities = capabilities,
+  capabilities = capabilities,
   root_dir = function()
-        return vim.loop.cwd()
-    end,
+    return vim.loop.cwd()
+  end,
   cmd = { "gopls" },
   settings = {
     gopls = {
@@ -61,7 +61,12 @@ require('lspconfig').gopls.setup{
   },
 }
 
-require('lspconfig').rnix.setup {
+require('lspconfig').nixd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+
+require("lspconfig").clangd.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})

@@ -43,5 +43,7 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'gopls'},
+        { name = 'nixd'},
+        { name = 'clangd'},
     },
 }
