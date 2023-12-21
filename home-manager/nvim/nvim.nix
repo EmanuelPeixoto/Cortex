@@ -19,6 +19,7 @@
       clang-tools
       luajitPackages.lua-lsp
       gopls
+      texlab
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -41,7 +42,7 @@
       }
       {
         plugin = lualine-nvim;
-        config = toLua "require(\"lualine\").setup({icons_enabled = true,})";
+        config = toLua "require(\"lualine\").setup{icons_enabled = true,}";
       }
 
       nvim-cmp
