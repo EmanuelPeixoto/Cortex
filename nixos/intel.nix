@@ -8,7 +8,6 @@
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
-  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
   hardware.opengl = {
     enable = true;
@@ -16,7 +15,6 @@
     driSupport = true;
     driSupport32Bit = true;
     setLdLibraryPath = true;
-    #s3tcSupport = true;
 
 
     extraPackages = with pkgs; [
