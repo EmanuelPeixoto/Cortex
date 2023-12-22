@@ -7,7 +7,7 @@
       ./apps.nix
       ./hotspot.nix
       ./intel.nix
-      ./ngrok.nix
+      ./picom.nix
       ./sound.nix
     ];
 
