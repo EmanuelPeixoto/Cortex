@@ -59,7 +59,9 @@
     pciutils
     pkg-config
     playerctl
+    pmutils
     postgresql
+    prismlauncher
     pulseaudioFull
     qbittorrent
     ranger
