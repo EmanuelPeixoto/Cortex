@@ -11,6 +11,7 @@
       ./htop.nix
       ./i3.nix
       ./mpd.nix
+      ./minecraft-overlay.nix
       ./nextcloud.nix
       ./nvim/nvim.nix
       ./polybar/polybar.nix
