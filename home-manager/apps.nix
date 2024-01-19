@@ -18,6 +18,8 @@
     discord
     dmenu
     elixir
+    exfatprogs
+    f3
     ffmpeg
     firefox
     gcc

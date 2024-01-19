@@ -15,6 +15,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = false;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -103,6 +104,7 @@
     blueman.enable = true;
     logind.lidSwitch = "lock";
     teamviewer.enable = true;
+    tumbler.enable = true;
   };
 
   programs.dconf.enable = true;
