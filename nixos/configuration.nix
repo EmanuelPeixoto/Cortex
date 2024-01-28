@@ -9,7 +9,6 @@
       ./intel.nix
       ./picom.nix
       ./sound.nix
-      ./nginx.nix
     ];
 
   # Boot
