@@ -15,13 +15,12 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = false;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Hostname
-  networking.hostName = "nixos";
+  networking.hostName = "NixOS-Note";
 
 
   # Networking
@@ -118,7 +117,13 @@
 
   hardware.bluetooth.enable = true;
 
-  networking.firewall.allowedTCPPorts = [ 6600 8080 ]; # MPD
+  security.pam.services.kwallet = {
+    name = "kwallet";
+    enableKwallet = true;
+  };
+
+
+  networking.firewall.allowedTCPPorts = [ 6600 ]; # MPD
   networking.firewall.allowedUDPPorts = [ ];
 
   system.stateVersion = "23.11";
