@@ -5,8 +5,8 @@
   services.create_ap = {
     enable = false;
     settings = {
-      INTERNET_IFACE = "enp9s0";
-      WIFI_IFACE = "wlp12s0";
+      INTERNET_IFACE = "enp2s0f2";
+      WIFI_IFACE = "wlp1s0";
       SSID = "";
       PASSPHRASE = "";
     };
