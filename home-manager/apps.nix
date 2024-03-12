@@ -74,6 +74,7 @@
     thunderbird
     tor
     tor-browser-bundle-bin
+    unrar
     unzip
     usbutils
     ventoy-full
@@ -85,6 +86,7 @@
     xfce.thunar
     xorg.xinit
     yt-dlp
+    zathura
     zip
   ];
 
