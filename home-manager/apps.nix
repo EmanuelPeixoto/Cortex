@@ -64,6 +64,7 @@
     pmutils
     postgresql
     prismlauncher
+    progress
     pulseaudioFull
     qbittorrent
     ranger
