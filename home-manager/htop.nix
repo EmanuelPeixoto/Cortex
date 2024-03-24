@@ -1,6 +1,5 @@
 {lib, config, pkgs, ... }:
 {
-
   programs.htop.enable = true;
   programs.htop.settings = {
     show_cpu_frequency = true;
@@ -21,7 +20,7 @@
       PERCENT_MEM
       TIME
       COMM
-          ];
+    ];
   } // (with config.lib.htop; leftMeters [
     (bar "AllCPUs")
     (bar "Memory")

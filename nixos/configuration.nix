@@ -1,5 +1,4 @@
 {lib, config, pkgs, ... }:
-
 {
   imports =
     [
@@ -48,9 +47,11 @@
     enable = true;
     exportConfiguration = true;
 
-    layout = "br";
-    xkbVariant = "";
-    xkbModel = "";
+    xkb = {
+      layout = "br";
+      variant = "";
+      model = "";
+    };
 
     displayManager = {
       lightdm.greeters.slick.enable = true;
@@ -84,8 +85,9 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
-  fonts = {packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Meslo" ];})
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "Meslo" ];})
     ];
     fontconfig = {
       defaultFonts = {
