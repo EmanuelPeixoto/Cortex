@@ -1,7 +1,5 @@
 {lib, config, pkgs, ... }:
 {
-
-
   services.mpd = {
     enable = true;
     musicDirectory = "/home/emanuel/Nextcloud/Musicas";
@@ -16,6 +14,4 @@
   };
 
   services.mpd-mpris.enable = true;
-
-
 }

@@ -1,29 +1,27 @@
 {lib, config, pkgs, ... }:
-
 {
   home.username = "emanuel";
   home.homeDirectory = "/home/emanuel/";
 
-  imports =
-    [
-      ./apps.nix
-      ./dark_theme.nix
-      ./htop.nix
-      ./i3.nix
-      ./minecraft-overlay.nix
-      ./mpd.nix
-      ./nextcloud.nix
-      ./nvim/nvim.nix
-      ./polybar/polybar.nix
-      ./terminal.nix
-    ];
+  imports = [
+    ./apps.nix
+    ./dark_theme.nix
+    ./htop.nix
+    ./i3.nix
+    ./minecraft-overlay.nix
+    ./mpd.nix
+    ./nextcloud.nix
+    ./nvim/nvim.nix
+    ./polybar/polybar.nix
+    ./terminal.nix
+  ];
 
   home.stateVersion = "23.11";
 
   home.sessionVariables = {
-  EDITOR = "nvim";
-  BROWSER = "firefox";
-  TERMINAL = "alacritty";
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
   };
 
 
