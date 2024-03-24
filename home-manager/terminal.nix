@@ -1,8 +1,6 @@
 {lib, config, pkgs, ... }:
 {
-
-
-# Enable zsh and ohMyZsh
+  # Enable zsh and ohMyZsh
   programs.zsh = {
     enable = true;
     enableCompletion = true;
