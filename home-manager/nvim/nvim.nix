@@ -43,13 +43,13 @@
         config = toLua "require(\"lualine\").setup{icons_enabled = true,}";
       }
 
-      nvim-cmp
-      vim-nix
-      neodev-nvim
-      luasnip
       cmp-nvim-lsp
       cmp_luasnip
+      luasnip
+      neodev-nvim
+      nvim-cmp
       nvim-web-devicons
+      vim-nix
     ];
 
     extraLuaConfig = ''
