@@ -69,7 +69,7 @@
     speedtest-cli
     stress
     telegram-desktop
-    tetex
+    texliveFull
     thunderbird
     tor
     tor-browser-bundle-bin
