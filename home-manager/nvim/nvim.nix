@@ -12,12 +12,14 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
-      lua-language-server
-      nixd
       clang-tools
-      luajitPackages.lua-lsp
+      emmet-ls
       gopls
+      lua-language-server
+      luajitPackages.lua-lsp
+      nixd
       texlab
+      vscode-langservers-extracted
     ];
 
     plugins = with pkgs.vimPlugins; [

@@ -75,3 +75,25 @@ require('lspconfig').texlab.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+require('lspconfig').html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {'html','gohtml'},
+}
+require('lspconfig').jsonls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+require('lspconfig').cssls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+require('lspconfig').eslint.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+require('lspconfig').emmet_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {'html','gohtml','css'},
+}

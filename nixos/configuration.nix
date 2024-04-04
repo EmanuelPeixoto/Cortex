@@ -125,7 +125,7 @@
   };
 
 
-  networking.firewall.allowedTCPPorts = [ 6600 ]; # MPD
+  networking.firewall.allowedTCPPorts = [ 6600 8888 ]; # MPD NETCAT
   networking.firewall.allowedUDPPorts = [ ];
 
   system.stateVersion = "23.11";
