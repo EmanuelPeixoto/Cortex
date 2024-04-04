@@ -47,6 +47,7 @@
     mpv
     ncmpcpp
     neofetch
+    netcat
     nload
     nmap
     nodejs_20
