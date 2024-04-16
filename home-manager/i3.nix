@@ -83,7 +83,7 @@ in {
         "Print" = "exec maim -s -u | xclip -selection clipboard -t image/png -i";
 
         # kill focused window
-        "${mod}+Shift+q" = "kill";
+        "${mod}+Shift+q" = "split toggle kill";
 
         # start dmenu (a program launcher)
         "${mod}+d" = "exec --no-startup-id dmenu_run";
@@ -202,5 +202,9 @@ in {
       };
       bars = [];
     };
+    extraConfig = ''
+      default_orientation vertical
+      for_window [class=".*"] split toggle
+    '';
   };
 }
