@@ -1,0 +1,38 @@
+(defwidget bar_left []
+  (box
+    :class "bar-left"
+    :halign "start"
+    :orientation "h"
+    (workspaces)
+    )
+  )
+
+(defwidget workspaces []
+  (box
+    :class "workspaces"
+    :orientation "h"
+    :space-evenly true
+    :halign "start"
+    (label
+      :text "${focused_workspace}"
+      :visible false
+      )
+    (box
+      :space-evenly false
+      :spacing 5
+      (for id in active_workspaces
+        (button
+          :class {
+          focused_workspace == id ? "focused" : "unfocused"
+          }
+          :onclick "hyprctl dispatch workspace ${id}"
+          (label
+            :halign "center"
+            :valign "center"
+            :text {id}
+            )
+          )
+        )
+      )
+    )
+  )

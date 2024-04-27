@@ -1,0 +1,51 @@
+(defwidget bar_right []
+  (box
+    :class "bar-right"
+    :halign "end"
+    :orientation "h"
+    :space-evenly false
+    :spacing 10
+    (volume)
+    (internet)
+    (date)
+    )
+  )
+
+(defwidget volume []
+  (box
+    :space-evenly false
+    :orientation "h"
+    :class "volume"
+    (button
+      :onclick "pamixer --toggle-mute"
+      :class "volume_info"
+      "🔊${volume}${volume != "muted" ? "%" : ""}"
+      )
+    )
+  )
+
+(defwidget internet []
+  (box
+    :space-evenly false
+    :orientation "h"
+    :class "internet"
+    (button
+      :onclick "hyprctl dispatch exec '[float] alacritty -e nmtui'"
+      :class "internet_info"
+      "  ${ESSID_WLAN != "lo" ? "${ESSID_WLAN}" : ""}"
+      )
+    )
+  )
+
+(defwidget date []
+  (box
+    :space-evenly false
+    :orientation "h"
+    :class "date"
+    (button
+      :onclick "hyprctl dispatch exec '[float] alacritty -e cal -y" ; to fix later
+      :class "date_info"
+      "${date}"
+      )
+    )
+  )

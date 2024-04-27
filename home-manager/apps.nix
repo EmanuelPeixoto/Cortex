@@ -8,13 +8,11 @@
   };
   home.packages = with pkgs; [
     aircrack-ng
-    alacritty
     arduino
     arduino-cli
     audacity
     curl
     discord
-    dmenu
     elixir
     exfatprogs
     f3
@@ -42,7 +40,6 @@
     libva-utils
     lm_sensors
     lshw
-    maim
     mixxx
     mpv
     ncmpcpp
@@ -66,6 +63,7 @@
     progress
     pulseaudioFull
     qbittorrent
+    racket
     ranger
     speedtest-cli
     stress
@@ -82,9 +80,6 @@
     vulkan-tools
     wget
     wine
-    xclip
-    xfce.thunar
-    xorg.xinit
     yt-dlp
     zathura
     zip

@@ -6,13 +6,14 @@
   imports = [
     ./apps.nix
     ./dark_theme.nix
+    ./eww.nix
     ./htop.nix
-    ./i3.nix
+    ./hypr.nix
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud.nix
-    ./nvim/nvim.nix
-    ./polybar/polybar.nix
+    ./nvim.nix
+    ./swww.nix
     ./terminal.nix
   ];
 

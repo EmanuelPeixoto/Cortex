@@ -1,0 +1,9 @@
+; variables
+(include "./bar/variables.yuck")
+
+; modules
+(include "./bar/modules/bar_left.yuck")
+(include "./bar/modules/bar_right.yuck")
+
+; windows
+(include "./bar/window.yuck")
