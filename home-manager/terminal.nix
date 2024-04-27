@@ -11,6 +11,7 @@
 
     shellAliases = {
       motd = "bash /home/emanuel/NixOS/home-manager/motd";
+      bar = "eww close-all && home-manager switch --flake ~/NixOS && eww open bar";
     };
     oh-my-zsh = {
       enable = true;

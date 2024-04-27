@@ -6,7 +6,7 @@
       ./apps.nix
       ./hotspot.nix
       ./intel.nix
-      ./picom.nix
+      ./intel2.nix
       ./sound.nix
     ];
 
@@ -43,38 +43,6 @@
     };
   };
 
-  services.xserver = {
-    enable = true;
-    exportConfiguration = true;
-
-    xkb = {
-      layout = "br";
-      variant = "";
-      model = "";
-    };
-
-    displayManager = {
-      lightdm.greeters.slick.enable = true;
-      defaultSession = "none+i3";
-    };
-
-    windowManager.i3.enable = true;
-    desktopManager.xterm.enable = false;
-
-    libinput = {
-      enable = true;
-
-      mouse = {
-        accelProfile = "flat";
-      };
-
-      touchpad = {
-        accelProfile = "flat";
-        accelSpeed = "0.65";
-      };
-    };
-  };
-
   # Console keymap
   console.keyMap = "br-abnt2";
 
@@ -104,8 +72,6 @@
     vnstat.enable = true;
     blueman.enable = true;
     logind.lidSwitch = "lock";
-    teamviewer.enable = true;
-    tumbler.enable = true;
   };
 
   programs.dconf.enable = true;

@@ -1,0 +1,20 @@
+(defwindow bar
+  :monitor 0
+  :geometry (geometry
+  :width "100%"
+  :anchor "bottom center")
+  :stacking "fg"
+  :exclusive true
+  (bar_layout)
+  )
+
+(defwidget bar_layout []
+  (box
+    :space-evenly false
+    :class "bar"
+    :orientation "h"
+    :style "background-color: #181818; padding: 2px;"
+    (bar_left)
+    (bar_right)
+    )
+  )
