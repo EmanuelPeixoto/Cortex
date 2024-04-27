@@ -6,7 +6,6 @@
       ./apps.nix
       ./hotspot.nix
       ./intel.nix
-      ./intel2.nix
       ./sound.nix
     ];
 
