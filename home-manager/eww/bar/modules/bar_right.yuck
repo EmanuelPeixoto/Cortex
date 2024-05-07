@@ -32,7 +32,7 @@
     (button
       :onclick "hyprctl dispatch exec '[float] alacritty -e nmtui'"
       :class "internet_info"
-      "  ${ESSID_WLAN != "lo" ? "${ESSID_WLAN}" : ""}"
+      " ${ESSID_WLAN != "lo" ? "  ${ESSID_WLAN}" : ""}"
       )
     )
   )
