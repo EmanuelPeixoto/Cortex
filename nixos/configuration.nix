@@ -49,7 +49,20 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Emanuel Peixoto";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "wireshark" ];
+  };
+
+  # Sudo config
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "${pkgs.pmutils}/pm-hibernate";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }];
   };
 
   fonts = {
@@ -75,6 +88,11 @@
 
   programs.dconf.enable = true;
   programs.zsh.enable = true;
+
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark;
+  };
 
   programs.steam = {
     enable = true;

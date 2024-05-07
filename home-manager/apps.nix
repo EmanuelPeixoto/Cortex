@@ -63,8 +63,8 @@
     progress
     pulseaudioFull
     qbittorrent
-    racket
     ranger
+    scilab-bin
     speedtest-cli
     stress
     telegram-desktop

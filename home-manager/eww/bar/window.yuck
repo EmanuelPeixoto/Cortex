@@ -10,7 +10,6 @@
 
 (defwidget bar_layout []
   (box
-    :space-evenly false
     :class "bar"
     :orientation "h"
     :style "background-color: #181818; padding: 2px;"
