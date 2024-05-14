@@ -1,4 +1,4 @@
-{lib, config, pkgs, ...}:
+{ pkgs, ... }:
 {
   systemd.user.services.swww = {
     Unit = {
@@ -6,7 +6,7 @@
       PartOf = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = "${pkgs.swww}/bin/swww-daemon";
+      ExecStart = "${pkgs.swww}/bin/swww-daemon --format xrgb";
       Restart = "on-failure";
     };
     Install.WantedBy = ["graphical-session.target"];

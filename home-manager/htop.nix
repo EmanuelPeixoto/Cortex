@@ -1,4 +1,4 @@
-{lib, config, pkgs, ... }:
+{ config, ... }:
 {
   programs.htop.enable = true;
   programs.htop.settings = {
@@ -30,6 +30,4 @@
     (text "Systemd")
     (bar "Swap")
   ]);
-
-
 }

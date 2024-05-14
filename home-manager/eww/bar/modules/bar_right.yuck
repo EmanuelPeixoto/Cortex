@@ -5,21 +5,48 @@
     :orientation "h"
     :space-evenly false
     :spacing 10
+    (caps)
     (volume)
     (internet)
     (date)
+    (systemtray)
+    (battery)
     )
   )
 
-(defwidget volume []
+(defwidget battery []
   (box
     :space-evenly false
     :orientation "h"
-    :class "volume"
+    :class "battery"
+    (label
+      :class {EWW_BATTERY.BAT0.capacity  <= 25 && EWW_BATTERY.BAT0.status == "Discharging" ? "Low" : "${EWW_BATTERY.BAT0.status}"
+      }
+      :text "${EWW_BATTERY.BAT0.capacity} %"
+      )
+    )
+  )
+
+(defwidget caps []
+  (box
+    :space-evenly false
+    :orientation "h"
+    :class "caps"
+    (label
+      :text "${caps == "1" ? "CAPS" : ""}"
+      )
+    )
+  )
+
+(defwidget date []
+  (box
+    :space-evenly false
+    :orientation "h"
+    :class "date"
     (button
-      :onclick "pamixer --toggle-mute"
-      :class "volume_info"
-      "🔊${volume}${volume != "muted" ? "%" : ""}"
+      :onclick "hyprctl dispatch exec '[float] alacritty -e cal -y" ; to fix later
+      :class "date_info"
+      "${date}"
       )
     )
   )
@@ -37,15 +64,23 @@
     )
   )
 
-(defwidget date []
+(defwidget systemtray []
+  (box
+    :orientation "h"
+    (systray :class "tray" :orientation "h" :icon-size 12 :spacing 4)
+    )
+  )
+
+(defwidget volume []
   (box
     :space-evenly false
     :orientation "h"
-    :class "date"
-    (button
-      :onclick "hyprctl dispatch exec '[float] alacritty -e cal -y" ; to fix later
-      :class "date_info"
-      "${date}"
+    :class "volume"
+    (eventbox
+      :onclick "pamixer --toggle-mute"
+      :onscroll "./bar/scripts/volume.sh {}"
+      :class "volume_info"
+      "🔊${volume}"
       )
     )
   )
