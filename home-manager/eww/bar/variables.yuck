@@ -5,13 +5,16 @@
 
 ;===============right===============
 ; date
-(defpoll date :interval "10s" "date '+%H:%M - %d %b %Y'")
+(defpoll date :interval "10s" "date '+%H:%M - %d/%m'")
 
 ;wifi
 (defpoll ESSID_WLAN :interval "5s" "nmcli -t -f name connection show --active | head -n 1")
 
 ; Volume
-(defpoll volume :interval "1s" "./bar/scripts/getvol.sh")
+(defpoll volume :interval "0.25s" "./bar/scripts/volume.sh")
+
+(defpoll caps :interval "0.1s" "cat /sys/class/leds/input0::capslock/brightness")
+
 
 ; battery / hardware info
 ; make later

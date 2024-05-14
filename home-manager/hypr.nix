@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
     home.packages = with pkgs; [
       alacritty
@@ -68,7 +68,11 @@
         "$mainMod SHIFT, E, exit,"
         "$mainMod SHIFT, Q, killactive,"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod SHIFT, down, movewindow, d"
+        "$mainMod SHIFT, left, movewindow, l"
+        "$mainMod SHIFT, right, movewindow, r"
         "$mainMod SHIFT, space, togglefloating,"
+        "$mainMod SHIFT, up, movewindow, u"
         "$mainMod, 0, workspace, 10"
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -79,10 +83,10 @@
         "$mainMod, 7, workspace, 7"
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
-        "$mainMod, Return, exec, alacritty"
-        "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod, D, exec, bemenu-run"
         "$mainMod, F, fullscreen,"
+        "$mainMod, Return, exec, alacritty"
+        "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"
         "$mainMod, mouse_down, workspace, e+1"

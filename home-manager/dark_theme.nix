@@ -1,4 +1,4 @@
-{lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
   dconf.settings = {
     "org/gnome/desktop/background" = {

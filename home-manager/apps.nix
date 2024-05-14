@@ -1,4 +1,4 @@
-{lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
   nixpkgs = {
     config = {
@@ -64,6 +64,7 @@
     pulseaudioFull
     qbittorrent
     ranger
+    rars
     scilab-bin
     speedtest-cli
     stress
