@@ -1,4 +1,4 @@
-#!/usr/bin
+#!/usr/bin/env bash
 
 load=`cat /proc/loadavg     | awk '{print $2}'`
 memory_usage=`free -m       | awk '/Mem/ { printf("%3.1f%%", $3/($2+1)*100) }'`

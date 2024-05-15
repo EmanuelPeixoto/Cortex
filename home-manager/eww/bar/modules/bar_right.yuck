@@ -44,7 +44,7 @@
     :orientation "h"
     :class "date"
     (button
-      :onclick "hyprctl dispatch exec '[float] alacritty -e cal -y" ; to fix later
+      :onclick "./bar/scripts/open_calendar.sh"
       :class "date_info"
       "${date}"
       )
@@ -57,7 +57,7 @@
     :orientation "h"
     :class "internet"
     (button
-      :onclick "hyprctl dispatch exec '[float] alacritty -e nmtui'"
+      :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
       :class "internet_info"
       " ${ESSID_WLAN != "lo" ? "  ${ESSID_WLAN}" : ""}"
       )
