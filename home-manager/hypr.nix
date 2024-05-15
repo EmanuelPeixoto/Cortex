@@ -1,10 +1,8 @@
 { pkgs, ... }:
 {
     home.packages = with pkgs; [
-      alacritty
       bemenu
       grim
-      hyprlock
       slurp
       swww
       wl-clipboard
@@ -85,7 +83,7 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, D, exec, bemenu-run"
         "$mainMod, F, fullscreen,"
-        "$mainMod, Return, exec, alacritty"
+        "$mainMod, Return, exec, kitty"
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"

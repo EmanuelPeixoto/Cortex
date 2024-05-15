@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 get_focused() {
   echo $(hyprctl monitors | grep active | awk '{print $3}')

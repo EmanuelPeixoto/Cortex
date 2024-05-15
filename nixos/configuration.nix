@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports =
     [
@@ -44,6 +44,7 @@
 
   # Console keymap
   console.keyMap = "br-abnt2";
+  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 
   users.users.emanuel = {
     shell = pkgs.zsh;
