@@ -44,7 +44,7 @@
 
   # Console keymap
   console.keyMap = "br-abnt2";
-  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  # console.font = lib.mkDefault "";
 
   users.users.emanuel = {
     shell = pkgs.zsh;
