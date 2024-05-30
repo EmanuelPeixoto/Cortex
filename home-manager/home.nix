@@ -24,7 +24,6 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "kitty";
-    TERM = "xterm-256color"; # kitty compatibility with SSH
   };
 
 
