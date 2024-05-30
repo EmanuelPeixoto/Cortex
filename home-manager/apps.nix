@@ -44,6 +44,7 @@
     mpv
     ncmpcpp
     neofetch
+    netbeans
     netcat
     nload
     nmap
