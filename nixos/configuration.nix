@@ -16,10 +16,10 @@
 
   # Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  environment.sessionVariables.FLAKE = "/home/emanuel/NixOS";
 
   # Hostname
   networking.hostName = "NixOS-Note";
-
 
   # Networking
   networking.networkmanager.enable = true;
