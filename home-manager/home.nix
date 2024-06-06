@@ -7,6 +7,7 @@
     ./apps.nix
     ./dark_theme.nix
     ./eww.nix
+    ./git.nix
     ./htop.nix
     ./hypr.nix
     ./kitty.nix
