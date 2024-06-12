@@ -50,7 +50,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Emanuel Peixoto";
-    extraGroups = [ "networkmanager" "wheel" "video" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "wireshark" "dialout" ];
   };
 
   # Sudo config
