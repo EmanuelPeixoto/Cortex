@@ -16,7 +16,6 @@ Explore and enjoy my customized NixOS configuration!
 
 ## TO DO LIST
 
-- nixvim
 - unir configuração do servidor
 - informações do wi-fi ao colocar o mouse sobre (eww)
 - corrigir sistema de áudio (possivelmente com pipewire)
