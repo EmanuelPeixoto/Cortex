@@ -14,7 +14,8 @@
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud.nix
-    ./nvim.nix
+    # ./nvim.nix
+    ./nixvim.nix
     ./swww.nix
     ./zsh.nix
   ];

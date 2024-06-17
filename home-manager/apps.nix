@@ -8,8 +8,8 @@
   };
   home.packages = with pkgs; [
     aircrack-ng
-    arduino-ide
     arduino-cli
+    arduino-ide
     audacity
     curl
     discord
