@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     nixvim.url = "github:EmanuelPeixoto/NixVim";
-    # nixvim.url = "github:MintzyG/celestium";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -26,7 +25,7 @@
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
         ];
-        extraSpecialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
       };
     };
     homeConfigurations = {
