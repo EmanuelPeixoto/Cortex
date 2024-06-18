@@ -17,10 +17,11 @@ Explore and enjoy my customized NixOS configuration!
 ## TO DO LIST
 
 - unir configuração do servidor
-- informações do wi-fi ao colocar o mouse sobre (eww)
-- corrigir sistema de áudio (possivelmente com pipewire)
-- informação do computador ao clicar no botão da bateria (eww)
-- greeter
 - hibernar sem sudo
+- otimização de bateria
+- informações do wi-fi ao colocar o mouse sobre (eww)
+- informação do computador ao clicar no botão da bateria (eww)
 - duplicar monitor ao conectar outro, ao invés de extender (futuramente poder escolher o que fazer)
 - tamanho das janelas nmtui, cal, notificação thunderbird, usuário firefox, etc (hyprland)
+- greeter
+- corrigir sistema de áudio (possivelmente com pipewire)

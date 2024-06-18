@@ -22,7 +22,7 @@
       NixOS-Note = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./nixos/configuration.nix
+          ./system/configuration.nix
           home-manager.nixosModules.home-manager
         ];
         specialArgs = { inherit inputs; };
