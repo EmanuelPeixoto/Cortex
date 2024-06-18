@@ -64,7 +64,6 @@
     progress
     pulseaudioFull
     qbittorrent
-    ranger
     rars
     scilab-bin
     speedtest-cli
@@ -82,6 +81,7 @@
     vulkan-tools
     wget
     wine
+    yazi
     yt-dlp
     zathura
     zip
