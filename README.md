@@ -18,6 +18,7 @@ Explore and enjoy my customized NixOS configuration!
 
 - unir configuração do servidor
 - configurar yazi
+- sistema de printscreen com edição
 - customizar ncmpcpp
 - hibernar sem sudo
 - otimização de bateria
