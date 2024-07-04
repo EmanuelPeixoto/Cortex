@@ -7,7 +7,7 @@
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
-    ./intel.nix
+    # ./intel.nix
     ./locale.nix
     ./sound.nix
     ./steam.nix

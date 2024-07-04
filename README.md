@@ -17,6 +17,7 @@ Explore and enjoy my customized NixOS configuration!
 ## TO DO LIST
 
 - unir configuração do servidor
+- configurar yazi
 - hibernar sem sudo
 - otimização de bateria
 - informações do wi-fi ao colocar o mouse sobre (eww)
