@@ -6,10 +6,10 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = "zsh /home/emanuel/NixOS/home-manager/motd.sh";
+    initExtra = "zsh /home/emanuel/Cortex/hm/motd.sh";
 
     shellAliases = {
-      motd = "bash /home/emanuel/NixOS/home-manager/motd.sh";
+      motd = "bash /home/emanuel/Cortex/hm/motd.sh";
       ssh = "kitten ssh";
     };
     oh-my-zsh = {
