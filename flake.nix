@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    nixvim.url = "github:EmanuelPeixoto/NixVim";
+    lexis.url = "github:EmanuelPeixoto/Lexis";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -22,16 +22,30 @@
       NixOS-Note = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./system/configuration.nix
+          ./system/note
           home-manager.nixosModules.home-manager
         ];
         specialArgs = { inherit inputs; };
       };
+      NixOS-Server = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./system/server
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
     };
     homeConfigurations = {
-      emanuel = home-manager.lib.homeManagerConfiguration {
+      note = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home-manager/home.nix ];
+        modules = [ ./hm/note ];
+        extraSpecialArgs = { inherit inputs; };
+      };
+      server = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./hm/server ];
         extraSpecialArgs = { inherit inputs; };
       };
     };

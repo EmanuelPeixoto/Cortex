@@ -4,7 +4,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]
@@ -74,7 +74,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]
@@ -116,12 +116,12 @@
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ],
         "nixpkgs-stable": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]
@@ -143,7 +143,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "git-hooks",
           "nixpkgs"
@@ -170,11 +170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719827439,
-        "narHash": "sha256-tneHOIv1lEavZ0vQ+rgz67LPNCgOZVByYki3OkSshFU=",
+        "lastModified": 1720045378,
+        "narHash": "sha256-lmE7B+QXw7lWdBu5GQlUABSpzPk3YBb9VbV+IYK5djk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "59ce796b2563e19821361abbe2067c3bb4143a7d",
+        "rev": "0a30138c694ab3b048ac300794c2eb599dc40266",
         "type": "github"
       },
       "original": {
@@ -186,7 +186,7 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]
@@ -205,10 +205,30 @@
         "type": "github"
       }
     },
+    "lexis": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs",
+        "nixvim": "nixvim"
+      },
+      "locked": {
+        "lastModified": 1718839237,
+        "narHash": "sha256-F7Nt2KSmaYmc2dDqYUELIW77nT5LZ8GLTxm+7utebYY=",
+        "owner": "EmanuelPeixoto",
+        "repo": "Lexis",
+        "rev": "d63204c299f324dafd232b83fb939c6b490d46b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EmanuelPeixoto",
+        "repo": "Lexis",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]
@@ -229,16 +249,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1719760900,
-        "narHash": "sha256-NkvFphHXKtQQ8F0XrqGlqkOhjHbE3671F8oLxwtTHhk=",
+        "lastModified": 1718318537,
+        "narHash": "sha256-4Zu0RYRcAY/VWuu6awwq4opuiD//ahpc2aFHg2CWqFY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "12a9c0004bc987afb1ff511ebb97b67497a68e22",
+        "rev": "e9ee548d90ff586a6471b4ae80ae9cfcbceb3420",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -257,22 +277,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1718318537,
-        "narHash": "sha256-4Zu0RYRcAY/VWuu6awwq4opuiD//ahpc2aFHg2CWqFY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "e9ee548d90ff586a6471b4ae80ae9cfcbceb3420",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1718160348,
         "narHash": "sha256-9YrUjdztqi4Gz8n3mBuqvCkMo4ojrA6nASwyIKWMpus=",
         "owner": "NixOS",
@@ -287,27 +291,23 @@
         "type": "github"
       }
     },
-    "nixvim": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2",
-        "nixvim": "nixvim_2"
-      },
+    "nixpkgs_3": {
       "locked": {
-        "lastModified": 1718839237,
-        "narHash": "sha256-F7Nt2KSmaYmc2dDqYUELIW77nT5LZ8GLTxm+7utebYY=",
-        "owner": "EmanuelPeixoto",
-        "repo": "NixVim",
-        "rev": "d63204c299f324dafd232b83fb939c6b490d46b7",
+        "lastModified": 1720058333,
+        "narHash": "sha256-gM2RCi5XkxmcsZ44pUkKIYBiBMfZ6u7MdcZcykmccrs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "6842b061970bf96965d66fcc86a28e1f719aae95",
         "type": "github"
       },
       "original": {
-        "owner": "EmanuelPeixoto",
-        "repo": "NixVim",
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
-    "nixvim_2": {
+    "nixvim": {
       "inputs": {
         "devshell": "devshell",
         "flake-compat": "flake-compat",
@@ -315,7 +315,7 @@
         "git-hooks": "git-hooks",
         "home-manager": "home-manager_2",
         "nix-darwin": "nix-darwin",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -335,8 +335,8 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "lexis": "lexis",
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "systems": {
@@ -357,7 +357,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "nixvim",
+          "lexis",
           "nixvim",
           "nixpkgs"
         ]

@@ -4,19 +4,19 @@
   home.homeDirectory = "/home/emanuel/";
 
   imports = [
+    ../git.nix
+    ../htop.nix
+    ../lexis.nix
+    ../zsh.nix
     ./apps.nix
     ./dark_theme.nix
     ./eww.nix
-    ./git.nix
-    ./htop.nix
     ./hypr.nix
     ./kitty.nix
     ./minecraft-overlay.nix
     ./mpd.nix
-    ./nextcloud.nix
-    ./nixvim.nix
+    ./nextcloud-client.nix
     ./swww.nix
-    ./zsh.nix
   ];
 
   home.stateVersion = "23.11";
