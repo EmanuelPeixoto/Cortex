@@ -30,6 +30,7 @@
     progress
     ventoy-full
     wl-clipboard
+    yazi
   ];
 
   programs.home-manager.enable = true;

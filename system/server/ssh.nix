@@ -1,6 +1,6 @@
 { ... }:
 {
-  imports = [ ./sshkeys.nix ];
+  imports = [ ../../../sshkeys.nix ];
 
   services.openssh = {
     enable = true;
