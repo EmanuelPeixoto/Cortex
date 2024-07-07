@@ -29,6 +29,7 @@
     htop
     progress
     ventoy-full
+    wl-clipboard
   ];
 
   programs.home-manager.enable = true;
