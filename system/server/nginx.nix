@@ -103,6 +103,7 @@
           fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
         }'';
       };
+    };
 
     appendHttpConfig = ''
       geoip2 /var/www/.geoip/GeoLite2-Country.mmdb {
