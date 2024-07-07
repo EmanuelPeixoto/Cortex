@@ -1,24 +1,29 @@
-# Welcome to My NixOS Configuration
+# Welcome to Cortex
 
-Here you will find system and user configurations.
+My NixOS system mirrors the intricate neural pathways of the brain, providing a powerful, adaptive, and efficient computing environment.
 
-## PC Configuration
+## Note Autopsy
 
 - **CPU:** Intel i7-3537U
 - **GPU:** Intel 3rd Gen Core Processor Graphics
 - **RAM:** 8GB DDR3
-- **Disco:** SSD 1TB Netac
+- **Disc:** SSD 1TB Netac
 - **Graphical Interface:** Hyprland
 
-Explore and enjoy my customized NixOS configuration!
+## Server Autopsy
+
+- **CPU:** Intel Xeon E5450
+- **GPU:** Zotac GT 1030
+- **RAM:** 8GB DDR3
+- **Disc:** SSD 512GB Netac
+
+Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
 ---
 
-## TO DO LIST
+## TO DO LIST (in Portuguese)
 
-- unir configuração do servidor
 - configurar yazi
-- sistema de printscreen com edição
 - customizar ncmpcpp
 - hibernar sem sudo
 - otimização de bateria

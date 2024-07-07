@@ -5,7 +5,7 @@
       grim
       slurp
       swww
-      wl-clipboard
+      swappy
     ];
 
   wayland.windowManager.hyprland = {
@@ -83,6 +83,7 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, D, exec, bemenu-run"
         "$mainMod, F, fullscreen,"
+        "$mainMod, Print, exec, grim -l 0 - | swappy -f -"
         "$mainMod, Return, exec, kitty"
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod, down, movefocus, d"
@@ -91,7 +92,7 @@
         "$mainMod, mouse_up, workspace, e-1"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
-        ", Print, exec, grim -g \"$(slurp -d)\" - | wl-copy -t image/png"
+        ", Print, exec, grim -l 0 -g \"$(slurp -d -w 0)\" - | swappy -f -"
       ];
 
       bindm = [
@@ -106,7 +107,7 @@
         "CTRL, XF86AudioRaiseVolume, exec, playerctl next"
         "CTRL, XF86AudioMute, exec, playerctl play-pause"
       ];
-      exec-once = "eww open bar && swww img ~/NixOS/home-manager/Wallpaper.gif";
+      exec-once = "eww open bar && swww img ~/Cortex/hm/note/Wallpaper.gif";
     };
   };
 }

@@ -80,7 +80,7 @@
     vlc
     vulkan-tools
     wget
-    wine
+    wl-clipboard
     yazi
     yt-dlp
     zathura

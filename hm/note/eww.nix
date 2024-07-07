@@ -12,7 +12,6 @@
   systemd.user.services.eww = {
     Unit = {
       Description = "Eww Daemon";
-      # PartOf = ["graphical-session.target"];
     };
     Service = {
       ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
