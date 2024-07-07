@@ -104,18 +104,6 @@
         }'';
       };
 
-      locations."^~/gabriela" = {
-        root = "/var/www/";
-        index = "index.html index.php";
-        extraConfig = ''
-          access_log /var/log/nginx/gabriela.log custom;
-          location ~ \.php$ {
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-        }'';
-      };
-    };
-
     appendHttpConfig = ''
       geoip2 /var/www/.geoip/GeoLite2-Country.mmdb {
         auto_reload 5m;

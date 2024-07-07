@@ -21,7 +21,6 @@
     php81Extensions.zip
     php81Packages.composer
     qbittorrent-nox
-    ranger
     speedtest-cli
     unzip
     wget
