@@ -1,7 +1,7 @@
 { ... }:
 {
-  systemd.services.noip = {
-    enable = false; # my router is doing this
+  systemd.services.goscti = {
+    enable = true;
     description = "Go SCTI service";
     serviceConfig = {
       ExecStart = "/home/emanuel/SCTI/src/main";
