@@ -5,6 +5,7 @@
     curl
     ffmpeg
     gcc
+    go
     iftop
     lm_sensors
     neofetch
