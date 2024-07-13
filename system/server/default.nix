@@ -6,6 +6,7 @@
     ./acme.nix
     ./apps.nix
     ./firewall.nix
+    ./go-scti.nix
     ./hardware-configuration.nix
     ./nextcloud.nix
     ./nginx.nix
