@@ -13,9 +13,9 @@
     ./eww.nix
     ./hypr.nix
     ./kitty.nix
-    ./minecraft-overlay.nix
+    # ./minecraft-overlay.nix
     ./mpd.nix
-    ./nextcloud-client.nix
+    # ./nextcloud-client.nix
     ./swww.nix
   ];
 

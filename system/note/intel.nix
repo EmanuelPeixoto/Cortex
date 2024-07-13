@@ -4,7 +4,7 @@
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
 
     driSupport = true;

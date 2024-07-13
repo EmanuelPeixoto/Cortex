@@ -51,7 +51,7 @@
     nodejs_20
     nomacs
     obs-studio
-    openshot-qt
+    # openshot-qt
     pamixer
     paprefs
     pavucontrol
