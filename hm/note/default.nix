@@ -14,7 +14,7 @@
     ./hypr.nix
     ./kitty.nix
     ./mpd.nix
-    # ./nextcloud-client.nix
+    ./nextcloud-client.nix
     ./swww.nix
   ];
 
