@@ -13,7 +13,6 @@
     audacity
     curl
     discord
-    elixir
     exfatprogs
     f3
     ffmpeg
@@ -40,11 +39,9 @@
     libva-utils
     lm_sensors
     lshw
-    mixxx
     mpv
     ncmpcpp
     neofetch
-    netbeans
     netcat
     nload
     nmap
@@ -56,16 +53,12 @@
     paprefs
     pavucontrol
     pciutils
-    pkg-config
     playerctl
     pmutils
-    postgresql
     prismlauncher
     progress
     pulseaudioFull
     qbittorrent
-    rars
-    scilab-bin
     speedtest-cli
     stress
     telegram-desktop
