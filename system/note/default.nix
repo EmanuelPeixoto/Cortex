@@ -11,7 +11,7 @@
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
-    # ./intel.nix
+    ./intel.nix
     ./sound.nix
     ./steam.nix
     ./users.nix
