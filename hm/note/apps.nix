@@ -8,6 +8,7 @@
   };
   home.packages = with pkgs; [
     aircrack-ng
+    alsa-utils
     arduino-cli
     arduino-ide
     audacity
