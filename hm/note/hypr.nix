@@ -2,6 +2,7 @@
 {
     home.packages = with pkgs; [
       bemenu
+      brightnessctl
       grim
       slurp
       swww
@@ -11,7 +12,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = "LVDS-1, 1366x768, 0x0, 1";
+      monitor = "eDP-1, 1366x768, 0x0, 1";
       env = "XCURSOR_SIZE, 24";
 
       input = {
@@ -48,6 +49,7 @@
 
       misc = {
         force_default_wallpaper = "0";
+        vfr = true;
       };
 
       "$mainMod" = "SUPER";
@@ -101,11 +103,14 @@
       ];
       bindel = [
         ", XF86AudioLowerVolume, exec, pamixer -d 2 --allow-boost --set-limit 125"
-        ", XF86AudioRaiseVolume, exec, pamixer -i 2 --allow-boost --set-limit 125"
+        ", XF86AudioMicMute, exec, pamixer --source 1 -t"
         ", XF86AudioMute, exec, pamixer --toggle-mute --allow-boost --set-limit 125"
-        "CTRL, XF86AudioLowerVolume, exec, playerctl previous"
-        "CTRL, XF86AudioRaiseVolume, exec, playerctl next"
-        "CTRL, XF86AudioMute, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioRaiseVolume, exec, pamixer -i 2 --allow-boost --set-limit 125"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
       exec-once = "eww open bar && swww img ~/Cortex/hm/note/Wallpaper.gif";
     };
