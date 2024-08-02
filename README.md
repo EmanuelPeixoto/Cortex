@@ -29,7 +29,7 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - configurar yazi
 - customizar ncmpcpp
 - hibernar sem sudo
-- otimização de bateria
+- otimização de bateria (falta scripts para pausar serviços e otimização do eww)
 - informações do wi-fi ao colocar o mouse sobre (eww)
 - informação do computador ao clicar no botão da bateria (eww)
 - duplicar monitor ao conectar outro, ao invés de extender (futuramente poder escolher o que fazer)
