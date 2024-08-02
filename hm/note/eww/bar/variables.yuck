@@ -13,8 +13,5 @@
 ; Volume
 (defpoll volume :interval "0.25s" "./bar/scripts/volume.sh")
 
-(defpoll caps :interval "0.1s" "cat /sys/class/leds/input0::capslock/brightness")
-
-
 ; battery / hardware info
 ; make later
