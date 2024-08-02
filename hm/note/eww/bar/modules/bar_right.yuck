@@ -5,11 +5,10 @@
     :orientation "h"
     :space-evenly false
     :spacing 10
-    (caps)
+    (systemtray)
     (volume)
     (internet)
     (date)
-    (systemtray)
     (battery)
     )
   )
@@ -20,20 +19,8 @@
     :orientation "h"
     :class "battery"
     (label
-      :class {EWW_BATTERY.BAT0.capacity  <= 25 && EWW_BATTERY.BAT0.status == "Discharging" ? "Low" : "${EWW_BATTERY.BAT0.status}"
-      }
-      :text "${EWW_BATTERY.BAT0.capacity} %"
-      )
-    )
-  )
-
-(defwidget caps []
-  (box
-    :space-evenly false
-    :orientation "h"
-    :class "caps"
-    (label
-      :text "${caps == "1" ? "CAPS" : ""}"
+      :class {EWW_BATTERY.BAT0.capacity  <= 25 && EWW_BATTERY.BAT0.status == "Discharging" ? "Low" : EWW_BATTERY.BAT0.status == "Not charging" ? "Full" : "${EWW_BATTERY.BAT0.status}"}
+      :text "${EWW_BATTERY.BAT0.capacity}%"
       )
     )
   )
@@ -45,7 +32,6 @@
     :class "date"
     (button
       :onclick "./bar/scripts/open_calendar.sh"
-      :class "date_info"
       "${date}"
       )
     )
@@ -59,7 +45,7 @@
     (button
       :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
       :class "internet_info"
-      " ${ESSID_WLAN != "lo" ? "  ${ESSID_WLAN}" : ""}"
+      " ${ESSID_WLAN != "lo" ? "${ESSID_WLAN}" : ""}"
       )
     )
   )
@@ -67,7 +53,7 @@
 (defwidget systemtray []
   (box
     :orientation "h"
-    (systray :class "tray" :orientation "h" :icon-size 12 :spacing 4)
+    (systray :class "systray" :orientation "h" :icon-size 15 :spacing 4)
     )
   )
 
@@ -80,7 +66,7 @@
       :onclick "pamixer --toggle-mute"
       :onscroll "./bar/scripts/volume.sh {}"
       :class "volume_info"
-      "🔊${volume}"
+      " ${volume}"
       )
     )
   )

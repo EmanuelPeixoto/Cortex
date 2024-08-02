@@ -2,35 +2,47 @@
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
-.battery {
-  color: black;
-  .Low{
-    background-color: #d60202;
-    padding: 0px 5px;
-    text-shadow: black 1px 1px 5px;
-    border: solid black 1px;
-    border-radius: 15px;
+  .battery {
+    color: black;
+    .Low {
+      padding: 0px 5px;
+      border: solid black 1px;
+      border-radius: 15px;
+      background-color: #d60202;
+    }
+    .Discharging {
+      padding: 0px 5px;
+      border: solid black 1px;
+      border-radius: 15px;
+      background-color: #FFFF00;
+    }
+    .Charging {
+      padding: 0px 5px;
+      border: solid black 1px;
+      border-radius: 15px;
+      background-color: #00aa00;
+    }
+    .Full {
+      padding: 0px 5px;
+      border: solid black 1px;
+      border-radius: 15px;
+      background-color: #00FF00;
+    }
   }
-  .Discharging{
-    background-color: #FFFF00;
+  .volume {
     padding: 0px 5px;
-    text-shadow: black 1px 1px 5px;
-    border: solid black 1px;
-    border-radius: 15px;
-  }
-  .Charging{
-    background-color: #00aa00;
-    padding: 0px 5px;
-    text-shadow: black 1px 1px 5px;
-    border: solid black 1px;
-    border-radius: 15px;
-  }
-  .Full{
-    background-color: #00FF00;
-    padding: 0px 5px;
-    text-shadow: black 1px 1px 5px;
     border: solid black 1px;
     border-radius: 15px;
   }
 
-}
+  .internet {
+    padding: 0px 5px;
+    border: solid black 1px;
+    border-radius: 15px;
+  }
+
+  .date {
+    padding: 0px 5px;
+    border: solid black 1px;
+    border-radius: 15px;
+  }
