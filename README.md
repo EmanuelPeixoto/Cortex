@@ -4,18 +4,19 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 ## Note Autopsy
 
-- **CPU:** Intel i7-3537U
-- **GPU:** Intel 3rd Gen Core Processor Graphics
-- **RAM:** 8GB DDR3
-- **Disc:** SSD 1TB Netac
+- **Model:** Lenovo IdeaPad S145
+- **CPU:** Ryzen 5 3500U
+- **GPU:** AMD Vega 8
+- **RAM:** 12GB DDR4
+- **Disc:** SSD SATA 1TB Netac
 - **Graphical Interface:** Hyprland
 
 ## Server Autopsy
 
 - **CPU:** Intel Xeon E5450
 - **GPU:** Zotac GT 1030
-- **RAM:** 8GB DDR3
-- **Disc:** SSD 512GB Netac
+- **RAM:** 8 GB DDR3
+- **Disc:** SSD SATA 1TB Netac
 
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
@@ -34,4 +35,3 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - duplicar monitor ao conectar outro, ao invés de extender (futuramente poder escolher o que fazer)
 - tamanho das janelas nmtui, cal, notificação thunderbird, usuário firefox, etc (hyprland)
 - greeter
-- corrigir sistema de áudio (possivelmente com pipewire)
