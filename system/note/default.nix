@@ -6,12 +6,12 @@
     ../locale.nix
     ../wireshark.nix
     ./apps.nix
+    ./battery.nix
     ./custom-perms.nix
     ./firewall.nix
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
-    ./intel.nix
     ./sound.nix
     ./steam.nix
     ./users.nix
@@ -21,9 +21,8 @@
   networking.hostName = "NixOS-Note";
 
   # Boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
   networking.networkmanager.enable = true;
