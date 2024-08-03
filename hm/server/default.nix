@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel/";
+  home.homeDirectory = "/home/emanuel";
 
   imports = [
     ../git.nix
