@@ -1,13 +1,10 @@
 ;===============left===============
-; workspaces
+; Workspaces
 (deflisten active_workspaces :intial "[]" "./bar/scripts/get_active_workspaces.sh")
 (deflisten focused_workspace "./bar/scripts/get_focused_workspace.sh")
 
 ;===============right===============
-; date
-(defpoll date :interval "10s" "date '+%H:%M - %d/%m'")
-
-;wifi
+; Wifi
 (defpoll ESSID_WLAN :interval "5s" "nmcli -t -f name connection show --active | head -n 1")
 
 ; Volume

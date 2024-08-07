@@ -2,47 +2,11 @@
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
-  .battery {
-    color: black;
-    .Low {
-      padding: 0px 5px;
-      border: solid black 1px;
-      border-radius: 15px;
-      background-color: #d60202;
-    }
-    .Discharging {
-      padding: 0px 5px;
-      border: solid black 1px;
-      border-radius: 15px;
-      background-color: #FFFF00;
-    }
-    .Charging {
-      padding: 0px 5px;
-      border: solid black 1px;
-      border-radius: 15px;
-      background-color: #00aa00;
-    }
-    .Full {
-      padding: 0px 5px;
-      border: solid black 1px;
-      border-radius: 15px;
-      background-color: #00FF00;
-    }
-  }
-  .volume {
+.bar-right {
+  .volume,
+  button {
     padding: 0px 5px;
     border: solid black 1px;
     border-radius: 15px;
   }
-
-  .internet {
-    padding: 0px 5px;
-    border: solid black 1px;
-    border-radius: 15px;
-  }
-
-  .date {
-    padding: 0px 5px;
-    border: solid black 1px;
-    border-radius: 15px;
-  }
+}
