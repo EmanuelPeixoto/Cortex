@@ -8,7 +8,7 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **CPU:** Ryzen 5 3500U
 - **GPU:** AMD Vega 8
 - **RAM:** 12GB DDR4
-- **Disc:** SSD SATA 1TB Netac
+- **Disc:** SSD M.2 1TB Netac NV7000 - SSD SATA 1TB Netac
 - **Graphical Interface:** Hyprland
 
 ## Server Autopsy
