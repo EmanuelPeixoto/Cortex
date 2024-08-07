@@ -8,43 +8,42 @@
     (systemtray)
     (volume)
     (internet)
-    (date)
     (battery)
+    (time)
     )
   )
 
 (defwidget battery []
   (box
-    :space-evenly false
     :orientation "h"
     :class "battery"
-    (label
-      :class {EWW_BATTERY.BAT0.capacity  <= 25 && EWW_BATTERY.BAT0.status == "Discharging" ? "Low" : EWW_BATTERY.BAT0.status == "Not charging" ? "Full" : "${EWW_BATTERY.BAT0.status}"}
-      :text "${EWW_BATTERY.BAT0.capacity}%"
+    (button
+      :class "battery_info"
+      :onclick ""
+      "${["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹","󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"][round(EWW_BATTERY.BAT0.capacity / 10, 0) + (EWW_BATTERY.BAT0.status != "Discharging" ? 11 : 0)]}"
       )
     )
   )
 
-(defwidget date []
+(defwidget time []
   (box
-    :space-evenly false
     :orientation "h"
-    :class "date"
+    :class "time"
     (button
+      :class "time_info"
       :onclick "./bar/scripts/open_calendar.sh"
-      "${date}"
+      " ${formattime(EWW_TIME, "%H:%M")}"
       )
     )
   )
 
 (defwidget internet []
   (box
-    :space-evenly false
     :orientation "h"
     :class "internet"
     (button
-      :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
       :class "internet_info"
+      :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
       " ${ESSID_WLAN != "lo" ? "${ESSID_WLAN}" : ""}"
       )
     )
@@ -59,13 +58,13 @@
 
 (defwidget volume []
   (box
-    :space-evenly false
     :orientation "h"
     :class "volume"
     (eventbox
-      :onclick "pamixer --toggle-mute"
-      :onscroll "./bar/scripts/volume.sh {}"
       :class "volume_info"
+      :onclick "pamixer --toggle-mute"
+      :onrightclick "hyprctl dispatch exec '[float] pavucontrol'"
+      :onscroll "./bar/scripts/volume.sh {}"
       " ${volume}"
       )
     )
