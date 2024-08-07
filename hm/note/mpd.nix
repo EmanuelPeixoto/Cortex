@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   services.mpd = {
     enable = true;
@@ -6,12 +6,16 @@
     network.listenAddress = "any";
     extraConfig = ''
       audio_output {
-        type "pulse"
-        name "Pulseaudio"
-        server "127.0.0.1" # add this line - MPD must connect to the local sound server
+      type "pipewire"
+      name "MPD pipewire"
       }
     '';
   };
+
+  home.packages = with pkgs; [
+    ncmpcpp
+    playerctl
+  ];
 
   services.mpd-mpris.enable = true;
 }

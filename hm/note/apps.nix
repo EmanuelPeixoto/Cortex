@@ -8,7 +8,6 @@
   };
   home.packages = with pkgs; [
     aircrack-ng
-    alsa-utils
     arduino-cli
     arduino-ide
     audacity
@@ -41,7 +40,6 @@
     lm_sensors
     lshw
     mpv
-    ncmpcpp
     neofetch
     netcat
     nload
@@ -50,15 +48,10 @@
     nomacs
     obs-studio
     openshot-qt
-    pamixer
-    paprefs
-    pavucontrol
     pciutils
-    playerctl
     pmutils
     prismlauncher
     progress
-    pulseaudioFull
     qbittorrent
     speedtest-cli
     stress
