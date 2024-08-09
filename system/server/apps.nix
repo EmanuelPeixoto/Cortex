@@ -14,13 +14,13 @@
     nload
     nodePackages.node-pre-gyp
     nodePackages.pm2
-    nodejs_20
+    nodejs_22
     noip
     nvd
     pciutils
     php
-    php81Extensions.zip
-    php81Packages.composer
+    php83Extensions.zip
+    php83Packages.composer
     qbittorrent-nox
     speedtest-cli
     unzip
