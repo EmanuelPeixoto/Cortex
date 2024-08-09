@@ -5,6 +5,7 @@
     package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
     enable = true;
     group = "www";
+
     commonHttpConfig = ''
       proxy_max_temp_file_size 0;
       proxy_buffering off;
@@ -13,7 +14,6 @@
       log_format fotos [$time_local] IP: $remote_addr | País: $geoip2_data_country_name | UF: geoip_region | Cidade: $geoip2_data_city_name | Acessado por: $http_user_agent;
       access_log /var/log/nginx/access.log custom;
       error_log /var/log/nginx/error.log;
-
       charset UTF-8;
     '';
 
@@ -24,13 +24,20 @@
       }];
 
       root = "/var/www";
-      extraConfig = "access_log off; \nautoindex on; \n autoindex_exact_size off; \n autoindex_localtime on; allow all;";
+      extraConfig = ''
+        access_log off;
+        autoindex on;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+        allow all;
+      '';
 
       locations."/" = {
         index = "index.html index.php";
         extraConfig = ''
-          location ~ \.php$ {include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
           }
         '';
       };
@@ -38,22 +45,26 @@
       locations."^~/speedtest" = {
         root = "/var/www/";
         index = "index.html index.php";
-        extraConfig = ''location ~ \.php$ {
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-        }'';
+        extraConfig = ''
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          }
+        '';
       };
 
       locations."^~/phpmysql" = {
         root = "/var/www/";
         index = "index.html index.php";
-        extraConfig = ''location ~ \.php$ {
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-        }'';
+        extraConfig = ''
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          }
+        '';
       };
 
-      locations."^~/torrent/" = {extraConfig = ''include /var/www/.proxytorrent;'';};
+      locations."^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
     };
 
     virtualHosts."http" = {
@@ -63,11 +74,14 @@
       }];
 
       root = "/var/lib/acme/acme-challenge";
-      extraConfig = "autoindex off; \n autoindex_exact_size off; \n autoindex_localtime on; allow all;";
+      extraConfig = ''
+        autoindex off;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+        allow all;
+      '';
 
-      locations."/" = {
-        index = "index.html index.php";
-      };
+      locations."/".index = "index.html index.php";
     };
 
 
@@ -78,30 +92,51 @@
         ssl = true;
       }];
 
-      extraConfig = "autoindex off; \nautoindex_exact_size off; \nautoindex_localtime on;";
+      extraConfig = ''
+        autoindex off;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+      '';
+
       enableACME = true;
       forceSSL = true;
 
       locations."^~/phpmysql" = {
         root = "/var/www/";
         index = "index.html index.php";
-        extraConfig = ''location ~ \.php$ {
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-        }'';
+        extraConfig = ''
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          }
+        '';
       };
 
-      locations."^~/torrent/" = {extraConfig = ''include /var/www/.proxytorrent;'';};
+      locations."^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
 
-      locations."/favicon.ico" = {extraConfig = ''access_log off; log_not_found off;'';};
+      locations."/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
 
       locations."^~/speedtest" = {
         root = "/var/www/";
         index = "index.html index.php";
-        extraConfig = ''location ~ \.php$ {
-          include ${pkgs.nginx}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-        }'';
+        extraConfig = ''
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          }
+        '';
+      };
+
+      locations."^~/gabriela" = {
+        root = "/var/www/";
+        index = "index.html index.php";
+        extraConfig = ''
+          access_log /var/log/nginx/gabriela.log custom;
+          location ~ \.php$ {
+            include ${pkgs.nginx}/conf/fastcgi.conf;
+            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+          }
+        '';
       };
     };
 
@@ -112,13 +147,16 @@
       }];
 
       root = "/notfound";
-      extraConfig = "access_log off; \nautoindex off; \n autoindex_exact_size off; \n autoindex_localtime on; allow all;";
 
-      locations."/" = {
-        extraConfig = ''
-          proxy_pass http://127.0.0.1:8081;
-        '';
-      };
+      extraConfig = ''
+        access_log off;
+        autoindex off;
+        autoindex_exact_size off;
+        autoindex_localtime on;
+        allow all;
+      '';
+
+      locations."/".extraConfig = ''proxy_pass http://127.0.0.1:8081;'';
     };
 
     appendHttpConfig = ''
