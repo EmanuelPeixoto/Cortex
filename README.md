@@ -15,7 +15,7 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 - **CPU:** Intel Xeon E5450
 - **GPU:** Zotac GT 1030
-- **RAM:** 8 GB DDR3
+- **RAM:** 8GB DDR3
 - **Disc:** SSD SATA 1TB Netac
 
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
