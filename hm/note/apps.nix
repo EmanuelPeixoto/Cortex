@@ -68,6 +68,7 @@
     vulkan-tools
     wget
     wl-clipboard
+    xwaylandvideobridge
     yazi
     yt-dlp
     zathura

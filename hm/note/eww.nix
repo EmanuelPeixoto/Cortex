@@ -7,6 +7,7 @@
   programs.eww = {
     enable = true;
     configDir = ./eww;
+    enableZshIntegration = true;
   };
 
   systemd.user.services.eww = {
@@ -17,6 +18,6 @@
       ExecStart = "${pkgs.eww}/bin/eww daemon --no-daemonize";
       Restart = "no";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = ["hyprland-session.target"];
   };
 }

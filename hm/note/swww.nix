@@ -8,6 +8,6 @@
       ExecStart = "${pkgs.swww}/bin/swww-daemon -q -f xrgb";
       Restart = "no";
     };
-    Install.WantedBy = ["graphical-session.target"];
+    Install.WantedBy = ["hyprland-session.target"];
   };
 }
