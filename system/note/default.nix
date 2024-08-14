@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../bluetooth.nix
@@ -30,13 +30,14 @@
   programs = {
     dconf.enable = true;
     zsh.enable = true;
+    hyprland.enable = true;
   };
 
   services = {
     blueman.enable = true;
     openssh.enable = true;
     vnstat.enable = true;
-    logind.lidSwitch = "lock";
+    displayManager.ly.enable = true;
   };
 
   system.stateVersion = "24.05";
