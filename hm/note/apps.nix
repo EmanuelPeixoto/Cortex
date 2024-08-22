@@ -34,6 +34,7 @@
     jdk
     jmtpfs
     killall
+    lazygit
     libmtp
     libreoffice
     libva-utils
