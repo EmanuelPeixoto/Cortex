@@ -44,7 +44,7 @@
     (button
       :class "internet_info"
       :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
-      " ${ESSID_WLAN != "lo" ? "${ESSID_WLAN}" : ""}"
+      "${CONNECTION_INFO}"
       )
     )
   )
