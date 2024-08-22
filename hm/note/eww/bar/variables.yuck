@@ -4,8 +4,8 @@
 (deflisten focused_workspace "./bar/scripts/get_focused_workspace.sh")
 
 ;===============right===============
-; Wifi
-(defpoll ESSID_WLAN :interval "5s" "nmcli -t -f name connection show --active | head -n 1")
+; Internet
+(defpoll CONNECTION_INFO :interval "2.5s" "./bar/scripts/internet.sh")
 
 ; Volume
 (defpoll volume :interval "0.25s" "./bar/scripts/volume.sh")
