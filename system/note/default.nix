@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
     ../bluetooth.nix
@@ -12,6 +12,7 @@
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
+    ./scti.nix
     ./sound.nix
     ./steam.nix
     ./users.nix
