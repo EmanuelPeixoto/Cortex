@@ -17,15 +17,9 @@
       input = {
         kb_layout = "br";
         kb_variant = "abnt2";
-        kb_model = "";
-        kb_options = "";
-        kb_rules = "";
-
         accel_profile = "flat";
         follow_mouse = 1;
-        touchpad = {
-          disable_while_typing = 0;
-        };
+        touchpad.disable_while_typing = 0;
       };
 
       general = {
@@ -38,13 +32,10 @@
 
       decoration = {
         drop_shadow = 0;
-        blur = {
-          enabled = 0;
-        };
+        blur.enabled = 0;
       };
-      animations = {
-        enabled = 0;
-      };
+
+      animations.enabled = 0;
 
       misc = {
         force_default_wallpaper = "0";
@@ -100,6 +91,7 @@
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
+
       bindel = [
         ", XF86AudioLowerVolume, exec, pamixer -d 2 --allow-boost --set-limit 125"
         ", XF86AudioMicMute, exec, pamixer --source 1 -t"
@@ -111,7 +103,8 @@
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
-      exec-once = "eww open bar && swww img ~/Cortex/hm/note/Wallpaper.gif";
+
+      exec-once = "swww img ~/Cortex/hm/note/Wallpaper.gif && eww open bar1 && eww open bar2";
     };
   };
 }
