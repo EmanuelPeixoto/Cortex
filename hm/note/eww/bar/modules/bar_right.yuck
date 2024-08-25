@@ -1,4 +1,4 @@
-(defwidget bar_right []
+(defwidget bar_right [monitor]
   (box
     :class "bar-right"
     :halign "end"
