@@ -140,25 +140,6 @@
       };
     };
 
-    virtualHosts."SCTI" = {
-      listen = [{
-        addr = "0.0.0.0";
-        port = 90;
-      }];
-
-      root = "/notfound";
-
-      extraConfig = ''
-        access_log off;
-        autoindex off;
-        autoindex_exact_size off;
-        autoindex_localtime on;
-        allow all;
-      '';
-
-      locations."/".extraConfig = ''proxy_pass http://127.0.0.1:8081;'';
-    };
-
     appendHttpConfig = ''
       geoip2 /var/www/.geoip/GeoLite2-Country.mmdb {
         auto_reload 5m;
