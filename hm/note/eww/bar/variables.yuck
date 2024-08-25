@@ -1,7 +1,7 @@
 ;===============left===============
 ; Workspaces
-(deflisten active_workspaces :intial "[]" "./bar/scripts/get_active_workspaces.sh")
-(deflisten focused_workspace "./bar/scripts/get_focused_workspace.sh")
+(deflisten active_workspaces :intial "[[],[]]" "./bar/scripts/get_active_workspaces.sh")
+(deflisten focused_workspace :intial "[0, 0]" "./bar/scripts/get_focused_workspace.sh")
 
 ;===============right===============
 ; Internet

@@ -50,7 +50,6 @@
     obs-studio
     openshot-qt
     pciutils
-    pmutils
     prismlauncher
     progress
     qbittorrent

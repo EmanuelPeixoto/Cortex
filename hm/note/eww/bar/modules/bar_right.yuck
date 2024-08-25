@@ -19,7 +19,7 @@
     :class "battery"
     (button
       :class "battery_info"
-      :onclick ""
+      :onclick "./bar/scripts/battery_life.sh"
       "${["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹","󰢟","󰢜","󰂆","󰂇","󰂈","󰢝","󰂉","󰢞","󰂊","󰂋","󰂅"][round(EWW_BATTERY.BAT0.capacity / 10, 0) + (EWW_BATTERY.BAT0.status != "Discharging" ? 11 : 0)]}"
       )
     )
