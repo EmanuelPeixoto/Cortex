@@ -70,7 +70,6 @@
     wget
     wl-clipboard
     xwaylandvideobridge
-    yazi
     yt-dlp
     zathura
     zip

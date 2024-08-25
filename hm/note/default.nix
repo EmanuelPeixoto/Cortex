@@ -7,6 +7,7 @@
     ../git.nix
     ../htop.nix
     ../lexis.nix
+    ../yazi.nix
     ../zsh.nix
     ./apps.nix
     ./battery.nix
