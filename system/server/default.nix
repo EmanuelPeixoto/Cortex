@@ -3,6 +3,7 @@
   imports = [
     ../flake-config.nix
     ../locale.nix
+    ../scti.nix
     ./acme.nix
     ./apps.nix
     ./firewall.nix
