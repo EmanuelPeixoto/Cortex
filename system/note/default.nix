@@ -12,32 +12,12 @@
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
+    ./plymouth.nix
     ./scti.nix
     ./sound.nix
     ./steam.nix
     ./users.nix
   ];
-
-  boot = {
-    plymouth = {
-      enable = true;
-      theme = "breeze";
-    };
-
-  consoleLogLevel = 0;
-  initrd.verbose = false;
-  kernelParams = [
-    "quiet"
-    "splash"
-    "boot.shell_on_fail"
-    "loglevel=3"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
-  ];
-    loader.timeout = 0;
-  };
-
 
   # Hostname
   networking.hostName = "NixOS-Note";
