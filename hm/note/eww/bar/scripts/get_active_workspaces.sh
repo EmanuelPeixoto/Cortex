@@ -1,27 +1,52 @@
 #!/usr/bin/env bash
 
-old_workspaces=()
-
 get_active() {
+  workspace_ids_0=()
+  workspace_ids_1=()
 
-  workspace_ids=()
   while IFS= read -r line; do
-    workspace_ids+=("$line")
-  done < <(hyprctl workspaces | grep "ID " | awk '$3 >= 0 {print $3}' | sort -n)
+    if [[ $line == workspace* ]]; then
+      id=$(echo "$line" | awk '{print $3}')
+      monitor=$(echo "$line" | awk -F 'monitor ' '{print $2}' | awk '{print $1}')
+
+      if [[ $monitor == "eDP-1:" ]]; then
+        workspace_ids_0+=("$id")
+      elif [[ $monitor == "HDMI-A-1:" ]]; then
+        workspace_ids_1+=("$id")
+      fi
+    fi
+  done < <(hyprctl workspaces)
 
   echo -n "["
-  for ((i = 0; i < ${#workspace_ids[@]}; i++)); do
-    echo -n "${workspace_ids[i]}"
-    if ((i != ${#workspace_ids[@]} - 1)); then
+  # Array for monitor 0 (eDP-1)
+  echo -n "["
+  for ((i = 0; i < ${#workspace_ids_0[@]}; i++)); do
+    echo -n "${workspace_ids_0[i]}"
+    if ((i != ${#workspace_ids_0[@]} - 1)); then
       echo -n ", "
     fi
   done
+  echo -n "],"
+
+  # Array for monitor 1 (HDMI-A-1)
+  echo -n "["
+  for ((i = 0; i < ${#workspace_ids_1[@]}; i++)); do
+    echo -n "${workspace_ids_1[i]}"
+    if ((i != ${#workspace_ids_1[@]} - 1)); then
+      echo -n ", "
+    fi
+  done
+  echo -n "]"
+
   echo "]"
 }
-get_active
+
+print_workspaces() {
+  echo "$(get_active)"
+}
+
+print_workspaces
+
 socat -u UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | while read -r event; do
-if [ "$old_workspaces" != "$(get_active)" ]; then
-  old_workspaces=$(get_active)
-  get_active
-fi
+print_workspaces
 done

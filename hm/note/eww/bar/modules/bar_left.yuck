@@ -1,35 +1,35 @@
-(defwidget bar_left []
+(defwidget bar_left [monitor]
   (box
     :class "bar-left"
     :halign "start"
     :orientation "h"
-    (workspaces)
+    (workspaces :monitor monitor)
     )
   )
 
-(defwidget workspaces []
+(defwidget workspaces [monitor]
   (box
     :class "workspaces"
     :orientation "h"
-    :space-evenly true
+    :space-evenly false
     :halign "start"
     (label
-      :text "${focused_workspace}"
+      :text "${focused_workspace[monitor]}"
       :visible false
       )
     (box
       :space-evenly false
       :spacing 5
-      (for id in active_workspaces
+      (for id in {active_workspaces[monitor]}
         (button
           :class {
-          focused_workspace == id ? "focused" : "unfocused"
+          focused_workspace[monitor] == id ? "focused" : "unfocused"
           }
           :onclick "hyprctl dispatch workspace ${id}"
           (label
             :halign "center"
             :valign "center"
-            :text {id}
+            :text "${id}"
             )
           )
         )
