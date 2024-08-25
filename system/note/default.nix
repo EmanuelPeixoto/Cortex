@@ -4,6 +4,7 @@
     ../bluetooth.nix
     ../flake-config.nix
     ../locale.nix
+    ../scti.nix
     ../wireshark.nix
     ./apps.nix
     ./battery.nix
@@ -13,7 +14,6 @@
     ./hardware-configuration.nix
     ./hotspot.nix
     ./plymouth.nix
-    ./scti.nix
     ./sound.nix
     ./steam.nix
     ./users.nix
