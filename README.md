@@ -25,7 +25,6 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 ## TO DO LIST (in Portuguese)
 
 - guardar chave SSH com segurança (server config)
-- segundo sistema de DDNS (server config)
 - customizar ncmpcpp
 - hibernar sem sudo
 - otimização de bateria (falta scripts para pausar serviços e otimização do eww)
