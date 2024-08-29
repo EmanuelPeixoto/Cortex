@@ -8,7 +8,6 @@
     ../wireshark.nix
     ./apps.nix
     ./battery.nix
-    ./custom-perms.nix
     ./firewall.nix
     ./font.nix
     ./hardware-configuration.nix
