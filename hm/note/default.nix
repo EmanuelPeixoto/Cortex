@@ -14,6 +14,7 @@
     ./dark_theme.nix
     ./eww.nix
     ./hypr.nix
+    ./keyring.nix
     ./kitty.nix
     ./mpd.nix
     ./nextcloud-client.nix

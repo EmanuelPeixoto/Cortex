@@ -12,6 +12,6 @@
       ExecStart = "${pkgs.nextcloud-client}/bin/nextcloud --background";
       Restart = "no";
     };
-    Install.WantedBy = ["hyprland-session.target"];
+    Install.WantedBy = [ "hyprland-session.target" "gnome-keyring.service" ];
   };
 }
