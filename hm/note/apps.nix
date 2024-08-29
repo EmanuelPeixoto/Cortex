@@ -21,7 +21,6 @@
     gdb                       # GNU Project debugger
     gh                        # GitHub CLI tool
     gimp                      # GNU Image Manipulation Program
-    git                       # Distributed version control system
     glibc                     # GNU C Library
     gnumake                   # Tool to control the generation of non-source files from sources
     go                        # Go Programming language
