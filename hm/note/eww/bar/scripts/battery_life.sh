@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 SERVICES=("mpd" "mpd-mpris" "nextcloud-client" "swww")
 

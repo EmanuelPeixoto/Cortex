@@ -12,6 +12,7 @@
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
+    ./keyring.nix
     ./plymouth.nix
     ./sound.nix
     ./steam.nix

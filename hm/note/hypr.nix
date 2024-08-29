@@ -104,7 +104,7 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
 
-      exec-once = "swww img ~/Cortex/hm/note/Wallpaper.gif && eww open bar1 && eww open bar2";
+      exec-once = "/home/emanuel/Cortex/hm/note/hypr_exec.sh";
     };
   };
 }
