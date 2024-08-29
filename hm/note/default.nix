@@ -10,7 +10,6 @@
     ../yazi.nix
     ../zsh.nix
     ./apps.nix
-    ./battery.nix
     ./dark_theme.nix
     ./eww.nix
     ./hypr.nix
