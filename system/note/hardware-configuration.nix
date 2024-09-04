@@ -6,7 +6,7 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -14,15 +14,15 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/89790d36-8605-45b5-b9f2-f9312eda338b";
-      fsType = "ext4";
-    };
+    { device = "/dev/disk/by-uuid/9bef223e-1c37-4327-bedf-9aa256034c0b";
+    fsType = "ext4";
+  };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/D64A-6BD1";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+    { device = "/dev/disk/by-uuid/5F20-A506";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
   swapDevices = [ {
     device = "/var/lib/swapfile";
@@ -34,7 +34,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
