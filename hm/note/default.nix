@@ -15,6 +15,7 @@
     ./hypr.nix
     ./keyring.nix
     ./kitty.nix
+    ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
     ./swww.nix
