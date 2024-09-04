@@ -22,12 +22,12 @@
       COMM
     ];
   } // (with config.lib.htop; leftMeters [
-    (bar "AllCPUs")
-    (bar "Memory")
+    (bar "AllCPUs2")
   ]) // (with config.lib.htop; rightMeters [
     (text "Uptime")
     (text "Battery")
     (text "Systemd")
+    (bar "Memory")
     (bar "Swap")
   ]);
 }

@@ -4,9 +4,9 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 ## Note Autopsy
 
-- **Model:** Lenovo IdeaPad S145
-- **CPU:** Ryzen 5 3500U
-- **GPU:** AMD Vega 8
+- **Model:** Lenovo IdeaPad 3
+- **CPU:** Ryzen 5 5500U
+- **GPU:** AMD Radeon Graphics
 - **RAM:** 12GB DDR4
 - **Disc:** SSD M.2 1TB Netac NV7000 - SSD SATA 1TB Netac
 - **Graphical Interface:** Hyprland
