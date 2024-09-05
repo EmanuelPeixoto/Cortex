@@ -1,13 +1,13 @@
 { config, pkgs, ... }:
 {
-    home.packages = with pkgs; [
-      bemenu
-      brightnessctl
-      grim
-      slurp
-      swww
-      swappy
-    ];
+  home.packages = with pkgs; [
+    bemenu
+    brightnessctl
+    grim
+    slurp
+    swww
+    swappy
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
