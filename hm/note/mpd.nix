@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/emanuel/Nextcloud/Musicas";
+    musicDirectory = "${config.home.homeDirectory}/Nextcloud/Musicas";
     network.listenAddress = "any";
     extraConfig = ''
       audio_output {

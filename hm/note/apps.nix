@@ -1,11 +1,5 @@
 { pkgs, ... }:
 {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
   home.packages = with pkgs; [
     aircrack-ng               # Wireless encryption cracking tools
     arduino-cli               # Arduino from the command line

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
     home.packages = with pkgs; [
       bemenu
@@ -104,7 +104,7 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
 
-      exec-once = "/home/emanuel/Cortex/hm/note/hypr_exec.sh";
+      exec-once = "${config.home.homeDirectory}/Cortex/hm/note/hypr_exec.sh";
     };
   };
 }
