@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ./hotspot.nix
     ./keyring.nix
+    ./ly.nix
     ./plymouth.nix
     ./sound.nix
     ./steam.nix
@@ -38,7 +39,6 @@
     blueman.enable = true;
     openssh.enable = true;
     vnstat.enable = true;
-    displayManager.ly.enable = true;
   };
 
   system.stateVersion = "24.05";
