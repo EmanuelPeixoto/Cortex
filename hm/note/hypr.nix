@@ -18,7 +18,6 @@
         kb_layout = "br";
         kb_variant = "abnt2";
         accel_profile = "flat";
-        follow_mouse = 1;
         touchpad.disable_while_typing = 0;
       };
 
@@ -39,7 +38,7 @@
 
       misc = {
         force_default_wallpaper = "0";
-        vfr = true;
+        disable_splash_rendering = true;
       };
 
       "$mainMod" = "SUPER";
