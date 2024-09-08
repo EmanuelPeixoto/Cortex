@@ -1,1 +1,0 @@
-(deflisten notifs :initial "" "go run ./notifications/scripts/notification_server.go")

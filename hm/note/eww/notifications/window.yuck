@@ -1,7 +1,0 @@
-(defwindow notifications
-           :monitor 0
-           :geometry (geometry :x "2%"
-                               :y "2%"
-                               :anchor "top right")
-           :stacking "overlay"
-           (literal :content notifs))
