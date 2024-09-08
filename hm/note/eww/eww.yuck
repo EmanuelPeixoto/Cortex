@@ -1,6 +1,5 @@
 ; variables
 (include "./bar/variables.yuck")
-(include "./notifications/variables.yuck")
 
 ; modules
 (include "./bar/modules/bar_left.yuck")
@@ -8,4 +7,3 @@
 
 ; windows
 (include "./bar/window.yuck")
-(include "./notifications/window.yuck")
