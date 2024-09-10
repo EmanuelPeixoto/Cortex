@@ -5,7 +5,7 @@
 
   imports = [
     ../git.nix
-    ../htop.nix
+    ../btop.nix
     ../lexis.nix
     ../yazi.nix
     ../zsh.nix
