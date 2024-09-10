@@ -11,6 +11,7 @@
     ../zsh.nix
     ./apps.nix
     ./dark_theme.nix
+    ./dunst.nix
     ./eww.nix
     ./hypr.nix
     ./keyring.nix
