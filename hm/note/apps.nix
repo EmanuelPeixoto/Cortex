@@ -19,7 +19,6 @@
     gnumake                   # Tool to control the generation of non-source files from sources
     go                        # Go Programming language
     gparted                   # Graphical disk partitioning tool
-    htop                      # Interactive process viewer
     iftop                     # Display bandwidth usage on a network interface
     jdk                       # Open-source Java Development Kit
     jmtpfs                    # FUSE filesystem for MTP devices like Android phones
