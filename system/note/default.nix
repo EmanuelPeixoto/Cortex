@@ -16,7 +16,7 @@
     ./ly.nix
     ./plymouth.nix
     ./sound.nix
-    ./steam.nix
+    # ./steam.nix
     ./users.nix
   ];
 
