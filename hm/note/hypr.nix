@@ -93,7 +93,7 @@
 
       bindel = [
         ", XF86AudioLowerVolume, exec, pamixer -d 2 --allow-boost --set-limit 125"
-        ", XF86AudioMicMute, exec, pamixer --source 1 -t"
+        ", XF86AudioMicMute, exec, pamixer --source 52 -t"
         ", XF86AudioMute, exec, pamixer --toggle-mute --allow-boost --set-limit 125"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPlay, exec, playerctl play-pause"
