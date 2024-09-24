@@ -92,13 +92,13 @@
       ];
 
       bindel = [
-        ", XF86AudioLowerVolume, exec, pamixer -d 2 --allow-boost --set-limit 125"
-        ", XF86AudioMicMute, exec, pamixer --source 52 -t"
-        ", XF86AudioMute, exec, pamixer --toggle-mute --allow-boost --set-limit 125"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_SOURCE@ toggle"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPlay, exec, playerctl play-pause"
         ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioRaiseVolume, exec, pamixer -i 2 --allow-boost --set-limit 125"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 0.02+ -l 1.25"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
