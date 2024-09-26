@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ../flake-config.nix
