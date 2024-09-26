@@ -27,4 +27,4 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - guardar chave SSH com segurança (server config)
 - customizar ncmpcpp
 - informações do wi-fi ao colocar o mouse sobre (eww)
-- tamanho das janelas nmtui, cal, notificação thunderbird, usuário firefox, etc (hyprland)
+- tamanho das janelas nmtui, cal, usuário firefox, etc (hyprland)
