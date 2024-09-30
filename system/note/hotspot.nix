@@ -1,4 +1,3 @@
-{ ... }:
 {
   services.create_ap = {
     enable = false;

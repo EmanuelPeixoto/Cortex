@@ -1,4 +1,3 @@
-{ ... }:
 {
   programs.git = {
     enable = true;
@@ -9,6 +8,11 @@
     extraConfig = {
       github.User = "EmanuelPeixoto";
       init.defaultBranch = "main";
+    };
+
+    difftastic = {
+      enable = true;
+      display = "side-by-side-show-both";
     };
   };
 }

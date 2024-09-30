@@ -1,4 +1,3 @@
-{ ... }:
 {
   powerManagement.enable = true;
   services.tlp = {
