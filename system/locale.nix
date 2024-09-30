@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Time Zone
   time.timeZone = "America/Sao_Paulo";

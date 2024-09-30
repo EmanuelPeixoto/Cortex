@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     aircrack-ng               # Wireless encryption cracking tools
-    arduino-cli               # Arduino from the command line
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
     curl                      # Command line tool for transferring files with URL syntax
@@ -29,6 +28,7 @@
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
+    ncdu                      # Disk usage analyzer with an ncurses interface
     neofetch                  # Fast, highly customizable system info script
     netcat                    # Free TLS/SSL implementation
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs

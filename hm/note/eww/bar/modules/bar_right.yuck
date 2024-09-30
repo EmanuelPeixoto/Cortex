@@ -62,8 +62,8 @@
     :class "volume"
     (eventbox
       :class "volume_info"
-      :onclick "pamixer --toggle-mute"
-      :onrightclick "hyprctl dispatch exec '[float] pavucontrol'"
+      :onclick "wpctl set-mute @DEFAULT_SINK@ toggle"
+      :onrightclick "hyprctl dispatch exec '[float] pwvucontrol'"
       :onscroll "./bar/scripts/volume.sh {}"
       " ${volume}"
       )
