@@ -28,3 +28,4 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - customizar ncmpcpp
 - informações do wi-fi ao colocar o mouse sobre (eww)
 - tamanho das janelas nmtui, cal, usuário firefox, etc (hyprland)
+- config minimal poder ser usada remotamente, via Github
