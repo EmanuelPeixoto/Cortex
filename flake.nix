@@ -8,9 +8,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  };
+  outputs = { nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -18,6 +18,28 @@
       config.allowUnfree = true;
     };
   in {
+    devShells.${system}.default =
+    let
+      hm = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./hm/minimal ];
+        extraSpecialArgs = { inherit inputs; };
+      };
+    in
+    pkgs.mkShell {
+      packages = [ hm.activationPackage ];
+
+      shellHook = ''
+        # Activate home-manager
+        ${hm.activationPackage}/activate
+
+        # Use zsh shell
+        if [ -x "$(command -v zsh)" ]; then
+          exec zsh
+        fi
+      '';
+    };
+
     nixosConfigurations = {
       NixOS-Note = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -27,7 +49,6 @@
         ];
         specialArgs = { inherit inputs; };
       };
-
       NixOS-Server = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -37,27 +58,17 @@
         specialArgs = { inherit inputs; };
       };
     };
-
     homeConfigurations = {
       note = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./hm/note ];
         extraSpecialArgs = { inherit inputs; };
       };
-
       server = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./hm/server ];
         extraSpecialArgs = { inherit inputs; };
       };
-
-      minimal = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hm/minimal ];
-        extraSpecialArgs = { inherit inputs; };
-      };
     };
-
-    defaultPackage.${system} = self.homeConfigurations.minimal.activationPackage;
   };
 }
