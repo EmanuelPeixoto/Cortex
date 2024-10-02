@@ -3,8 +3,8 @@
   home.homeDirectory = "/home/emanuel";
 
   imports = [
-    ../git.nix
     ../btop.nix
+    ../git.nix
     ../lexis.nix
     ../yazi.nix
     ../zsh.nix
@@ -19,6 +19,8 @@
     ./mpd.nix
     ./nextcloud-client.nix
     ./swww.nix
+    ./temp.nix
+    ./zen_browser.nix
   ];
 
   home.stateVersion = "24.05";

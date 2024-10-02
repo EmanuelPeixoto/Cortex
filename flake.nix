@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
