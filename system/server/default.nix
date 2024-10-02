@@ -1,8 +1,8 @@
 {
   imports = [
-    ../flake-config.nix
-    ../locale.nix
-    ../scti.nix
+    ../shared/flake-config.nix
+    ../shared/locale.nix
+    ../shared/scti.nix
     ./acme.nix
     ./apps.nix
     ./firewall.nix

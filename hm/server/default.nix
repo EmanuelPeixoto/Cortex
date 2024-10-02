@@ -4,11 +4,11 @@
   home.homeDirectory = "/home/emanuel";
 
   imports = [
-    ../git.nix
-    ../btop.nix
-    ../lexis.nix
-    ../yazi.nix
-    ../zsh.nix
+    ../shared/btop.nix
+    ../shared/git.nix
+    ../shared/lexis.nix
+    ../shared/yazi.nix
+    ../shared/zsh.nix
     # ./pm2.nix
   ];
 

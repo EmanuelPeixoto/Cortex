@@ -3,11 +3,11 @@
   home.homeDirectory = "/home/emanuel";
 
   imports = [
-    ../btop.nix
-    ../git.nix
-    ../lexis.nix
-    ../yazi.nix
-    ../zsh.nix
+    ../shared/btop.nix
+    ../shared/git.nix
+    ../shared/lexis.nix
+    ../shared/yazi.nix
+    ../shared/zsh.nix
     ./apps.nix
     ./dark_theme.nix
     ./dunst.nix
