@@ -1,10 +1,10 @@
 {
   imports = [
-    ../bluetooth.nix
-    ../flake-config.nix
-    ../locale.nix
-    ../scti.nix
-    ../wireshark.nix
+    ../shared/bluetooth.nix
+    ../shared/flake-config.nix
+    ../shared/locale.nix
+    ../shared/scti.nix
+    ../shared/wireshark.nix
     ./apps.nix
     ./battery.nix
     ./firewall.nix
