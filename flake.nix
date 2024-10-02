@@ -54,6 +54,7 @@
       minimal = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./hm/minimal ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 
