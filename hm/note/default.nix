@@ -27,7 +27,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    BROWSER = "firefox";
+    BROWSER = "zen";
     TERMINAL = "kitty";
   };
 
