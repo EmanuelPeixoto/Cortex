@@ -8,9 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -19,56 +22,53 @@
     };
   in {
     devShells.${system}.default =
-    let
-      hm = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hm/minimal ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-    in
-    pkgs.mkShell {
-      packages = [ hm.activationPackage ];
-
-      shellHook = ''
-        # Activate home-manager
-        ${hm.activationPackage}/activate
-
-        # Use zsh shell
-        if [ -x "$(command -v zsh)" ]; then
+      let
+        hm = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hm/minimal ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+      in
+      pkgs.mkShell {
+        packages = [ hm.activationPackage ];
+        shellHook = ''
+          ${hm.activationPackage}/activate
+          if [ -x "$(command -v zsh)" ]; then
           exec zsh
-        fi
-      '';
+          fi
+        '';
+      };
+      nixosConfigurations = {
+        NixOS-Note = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/note
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+        NixOS-Server = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/server
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+      };
+      homeConfigurations = {
+        note = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hm/note ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+        server = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hm/server ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+      };
     };
-
-    nixosConfigurations = {
-      NixOS-Note = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./system/note
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = { inherit inputs; };
-      };
-      NixOS-Server = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./system/server
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = { inherit inputs; };
-      };
-    };
-    homeConfigurations = {
-      note = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hm/note ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-      server = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hm/server ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-    };
-  };
-}
+  }
