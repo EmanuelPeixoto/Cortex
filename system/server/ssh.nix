@@ -1,5 +1,10 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    age
+    sops
+  ];
+
   sops = {
     defaultSopsFile = ./secrets/ssh_keys.enc.yaml;
     age.keyFile = "${config.users.users.emanuel.home}/.config/sops/age/keys.txt";
@@ -23,7 +28,7 @@
   # Only use the secret file if it exists
   users.users.emanuel.openssh.authorizedKeys = {
     keyFiles = lib.optional
-      (builtins.pathExists config.sops.secrets.ssh_authorized_keys.path)
-      config.sops.secrets.ssh_authorized_keys.path;
+    (builtins.pathExists config.sops.secrets.ssh_authorized_keys.path)
+    config.sops.secrets.ssh_authorized_keys.path;
   };
 }
