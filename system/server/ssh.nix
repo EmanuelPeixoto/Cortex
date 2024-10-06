@@ -25,7 +25,6 @@
     };
   };
 
-  # Only use the secret file if it exists
   users.users.emanuel.openssh.authorizedKeys.keyFiles = [
     config.sops.secrets."ssh_authorized_keys".path
   ];
