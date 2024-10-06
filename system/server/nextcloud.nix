@@ -5,7 +5,7 @@
     https = true;
     hostName = "epeixoto.ddns.net";
     home = "/var/lib/nextcloud";
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     maxUploadSize = "10240M";
     poolSettings = {
       pm = "dynamic";
