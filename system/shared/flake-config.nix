@@ -1,4 +1,5 @@
+{ config, ... }:
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.sessionVariables.FLAKE = "/home/emanuel/Cortex";
+  environment.sessionVariables.FLAKE = "${config.users.users.emanuel.home}/Cortex";
 }
