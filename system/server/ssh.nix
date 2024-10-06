@@ -6,10 +6,10 @@
   ];
 
   sops = {
-    defaultSopsFile = ./secrets/ssh_keys.enc.yaml;
+    defaultSopsFile = ./secrets/sshkeys.enc.yaml;
     age.keyFile = "${config.users.users.emanuel.home}/.config/sops/age/keys.txt";
     defaultSopsFormat = "yaml";
-    secrets.ssh_authorized_keys = {
+    secrets."ssh_authorized_keys" = {
       owner = config.users.users.emanuel.name;
       mode = "0400";
     };
@@ -26,9 +26,7 @@
   };
 
   # Only use the secret file if it exists
-  users.users.emanuel.openssh.authorizedKeys = {
-    keyFiles = lib.optional
-    (builtins.pathExists config.sops.secrets.ssh_authorized_keys.path)
-    config.sops.secrets.ssh_authorized_keys.path;
-  };
+  users.users.emanuel.openssh.authorizedKeys.keyFiles = [
+    config.sops.secrets."ssh_authorized_keys".path
+  ];
 }
