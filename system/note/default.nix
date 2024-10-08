@@ -18,6 +18,7 @@
     ./steam.nix
     ./users.nix
   ];
+  security.pam.services.hyprlock = {};
 
   # Hostname
   networking.hostName = "NixOS-Note";
