@@ -12,7 +12,8 @@
     ./dark_theme.nix
     ./dunst.nix
     ./eww.nix
-    ./hypr.nix
+    ./hyprland.nix
+    ./hyprlock.nix
     ./keyring.nix
     ./kitty.nix
     ./minecraft-overlay.nix

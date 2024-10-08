@@ -55,8 +55,9 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, E, exit,"
+        "$mainMod SHIFT, M, movetoworkspace, special:magic"
         "$mainMod SHIFT, Q, killactive,"
-        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod SHIFT, S, exec, grim -l 0 -g \"$(slurp -d -w 0)\" - | swappy -f -"
         "$mainMod SHIFT, down, movewindow, d"
         "$mainMod SHIFT, left, movewindow, l"
         "$mainMod SHIFT, right, movewindow, r"
@@ -74,16 +75,16 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, D, exec, bemenu-run"
         "$mainMod, F, fullscreen,"
-        "$mainMod, Print, exec, grim -l 0 - | swappy -f -"
+        "$mainMod, L, exec, hyprlock --immediate"
+        "$mainMod, M, togglespecialworkspace, magic"
         "$mainMod, Return, exec, kitty"
-        "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
-        ", Print, exec, grim -l 0 -g \"$(slurp -d -w 0)\" - | swappy -f -"
+        ", Print, exec, grim -l 0 - | swappy -f -"
       ];
 
       bindm = [
@@ -103,7 +104,7 @@
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
       ];
 
-      exec-once = "${config.home.homeDirectory}/Cortex/hm/note/hypr_exec.sh";
+      exec-once = "${config.home.homeDirectory}/Cortex/hm/note/hyprland_exec.sh";
     };
   };
 }
