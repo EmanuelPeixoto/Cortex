@@ -12,7 +12,6 @@
   home.homeDirectory = "/home/emanuel";
   home.stateVersion = "24.05";
 
-  # Programas básicos
   home.packages = with pkgs; [
     lazygit                   # Simple terminal UI for git commands
   ];

@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    ncmpcpp
+  ];
+
   services.mpd = {
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Nextcloud/Musicas";
@@ -11,11 +15,6 @@
       }
     '';
   };
-
-  home.packages = with pkgs; [
-    ncmpcpp
-    playerctl
-  ];
 
   services.mpd-mpris.enable = true;
 }
