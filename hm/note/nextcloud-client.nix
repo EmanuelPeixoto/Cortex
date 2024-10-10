@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    nextcloud-client
-  ];
-
   systemd.user.services.nextcloud-client = {
     Unit = {
       Description = "Nextcloud client service";

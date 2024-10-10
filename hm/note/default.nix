@@ -20,7 +20,6 @@
     ./mpd.nix
     ./nextcloud-client.nix
     ./swww.nix
-    ./temp.nix
     ./zen_browser.nix
   ];
 

@@ -16,9 +16,9 @@
     ./plymouth.nix
     ./sound.nix
     ./steam.nix
+    ./temp.nix
     ./users.nix
   ];
-  security.pam.services.hyprlock = {};
 
   # Hostname
   networking.hostName = "NixOS-Note";
@@ -40,6 +40,9 @@
     openssh.enable = true;
     vnstat.enable = true;
   };
+
+  # hyprlock pam
+  security.pam.services.hyprlock = {};
 
   system.stateVersion = "24.05";
 }

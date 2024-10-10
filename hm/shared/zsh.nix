@@ -1,4 +1,7 @@
-{ config, ... }:
+{ pkgs, ... }:
+let
+    motd = import ./scripts/motd.nix { inherit pkgs; };
+in
 {
   programs.zsh = {
     enable = true;
@@ -6,11 +9,11 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = "zsh ${config.home.homeDirectory}/Cortex/hm/shared/motd.sh";
+    initExtra = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
 
     shellAliases = {
-      motd = "bash ${config.home.homeDirectory}/Cortex/hm/shared/motd.sh";
-      ssh = "kitten ssh";
+      motd = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
+      ssh = "${pkgs.kitty}/bin/kitten ${pkgs.openssh}/bin/ssh";
     };
     oh-my-zsh = {
       enable = true;
