@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    nix-index
     aircrack-ng               # Wireless encryption cracking tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
