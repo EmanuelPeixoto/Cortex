@@ -1,4 +1,4 @@
 {
-  networking.firewall.allowedTCPPorts = [ 6600 8888 ]; # MPD NETCAT
+  networking.firewall.allowedTCPPorts = [ 6600 ]; # MPD
   networking.firewall.allowedUDPPorts = [ ];
 }
