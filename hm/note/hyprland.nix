@@ -81,7 +81,7 @@ in
         "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
-        # ", XF86Calculator, exec ${pkgs.qalculate-qt}/bin/qalculate-qt"
+        ", XF86Calculator, exec, ${pkgs.qalculate-qt}/bin/qalculate-qt"
         ", print, exec, ${print}/bin/print"
         "CONTROL ALT, tab, exec, ${wallpaper}/bin/wallpaper"
       ];
