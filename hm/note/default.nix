@@ -9,7 +9,7 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
-    ./dark_theme.nix
+    ./dark-theme.nix
     ./dunst.nix
     ./eww.nix
     ./hyprland.nix
@@ -19,8 +19,9 @@
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
+    ./nix-index.nix
     ./swww.nix
-    ./zen_browser.nix
+    ./zen-browser.nix
   ];
 
   home.stateVersion = "24.05";
