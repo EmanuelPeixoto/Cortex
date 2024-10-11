@@ -74,6 +74,7 @@ in
         "$mainMod, F, fullscreen,"
         "$mainMod, L, exec, hyprlock --immediate"
         "$mainMod, M, togglespecialworkspace, magic"
+        "$mainMod, S, exec, ${pkgs.systemd}/bin/systemctl suspend"
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"
         "$mainMod, mouse_down, workspace, e+1"
