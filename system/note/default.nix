@@ -40,7 +40,7 @@
     vnstat.enable = true;
   };
 
-  # hyprlock pam
+  # Hyprlock pam
   security.pam.services.hyprlock = {};
 
   system.stateVersion = "24.05";
