@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
-
   services.displayManager.ly = {
     enable = true;
     settings = {
