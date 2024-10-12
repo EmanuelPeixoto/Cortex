@@ -9,7 +9,6 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
-    ./dark-theme.nix
     ./dunst.nix
     ./eww.nix
     ./hyprland.nix
@@ -21,6 +20,7 @@
     ./nextcloud-client.nix
     ./nix-index.nix
     ./swww.nix
+    ./theme.nix
     ./zen-browser.nix
   ];
 
