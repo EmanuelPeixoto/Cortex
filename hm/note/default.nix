@@ -11,6 +11,7 @@
     ./apps.nix
     ./dunst.nix
     ./eww.nix
+    ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
     ./keyring.nix

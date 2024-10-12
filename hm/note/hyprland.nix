@@ -72,7 +72,7 @@ in
         "$mainMod, 9, workspace, 9"
         "$mainMod, D, exec, ${pkgs.bemenu}/bin/bemenu-run"
         "$mainMod, F, fullscreen,"
-        "$mainMod, L, exec, hyprlock --immediate"
+        "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
         "$mainMod, M, togglespecialworkspace, magic"
         "$mainMod, S, exec, ${pkgs.systemd}/bin/systemctl suspend"
         "$mainMod, down, movefocus, d"
@@ -93,6 +93,8 @@ in
       ];
 
       bindel = [
+        "$mainMod, XF86MonBrightnessDown, dpms, off"
+        "$mainMod, XF86MonBrightnessUp, dpms, on"
         ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25"
         ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle"

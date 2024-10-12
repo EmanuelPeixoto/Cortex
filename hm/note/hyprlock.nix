@@ -10,7 +10,7 @@
 
       general = {
         disable_loading_bar = true;
-        grace = 300;
+        grace = 30;
         hide_cursor = true;
       };
 
