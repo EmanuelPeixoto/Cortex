@@ -38,6 +38,7 @@
   services = {
     openssh.enable = true;
     vnstat.enable = true;
+    logind.lidSwitch = "lock";
   };
 
   # Hyprlock pam
