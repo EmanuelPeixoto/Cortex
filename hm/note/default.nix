@@ -9,6 +9,7 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
+    ./default-apps.nix
     ./dunst.nix
     ./eww.nix
     ./hypridle.nix
