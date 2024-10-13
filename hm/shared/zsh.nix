@@ -13,7 +13,7 @@ in
 
     shellAliases = {
       motd = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
-      ssh = "${pkgs.kitty}/bin/kitten ${pkgs.openssh}/bin/ssh";
+      ssh = "${pkgs.kitty}/bin/kitten ssh";
     };
     oh-my-zsh = {
       enable = true;
