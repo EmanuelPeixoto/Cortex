@@ -7,7 +7,7 @@
         shell = pkgs.zsh;
         isNormalUser = true;
         description = "emanuel";
-        extraGroups = [ "networkmanager" "wheel"];
+        extraGroups = [ "networkmanager" "wheel" ];
       };
 
       # Set www user
@@ -18,13 +18,13 @@
         createHome = true;
         home = "/home/www";
         group = "www";
-        extraGroups = [ "nextcloud" "wheel"];
+        extraGroups = [ "nextcloud" "wheel" ];
       };
     };
 
     groups.www = {
       name = "www";
-      members = [ "nginx" "nextcloud" "acme"];
+      members = [ "nginx" "nextcloud" "acme" ];
     };
   };
 
