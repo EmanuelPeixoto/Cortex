@@ -2,11 +2,9 @@
   imports = [
     ../shared/flake-config.nix
     ../shared/locale.nix
-    ../shared/scti.nix
     ./acme.nix
     ./apps.nix
     ./firewall.nix
-    ./go-scti.nix
     ./hardware-configuration.nix
     ./nextcloud.nix
     ./nginx.nix

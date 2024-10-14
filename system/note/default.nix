@@ -3,7 +3,6 @@
     ../shared/bluetooth.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
-    ../shared/scti.nix
     ../shared/wireshark.nix
     ./apps.nix
     ./battery.nix
