@@ -6,6 +6,7 @@
     ./apps.nix
     ./firewall.nix
     ./hardware-configuration.nix
+    ./minecraft-server.nix
     ./nextcloud.nix
     ./nginx.nix
     ./noip.nix
