@@ -18,6 +18,15 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **RAM:** 8GB DDR3
 - **Disc:** SSD SATA 512GB Weijinto
 
+## RPI2 Autopsy
+
+- **Model:** Raspberry Pi 2 Model B
+- **CPU:** Broadcom BCM2836 (900MHz quad-core ARM Cortex-A7)
+- **GPU:** Broadcom VideoCore IV
+- **RAM:** 1GB LPDDR2
+- **Disc:** Micro SD Netac 256GB
+- **Graphical Interface:** Hyprland
+
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
 ---
