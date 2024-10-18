@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   powerManagement.enable = true;
   services.tlp = {
@@ -17,4 +18,7 @@
       USB_AUTOSUSPEND = 0;
     };
   };
+  boot.kernelModules = [ "acpi_call" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+
 }
