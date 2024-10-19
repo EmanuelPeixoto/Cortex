@@ -20,8 +20,8 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 ## RPI2 Autopsy
 
-- **Model:** Raspberry Pi 2 Model B
-- **CPU:** Broadcom BCM2836 (900MHz quad-core ARM Cortex-A7)
+- **Model:** Raspberry Pi 3 Model B
+- **CPU:** Broadcom BCM2837 (1.2GHz quad-core ARM Cortex-A53)
 - **GPU:** Broadcom VideoCore IV
 - **RAM:** 1GB LPDDR2
 - **Disc:** Micro SD Netac 256GB

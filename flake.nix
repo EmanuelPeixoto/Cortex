@@ -76,9 +76,9 @@
           modules = [ ./hm/server ];
           extraSpecialArgs = { inherit inputs; };
         };
-        rpi2 = home-manager.lib.homeManagerConfiguration {
+        rpi3 = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs.aarch64-linux;
-          modules = [ ./hm/rpi2 ];
+          modules = [ ./hm/rpi3 ];
           extraSpecialArgs = { inherit inputs; };
         };
       };
