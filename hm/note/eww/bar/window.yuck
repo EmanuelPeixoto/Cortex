@@ -22,7 +22,6 @@
   (box
     :class "bar"
     :orientation "h"
-    :style "background-color: #181818; padding: 2px;"
     (bar_left :monitor monitor)
     (bar_right :monitor monitor)
     )
