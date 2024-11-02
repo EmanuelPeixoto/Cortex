@@ -20,6 +20,7 @@
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
+    ./nix-colors.nix
     ./nix-index.nix
     ./swww.nix
     ./theme.nix
@@ -32,6 +33,9 @@
     EDITOR = "nvim";
     BROWSER = "zen";
     TERMINAL = "kitty";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   programs.home-manager.enable = true;
