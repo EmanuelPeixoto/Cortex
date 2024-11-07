@@ -13,6 +13,7 @@
     ./keyring.nix
     ./ly.nix
     ./plymouth.nix
+    ./postgres.nix
     ./sound.nix
     ./steam.nix
     ./temp.nix
