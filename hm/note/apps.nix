@@ -16,7 +16,6 @@
     gimp                      # GNU Image Manipulation Program
     glibc                     # GNU C Library
     gnumake                   # Tool to control the generation of non-source files from sources
-    go                        # Go Programming language
     gparted                   # Graphical disk partitioning tool
     iftop                     # Display bandwidth usage on a network interface
     jdk                       # Open-source Java Development Kit

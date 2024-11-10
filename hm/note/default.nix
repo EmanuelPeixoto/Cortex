@@ -12,6 +12,7 @@
     ./default-apps.nix
     ./dunst.nix
     ./eww.nix
+    ./go.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
