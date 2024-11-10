@@ -1,10 +1,10 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # jetbrains.idea-ultimate # scti poo
+    jetbrains.idea-ultimate # scti poo
     # docker-compose # scti
     # maven # scti poo
-    # jdk17 # scti poo
+    jdk17 # scti poo
     # postman # scti poo
   ];
 
