@@ -2,6 +2,7 @@
   description = "My NixOS flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -14,15 +15,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, sops-nix, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }@inputs:
   let
     systems = {
       x86_64-linux = "x86_64-linux";
       aarch64-linux = "aarch64-linux";
     };
+    overlay-stable = final: prev: {
+      stable = import nixpkgs-stable {
+        system = prev.system;
+        config.allowUnfree = true;
+      };
+    };
     pkgsForSystem = system: import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [ overlay-stable ];
     };
     pkgs = {
       x86_64-linux = pkgsForSystem systems.x86_64-linux;
