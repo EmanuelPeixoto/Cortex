@@ -27,5 +27,4 @@
       members = [ "nginx" "nextcloud" "acme" ];
     };
   };
-
 }

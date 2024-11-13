@@ -1,6 +1,6 @@
 {
-  # Time Zone
   time.timeZone = "America/Sao_Paulo";
+  console.keyMap = "br-abnt2";
 
   i18n = {
     defaultLocale = "pt_BR.UTF-8";
@@ -16,7 +16,4 @@
       LC_TIME = "pt_BR.UTF-8";
     };
   };
-
-  # Console keymap
-  console.keyMap = "br-abnt2";
 }

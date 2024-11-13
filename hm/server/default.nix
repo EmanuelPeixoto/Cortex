@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel";
-
   imports = [
     ../shared/btop.nix
     ../shared/git.nix
@@ -12,27 +9,24 @@
     # ./pm2.nix
   ];
 
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home = {
+    homeDirectory = "/home/emanuel";
+    stateVersion = "23.11";
+    username = "emanuel";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+    sessionVariables = {
+      EDITOR = "nvim";
     };
-  };
 
-  home.packages = with pkgs; [
-    git
-    lazygit
-    progress
-    ventoy-full
-    wl-clipboard
-    yazi
-  ];
+    packages = with pkgs; [
+      git
+      htop
+      progress
+      ventoy-full
+      wl-clipboard
+      yazi
+    ];
+  };
 
   programs.home-manager.enable = true;
 }

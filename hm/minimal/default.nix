@@ -8,13 +8,15 @@
     ../shared/zsh.nix
   ];
 
-  home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel";
-  home.stateVersion = "24.05";
+  home = {
+    homeDirectory = "/home/emanuel";
+    stateVersion = "24.05";
+    username = "emanuel";
 
-  home.packages = with pkgs; [
-    lazygit                   # Simple terminal UI for git commands
-  ];
+    packages = with pkgs; [
+      lazygit                   # Simple terminal UI for git commands
+    ];
+  };
 
   programs.home-manager.enable = true;
 }
