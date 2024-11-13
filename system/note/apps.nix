@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     git                       # Distributed version control system
     home-manager              # A Nix-based user environment configurator
