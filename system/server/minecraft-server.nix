@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   minecraft-backup = import ./scripts/minecraft-backup.nix { inherit pkgs; };
+  minecraft-restart = import ./scripts/minecraft-restart.nix {inherit config pkgs; };
 in
 {
   services.minecraft-server = {
@@ -10,7 +11,9 @@ in
     openFirewall = true;
     jvmOpts = "-Xms2G -Xmx4G";
     serverProperties = {
+      "rcon.password" = "ihavefirewall";
       difficulty = "normal";
+      enable-rcon = true;
       level-name = "mapa_da_galera";
       max-players = 5;
       motd = "Dois de Campos e um intruso";
@@ -21,6 +24,7 @@ in
       white-list = false;
     };
   };
+
   users.users.minecraft = {
     isSystemUser = true;
     group = "minecraft";
@@ -41,11 +45,30 @@ in
       HOME = "/var/lib/minecraft";
     };
   };
+
   systemd.timers.minecraft-backup = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "12:00:00";
+      OnCalendar = "00:00,12:00";
       Unit = "minecraft-backup.service";
+    };
+  };
+
+  systemd.services.minecraft-restart = {
+    description = "Minecraft Server Restart";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "minecraft";
+      Group = "minecraft";
+      ExecStart = "${minecraft-restart}/bin/minecraft-restart";
+    };
+  };
+
+  systemd.timers.minecraft-restart = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "02:30:00";
+      Unit = "minecraft-restart.service";
     };
   };
 }
