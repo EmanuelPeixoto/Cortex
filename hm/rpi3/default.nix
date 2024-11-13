@@ -1,7 +1,4 @@
 {
-  home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel";
-
   imports = [
     ../shared/btop.nix
     ../shared/git.nix
@@ -25,17 +22,21 @@
     ../note/zen-browser.nix
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    homeDirectory = "/home/emanuel";
+    keyboard.layout = "br";
+    stateVersion = "24.05";
+    username = "emanuel";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "zen";
-    TERMINAL = "kitty";
-    FLAKE = "/home/emanuel/Cortex";
+    sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "zen";
+      TERMINAL = "kitty";
+      FLAKE = "/home/emanuel/Cortex";
+    };
   };
 
   targets.genericLinux.enable = true;
-  home.keyboard.layout = "br";
 
   xdg = {
     enable = true;

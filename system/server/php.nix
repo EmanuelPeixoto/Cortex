@@ -3,6 +3,8 @@
   services.phpfpm.pools.one = {
     user = "nginx";
     group = "www";
+    phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+
     settings = {
       "listen.owner" = config.services.nginx.user;
       "pm" = "dynamic";
@@ -15,6 +17,5 @@
       "php_admin_flag[log_errors]" = true;
       "catch_workers_output" = true;
     };
-    phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
   };
 }

@@ -8,13 +8,13 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
     initExtra = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
 
     shellAliases = {
       motd = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
       ssh = "${pkgs.kitty}/bin/kitten ssh";
     };
+
     oh-my-zsh = {
       enable = true;
       plugins = [ ];
