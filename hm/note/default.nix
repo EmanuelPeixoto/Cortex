@@ -1,8 +1,5 @@
 {
-  home.username = "emanuel";
-  home.homeDirectory = "/home/emanuel";
-
-  imports = [
+    imports = [
     ../shared/btop.nix
     ../shared/git.nix
     ../shared/lexis.nix
@@ -28,15 +25,19 @@
     ./zen-browser.nix
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    homeDirectory = "/home/emanuel";
+    stateVersion = "24.05";
+    username = "emanuel";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "zen";
-    TERMINAL = "kitty";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
+    sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "zen";
+      TERMINAL = "kitty";
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+    };
   };
 
   programs.home-manager.enable = true;

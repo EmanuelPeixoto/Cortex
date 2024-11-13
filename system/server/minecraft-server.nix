@@ -21,6 +21,7 @@ in
       white-list = false;
     };
   };
+
   users.users.minecraft = {
     isSystemUser = true;
     group = "minecraft";
@@ -41,6 +42,7 @@ in
       HOME = "/var/lib/minecraft";
     };
   };
+
   systemd.timers.minecraft-backup = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
