@@ -19,8 +19,8 @@ in
       };
 
       general = {
-        "col.active_border" = "rgba(d60202ff)";
-        "col.inactive_border" = "rgba(828282ff)";
+        "col.active_border" = "rgb(${config.colorScheme.palette.main})";
+        "col.inactive_border" = "rgb(${config.colorScheme.palette.idle})";
         border_size = 2;
         gaps_in = 5;
         gaps_out = 10;

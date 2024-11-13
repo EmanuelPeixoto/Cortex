@@ -4,7 +4,7 @@
     aircrack-ng               # Wireless encryption cracking tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
-    blender                   # 3D Creation/Animation/Publishing System
+    stable.blender            # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
     discord                   # All-in-one cross-platform voice and text chat for gamers
     exfatprogs                # exFAT filesystem userspace utilities
@@ -16,7 +16,6 @@
     gimp                      # GNU Image Manipulation Program
     glibc                     # GNU C Library
     gnumake                   # Tool to control the generation of non-source files from sources
-    go                        # Go Programming language
     gparted                   # Graphical disk partitioning tool
     iftop                     # Display bandwidth usage on a network interface
     jdk                       # Open-source Java Development Kit
