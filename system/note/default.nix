@@ -13,6 +13,7 @@
     ./keyring.nix
     ./ly.nix
     ./plymouth.nix
+    ./postgres.nix
     ./sound.nix
     ./steam.nix
     ./temp.nix
@@ -35,6 +36,7 @@
   };
 
   services = {
+    blueman.enable = true;
     openssh.enable = true;
     vnstat.enable = true;
     logind.lidSwitch = "lock";

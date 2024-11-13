@@ -18,6 +18,15 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **RAM:** 8GB DDR3
 - **Disc:** SSD SATA 512GB Weijinto
 
+## RPI3 Autopsy
+
+- **Model:** Raspberry Pi 3 Model B
+- **CPU:** Broadcom BCM2837 (1.2GHz quad-core ARM Cortex-A53)
+- **GPU:** Broadcom VideoCore IV
+- **RAM:** 1GB LPDDR2
+- **Disc:** Micro SD Netac 256GB
+- **Graphical Interface:** Hyprland
+
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
 ---
@@ -33,4 +42,3 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - Pré criar múltiplas Shells para múltiplos tipos de projetos/linguagens e deixá-las disponibilizadas através de aliases (shell-go, tipo shellify) por ex
 - Plugin de login Minecraft server (se whitelist não funcionar)
 - Travar versão minecraft-server em 1.21 (esperar sair versão travada no nixpkgs ou travar manualmente)
-
