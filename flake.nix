@@ -1,19 +1,14 @@
 {
   description = "My NixOS flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    ags.url = "github:aylur/ags";
+    home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
     nix-colors.url = "github:misterio77/nix-colors";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    sops-nix.url = "github:Mic92/sops-nix";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
   outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }@inputs:
   let

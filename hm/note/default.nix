@@ -5,6 +5,7 @@
     ../shared/lexis.nix
     ../shared/yazi.nix
     ../shared/zsh.nix
+    ./ags.nix
     ./apps.nix
     ./default-apps.nix
     ./dunst.nix
