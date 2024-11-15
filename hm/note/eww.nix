@@ -23,7 +23,7 @@ in
     enableZshIntegration = true;
   };
 
-  home.file."${config.home.homeDirectory}/Cortex/hm/note/eww/colors.scss".text = generateScss;
+  home.file."${config.home.homeDirectory}/.config/Cortex/hm/note/eww/colors.scss".text = generateScss;
 
   systemd.user.services.eww = {
     Unit = {

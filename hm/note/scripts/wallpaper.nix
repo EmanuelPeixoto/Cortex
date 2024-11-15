@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 pkgs.writeShellScriptBin "wallpaper" ''
-  WALLPAPER_DIR="${config.home.homeDirectory}/Cortex/hm/note/assets/wallpapers"
-  INDEX_FILE="${config.home.homeDirectory}/Cortex/hm/note/assets/wallpapers/.wallpaper_index"
+  WALLPAPER_DIR="${config.home.homeDirectory}/.config/Cortex/hm/note/assets/wallpapers"
+  INDEX_FILE="${config.home.homeDirectory}/.config/Cortex/hm/note/assets/wallpapers/.wallpaper_index"
 
   # Create an array of all wallpapers
   mapfile -t WALLPAPERS < <(${pkgs.coreutils}/bin/ls -1 "$WALLPAPER_DIR"/*)
