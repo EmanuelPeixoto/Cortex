@@ -6,17 +6,11 @@
     # maven # scti poo
     jdk17 # scti poo
     # postman # scti poo
+    chromium
   ];
 
-  #scti
   # virtualisation.docker.enable = true;
 
   #joao
   virtualisation.waydroid.enable = true;
-
-
-# virtual box
-  boot.kernelModules = [ "vboxdrv" "vboxnetadp" "vboxnetflt" ];
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "emanuel" ];
 }
