@@ -12,6 +12,7 @@ in
     initExtra = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
 
     shellAliases = {
+      catfolder = "find . -type f -exec echo \"=== {} ===\" \\; -exec cat {} \\;";
       cfg = "${pkgs.yazi}/bin/yazi ${config.home.homeDirectory}/.config/Cortex";
       motd = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
       ssh = "${pkgs.kitty}/bin/kitten ssh";
