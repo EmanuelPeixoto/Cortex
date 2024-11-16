@@ -4,7 +4,7 @@
     aircrack-ng               # Wireless encryption cracking tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
-    stable.blender            # 3D Creation/Animation/Publishing System
+    blender                   # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
     discord                   # All-in-one cross-platform voice and text chat for gamers
     exfatprogs                # exFAT filesystem userspace utilities
