@@ -27,7 +27,7 @@ in
       };
 
       decoration = {
-        drop_shadow = 0;
+        shadow.enabled = 0;
         blur.enabled = 0;
       };
 
