@@ -109,4 +109,13 @@ in
       exec-once = "${hyprland_exec}/bin/hyprland_exec";
     };
   };
+
+  # for xwayland video bridge
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    config.common.default = "*";
+  };
+
+
 }
