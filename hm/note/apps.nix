@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     aircrack-ng               # Wireless encryption cracking tools
+    android-tools             # Android SDK platform tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
     blender                   # 3D Creation/Animation/Publishing System
@@ -53,7 +54,6 @@
     vlc                       # Cross-platform media player and streaming server
     wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP
     wl-clipboard              # Command-line copy/paste utilities for Wayland
-    xwaylandvideobridge       # Utility to allow streaming Wayland windows to X applications
     yt-dlp                    # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
     zathura                   # Highly customizable and functional PDF viewer
     zip                       # Compressor/archiver for creating and modifying zipfiles
