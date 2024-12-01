@@ -28,7 +28,7 @@
 
   home = {
     homeDirectory = "/home/emanuel";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     username = "emanuel";
 
     sessionVariables = {
