@@ -6,7 +6,6 @@
     ../shared/lexis.nix
     ../shared/yazi.nix
     ../shared/zsh.nix
-    # ./pm2.nix
   ];
 
   home = {
@@ -19,12 +18,23 @@
     };
 
     packages = with pkgs; [
-      git
+      curl
+      ffmpeg
+      gcc
+      iftop
       lazygit
+      lm_sensors
+      neofetch
+      nload
+      pciutils
       progress
+      speedtest-cli
+      unzip
       ventoy-full
+      wget
       wl-clipboard
-      yazi
+      yt-dlp
+      zip
     ];
   };
 
