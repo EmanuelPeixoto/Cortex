@@ -4,6 +4,6 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Emanuel Peixoto";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" "dialout" ];
   };
 }
