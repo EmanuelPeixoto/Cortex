@@ -20,7 +20,7 @@
 
     packages = with pkgs; [
       git
-      htop
+      lazygit
       progress
       ventoy-full
       wl-clipboard

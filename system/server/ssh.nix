@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     age
@@ -6,7 +6,7 @@
   ];
 
   sops = {
-    defaultSopsFile = ./secrets/sshkeys.enc.yaml;
+    defaultSopsFile = ./secrets/sshkeys.enc.yaml; # sops -e sshkeys.yaml > sshkeys.enc.yaml
     age.keyFile = "${config.users.users.emanuel.home}/.config/sops/age/keys.txt";
     defaultSopsFormat = "yaml";
     secrets."ssh_authorized_keys" = {
