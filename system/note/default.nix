@@ -5,6 +5,7 @@
     ../shared/locale.nix
     ../shared/wireshark.nix
     ./apps.nix
+    ./avahi.nix
     ./battery.nix
     ./firewall.nix
     ./font.nix
@@ -27,7 +28,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Networking
+  # Network Manager
   networking.networkmanager.enable = true;
 
   programs = {
