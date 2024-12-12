@@ -6,7 +6,6 @@
       nerd-fonts.meslo-lg
     ];
 
-
     fontconfig.defaultFonts = {
       serif = [ "MesloLGSNerdFont" ];
       sansSerif = [ "MesloLGSNerdFont" ];
