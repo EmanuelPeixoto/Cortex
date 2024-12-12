@@ -7,6 +7,14 @@
     chromium
   ];
 
+  services.xserver.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # virtualisation.docker.enable = true;
 
   #joao
