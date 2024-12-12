@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nix-colors.url = "github:misterio77/nix-colors";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     sops-nix.url = "github:Mic92/sops-nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -14,43 +14,57 @@
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }@inputs:
     let
-      systems = {
-        x86_64-linux = "x86_64-linux";
-        aarch64-linux = "aarch64-linux";
-      };
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       overlay-stable = final: prev: {
         stable = import nixpkgs-stable {
-          system = prev.system;
-          config.allowUnfree = true;
+          inherit (prev) system;
+          config = {
+            inherit (prev.config) allowUnfree;
+          };
         };
       };
 
-      pkgsForSystem = system: import nixpkgs {
+      mkPkgs = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         overlays = [ overlay-stable ];
       };
 
-      pkgs = {
-        x86_64-linux = pkgsForSystem systems.x86_64-linux;
-        aarch64-linux = pkgsForSystem systems.aarch64-linux;
-      };
-
     in {
+      pkgs = forAllSystems mkPkgs;
+
       nixosConfigurations = {
         NixOS-Note = nixpkgs.lib.nixosSystem {
-          system = systems.x86_64-linux;
+          system = "x86_64-linux";
           modules = [
             ./system/note
             home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./system/note/iso.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.emanuel = import ./hm/note;
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
           ];
           specialArgs = { inherit inputs; };
         };
 
         NixOS-Server = nixpkgs.lib.nixosSystem {
-          system = systems.x86_64-linux;
+          system = "x86_64-linux";
           modules = [
             ./system/server
             home-manager.nixosModules.home-manager
@@ -62,19 +76,19 @@
 
       homeConfigurations = {
         note = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hm/note ];
           extraSpecialArgs = { inherit inputs; };
         };
 
         server = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hm/server ];
           extraSpecialArgs = { inherit inputs; };
         };
 
         rpi3 = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs.aarch64-linux;
+          pkgs = mkPkgs "aarch64-linux";
           modules = [ ./hm/rpi3 ];
           extraSpecialArgs = { inherit inputs; };
         };
