@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    swww
+  ];
+
   systemd.user.services.swww = {
     Unit = {
       Description = "Sww Daemon";
