@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   services.nextcloud = {
     enable = true;
     https = true;
     hostName = "epeixoto.ddns.net";
-    home = "/var/lib/nextcloud";
     package = pkgs.nextcloud30;
     maxUploadSize = "10240M";
     poolSettings = {
@@ -16,11 +15,12 @@
       "pm.start_servers" = "2";
     };
     settings = {
-      log_type = "file";
-      logLevel = 1;
       autoUpdateApps.enable = true;
       autoUpdateApps.startAt = "05:00:00";
       filesystem_check_changes = 1;
+      logLevel = 1;
+      log_type = "file";
+      trusted_domains = [ "${config.networking.hostName}.local" ];
     };
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
   };

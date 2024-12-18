@@ -1,5 +1,6 @@
 {
   imports = [
+    ../shared/avahi.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
     ./acme.nix
@@ -22,9 +23,11 @@
   networking.hostName = "NixOS-Server";
 
   # Boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = false;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/sda";
+    useOSProber = false;
+  };
 
   # Networking
   networking.networkmanager.enable = true;
