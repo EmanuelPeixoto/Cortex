@@ -6,7 +6,6 @@
     ../shared/locale.nix
     ../shared/wireshark.nix
     ./apps.nix
-    ./avahi.nix
     ./battery.nix
     ./firewall.nix
     ./font.nix
