@@ -6,6 +6,7 @@ in
 {
   services.minecraft-server = {
     enable = true;
+    package = pkgs.papermcServers.papermc-1_21;
     eula = true;
     declarative = true;
     openFirewall = true;
