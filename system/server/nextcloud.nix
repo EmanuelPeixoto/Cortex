@@ -6,6 +6,7 @@
     hostName = "epeixoto.ddns.net";
     package = pkgs.nextcloud30;
     maxUploadSize = "10240M";
+
     poolSettings = {
       pm = "dynamic";
       "pm.max_children" = "64";
@@ -14,6 +15,7 @@
       "pm.min_spare_servers" = "2";
       "pm.start_servers" = "2";
     };
+
     settings = {
       autoUpdateApps.enable = true;
       autoUpdateApps.startAt = "05:00:00";
@@ -22,6 +24,7 @@
       log_type = "file";
       trusted_domains = [ "${config.networking.hostName}.local" ];
     };
+
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
   };
 }
