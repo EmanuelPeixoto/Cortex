@@ -1,5 +1,6 @@
 {
   imports = [
+    ../shared/avahi.nix
     ../shared/bluetooth.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
