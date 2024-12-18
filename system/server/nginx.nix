@@ -17,126 +17,133 @@
       charset UTF-8;
     '';
 
-    virtualHosts."localhost" = {
-      listen = [{
-        addr = "0.0.0.0";
-        port = 88;
-      }];
+    virtualHosts = {
+      "${config.networking.hostName}.local" = {
+        listen = [{
+          addr = "0.0.0.0";
+          port = 88;
+        }];
 
-      root = "/var/www";
-      extraConfig = ''
-        access_log off;
-        autoindex on;
-        autoindex_exact_size off;
-        autoindex_localtime on;
-        allow all;
-      '';
+        root = "/var/www";
 
-      locations."/" = {
-        index = "index.html index.php";
         extraConfig = ''
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
+          access_log off;
+          autoindex on;
+          autoindex_exact_size off;
+          autoindex_localtime on;
+          allow all;
         '';
+
+        locations = {
+          "/" = {
+            index = "index.html index.php";
+            extraConfig = ''
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
+
+          "^~/speedtest" = {
+            root = "/var/www/";
+            index = "index.html index.php";
+            extraConfig = ''
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
+
+          "^~/phpmysql" = {
+            root = "/var/www/";
+            index = "index.html index.php";
+            extraConfig = ''
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
+
+          "^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
+        };
       };
 
-      locations."^~/speedtest" = {
-        root = "/var/www/";
-        index = "index.html index.php";
+      "http" = {
+        listen = [{
+          addr = "0.0.0.0";
+          port = 80;
+        }];
+
+        root = "/var/lib/acme/acme-challenge";
         extraConfig = ''
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
+          autoindex off;
+          autoindex_exact_size off;
+          autoindex_localtime on;
+          allow all;
         '';
+
+        locations."/".index = "index.html index.php";
       };
 
-      locations."^~/phpmysql" = {
-        root = "/var/www/";
-        index = "index.html index.php";
+
+      ${config.services.nextcloud.hostName} = {
+        listen = [{
+          addr = "0.0.0.0";
+          port = 443;
+          ssl = true;
+        }];
+
         extraConfig = ''
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
+          autoindex off;
+          autoindex_exact_size off;
+          autoindex_localtime on;
         '';
-      };
 
-      locations."^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
-    };
+        enableACME = true;
+        forceSSL = true;
 
-    virtualHosts."http" = {
-      listen = [{
-        addr = "0.0.0.0";
-        port = 80;
-      }];
+        locations = {
+          "^~/phpmysql" = {
+            root = "/var/www/";
+            index = "index.html index.php";
+            extraConfig = ''
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
 
-      root = "/var/lib/acme/acme-challenge";
-      extraConfig = ''
-        autoindex off;
-        autoindex_exact_size off;
-        autoindex_localtime on;
-        allow all;
-      '';
+          "^~/speedtest" = {
+            root = "/var/www/";
+            index = "index.html index.php";
+            extraConfig = ''
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
 
-      locations."/".index = "index.html index.php";
-    };
+          "^~/gabriela" = {
+            root = "/var/www/";
+            index = "index.html index.php";
+            extraConfig = ''
+              access_log /var/log/nginx/gabriela.log custom;
+              location ~ \.php$ {
+                include ${pkgs.nginx}/conf/fastcgi.conf;
+                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
+              }
+            '';
+          };
 
+          "^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
 
-    virtualHosts.${config.services.nextcloud.hostName} = {
-      listen = [{
-        addr = "0.0.0.0";
-        port = 443;
-        ssl = true;
-      }];
-
-      extraConfig = ''
-        autoindex off;
-        autoindex_exact_size off;
-        autoindex_localtime on;
-      '';
-
-      enableACME = true;
-      forceSSL = true;
-
-      locations."^~/phpmysql" = {
-        root = "/var/www/";
-        index = "index.html index.php";
-        extraConfig = ''
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
-        '';
-      };
-
-      locations."^~/torrent/".extraConfig = ''include /var/www/.proxytorrent;'';
-
-      locations."/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
-
-      locations."^~/speedtest" = {
-        root = "/var/www/";
-        index = "index.html index.php";
-        extraConfig = ''
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
-        '';
-      };
-
-      locations."^~/gabriela" = {
-        root = "/var/www/";
-        index = "index.html index.php";
-        extraConfig = ''
-          access_log /var/log/nginx/gabriela.log custom;
-          location ~ \.php$ {
-            include ${pkgs.nginx}/conf/fastcgi.conf;
-            fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-          }
-        '';
+          "/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
+        };
       };
     };
 
