@@ -19,4 +19,25 @@
 
   #joao
   virtualisation.waydroid.enable = true;
+
+    services.nginx = {
+    enable = true;
+    commonHttpConfig = ''
+      charset UTF-8;
+    '';
+
+    virtualHosts."localhost" = {
+      listen = [{
+        addr = "0.0.0.0";
+        port = 80;
+      }];
+
+      root = "/Filmes";
+      extraConfig = "autoindex on; \n autoindex_exact_size off; \n autoindex_localtime on; allow all;";
+      locations."/" = { index = "index.html index.php"; };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 ];
+
 }
