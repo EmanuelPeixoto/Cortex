@@ -39,3 +39,4 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - Usar applets do eww para janelas em vez de consoles para nmtui, cal, etc
 - tamanho das janelas nmtui, cal, usuário firefox, etc (hyprland)
 - Plugin de login Minecraft server (se whitelist não funcionar)
+- barra com ags
