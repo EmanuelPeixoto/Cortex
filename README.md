@@ -33,7 +33,6 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 
 ## TO DO LIST (in Portuguese)
 
-- remover impure na configuração do servidor (causado pelo SOPS)
 - customizar ncmpcpp
 - informações do wi-fi ao colocar o mouse sobre (eww)
 - Usar applets do eww para janelas em vez de consoles para nmtui, cal, etc
