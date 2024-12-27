@@ -8,7 +8,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    sops-nix.url = "github:Mic92/sops-nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
