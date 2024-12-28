@@ -2,7 +2,6 @@
 {
   services.nginx = {
     additionalModules = with pkgs.nginxModules; [ geoip2 ];
-    package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
     enable = true;
     group = "www";
 
