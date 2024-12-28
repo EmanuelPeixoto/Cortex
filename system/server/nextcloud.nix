@@ -22,7 +22,7 @@
       filesystem_check_changes = 1;
       logLevel = 1;
       log_type = "file";
-      trusted_domains = [ "${config.networking.hostName}.local" ];
+      trusted_domains = [ "${config.networking.hostName}.local" "192.168.0.10" ];
     };
 
     config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
