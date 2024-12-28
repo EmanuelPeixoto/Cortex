@@ -10,6 +10,7 @@
     ./default-apps.nix
     ./dunst.nix
     ./eww.nix
+    ./ghostty.nix
     ./go.nix
     ./hypridle.nix
     ./hyprland.nix
