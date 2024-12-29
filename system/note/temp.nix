@@ -20,6 +20,10 @@
   #joao
   virtualisation.waydroid.enable = true;
 
+  networking.extraHosts = ''
+    192.168.0.10   epeixoto.ddns.net
+  '';
+
     services.nginx = {
     enable = true;
     commonHttpConfig = ''
