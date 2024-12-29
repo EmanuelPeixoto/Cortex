@@ -43,7 +43,7 @@
     :class "internet"
     (button
       :class "internet_info"
-      :onclick "hyprctl dispatch exec '[float] kitty nmtui'"
+      :onclick "hyprctl dispatch exec '[float] ghostty -e nmtui'"
       "${CONNECTION_INFO}"
       )
     )

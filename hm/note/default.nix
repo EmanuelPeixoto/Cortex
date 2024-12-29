@@ -16,7 +16,6 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./keyring.nix
-    ./kitty.nix
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
@@ -35,7 +34,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       BROWSER = "zen";
-      TERMINAL = "kitty";
+      TERMINAL = "ghostty";
     };
   };
 
