@@ -15,7 +15,6 @@ in
       catfolder = "find . -type f -exec echo \"=== {} ===\" \\; -exec cat {} \\;";
       cfg = "${pkgs.yazi}/bin/yazi ${config.home.homeDirectory}/.config/Cortex";
       motd = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
-      ssh = "${pkgs.kitty}/bin/kitten ssh";
       yt-dlp-menu = "${pkgs.zsh}/bin/zsh ${yt-dlp}/bin/yt-dlp";
     };
 
