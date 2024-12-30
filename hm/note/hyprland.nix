@@ -1,6 +1,6 @@
 { config, inputs, pkgs, ... }:
 let
-  hyprland_exec = import ./scripts/hyprland_exec.nix { inherit pkgs; };
+  hyprland_exec = import ./scripts/hyprland_exec.nix { inherit config pkgs; };
   print = import ./scripts/print.nix { inherit pkgs; };
   print_selection = import ./scripts/print_selection.nix { inherit pkgs; };
   wallpaper = import ./scripts/wallpaper.nix { inherit config pkgs; };
