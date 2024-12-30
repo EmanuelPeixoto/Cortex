@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   services.displayManager.ly = {
     enable = true;
     settings = {
-      waylandsessions = "${config.users.users.emanuel.home}/.nix-profile/share/wayland-sessions";
       animation = "matrix";
       clock = "%d/%m/%y - %R";
       xinitrc = "null";
