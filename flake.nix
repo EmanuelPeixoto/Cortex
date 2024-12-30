@@ -9,10 +9,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
 
@@ -68,7 +68,6 @@
           modules = [
             ./system/server
             home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
           ];
           specialArgs = { inherit inputs; };
         };
