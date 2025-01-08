@@ -25,6 +25,9 @@
       trusted_domains = [ "${config.networking.hostName}.local" "192.168.0.10" ];
     };
 
-    config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
+    config = {
+      adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
+      dbtype = "sqlite";
+    };
   };
 }
