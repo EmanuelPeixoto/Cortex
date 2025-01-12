@@ -1,0 +1,13 @@
+@use "sass:color";
+@use "../Variables.scss" as *;
+
+.Wifi {
+  icon {
+    margin: 0 2px;
+  }
+  padding: 0px 5px;
+  margin: 0 2.5px;
+  font-size: 0.9em;
+  border: solid $border 1px;
+  border-radius: 15px;
+}

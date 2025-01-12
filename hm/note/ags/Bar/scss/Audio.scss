@@ -1,0 +1,13 @@
+@use "sass:color";
+@use "../Variables.scss" as *;
+
+.Audio {
+  border-radius: 15px;
+  border: solid $border 1px;
+  margin: 0 2.5px;
+  padding: 0px 5px;
+
+  icon {
+    margin: 0 2px;
+  }
+}
