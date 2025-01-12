@@ -1,5 +1,5 @@
 import { Astal, Gtk, Gdk } from "astal/gtk3";
-// import Audio from "./modules/Audio.tsx"
+import Audio from "./modules/Audio.tsx"
 import BatteryLevel from "./modules/BatteryLevel.tsx"
 import Media from "./modules/Media.tsx"
 import SysTray from "./modules/SysTray.tsx"
