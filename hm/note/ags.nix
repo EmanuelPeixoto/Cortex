@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 let
   colors = config.colorScheme.palette;
 
@@ -9,41 +9,51 @@ let
     $text: #${colors.font};
     $main: #${colors.main};
   '';
+
+  ags = inputs.ags.packages.${pkgs.system};
+  deps = [
+    ags.battery
+    ags.hyprland
+    ags.mpris
+    ags.network
+    ags.tray
+    ags.wireplumber
+  ];
 in
   {
   imports = [ inputs.ags.homeManagerModules.default ];
 
+
   programs.ags = {
     enable = true;
-
     configDir = ./ags;
-
-    extraPackages = with pkgs; [
-      libdbusmenu-gtk3
-      upower
-      gtk3
-      gtk-layer-shell
-      networkmanager
-      pulseaudio
-    ] ++ (with inputs.ags.packages.${pkgs.system}; [
-        battery
-        hyprland
-        mpris
-        network
-        tray
-        wireplumber
-      ]
-      );
+    package = ags.agsFull.overrideAttrs {
+      postFixup = ''wrapProgram $out/bin/ags --prefix PATH : ${lib.makeBinPath deps}'';
+    };
+    extraPackages = deps;
   };
 
   home.file."${config.home.homeDirectory}/.config/Cortex/hm/note/ags/Bar/Variables.scss".text = generateScss;
 
-  systemd.user.services.agsbar = {
-    Service = {
-      ExecStart = "${config.programs.ags.package}/bin/ags run";
-      Environment = "GI_TYPELIB_PATH=${pkgs.gobject-introspection.dev}/lib/girepository-1.0:${config.programs.ags.package}/lib/girepository-1.0";
-      Restart = "no";
+  systemd.user.services.ags-bar = {
+    Unit = {
+      Description = "AGS Bar";
+      PartOf = [ "hyprland-session.target" ];
+      After = [ "hyprland-session.target" ];
     };
-    Install.WantedBy = ["hyprland-session.target"];
-  };}
+
+    Service =
+      let
+        ags = "${config.programs.ags.package}/bin/ags";
+      in
+        {
+        ExecStart = "${ags} run";
+        ExecReload = "${ags} quit && ${ags} run";
+        Restart = "on-failure";
+        KillMode = "mixed";
+      };
+
+    Install.WantedBy = [ "hyprland-session.target" ];
+  };
+}
 
