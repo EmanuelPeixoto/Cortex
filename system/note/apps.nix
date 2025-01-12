@@ -9,6 +9,4 @@
     nvd                       # Nix/NixOS package version diff tool
     powertop                  # Analyze power consumption on Intel-based laptops
   ];
-
-
 }

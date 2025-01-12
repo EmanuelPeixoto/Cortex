@@ -1,0 +1,13 @@
+@use "sass:color";
+@use "../Variables.scss" as *;
+
+.Time {
+  border-radius: 15px;
+  border: 1px solid $border;
+  margin: 0 2.5px;
+  padding: 0 5px;
+
+  icon {
+    margin: 0 2px;
+  }
+}

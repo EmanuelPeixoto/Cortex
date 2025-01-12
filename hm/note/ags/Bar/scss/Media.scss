@@ -1,0 +1,10 @@
+@use "sass:color";
+@use "../Variables.scss" as *;
+
+.Media .Cover {
+  min-height: 1.2em;
+  min-width: 1.2em;
+  border-radius: 25px;
+  background-position: center;
+  background-size: contain;
+}
