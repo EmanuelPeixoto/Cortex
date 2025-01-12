@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   powerManagement.enable = true;
 
@@ -18,13 +17,8 @@
 
       USB_AUTOSUSPEND = 0;
 
-      START_CHARGE_THRESH_BAT0 = 60;
-      STOP_CHARGE_THRESH_BAT0 = 80;
+      START_CHARGE_THRESH_BAT0 = 0;
+      STOP_CHARGE_THRESH_BAT0 = 0;
     };
-  };
-
-  boot = {
-    kernelModules = [ "acpi_call" ];
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 }

@@ -1,10 +1,13 @@
 import { App } from "astal/gtk3"
-import style from "./style.scss"
-import Bar from "./widget/Bar"
+import Bar_S from "./Bar/Main.scss"
+import Bar from "./Bar/Main"
 
 App.start({
-    css: style,
-    main() {
-        App.get_monitors().map(Bar)
+    css: Bar_S,
+    instanceName: "js",
+    requestHandler(request, res) {
+        print(request)
+        res("ok")
     },
+    main: () => App.get_monitors().map(Bar),
 })

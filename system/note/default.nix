@@ -40,6 +40,7 @@
   services = {
     blueman.enable = true;
     openssh.enable = true;
+    upower.enable = true;
     vnstat.enable = true;
     logind.lidSwitch = "lock";
   };
