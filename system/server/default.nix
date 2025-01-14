@@ -3,7 +3,7 @@
     ../shared/avahi.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
-    ./acme.nix
+    # ./acme.nix
     ./apps.nix
     ./firewall.nix
     ./hardware-configuration.nix
