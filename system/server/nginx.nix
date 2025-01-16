@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   services.nginx = {
     enable = true;
@@ -21,36 +21,25 @@
           port = 88;
         }];
 
-        root = "/var/www";
+        root = "/var/www/";
 
         extraConfig = ''
           access_log off;
           autoindex on;
           autoindex_exact_size off;
           autoindex_localtime on;
-          allow all;
         '';
 
         locations = {
           "/" = {
             index = "index.html index.php";
-            extraConfig = ''
-              location ~ \.php$ {
-                include ${pkgs.nginx}/conf/fastcgi.conf;
-                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-              }
-            '';
+            extraConfig = '' location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.one.socket}; } '';
           };
 
           "^~/speedtest" = {
             root = "/var/www/";
             index = "index.html index.php";
-            extraConfig = ''
-              location ~ \.php$ {
-                include ${pkgs.nginx}/conf/fastcgi.conf;
-                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-              }
-            '';
+            extraConfig = '' location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.one.socket}; } '';
           };
         };
       };
@@ -61,15 +50,9 @@
           port = 80;
         }];
 
-        root = "/var/lib/acme/acme-challenge";
-        extraConfig = ''
-          autoindex off;
-          autoindex_exact_size off;
-          autoindex_localtime on;
-          allow all;
-        '';
+        root = "/var/lib/acme/acme-challenge/";
 
-        locations."/".index = "index.html index.php";
+        locations."/".index = "index.html";
       };
 
 
@@ -77,27 +60,17 @@
         listen = [{
           addr = "0.0.0.0";
           port = 443;
-          # ssl = true;
+          ssl = true;
         }];
 
-        extraConfig = ''
-          autoindex off;
-          autoindex_exact_size off;
-          autoindex_localtime on;
-        '';
+        enableACME = true;
+        forceSSL = true;
 
-        # enableACME = true;
-        # forceSSL = true;
-
+        locations = {
           "^~/speedtest" = {
             root = "/var/www/";
             index = "index.html index.php";
-            extraConfig = ''
-              location ~ \.php$ {
-                include ${pkgs.nginx}/conf/fastcgi.conf;
-                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-              }
-            '';
+            extraConfig = '' location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.one.socket}; } '';
           };
 
           "^~/gabriela" = {
@@ -105,10 +78,7 @@
             index = "index.html index.php";
             extraConfig = ''
               access_log /var/log/nginx/gabriela.log custom;
-              location ~ \.php$ {
-                include ${pkgs.nginx}/conf/fastcgi.conf;
-                fastcgi_pass unix:${config.services.phpfpm.pools.one.socket};
-              }
+              location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.one.socket}; }
             '';
           };
 
