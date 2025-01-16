@@ -7,6 +7,8 @@
   systemd.user.services.swww = {
     Unit = {
       Description = "Sww Daemon";
+      PartOf = [ "hyprland-session.target" ];
+      After = [ "hyprland-session.target" ];
     };
     Service = {
       ExecStart = "${pkgs.swww}/bin/swww-daemon -q -f xrgb";
