@@ -7,7 +7,7 @@ export default function Wifi() {
 
   const handleClick = () => {
     try {
-      GLib.spawn_command_line_async("nmtui");
+      GLib.spawn_command_line_async("ghostty -e \"nmtui\"");
     } catch (error) {
       console.error("Erro ao abrir o nmtui:", error);
     }
