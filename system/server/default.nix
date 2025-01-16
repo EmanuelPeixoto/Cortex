@@ -3,7 +3,7 @@
     ../shared/avahi.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
-    ./acme.nix
+    # ./acme.nix
     ./apps.nix
     ./firewall.nix
     ./hardware-configuration.nix
@@ -11,7 +11,7 @@
     ./nextcloud.nix
     ./nginx.nix
     ./noip.nix
-    # ./nvidia.nix
+    ./nvidia.nix
     ./php.nix
     ./qbittorrent.nix
     ./ssh.nix
@@ -41,5 +41,5 @@
     vnstat.enable = true;
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }
