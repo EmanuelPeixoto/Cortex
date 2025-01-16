@@ -14,10 +14,9 @@ export default function Media() {
             <box
               className="Cover"
               valign={Gtk.Align.CENTER}
-              css={bind(player, "coverArt").as((cover) => `background-image: url('${cover}');`)}
             />
             <label
-              label={bind(player, "title").as(() => `${player.title || "Unknown"} - ${player.artist || "Unknown"}`)}
+              label={bind(player, "title").as(() => `${player.title || "Unknown"}`)}
             />
           </box>
         ) : (
