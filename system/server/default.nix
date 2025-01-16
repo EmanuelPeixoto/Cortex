@@ -9,15 +9,12 @@
     ./hardware-configuration.nix
     ./nextcloud.nix
     ./nginx.nix
-    ./noip.nix
     ./nvidia.nix
     ./php.nix
     ./ssh.nix
     ./swap.nix
     ./users.nix
   ];
-
-  services.nginx.enable = true;
 
   # Hostname
   networking.hostName = "NixOS-Server";
