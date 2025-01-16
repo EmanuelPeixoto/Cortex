@@ -7,17 +7,17 @@
     ./apps.nix
     ./firewall.nix
     ./hardware-configuration.nix
-    ./minecraft-server.nix
     ./nextcloud.nix
     ./nginx.nix
     ./noip.nix
     ./nvidia.nix
     ./php.nix
-    ./qbittorrent.nix
     ./ssh.nix
     ./swap.nix
     ./users.nix
   ];
+
+  services.nginx.enable = true;
 
   # Hostname
   networking.hostName = "NixOS-Server";
