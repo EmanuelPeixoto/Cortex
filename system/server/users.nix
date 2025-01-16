@@ -6,7 +6,7 @@
         # Set zsh to default shell
         shell = pkgs.zsh;
         isNormalUser = true;
-        description = "emanuel";
+        description = "Emanuel Peixoto";
         extraGroups = [ "networkmanager" "wheel" ];
       };
 

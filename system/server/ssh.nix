@@ -5,7 +5,7 @@
     settings = {
       X11Forwarding = false;
       PermitRootLogin = "no";
-      PasswordAuthentication = false;
+     # PasswordAuthentication = false;
     };
   };
 }
