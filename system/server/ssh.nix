@@ -3,9 +3,8 @@
     enable = true;
     ports = [ 44 ];
     settings = {
-      X11Forwarding = false;
       PermitRootLogin = "no";
-     # PasswordAuthentication = false;
+      PasswordAuthentication = false;
     };
   };
 }
