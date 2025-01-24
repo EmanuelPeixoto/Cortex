@@ -10,7 +10,7 @@
 
   home = {
     homeDirectory = "/home/emanuel";
-    stateVersion = "23.11";
+    stateVersion = "24.11";
     username = "emanuel";
 
     sessionVariables = {
@@ -24,6 +24,7 @@
       iftop                     # Display bandwidth usage on a network interface
       lazygit                   # Simple terminal UI for git commands
       lm_sensors                # Tools for reading hardware sensors
+      ncdu                      # Disk usage analyzer with an ncurses interface
       neofetch                  # Fast, highly customizable system info script
       nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
       pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
