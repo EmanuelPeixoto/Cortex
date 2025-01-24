@@ -12,7 +12,6 @@
     ./nvidia.nix
     ./php.nix
     ./ssh.nix
-    ./swap.nix
     ./users.nix
   ];
 
