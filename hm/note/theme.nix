@@ -9,19 +9,15 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
     iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "Dracula";
+      package = pkgs.dracula-icon-theme;
     };
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-
   };
+
   qt = {
     enable = true;
     platformTheme.name = "adwaita";
@@ -30,8 +26,8 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
-    size = 24;
+    name = "Dracula-cursors";
+    package = pkgs.dracula-theme;
+    size = 30;
   };
 }
