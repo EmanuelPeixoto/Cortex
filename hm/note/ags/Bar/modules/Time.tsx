@@ -1,7 +1,7 @@
 import { Variable, GLib } from "astal";
 
 export default function Time({ format = "%H:%M" }) {
-    const time = Variable("").poll(1000, () => ` ${GLib.DateTime.new_now_local().format(format) || ""}`);
+  const time = Variable("").poll(1000, () => GLib.DateTime.new_now_local().format(format) || "");
 
   const handleClick = () => {
     try {
@@ -11,5 +11,13 @@ export default function Time({ format = "%H:%M" }) {
     }
   };
 
-  return <button className="Time" onClicked={handleClick} onDestroy={() => time.drop()} label={time()} />;
+  return (
+    <button className="Time" onClicked={handleClick} onDestroy={() => time.drop()}>
+      <box orientation="horizontal" spacing={5}>
+        <icon icon="appointment-soon-symbolic" />
+        <label label={time()} />
+      </box>
+    </button>
+  );
 }
+
