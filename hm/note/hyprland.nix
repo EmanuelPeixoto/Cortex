@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   hyprland_exec = import ./scripts/hyprland_exec.nix { inherit config pkgs; };
   print = import ./scripts/print.nix { inherit pkgs; };
@@ -80,7 +80,7 @@ in
         "$mainMod, left, movefocus, l"
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod, return, exec, ${inputs.ghostty.packages.x86_64-linux.default}/bin/ghostty"
+        "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         ", XF86Calculator, exec, ${pkgs.qalculate-qt}/bin/qalculate-qt"
