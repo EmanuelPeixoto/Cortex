@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 {
   home.packages = [
-    inputs.ghostty.packages.x86_64-linux.default
+    pkgs.ghostty
   ];
 
   home.file.".config/ghostty/config".text = ''
