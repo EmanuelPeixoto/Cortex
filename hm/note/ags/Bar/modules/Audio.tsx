@@ -14,8 +14,7 @@ export default function Audio() {
     }
   };
 
-  const handleScroll = (event) => {
-    if (!speaker) return;
+  const handleScroll = (_, event) => {
     const step = 0.02;
     const direction = event.delta_y > 0 ? -step : step;
     const newVolume = speaker.volume + direction;
@@ -23,11 +22,11 @@ export default function Audio() {
   };
 
   return (
-    <button className="Audio" onClicked={handleClick} onScroll={handleScroll}>
-      <box>
+    <eventbox onScroll={handleScroll} onClick={handleClick}>
+      <box className="Audio">
         <icon icon={bind(speaker, "volumeIcon")} />
         <label label={bind(speaker, "volume").as((p) => `${Math.floor(p * 100)}%`)} />
       </box>
-    </button>
+    </eventbox>
   );
 }
