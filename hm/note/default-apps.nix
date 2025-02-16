@@ -16,9 +16,9 @@
       "text/plain" = "nvim.desktop";
       "video/mp4" = "vlc.desktop";
       "video/x-matroska" = "vlc.desktop";
-      "x-scheme-handler/chrome" = "userapp-Zen Twilight-IXMMZ2.desktop";
-      "x-scheme-handler/http" = "userapp-Zen Twilight-IXMMZ2.desktop";
-      "x-scheme-handler/https" = "userapp-Zen Twilight-IXMMZ2.desktop";
+      "x-scheme-handler/chrome" = "userapp-Zen-TSS212.desktop";
+      "x-scheme-handler/http" = "userapp-Zen-TSS212.desktop";
+      "x-scheme-handler/https" = "userapp-Zen-TSS212.desktop";
       "x-scheme-handler/magnet" = "qbittorrent.desktop";
       "x-scheme-handler/mailto" = "userapp-Thunderbird-PO8FT2.desktop";
     };
