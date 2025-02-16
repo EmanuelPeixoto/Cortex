@@ -18,6 +18,7 @@ let
     ags.network
     ags.tray
     ags.wireplumber
+    pkgs.pwvucontrol
   ];
 in
   {
@@ -30,9 +31,6 @@ in
     package = ags.agsFull.overrideAttrs {
       postFixup = ''wrapProgram $out/bin/ags --prefix PATH : ${lib.makeBinPath deps}'';
     };
-    extraPackages = deps ++ [
-      pkgs.pwvucontrol
-    ];
   };
 
   home.file."${config.home.homeDirectory}/.config/Cortex/hm/note/ags/Bar/Variables.scss".text = generateScss;
