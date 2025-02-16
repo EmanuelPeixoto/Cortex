@@ -4,10 +4,10 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 ## Note Autopsy
 
-- **Model:** Lenovo IdeaPad 3
+- **Model:** Lenovo ThinkPad T14 Gen 1
 - **CPU:** Ryzen 5 5500U
 - **GPU:** AMD Radeon Graphics
-- **RAM:** 12GB DDR4
+- **RAM:** 16GB DDR4
 - **Disc:** SSD M.2 1TB Netac NV7000
 - **Graphical Interface:** Hyprland
 
