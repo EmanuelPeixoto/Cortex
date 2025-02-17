@@ -14,6 +14,7 @@
     ./hotspot.nix
     ./keyring.nix
     ./ly.nix
+    ./nginx.nix
     ./plymouth.nix
     ./postgres.nix
     ./sound.nix
