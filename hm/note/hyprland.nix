@@ -102,7 +102,7 @@ in
         ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
         "SHIFT, XF86AudioLowerVolume, exec, ${pkgs.playerctl}/bin/playerctl previous"
-        "SHIFT, XF86AudioMicMute, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        "SHIFT, XF86AudioMute, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         "SHIFT, XF86AudioRaiseVolume, exec, ${pkgs.playerctl}/bin/playerctl next"
       ];
 
