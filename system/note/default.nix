@@ -8,6 +8,7 @@
     ./apps.nix
     ./battery.nix
     ./firewall.nix
+    ./finger-print.nix
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
