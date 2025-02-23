@@ -9,10 +9,11 @@
   ];
 
   boot = {
-    extraModulePackages = [ ];
+    extraModulePackages = [ config.boot.kernelPackages.zenpower ];
     initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "xhci_pci_renesas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
     initrd.kernelModules = [ "amdgpu" ];
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "zenpower" ];
+    blacklistedKernelModules = [ "k10temp" ];
   };
 
   fileSystems."/" = {
