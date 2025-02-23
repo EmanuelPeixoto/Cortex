@@ -16,9 +16,6 @@
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
       USB_AUTOSUSPEND = 0;
-
-      START_CHARGE_THRESH_BAT0 = 0;
-      STOP_CHARGE_THRESH_BAT0 = 0;
     };
   };
 }
