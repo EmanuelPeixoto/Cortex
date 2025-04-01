@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+  ];
   services.nextcloud = {
     enable = true;
     https = true;
     hostName = "epeixoto.ddns.net";
-    package = pkgs.nextcloud30;
+    package = pkgs.nextcloud31;
     maxUploadSize = "10240M";
 
     poolSettings = {
@@ -29,5 +31,6 @@
       adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
       dbtype = "sqlite";
     };
+    phpExtraExtensions = all: [ all.pdlib ];
   };
 }
