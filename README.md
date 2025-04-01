@@ -13,9 +13,9 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 
 ## Server Autopsy
 
-- **CPU:** Intel Xeon E5450
+- **CPU:** Intel Xeon E-2660 v3
 - **GPU:** Zotac GT 1030
-- **RAM:** 8GB DDR3
+- **RAM:** 32GB DDR4
 - **Disc:** SSD SATA 512GB Weijinto
 
 ## RPI3 Autopsy
