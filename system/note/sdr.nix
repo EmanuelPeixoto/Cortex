@@ -9,9 +9,9 @@
     cubicsdr
     gpredict # opcional, para rastreamento de satélites
     noaa-apt # para NOAA
+    inputs.dsdfme.packages."x86_64-linux".default
   ];
 
   users.users.emanuel.extraGroups = [ "plugdev" ];
 
-  inputs.dsdfme.packages."x86_64-linux".default
 }
