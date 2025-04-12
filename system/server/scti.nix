@@ -18,6 +18,8 @@
 
   virtualisation.docker.enable = true;
 
+  users.users.emanuel.extraGroups = [ "docker" ];
+
   users = {
     users = {
       scti = {
