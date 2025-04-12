@@ -3,6 +3,7 @@
 
   inputs = {
     ags.url = "github:aylur/ags";
+    dsdfme.url = "github:lwvmobile/dsd-fme";
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nix-colors.url = "github:misterio77/nix-colors";
