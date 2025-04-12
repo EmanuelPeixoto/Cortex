@@ -17,6 +17,7 @@
     ./nginx.nix
     ./plymouth.nix
     ./postgres.nix
+    ./sdr.nix
     ./sound.nix
     ./steam.nix
     ./temp.nix
