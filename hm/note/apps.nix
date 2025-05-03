@@ -20,7 +20,6 @@
     gnumake                   # Tool to control the generation of non-source files from sources
     gparted                   # Graphical disk partitioning tool
     iftop                     # Display bandwidth usage on a network interface
-    jdk                       # Open-source Java Development Kit
     jmtpfs                    # FUSE filesystem for MTP devices like Android phones
     killall                   # No description :/
     lazygit                   # Simple terminal UI for git commands

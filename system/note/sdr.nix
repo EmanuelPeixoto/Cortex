@@ -3,15 +3,23 @@
   hardware.rtl-sdr.enable = true;
 
   environment.systemPackages = with pkgs; [
-    sox
-    gnuradio
-    gqrx
     cubicsdr
-    gpredict # opcional, para rastreamento de satélites
-    noaa-apt # para NOAA
+    gnuradio
+    gpredict
+    gqrx
+    noaa-apt
+    qemu
+    sdrpp
+    sox
     inputs.dsdfme.packages."x86_64-linux".default
   ];
 
-  users.users.emanuel.extraGroups = [ "plugdev" ];
+  programs.java = {
+    enable = true;
+    package = pkgs.openjdk23.override { enableJavaFX = true; };
+  };
 
+  boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" ];
+
+  users.users.emanuel.extraGroups = [ "plugdev" ];
 }
