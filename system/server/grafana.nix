@@ -53,8 +53,7 @@
         server = {
           http_port = 3000;
           http_addr = "0.0.0.0";
-          domain = "${config.services.nextcloud.hostName}";
-          root_url = "%(protocol)s://%(domain)s/grafana";
+          root_url = "https://${config.services.nextcloud.hostName}/grafana";
           serve_from_sub_path = true;
         };
         paths = {
