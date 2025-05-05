@@ -100,20 +100,6 @@
           "/grafana/" = {
             proxyPass = "http://127.0.0.1:3000/";
             proxyWebsockets = true;
-            extraConfig = ''
-              proxy_set_header Host $http_host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-              
-              # Desabilita cache do navegador
-              add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
-              expires off;
-              
-              # Preservar trailing slash ao fazer proxy
-              proxy_redirect /login /grafana/login;
-              proxy_redirect / /grafana/;
-            '';
           };
 
           "/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
