@@ -4,13 +4,30 @@
     enable = true;
     group = "www";
 
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
     commonHttpConfig = ''
-      proxy_max_temp_file_size 0;
-      proxy_buffering off;
-      server_names_hash_bucket_size 256;
-      log_format custom [$time_local] IP: $remote_addr\nSite: $http_referer\nPedido: $request\nAcessado por: $http_user_agent\n;
-      access_log /var/log/nginx/access.log custom;
+      # Segurança
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+      # Performance
+      aio threads;
+      keepalive_requests 1000;
+
+      # Limites
+      client_body_buffer_size 128k;
+      client_header_buffer_size 4k;
+      large_client_header_buffers 4 16k;
+
+      # Logs
+      access_log /var/log/nginx/access.log;
       error_log /var/log/nginx/error.log;
+
       charset UTF-8;
     '';
 
@@ -24,7 +41,6 @@
         root = "/var/www/";
 
         extraConfig = ''
-          access_log off;
           autoindex on;
           autoindex_exact_size off;
           autoindex_localtime on;
@@ -77,9 +93,22 @@
             root = "/var/www/";
             index = "index.html index.php";
             extraConfig = ''
-              access_log /var/log/nginx/gabriela.log custom;
               location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.one.socket}; }
             '';
+          };
+
+          "/grafana/" = {
+            proxyPass = "http://127.0.0.1:3000/";
+            proxyWebsockets = true;
+            # extraConfig = ''
+            #   proxy_set_header Host $host;
+            #   proxy_set_header X-Real-IP $remote_addr;
+            #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            #   proxy_set_header X-Forwarded-Proto $scheme;
+            #   sub_filter 'href="/' 'href="/grafana/';
+            #   sub_filter 'src="/' 'src="/grafana/';
+            #   sub_filter_once off;
+            # '';
           };
 
           "/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
@@ -87,4 +116,6 @@
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [ 80 88 443 ];
 }
