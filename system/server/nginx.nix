@@ -101,18 +101,18 @@
             proxyPass = "http://127.0.0.1:3000/";
             proxyWebsockets = true;
             extraConfig = ''
-              proxy_set_header Host $host;
+              proxy_set_header Host $http_host;
               proxy_set_header X-Real-IP $remote_addr;
               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
               proxy_set_header X-Forwarded-Proto $scheme;
-              proxy_set_header X-Forwarded-Host $host;
-              proxy_set_header X-Forwarded-Server $host;
-              proxy_redirect off;
-              sub_filter_types text/css text/javascript application/javascript application/json;
-              sub_filter 'href="/' 'href="/grafana/';
-              sub_filter 'src="/' 'src="/grafana/';
-              sub_filter '"url":"/' '"url":"/grafana/';
-              sub_filter_once off;
+              
+              # Desabilita cache do navegador
+              add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
+              expires off;
+              
+              # Preservar trailing slash ao fazer proxy
+              proxy_redirect /login /grafana/login;
+              proxy_redirect / /grafana/;
             '';
           };
 

@@ -53,11 +53,23 @@
         server = {
           http_port = 3000;
           http_addr = "0.0.0.0";
-          root_url = "https://${config.services.nextcloud.hostName}/grafana";
+          domain = "${config.services.nextcloud.hostName}";
+          root_url = "%(protocol)s://%(domain)s/grafana";
           serve_from_sub_path = true;
         };
+        paths = {
+          data = "/var/lib/grafana";
+          logs = "/var/log/grafana";
+          plugins = "/var/lib/grafana/plugins";
+          provisioning = "/var/lib/grafana/provisioning";
+        };
+        analytics.reporting_enabled = false;
         security.admin_user = "admin";
         security.admin_password = "admin";
+        log = {
+          mode = "console file";
+          level = "debug";
+        };
       };
     };
 
