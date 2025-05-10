@@ -8,7 +8,7 @@ in
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initExtra = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
+    initContent = "${pkgs.zsh}/bin/zsh ${motd}/bin/motd";
 
     shellAliases = {
       catfolder = "find . -type f -exec echo \"=== {} ===\" \\; -exec cat {} \\;";
