@@ -24,7 +24,6 @@
     killall                   # No description :/
     lazygit                   # Simple terminal UI for git commands
     libmtp                    # Implementation of Microsoft's Media Transfer Protocol
-    libreoffice               # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
