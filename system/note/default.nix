@@ -22,6 +22,7 @@
     ./steam.nix
     ./temp.nix
     ./users.nix
+    ./xserver.nix
   ];
 
   # Hostname
