@@ -50,7 +50,7 @@
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
     usbutils                  # Tools for working with USB devices, such as lsusb
-    ventoy                    # New Bootable USB Solution
+    # ventoy                    # New Bootable USB Solution
     vlc                       # Cross-platform media player and streaming server
     wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP
     wl-clipboard              # Command-line copy/paste utilities for Wayland

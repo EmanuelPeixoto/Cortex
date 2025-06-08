@@ -5,6 +5,7 @@
     ../shared/locale.nix
     ./acme.nix
     ./apps.nix
+    ./docker.nix
     ./firewall.nix
     ./grafana.nix
     ./hardware-configuration.nix
@@ -12,7 +13,6 @@
     ./nginx.nix
     ./nvidia.nix
     ./php.nix
-    ./scti.nix
     ./ssh.nix
     ./users.nix
   ];
