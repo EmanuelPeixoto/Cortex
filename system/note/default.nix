@@ -7,6 +7,7 @@
     ../shared/wireshark.nix
     ./apps.nix
     ./battery.nix
+    ./docker.nix
     ./firewall.nix
     ./finger-print.nix
     ./font.nix
