@@ -9,11 +9,10 @@
   ];
 
   boot = {
-    extraModulePackages = [ config.boot.kernelPackages.zenpower ];
-    initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "xhci_pci_renesas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-    initrd.kernelModules = [ "amdgpu" ];
-    kernelModules = [ "kvm-amd" "zenpower" ];
-    blacklistedKernelModules = [ "k10temp" ];
+    extraModulePackages = [ ];
+    initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ "kvm-intel" ];
   };
 
   fileSystems."/" = {
@@ -36,10 +35,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp2s0f0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp8s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp9s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

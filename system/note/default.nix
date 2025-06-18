@@ -9,13 +9,13 @@
     ./battery.nix
     ./docker.nix
     ./firewall.nix
-    ./finger-print.nix
     ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
     ./keyring.nix
     ./ly.nix
     ./nginx.nix
+    ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
     ./sdr.nix

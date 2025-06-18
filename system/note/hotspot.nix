@@ -3,7 +3,7 @@
     enable = false;
     settings = {
       INTERNET_IFACE = "lo";
-      WIFI_IFACE = "wlp1s0";
+      WIFI_IFACE = "wlp9s0";
       SSID = "";
       PASSPHRASE = "";
       };
