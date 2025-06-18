@@ -26,7 +26,7 @@ pkgs.writeShellScriptBin "wallpaper" ''
   ${pkgs.swww}/bin/swww img "$WALLPAPER" \
     --transition-step 90 \
     --transition-type outer \
-    --transition-pos 1.1,0.5
+    --transition-pos 1.0,0.5
 
   # Saves the new index
   echo "$NEXT_INDEX" > "$INDEX_FILE"

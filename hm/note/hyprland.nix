@@ -54,6 +54,7 @@ in
         "$mainMod SHIFT, E, exit,"
         "$mainMod SHIFT, M, movetoworkspace, special:magic"
         "$mainMod SHIFT, Q, killactive,"
+        "$mainMod SHIFT, S, exec, ${print_selection}/bin/print_selection"
         "$mainMod SHIFT, down, movewindow, d"
         "$mainMod SHIFT, left, movewindow, l"
         "$mainMod SHIFT, right, movewindow, r"
@@ -82,6 +83,7 @@ in
         "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
+        ", XF86Calculator, exec, ${pkgs.qalculate-qt}/bin/qalculate-qt"
         ", XF86Favorites, exec, ${wallpaper}/bin/wallpaper"
         ", XF86SelectiveScreenshot, exec, ${print_selection}/bin/print_selection"
         ", print, exec, ${print}/bin/print"
@@ -98,12 +100,13 @@ in
         ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25"
         ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SOURCE@ toggle"
         ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle"
+        ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+        ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+        ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop"
         ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02+ -l 1.25"
         ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
-        "SHIFT, XF86AudioLowerVolume, exec, ${pkgs.playerctl}/bin/playerctl previous"
-        "SHIFT, XF86AudioMute, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        "SHIFT, XF86AudioRaiseVolume, exec, ${pkgs.playerctl}/bin/playerctl next"
       ];
 
       exec-once = "${hyprland_exec}/bin/hyprland_exec";
