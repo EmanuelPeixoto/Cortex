@@ -14,5 +14,5 @@
 
   users.users.emanuel.extraGroups = [ "docker" ];
 
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [];
 }
