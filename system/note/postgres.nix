@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.postgresql = {
-    enable = false;
+    enable = true;
     enableTCPIP = true;
     authentication = pkgs.lib.mkOverride 10 ''
       #type database DBuser auth-method

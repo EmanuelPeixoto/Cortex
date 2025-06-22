@@ -14,7 +14,6 @@
     ./hotspot.nix
     ./keyring.nix
     ./ly.nix
-    ./nginx.nix
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
@@ -23,6 +22,7 @@
     ./steam.nix
     ./temp.nix
     ./users.nix
+    ./webserver.nix
     ./xserver.nix
   ];
 
