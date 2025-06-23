@@ -12,7 +12,7 @@
       border = "#000000";
       font = "#FFFFFF";
       idle = "#828282";
-      main = "#D60202";
+      main = "#0202D6";
     };
   };
 }
