@@ -1,13 +1,13 @@
 { config, inputs, lib, pkgs, ... }:
 let
-  colors = config.colorScheme.palette;
+  colors = config.lib.stylix.colors;
 
   generateScss = ''
-    // Colors generated from nix-colors
-    $bg: #${colors.background};
-    $border: #${colors.border};
-    $text: #${colors.font};
-    $main: #${colors.main};
+    // Colors generated from stylix
+    $bg: #${colors.base00};
+    $border: #${colors.base02};
+    $text: #${colors.base05};
+    $main: #${colors.base0D};
   '';
 
   ags = inputs.ags.packages.${pkgs.system};
