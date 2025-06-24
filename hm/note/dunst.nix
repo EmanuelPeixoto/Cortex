@@ -50,13 +50,8 @@
 
         # Aesthetics
         frame_width = 2;
-        separator_color = "frame";
         transparency = 30;
         corner_radius = 10;
-        highlight = "#${config.colorScheme.palette.font}";
-        background = "#${config.colorScheme.palette.background}";
-        frame_color = "#${config.colorScheme.palette.main}";
-        foreground = "#${config.colorScheme.palette.font}";
 
         line_height = 1;
         idle_threshold = 120;
