@@ -18,10 +18,9 @@
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
-    ./nix-colors.nix
     ./nix-index.nix
+    ./stylix.nix
     ./swww.nix
-    ./theme.nix
     ./zen-browser.nix
   ];
 

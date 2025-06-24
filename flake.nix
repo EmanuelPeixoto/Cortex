@@ -6,9 +6,9 @@
     dsdfme.url = "github:lwvmobile/dsd-fme";
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
-    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    stylix.url = "github:danth/stylix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 

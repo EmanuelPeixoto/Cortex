@@ -1,12 +1,10 @@
-{ pkgs, ... }:
 {
-  home.packages = [
-    pkgs.ghostty
-  ];
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
 
-  home.file.".config/ghostty/config".text = ''
-    theme = "Builtin Dark"
-    focus-follows-mouse = true
-    font-family = "MesloLGS Nerd Font"
-  '';
+    settings = {
+      focus-follows-mouse = true;
+    };
+  };
 }
