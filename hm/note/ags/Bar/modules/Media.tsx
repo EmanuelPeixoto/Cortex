@@ -15,9 +15,11 @@ export default function Media() {
               className="Cover"
               valign={Gtk.Align.CENTER}
             />
-            <label
-              label={bind(player, "title").as(() => `${player.title || "Unknown"}`)}
-            />
+              <label
+                    label={bind(players[0], "metadata").as(() =>
+                        `${players[0].artist} - ${players[0].title}`
+                    )}
+                />
           </box>
         ) : (
             "Nothing Playing"
