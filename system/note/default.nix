@@ -23,7 +23,6 @@
     ./temp.nix
     ./users.nix
     ./webserver.nix
-    ./xserver.nix
   ];
 
   # Hostname

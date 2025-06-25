@@ -19,7 +19,7 @@ in {
   boot = {
     extraModprobeConfig = "options nvidia-drm modeset=1";
     initrd.kernelModules = [ "nvidia_modeset" ];
-    #blacklistedKernelModules = [ "nouveau" ];
+    blacklistedKernelModules = [ "nouveau" ];
   };
 
   systemd.services.systemd-udev-trigger.restartIfChanged = false;
@@ -42,7 +42,7 @@ in {
         finegrained = true;
       };
 
-      open = true;
+      open = false;
 
       nvidiaSettings = true;
 
