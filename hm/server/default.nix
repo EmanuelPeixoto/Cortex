@@ -30,6 +30,7 @@
       pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
       progress                  # Tool that shows the progress of coreutils programs
       speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
+      tmux                      # Terminal multiplexer
       unzip                     # Extraction utility for archives compressed in .zip format
       ventoy                    # New Bootable USB Solution
       wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP

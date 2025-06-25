@@ -46,6 +46,7 @@
     telegram-desktop          # Telegram Desktop messaging app
     texliveFull               # TeX Live environment
     thunderbird               # Full-featured e-mail client
+    tmux                      # Terminal multiplexer
     tor                       # Anonymizing overlay network
     tor-browser               # Privacy-focused browser routing traffic through the Tor network
     unrar                     # Utility for RAR archives
