@@ -13,8 +13,6 @@
     enable = true;
     targets.qt.enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/colors.yaml";
     polarity = "dark";
 
     fonts = {
