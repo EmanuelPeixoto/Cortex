@@ -33,7 +33,7 @@ in
     };
   };
 
-  home.file."${config.home.homeDirectory}/.config/Cortex/hm/note/ags/Bar/Variables.scss".text = generateScss;
+  home.file."${config.home.homeDirectory}/.config/ags_variables.scss".text = generateScss;
 
   systemd.user.services.ags-bar = {
     Unit = {
