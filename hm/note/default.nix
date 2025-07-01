@@ -19,6 +19,7 @@
     ./mpd.nix
     ./nextcloud-client.nix
     ./nix-index.nix
+    ./obs.nix
     ./stylix.nix
     ./swww.nix
     ./zen-browser.nix

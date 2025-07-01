@@ -34,7 +34,6 @@
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
-    obs-studio                # Free and open source software for video recording and live streaming
     openshot-qt               # Free, open-source video editor
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
     prismlauncher             # Free, open source launcher for Minecraft
