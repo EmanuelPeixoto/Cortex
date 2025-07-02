@@ -2,8 +2,11 @@
 {
   imports = [
     ../shared/btop.nix
+    ../shared/fastfetch.nix
     ../shared/git.nix
     ../shared/lexis.nix
+    ../shared/nix-index.nix
+    ../shared/tmux.nix
     ../shared/yazi.nix
     ../shared/zsh.nix
   ];
@@ -25,12 +28,10 @@
       lazygit                   # Simple terminal UI for git commands
       lm_sensors                # Tools for reading hardware sensors
       ncdu                      # Disk usage analyzer with an ncurses interface
-      neofetch                  # Fast, highly customizable system info script
       nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
       pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
       progress                  # Tool that shows the progress of coreutils programs
       speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
-      tmux                      # Terminal multiplexer
       unzip                     # Extraction utility for archives compressed in .zip format
       ventoy                    # New Bootable USB Solution
       wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP

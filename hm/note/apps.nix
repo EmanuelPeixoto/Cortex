@@ -29,7 +29,6 @@
     lshw                      # Provide detailed information on the hardware configuration of the machine
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
     ncdu                      # Disk usage analyzer with an ncurses interface
-    neofetch                  # Fast, highly customizable system info script
     netcat                    # Free TLS/SSL implementation
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
@@ -45,7 +44,6 @@
     telegram-desktop          # Telegram Desktop messaging app
     texliveFull               # TeX Live environment
     thunderbird               # Full-featured e-mail client
-    tmux                      # Terminal multiplexer
     tor                       # Anonymizing overlay network
     tor-browser               # Privacy-focused browser routing traffic through the Tor network
     unrar                     # Utility for RAR archives
