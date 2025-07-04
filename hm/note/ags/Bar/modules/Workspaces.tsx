@@ -1,23 +1,27 @@
-import { bind } from "astal";
+import { For, createBinding } from "ags"
 import Hyprland from "gi://AstalHyprland";
 
 export default function Workspaces() {
   const hypr = Hyprland.get_default();
 
+  const sortedWorkspaces = createBinding(hypr, "workspaces", (wss) =>
+    [...wss].sort((a, b) => a.id - b.id)
+  );
+
+  const focused = createBinding(hypr, "focusedWorkspace");
+
   return (
-    <box className="Workspaces">
-      {bind(hypr, "workspaces").as((wss) =>
-        wss
-        .sort((a, b) => a.id - b.id)
-        .map((ws) => (
+    <box>
+      <For each={sortedWorkspaces}>
+        {(ws) => (
           <button
-            className={bind(hypr, "focusedWorkspace").as((fw) => (ws === fw ? "focused" : ""))}
+            class={focused.as((fw) => (fw === ws ? "focused" : ""))}
             onClicked={() => ws.focus()}
           >
-            {ws.id}
+            {`${ws.id}`}
           </button>
-        ))
-      )}
+        )}
+      </For>
     </box>
   );
 }

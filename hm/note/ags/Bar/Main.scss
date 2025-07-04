@@ -1,20 +1,20 @@
-@use "sass:color";
-@use "/home/emanuel/.config/ags_variables.scss" as *;
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$fg-color: #{"@theme_bg_color"};
+$bg-color: #{"@theme_fg_color"};
 
-@use "./scss/Audio.scss";
-@use "./scss/BatteryLevel.scss";
-@use "./scss/Media.scss";
-@use "./scss/SysTray.scss";
-@use "./scss/Time.scss";
-@use "./scss/Wifi.scss";
-@use "./scss/Workspaces.scss";
+window#bar {
+  background: transparent;
+  color: $fg-color;
+  font-weight: bold;
 
-* {
-  all: unset;
-}
+  > box {
+    background: $bg-color;
+  }
 
-window.Bar {
-  background-color: $bg;
-  color: $text;
-  font-size: 14px;
+  button {
+    border-radius: 8px;
+    margin: 2px;
+    min-height: 0;
+    padding: 4px 8px;
+  }
 }
