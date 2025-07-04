@@ -17,6 +17,7 @@
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./keepassxc.nix
     ./keyring.nix
     ./minecraft-overlay.nix
     ./mpd.nix
