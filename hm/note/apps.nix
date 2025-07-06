@@ -11,7 +11,6 @@
     exfatprogs                # exFAT filesystem userspace utilities
     f3                        # Fight Flash Fraud
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
-    firefox                   # Web browser built from Firefox source tree
     gcc                       # GNU Compiler Collection
     gdb                       # GNU Project debugger
     gh                        # GitHub CLI tool

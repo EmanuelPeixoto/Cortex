@@ -12,6 +12,7 @@
     ./apps.nix
     ./default-apps.nix
     ./dunst.nix
+    ./firefox.nix
     ./ghostty.nix
     ./go.nix
     ./hypridle.nix
@@ -35,7 +36,7 @@
 
     sessionVariables = {
       EDITOR = "nvim";
-      BROWSER = "zen";
+      BROWSER = "firefox";
       TERMINAL = "ghostty";
     };
   };
