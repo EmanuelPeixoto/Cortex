@@ -4,21 +4,32 @@ import Hyprland from "gi://AstalHyprland";
 export default function Workspaces() {
   const hypr = Hyprland.get_default();
 
-  const sortedWorkspaces = createBinding(hypr, "workspaces", (wss) =>
-    [...wss].sort((a, b) => a.id - b.id)
-  );
+  let lastWorkspaceIds = "";
+  const workspaces = createBinding(hypr, "workspaces").as(wss => {
+    if (!wss?.length) return [];
+    const currentIds = wss.map(ws => ws.id).sort((a, b) => a - b).join(",");
+    if (currentIds === lastWorkspaceIds) {
+      return wss.filter(ws => ws.id > 0).sort((a, b) => a.id - b.id);
+    }
+
+    lastWorkspaceIds = currentIds;
+
+    return wss
+      .filter(ws => ws.id > 0)
+      .sort((a, b) => a.id - b.id);
+  });
 
   const focused = createBinding(hypr, "focusedWorkspace");
 
   return (
-    <box>
-      <For each={sortedWorkspaces}>
+    <box class="Workspaces">
+      <For each={workspaces}>
         {(ws) => (
           <button
-            class={focused.as((fw) => (fw === ws ? "focused" : ""))}
+            class={focused.as(fw => fw === ws ? "focused" : "")}
             onClicked={() => ws.focus()}
           >
-            {`${ws.id}`}
+            {ws.id}
           </button>
         )}
       </For>
