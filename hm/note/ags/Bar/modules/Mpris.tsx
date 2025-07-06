@@ -1,7 +1,7 @@
 import Gtk from "gi://Gtk?version=4.0"
 import AstalMpris from "gi://AstalMpris"
 import AstalApps from "gi://AstalApps"
-import { For, createBinding } from "ags"
+import { For, createBinding, With } from "ags"
 
 export default function Mpris() {
   const mpris = AstalMpris.get_default()
@@ -11,12 +11,14 @@ export default function Mpris() {
   return (
     <menubutton>
       <box>
-        <For each={players}>
-          {(player) => {
+        <With value={players}>
+          {(players) => {
+            if (players.length === 0) return null
+            const player = players[0]
             const [app] = apps.exact_query(player.entry)
-            return <image visible={!!app.iconName} iconName={app?.iconName} />
+            return <image iconName={app?.iconName || "audio-x-generic-symbolic"} />
           }}
-        </For>
+        </With>
       </box>
       <popover>
         <box spacing={4} orientation={Gtk.Orientation.VERTICAL}>
