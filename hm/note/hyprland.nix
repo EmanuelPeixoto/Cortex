@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 let
-  hyprland_exec = import ./scripts/hyprland_exec.nix { inherit config pkgs; };
+  hyprland-exec = import ./scripts/hyprland-exec.nix { inherit config pkgs; };
   print = import ./scripts/print.nix { inherit pkgs; };
-  print_selection = import ./scripts/print_selection.nix { inherit pkgs; };
+  print-selection = import ./scripts/print-selection.nix { inherit pkgs; };
   wallpaper = import ./scripts/wallpaper.nix { inherit config pkgs; };
+  monitor-mode = import ./scripts/monitor-mode.nix { inherit pkgs; };
 in
 {
   wayland.windowManager.hyprland = {
@@ -39,6 +40,7 @@ in
       "$mainMod" = "SUPER";
 
       bind = [
+        "$mainMod, P, exec, ${monitor-mode}/bin/monitor-mode"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
@@ -52,7 +54,7 @@ in
         "$mainMod SHIFT, E, exit,"
         "$mainMod SHIFT, M, movetoworkspace, special:magic"
         "$mainMod SHIFT, Q, killactive,"
-        "$mainMod SHIFT, S, exec, ${print_selection}/bin/print_selection"
+        "$mainMod SHIFT, S, exec, ${print-selection}/bin/print-selection"
         "$mainMod SHIFT, down, movewindow, d"
         "$mainMod SHIFT, left, movewindow, l"
         "$mainMod SHIFT, right, movewindow, r"
@@ -83,7 +85,7 @@ in
         "$mainMod, up, movefocus, u"
         ", XF86Calculator, exec, ${pkgs.qalculate-qt}/bin/qalculate-qt"
         ", XF86Favorites, exec, ${wallpaper}/bin/wallpaper"
-        ", XF86SelectiveScreenshot, exec, ${print_selection}/bin/print_selection"
+        ", XF86SelectiveScreenshot, exec, ${print-selection}/bin/print-selection"
         ", print, exec, ${print}/bin/print"
       ];
 
@@ -107,7 +109,7 @@ in
         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
       ];
 
-      exec-once = "${hyprland_exec}/bin/hyprland_exec";
+      exec-once = "${hyprland-exec}/bin/hyprland-exec";
     };
   };
 }
