@@ -1,6 +1,11 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
-  home.packages = [
-    inputs.zen-browser.packages."x86_64-linux".default
+  imports = [
+    inputs.zen-browser.homeModules.default
   ];
+
+  programs.zen-browser = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.keepassxc ];
+  };
 }
