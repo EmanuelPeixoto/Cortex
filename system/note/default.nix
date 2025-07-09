@@ -9,7 +9,6 @@
     ./battery.nix
     ./docker.nix
     ./firewall.nix
-    ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
     ./keyring.nix
