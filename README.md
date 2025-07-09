@@ -33,6 +33,6 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 
 ## TO DO LIST (in Portuguese)
 
-- informações do wi-fi ao colocar o mouse sobre (ags)
-- Usar applets do ags para janelas em vez de consoles para nmtui, cal, etc
-- tamanho das janelas nmtui, cal, etc (hyprland)
+- conectar em wi-fi novo pelo menu(ags)
+- suporte multi-tela (ags)
+- app launcher e notificação pelo ags
