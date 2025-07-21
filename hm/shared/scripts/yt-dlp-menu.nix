@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "yt-dlp" ''
+pkgs.writeShellScriptBin "yt-dlp-menu" ''
   # Configuration
   DOWNLOAD_DIR="./Downloads"
   BATCH_FILE="./batch_links.txt"

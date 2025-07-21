@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 pkgs.writeShellScriptBin "monitor-mode" ''
   h(){ ${pkgs.hyprland}/bin/hyprctl "$@" 2>/dev/null;}
 
