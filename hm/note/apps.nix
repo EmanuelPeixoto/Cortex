@@ -37,7 +37,7 @@
     nomacs                    # Qt-based image viewer
     openshot-qt               # Free, open-source video editor
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
-    prismlauncher             # Free, open source launcher for Minecraft
+    stable.prismlauncher      # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer
