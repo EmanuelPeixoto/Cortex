@@ -39,6 +39,7 @@
       nixosConfigurations = {
         NixOS-Note = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          pkgs = mkPkgs "x86_64-linux";
           modules = [
             ./system/note
             home-manager.nixosModules.home-manager
@@ -48,6 +49,7 @@
 
         NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          pkgs = mkPkgs "x86_64-linux";
           modules = [
             ./system/note/iso.nix
             home-manager.nixosModules.home-manager
@@ -65,6 +67,7 @@
 
         NixOS-Server = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          pkgs = mkPkgs "x86_64-linux";
           modules = [
             ./system/server
             home-manager.nixosModules.home-manager
