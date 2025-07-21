@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     fish                      # Smart and user-friendly command line shell
     git                       # Distributed version control system
