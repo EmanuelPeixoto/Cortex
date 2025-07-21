@@ -2,13 +2,12 @@
   description = "My NixOS flake";
 
   inputs = {
-    ags.url = "github:aylur/ags";
-    astal.url = "github:aylur/astal";
     dsdfme.url = "github:lwvmobile/dsd-fme";
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     stylix.url = "github:danth/stylix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
