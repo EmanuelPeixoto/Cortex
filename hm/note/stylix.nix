@@ -9,6 +9,7 @@
   stylix = {
     enable = true;
     targets.qt.enable = true;
+    targets.zen-browser.profileNames = [ "default" ];
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     polarity = "dark";
