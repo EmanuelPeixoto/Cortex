@@ -1,6 +1,17 @@
 { pkgs, ... }:
+let
+  catfolder = import ../shared/scripts/catfolder.nix { inherit pkgs; };
+  hotspot = import ./scripts/hotspot.nix { inherit pkgs; };
+  motd = import ../shared/scripts/motd.nix { inherit pkgs; };
+  yt-tlp-menu = import ../shared/scripts/yt-dlp-menu.nix { inherit pkgs; };
+in
 {
   home.packages = with pkgs; [
+    catfolder
+    hotspot
+    motd
+    yt-tlp-menu
+
     aircrack-ng               # Wireless encryption cracking tools
     android-tools             # Android SDK platform tools
     arduino-ide               # Open-source electronics prototyping platform

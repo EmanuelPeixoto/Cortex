@@ -1,4 +1,9 @@
 { pkgs, ... }:
+let
+  catfolder = import ../shared/scripts/catfolder.nix { inherit pkgs; };
+  motd = import ../shared/scripts/motd.nix { inherit pkgs; };
+  yt-tlp-menu = import ../shared/scripts/yt-dlp-menu.nix { inherit pkgs; };
+in
 {
   imports = [
     ../shared/btop.nix
@@ -21,6 +26,10 @@
     };
 
     packages = with pkgs; [
+      catfolder
+      motd
+      yt-tlp-menu
+
       curl                      # Command line tool for transferring files with URL syntax
       ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
       gcc                       # GNU Compiler Collection
