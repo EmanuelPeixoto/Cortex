@@ -1,46 +1,27 @@
-{ config, lib, ... }:
+{ config, pkgs, ...}:
 {
-  # Tell Xorg to use the nvidia driver
-  services.xserver.videoDrivers = ["nvidia"];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "nvidia-x11"
-    "nvidia-settings"
+  environment.systemPackages = [
+    pkgs.glxinfo
   ];
 
-  # Make sure opengl is enabled
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  boot = {
+    extraModprobeConfig = "options nvidia-drm modeset=1";
+    initrd.kernelModules = [ "nvidia_modeset" ];
+    blacklistedKernelModules = [ "nouveau" ];
   };
 
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  hardware = {
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  hardware.nvidia = {
+      modesetting.enable = true;
 
-    # Modesetting is needed for most wayland compositors
-    modesetting.enable = true;
+      open = false;
 
-    # Enable the nvidia settings menu
-    nvidiaSettings = true;
-
-    open = false;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    prime = {
-      sync.enable = true;
-
-    # Make sure to use the correct Bus ID values for your system!
-    nvidiaBusId = "PCI:1:0:0";
-    intelBusId = "PCI:0:2:0";
-  };
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+      nvidiaSettings = true;
+    };
+    nvidia-container-toolkit.enable = true;
   };
 }
