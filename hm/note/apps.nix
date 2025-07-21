@@ -6,6 +6,7 @@
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
     blender                   # 3D Creation/Animation/Publishing System
+    code-cursor               # AI-powered code editor built on vscode
     curl                      # Command line tool for transferring files with URL syntax
     discord                   # All-in-one cross-platform voice and text chat for gamers
     exfatprogs                # exFAT filesystem userspace utilities
@@ -19,6 +20,8 @@
     gnumake                   # Tool to control the generation of non-source files from sources
     gparted                   # Graphical disk partitioning tool
     iftop                     # Display bandwidth usage on a network interface
+    inetutils                 # Collection of common network programs
+    iw                        # Tool to use nl80211
     jmtpfs                    # FUSE filesystem for MTP devices like Android phones
     killall                   # No description :/
     lazygit                   # Simple terminal UI for git commands
@@ -37,6 +40,7 @@
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
+    qemu                      # Generic and open source machine emulator and virtualizer
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
     superTuxKart              # Free 3D kart racing game
@@ -48,7 +52,7 @@
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
     usbutils                  # Tools for working with USB devices, such as lsusb
-    # ventoy                    # New Bootable USB Solution
+    stable.ventoy             # New Bootable USB Solution
     vlc                       # Cross-platform media player and streaming server
     wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP
     wl-clipboard              # Command-line copy/paste utilities for Wayland
