@@ -3,7 +3,7 @@
   hardware.rtl-sdr.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # stable.gpredict
+    stable.gpredict
     gqrx
     noaa-apt
     sdrpp
