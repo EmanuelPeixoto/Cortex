@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     # chromium
-    code-cursor
   ];
 
   # networking.extraHosts = ''
