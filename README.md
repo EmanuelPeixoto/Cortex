@@ -7,7 +7,7 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **Model:** Lenovo LOQ 15IRH8
 - **CPU:** Intel i5-12450H
 - **GPU:** NVidia RTX 2050
-- **RAM:** 8GB DDR5
+- **RAM:** 24GB DDR5
 - **Disc:** SSD M.2 1TB Netac NV7000
 - **Graphical Interface:** Hyprland
 
@@ -33,6 +33,11 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 
 ## TO DO LIST (in Portuguese)
 
-- conectar em wi-fi novo pelo menu(ags)
-- suporte multi-tela (ags)
-- app launcher e notificação pelo ags
+- conectar em wi-fi pelo menu (quickshell)
+- suporte multi-tela (quickshell)
+- app launcher e notificação pelo quickshell
+- menu de musicas na barra (quickshell)
+- grafana no servidor
+- melhorar a segurança ssh
+- tunelamento wireguard ou headscale
+- backup offline semanal do servidor
