@@ -25,10 +25,19 @@ Scope {
 
       WorkspaceWidget {
         anchors.verticalCenter: parent.verticalCenter
-        anchors.top: parent.top
+        anchors.left: parent.left
         anchors.leftMargin: 1
       }
+
+      SysTrayWidget {
+        id: trayWidget
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: clockWidget.left
+        anchors.rightMargin: 5
+      }
+
       ClockWidget {
+        id: clockWidget
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: 1

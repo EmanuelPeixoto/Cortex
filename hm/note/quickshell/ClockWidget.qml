@@ -1,4 +1,5 @@
 import QtQuick
+
 Rectangle {
   width: textItem.paintedWidth + 10
   height: textItem.paintedHeight
