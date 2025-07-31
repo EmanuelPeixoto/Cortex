@@ -6,7 +6,6 @@
   };
 
   networking.firewall = {
-    enable = true;
     trustedInterfaces = [ "wlp9s0" ];
     allowedTCPPorts = [ 53 ]; # DNS
     allowedUDPPorts = [ 53 67 68 ]; # DNS + DHCP
