@@ -52,6 +52,7 @@ in
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer
+    rustup                    # Rust toolchain installer
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
     superTuxKart              # Free 3D kart racing game
