@@ -14,6 +14,7 @@
     ./nvidia.nix
     ./php.nix
     ./ssh.nix
+    ./steam.nix
     ./users.nix
   ];
 
