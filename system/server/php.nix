@@ -8,11 +8,12 @@
     settings = {
       "listen.owner" = config.services.nginx.user;
       "pm" = "dynamic";
-      "pm.max_children" = 40;
+      "pm.max_children" = 60;
       "pm.max_requests" = 500;
       "pm.start_servers" = 4;
       "pm.min_spare_servers" = 4;
       "pm.max_spare_servers" = 10;
+      "php_admin_value[memory_limit]" = "16G";
       "php_admin_value[error_log]" = "stderr";
       "php_admin_flag[log_errors]" = true;
       "catch_workers_output" = true;

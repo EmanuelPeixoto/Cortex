@@ -1,16 +1,11 @@
 { config, pkgs, ... }:
-let
-  occ = "/run/current-system/sw/bin/nextcloud-occ";
-  nextcloudUser = "root";
-  analyzeJobs = 10;
-in
 {
   services.nextcloud = {
     enable = true;
     https = true;
     hostName = "epeixoto.ddns.net";
     package = pkgs.nextcloud31;
-    maxUploadSize = "10240M";
+    maxUploadSize = "16384M";
 
     poolSettings = {
       pm = "dynamic";
@@ -38,7 +33,6 @@ in
 
     config = {
       adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
-      dbtype = "sqlite";
     };
 
     phpExtraExtensions = all: [ all.pdlib ];
@@ -48,76 +42,6 @@ in
       "opcache.max_accelerated_files" = "20000";
       "opcache.memory_consumption" = "256";
       "opcache.revalidate_freq" = "0";
-    };
-  };
-
-  systemd = {
-    services = {
-      nextcloud-face-sync = {
-        description = "Nextcloud Face Recognition Sync Mode";
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${occ} face:background_job -u ${nextcloudUser} --sync-mode";
-          User = "nextcloud";
-          Group = "nextcloud";
-        };
-        after = [ "nextcloud-setup.service" ];
-        wants = [ "nextcloud-setup.service" ];
-      };
-
-      nextcloud-face-cluster = {
-        description = "Nextcloud Face Recognition Cluster Mode";
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${occ} face:background_job -u ${nextcloudUser} --cluster-mode";
-          User = "nextcloud";
-          Group = "nextcloud";
-        };
-        after = [ "nextcloud-setup.service" ];
-        wants = [ "nextcloud-setup.service" ];
-      };
-
-      # Template para múltiplas instâncias de analyze-mode
-      "nextcloud-face-analyze@" = {
-        description = "Nextcloud Face Recognition Analyze Mode Instance %i";
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = "${occ} face:background_job -u ${nextcloudUser} --analyze-mode";
-          User = "nextcloud";
-          Group = "nextcloud";
-        };
-        after = [ "nextcloud-setup.service" ];
-        wants = [ "nextcloud-setup.service" ];
-      };
-
-      nextcloud-face-analyze-parallel-run = {
-        description = "Run multiple analyze instances in parallel";
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = pkgs.writeShellScript "nextcloud-face-parallel" ''
-            for i in $(seq 1 ${toString analyzeJobs}); do
-              systemctl start nextcloud-face-analyze@$i.service &
-            done
-            wait
-          '';
-          User = "root";
-        };
-        after = [ "nextcloud-setup.service" ];
-        wants = [ "nextcloud-setup.service" ];
-      };
-    };
-
-    # Timer para disparar análise paralela em N instâncias
-    timers.nextcloud-face-analyze-parallel = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "hourly";
-        Persistent = true;
-      };
-      unitConfig = {
-        Description = "Run Nextcloud face analyze parallel jobs";
-        Requires = "nextcloud-face-analyze-parallel-run.service";
-      };
     };
   };
 }
