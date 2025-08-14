@@ -7,7 +7,6 @@
     ./apps.nix
     ./docker.nix
     ./firewall.nix
-    ./grafana.nix
     ./hardware-configuration.nix
     ./nextcloud-db.nix
     ./nextcloud-fr.nix
