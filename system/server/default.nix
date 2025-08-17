@@ -14,6 +14,7 @@
     ./nginx.nix
     ./nvidia.nix
     ./php.nix
+    ./scti.nix
     ./ssh.nix
     ./steam.nix
     ./users.nix
