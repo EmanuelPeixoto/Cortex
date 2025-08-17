@@ -33,6 +33,7 @@
 
     virtualHosts = {
       "${config.networking.hostName}.local" = {
+        serverName = config.networking.hostName+".local";
         listen = [{
           addr = "0.0.0.0";
           port = 88;
@@ -60,7 +61,8 @@
         };
       };
 
-      "http" = {
+      "acme" = {
+        serverName = config.services.nextcloud.hostName;
         listen = [{
           addr = "0.0.0.0";
           port = 80;
@@ -73,6 +75,7 @@
 
 
       ${config.services.nextcloud.hostName} = {
+        serverName = config.services.nextcloud.hostName;
         listen = [{
           addr = "0.0.0.0";
           port = 443;
