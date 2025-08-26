@@ -1,18 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    docker-compose
+  environment.systemPackages = lib.mkIf config.virtualisation.docker.enable [
+    pkgs.docker-compose
   ];
 
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     rootless = {
       enable = true;
       setSocketVariable = true;
     };
   };
 
-  users.users.emanuel.extraGroups = [ "docker" ];
-
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  users.users.emanuel.extraGroups = lib.mkIf config.virtualisation.docker.enable [ "docker" ];
 }
