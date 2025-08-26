@@ -6,7 +6,7 @@ let
 in {
   systemd.services = {
 
-    # Serviço sync - roda só uma vez, deve terminar antes do analyze
+    # Sync service - runs only once, must finish before analyze
     nextcloud-face-sync = {
       description = "Nextcloud Face Recognition Sync Mode";
       serviceConfig = {
@@ -26,7 +26,7 @@ in {
       };
     };
 
-    # Serviço que roda todas as instâncias analyze em paralelo e espera terminar
+    # Service that runs all analyze instances in parallel and waits to finish
     nextcloud-face-analyze-parallel-run = {
       description = "Run multiple analyze instances in parallel and wait";
       serviceConfig = {
@@ -42,7 +42,7 @@ in {
       requires = [ "nextcloud-face-sync.service" ];
     };
 
-    # Serviço cluster - roda após analyze paralelo terminar
+    # Cluster service - runs after parallel analyze finishes
     nextcloud-face-cluster = {
       description = "Nextcloud Face Recognition Cluster Mode";
       serviceConfig = {
@@ -55,7 +55,7 @@ in {
 
   };
 
-  # Timer para disparar toda sequência de jobs a cada hora
+  # Timer to trigger the whole sequence of jobs every hour
   systemd.timers.nextcloud-face-run-all-timer = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
@@ -68,4 +68,3 @@ in {
     };
   };
 }
-
