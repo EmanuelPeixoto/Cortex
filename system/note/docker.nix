@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    docker-compose
+  environment.systemPackages = lib.mkIf config.virtualisation.docker.enable [
+    pkgs.docker-compose
   ];
 
   virtualisation.docker = {
@@ -12,7 +12,5 @@
     };
   };
 
-  users.users.emanuel.extraGroups = [ "docker" ];
-
-  networking.firewall.allowedTCPPorts = [];
+  users.users.emanuel.extraGroups = lib.mkIf config.virtualisation.docker.enable [ "docker" ];
 }
