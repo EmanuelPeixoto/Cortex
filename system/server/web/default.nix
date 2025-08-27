@@ -1,0 +1,41 @@
+{
+  imports = [
+    ./acme.nix
+    ./catch-all.nix
+    ./gabriela.nix
+    ./localhost.nix
+    ./nextcloud.nix
+    ./speedtest.nix
+  ];
+  services.nginx = {
+    enable = true;
+    group = "www";
+
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    commonHttpConfig = ''
+      # Segurança
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+      # Performance
+      aio threads;
+      keepalive_requests 1000;
+
+      # Limites
+      client_body_buffer_size 128k;
+      client_header_buffer_size 4k;
+      large_client_header_buffers 4 16k;
+
+      # Logs
+      access_log /var/log/nginx/access.log;
+      error_log /var/log/nginx/error.log;
+
+      charset UTF-8;
+    '';
+  };
+}

@@ -8,15 +8,12 @@
     ./docker.nix
     ./firewall.nix
     ./hardware-configuration.nix
-    ./nextcloud-db.nix
-    ./nextcloud-fr.nix
-    ./nextcloud.nix
-    ./nginx.nix
+    ./nextcloud
     ./nvidia.nix
-    ./php.nix
     ./ssh.nix
     ./steam.nix
     ./users.nix
+    ./web
   ];
 
   # Hostname
