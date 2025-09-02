@@ -19,12 +19,14 @@ in
     blender                   # 3D Creation/Animation/Publishing System
     code-cursor               # AI-powered code editor built on vscode
     curl                      # Command line tool for transferring files with URL syntax
+    davinci-resolve           # Professional video editing, color, effects and audio post-processing
     discord                   # All-in-one cross-platform voice and text chat for gamers
     exfatprogs                # exFAT filesystem userspace utilities
     f3                        # Fight Flash Fraud
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
     gcc                       # GNU Compiler Collection
     gdb                       # GNU Project debugger
+    gemini-cli                # AI agent that brings the power of Gemini directly into your terminal
     gh                        # GitHub CLI tool
     gimp                      # GNU Image Manipulation Program
     glibc                     # GNU C Library
@@ -40,15 +42,16 @@ in
     libreoffice               # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
+    metasploit                # Metasploit Framework - a collection of exploits
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
     ncdu                      # Disk usage analyzer with an ncurses interface
     netcat                    # Free TLS/SSL implementation
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
-    openshot-qt               # Free, open-source video editor
+    stable.openshot-qt        # Free, open-source video editor
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
-    stable.prismlauncher      # Free, open source launcher for Minecraft
+    prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer
