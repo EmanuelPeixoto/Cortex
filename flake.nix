@@ -15,9 +15,10 @@
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
     let
+      lib = nixpkgs.lib;
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
 
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      forAllSystems = lib.genAttrs supportedSystems;
 
       overlay-stable = final: prev: {
         stable = import nixpkgs-stable {
@@ -38,7 +39,7 @@
       pkgs = forAllSystems mkPkgs;
 
       nixosConfigurations = {
-        NixOS-Note = nixpkgs.lib.nixosSystem {
+        NixOS-Note = lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs "x86_64-linux";
           modules = [
@@ -48,7 +49,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
+        NixOS-Note-ISO = lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs "x86_64-linux";
           modules = [
@@ -66,7 +67,7 @@
           specialArgs = { inherit inputs; };
         };
 
-        NixOS-Server = nixpkgs.lib.nixosSystem {
+        NixOS-Server = lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs "x86_64-linux";
           modules = [

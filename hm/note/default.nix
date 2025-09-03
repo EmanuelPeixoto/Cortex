@@ -6,6 +6,7 @@
     ../shared/lexis.nix
     ../shared/nix-index.nix
     ../shared/tmux.nix
+    ../shared/user.nix
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
@@ -30,17 +31,5 @@
     ./zen-browser.nix
   ];
 
-  home = {
-    homeDirectory = "/home/emanuel";
-    stateVersion = "25.05";
-    username = "emanuel";
-
-    sessionVariables = {
-      EDITOR = "nvim";
-      BROWSER = "zen";
-      TERMINAL = "ghostty";
-    };
-  };
-
-  programs.home-manager.enable = true;
+  home.stateVersion = "25.05";
 }
