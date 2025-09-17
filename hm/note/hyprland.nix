@@ -70,7 +70,7 @@ in
         "$mainMod, 7, workspace, 7"
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
-        "$mainMod, D, exec, ${pkgs.bemenu}/bin/bemenu-run"
+        "$mainMod, D, global, shell:runner"
         "$mainMod, F, fullscreen,"
         "$mainMod, H, exec, ${pkgs.systemd}/bin/systemctl hibernate"
         "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"

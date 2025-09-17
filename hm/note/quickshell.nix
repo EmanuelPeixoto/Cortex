@@ -1,8 +1,11 @@
-{ inputs, ... }:
+{ pkgs, ... }:
+let
+  CustomQS = pkgs.quickshell.overrideAttrs (prev: {
+    buildInputs = prev.buildInputs ++ [ pkgs.qt6.qt5compat ];
+  });
+in
 {
-  home.packages = [
-    inputs.quickshell.packages."x86_64-linux".default
-  ];
+  home.packages = [ CustomQS ];
 
   xdg.configFile."quickshell".source = ./quickshell;
 
@@ -13,7 +16,7 @@
       After = [ "hyprland-session.target" ];
     };
     Service = {
-      ExecStart = "${inputs.quickshell.packages."x86_64-linux".default}/bin/quickshell";
+      ExecStart = "${CustomQS}/bin/quickshell";
       Restart = "no";
     };
     Install.WantedBy = ["hyprland-session.target"];
