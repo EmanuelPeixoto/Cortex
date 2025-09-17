@@ -11,7 +11,6 @@
     ../shared/zsh.nix
     ./apps.nix
     ./default-apps.nix
-    ./dunst.nix
     ./firefox.nix
     ./ghostty.nix
     ./go.nix
