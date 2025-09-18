@@ -4,7 +4,7 @@ Item {
     id: notificationPopupManager
 
     property int maxNotifications: 8
-    property int notificationTimeout: 5000
+    property int notificationTimeout: 10000
     property int notificationSpacing: 0
     property int notificationWidth: 320
     property int baseNotificationHeight: 100
