@@ -18,6 +18,7 @@ in
     Service = {
       ExecStart = "${CustomQS}/bin/quickshell";
       Restart = "no";
+      KillMode = "process";
     };
     Install.WantedBy = ["hyprland-session.target"];
   };
