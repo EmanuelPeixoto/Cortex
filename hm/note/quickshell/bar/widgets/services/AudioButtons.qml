@@ -9,27 +9,18 @@ Singleton {
         if (!sink || !sink.audio)
             return Quickshell.iconPath("audio-volume-muted");
 
-        const name = sink.name?.toLowerCase() || "";
-        const desc = sink.description?.toLowerCase() || "";
         const vol = sink.audio.volume;
 
+        // Volume levels based on user feedback
         if (sink.audio.muted || vol === 0)
             return Quickshell.iconPath("audio-volume-muted");
-        if (vol > 1.0)
-            return Quickshell.iconPath("audio-volume-overamplified");
         if (vol < 0.33)
             return Quickshell.iconPath("audio-volume-low");
         if (vol < 0.66)
             return Quickshell.iconPath("audio-volume-medium");
-
-        if (vol < .9)
+        if (vol < 1.0)
             return Quickshell.iconPath("audio-volume-high");
-        // else {
-        if (name.includes("headphone") || name.includes("usb") || name.includes("arctis") || desc.includes("headphone") || desc.includes("arctis"))
-            return Quickshell.iconPath("audio-volume-high");
-
-        return Quickshell.iconPath("audio-type-speaker");
-        // }
+        return Quickshell.iconPath("audio-volume-high-danger");
     }
 
     property string inputIcon: {
