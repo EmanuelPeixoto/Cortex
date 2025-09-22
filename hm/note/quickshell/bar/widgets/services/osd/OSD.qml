@@ -185,7 +185,7 @@ PopupWindow {
                     Item {
                         id: volumeBarFill
                         width: parent.width
-                        height: parent.height * (osdPopupWindow.isMuted || osdPopupWindow.displayVolume <= 0 ? 0 : osdPopupWindow.displayVolume / 100)
+                        height: parent.height * (osdPopupWindow.isMuted || osdPopupWindow.displayVolume <= 0 ? 0 : osdPopupWindow.displayVolume / 125)
                         y: parent.height - height
                         clip: true
 
@@ -240,12 +240,14 @@ PopupWindow {
                         implicitSize: parent.width
                         source: {
                             if (osdPopupWindow.isMuted || osdPopupWindow.displayVolume <= 0)
-                                return Quickshell.iconPath("volume-level-none");
+                                return Quickshell.iconPath("audio-volume-muted");
                             if (osdPopupWindow.displayVolume < 33)
-                                return Quickshell.iconPath("volume-level-low");
+                                return Quickshell.iconPath("audio-volume-low");
                             if (osdPopupWindow.displayVolume < 66)
-                                return Quickshell.iconPath("volume-level-medium");
-                            return Quickshell.iconPath("volume-level-high");
+                                return Quickshell.iconPath("audio-volume-medium");
+                            if (osdPopupWindow.displayVolume < 100)
+                                return Quickshell.iconPath("audio-volume-high");
+                            return Quickshell.iconPath("audio-volume-high-danger");
                         }
                     }
                 }

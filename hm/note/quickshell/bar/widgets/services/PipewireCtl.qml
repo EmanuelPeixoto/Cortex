@@ -27,7 +27,7 @@ Item {
 
         height: {
             let contentHeight = tabContent.children[tabBar.currentIndex].implicitHeight + 50;
-            return contentHeight + contentColumn.anchors.margins * 2 + cava.cavaHeight + 20;
+            return contentHeight + contentColumn.anchors.margins * 2;
         }
 
         Behavior on height {
@@ -46,14 +46,6 @@ Item {
                 margins: 10
             }
             spacing: 8
-
-            Viz.Thorn {
-                id: cava
-                cavaHeight: visible ? 100 : 0
-                cavaWidth: 450
-                count: 4
-                visualizerMode: "wave" // wave or bars
-            }
 
             Row {
                 Layout.fillWidth: true
