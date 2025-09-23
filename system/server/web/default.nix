@@ -5,7 +5,6 @@
     ./gabriela.nix
     ./localhost.nix
     ./nextcloud.nix
-    ./rockaton.nix
     ./speedtest.nix
   ];
   services.nginx = {
