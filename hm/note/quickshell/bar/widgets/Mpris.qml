@@ -92,7 +92,7 @@ Components.BarWidget {
                                 Layout.fillWidth: true
                                 text: mprisd.player?.identity + "." ?? "No Player"
                                 color: "#A0A0A0"
-                                font.family: Globals.secondaryFont
+                                font.family: Globals.font
                                 font.capitalization: Font.AllLowercase
                                 font.pixelSize: 13
                                 font.styleName: "Regular"
@@ -563,7 +563,7 @@ Components.BarWidget {
                                         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
                                     }
                                     color: "#AAA5A4"
-                                    font.family: Globals.secondaryFont
+                                    font.family: Globals.font
                                     font.pixelSize: 12
                                 }
                             }
@@ -684,7 +684,7 @@ Components.BarWidget {
                 offset: 2
 
                 Label {
-                    font.family: Globals.secondaryFont
+                    font.family: Globals.font
                     font.pixelSize: 11
                     font.hintingPreference: Font.PreferFullHinting
                     color: "white"
@@ -696,8 +696,8 @@ Components.BarWidget {
                 id: unifiedIconButton
                 y: -3
                 x: -10
-                width: Globals.vertical ? verticalLayout.width + 15 : horizontalLayout.width + 15
-                height: Globals.vertical ? verticalLayout.height + 10 : horizontalLayout.height + 10
+                width: horizontalLayout.width + 15
+                height: horizontalLayout.height + 10
 
                 Rectangle {
                     id: hoverBackground
@@ -718,7 +718,6 @@ Components.BarWidget {
                     id: horizontalLayout
                     spacing: 7
                     anchors.centerIn: parent
-                    visible: !Globals.vertical
 
                     Components.SimpleImage {
                         id: playerIcon
@@ -730,40 +729,13 @@ Components.BarWidget {
                         Layout.preferredWidth: 18
                     }
 
-                    Components.ColorIcon {
+                    Components.SimpleImage {
                         id: wifiIcon
-                        implicitSize: 18
-                        source: Quickshell.iconPath("network-cellular-offline")
-                        hovered: mouseAreaTwo.containsMouse
-                        // Layout.preferredHeight: 18
-                        // Layout.preferredWidth: 18
-                    }
-                }
-
-                ColumnLayout {
-                    id: verticalLayout
-                    spacing: 7
-                    anchors.centerIn: parent
-                    visible: Globals.vertical
-
-                    Components.SimpleImage {
-                        id: playerIconVertical
-                        source: mprisd.player?.desktopEntry ? Quickshell.iconPath(DesktopEntries.byId(mprisd.player.desktopEntry)?.icon) : ""
-                        visible: mprisd.player != null
-
-                        size: 12
-                        Layout.preferredHeight: 17
-                        Layout.preferredWidth: 17
-                        Layout.alignment: Qt.AlignHCenter
-                    }
-
-                    Components.SimpleImage {
-                        id: wifiIconVertical
                         source: wifiIcon.source
                         size: 17
                         Layout.preferredHeight: 17
                         Layout.preferredWidth: 17
-                        Layout.alignment: Qt.AlignHCenter
+                        // Layout.alignment: Qt.AlignHCenter
                     }
                 }
 
@@ -810,7 +782,6 @@ Components.BarWidget {
                                     iconPath = Quickshell.iconPath("network-cellular-signal-none");
                                 }
                                 wifiIcon.source = iconPath;
-                                wifiIconVertical.source = iconPath;
                             }
                         }
                     }
@@ -823,7 +794,6 @@ Components.BarWidget {
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         mediaPopup.show();
-                        // mediaPopup.visible = !mediaPopup.visible;
                         grab.active = true;
                     }
                 }

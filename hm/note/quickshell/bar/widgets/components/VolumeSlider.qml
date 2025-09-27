@@ -18,24 +18,8 @@ Rectangle {
     property bool showLabel: false
     property string iconName: ""
     property color accentColor: "#" + Globals.colors.colors.color6
-    property string fontFamily: Globals.secondaryFont
+    property string fontFamily: Globals.font
     color: "transparent"
-
-    function getVolumeIconSource(volume, isMuted) {
-        if (isMuted || volume <= 0)
-            return "image://icon/audio-volume-muted-symbolic";
-        if (volume < 0.33)
-            return "image://icon/audio-volume-low-symbolic";
-        if (volume < 0.66)
-            return "image://icon/audio-volume-medium-symbolic";
-        return "image://icon/audio-volume-high-symbolic";
-    }
-
-    function getMicIconSource(volume, isMuted) {
-        if (isMuted || volume <= 0)
-            return "image://icon/microphone-sensitivity-muted-symbolic";
-        return "image://icon/microphone-sensitivity-high-symbolic";
-    }
 
     function updateBindings() {
         if (!audioNode || !audioNode.audio)

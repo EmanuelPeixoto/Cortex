@@ -190,7 +190,7 @@ Components.SlidingPopup {
                                     text: modelData.notes || ""
                                     visible: text !== ""
                                     font.pixelSize: 10
-                                    font.family: Globals.secondaryFont
+                                    font.family: Globals.font
                                     color: "#" + Globals.colors.colors.color8
                                     elide: Text.ElideRight
                                 }
@@ -277,7 +277,7 @@ Components.SlidingPopup {
                             Text {
                                 text: "Start Time:"
                                 color: "#" + Globals.colors.colors.color7
-                                font.family: Globals.secondaryFont
+                                font.family: Globals.font
                                 font.pixelSize: 12
                             }
 
@@ -315,7 +315,7 @@ Components.SlidingPopup {
                                 Text {
                                     text: ":"
                                     color: "#A0A0A0"
-                                    font.family: Globals.secondaryFont
+                                    font.family: Globals.font
                                     font.pixelSize: 16
                                     verticalAlignment: Text.AlignVCenter
                                 }
@@ -354,7 +354,7 @@ Components.SlidingPopup {
                             Text {
                                 text: "End Time:"
                                 color: "#" + Globals.colors.colors.color7
-                                font.family: Globals.secondaryFont
+                                font.family: Globals.font
                                 font.pixelSize: 12
                             }
 
@@ -392,7 +392,7 @@ Components.SlidingPopup {
                                 Text {
                                     text: ":"
                                     color: "#A0A0A0"
-                                    font.family: Globals.secondaryFont
+                                    font.family: Globals.font
                                     font.pixelSize: 16
                                     verticalAlignment: Text.AlignVCenter
                                 }
@@ -633,7 +633,7 @@ Components.SlidingPopup {
                             contentItem: Text {
                                 text: parent.text
                                 color: "#FFFFFF"
-                                font.family: Globals.secondaryFont
+                                font.family: Globals.font
                                 font.pixelSize: 13
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter

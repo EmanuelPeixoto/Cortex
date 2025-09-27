@@ -10,19 +10,16 @@ Components.BarWidget {
     color: "transparent"
     property date selectedDate: Globals.date
     property var focusManager: Service.FocusManager
-    anchors.top: Globals.vertical ? parent.top : undefined
-    anchors.topMargin: Globals.vertical ? 5 : 0
-    anchors.leftMargin: Globals.vertical ? 1 : 0
 
-    implicitWidth: Globals.vertical ? button.width : button.width
-    implicitHeight: Globals.vertical ? button.height + 20 : button.height + 4
+    implicitWidth: button.width
+    implicitHeight: button.height + 4
 
     Components.BarTooltip {
         relativeItem: mouseAreaButton.containsMouse ? hoverBackground : null
         offset: 2
 
         Label {
-            font.family: Globals.secondaryFont
+            font.family: Globals.font
             font.pixelSize: 11
             font.hintingPreference: Font.PreferFullHinting
             color: "white"
@@ -31,11 +28,9 @@ Components.BarWidget {
     }
     Button {
         id: button
-        anchors.centerIn: Globals.vertical ? undefined : parent
-        anchors.left: Globals.vertical ? parent.left : undefined
-        anchors.top: Globals.vertical ? parent.top : undefined
-        width: Globals.vertical ? 22 : 50
-        height: Globals.vertical ? 52 : 22
+        anchors.centerIn:  parent
+        width: 50
+        height: 22
         hoverEnabled: true
         background: null
 
@@ -56,7 +51,7 @@ Components.BarWidget {
 
         Loader {
             anchors.centerIn: parent
-            sourceComponent: Globals.vertical ? verticalLayout : horizontalLayout
+            sourceComponent: horizontalLayout
         }
 
         Component {
@@ -73,28 +68,6 @@ Components.BarWidget {
                     id: inputDeviceH
                     source: Service.AudioButtons.inputIcon
                     implicitSize: 22
-                    hovered: mouseAreaButton.containsMouse
-                }
-            }
-        }
-
-        Component {
-            id: verticalLayout
-            Column {
-                spacing: 4
-                anchors.left: parent.left
-                Components.ColorIcon {
-                    id: outputDeviceV
-                    source: Service.AudioButtons.outputIcon
-                    implicitSize: 18
-                    anchors.left: parent.left
-                    hovered: mouseAreaButton.containsMouse
-                }
-                Components.ColorIcon {
-                    id: inputDeviceV
-                    source: Service.AudioButtons.inputIcon
-                    implicitSize: 18
-                    anchors.left: parent.left
                     hovered: mouseAreaButton.containsMouse
                 }
             }
@@ -140,8 +113,8 @@ Components.BarWidget {
                 id: pipewirePopup
                 anchor {
                     window: root.QsWindow.window
-                    rect.x: Globals.vertical ? (root.QsWindow.window ? volume.QsWindow.window.width : 0) : (Screen.width * 2 + pipewirePopup.width * 2)
-                    rect.y: Globals.vertical ? (root.QsWindow.window ? volume.QsWindow.window.height / 2 : 0) : 30
+                    rect.x: Screen.width * 2 + pipewirePopup.width * 2
+                    rect.y: 30
                 }
 
                 implicitWidth: 500

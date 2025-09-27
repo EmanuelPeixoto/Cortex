@@ -5,17 +5,11 @@ import Quickshell.Io
 
 Singleton {
     id: root
-    readonly property bool vertical: false
-    readonly property string notePath: Qt.resolvedUrl(homeDir + "/notes/bar")
-
     property bool notificationsEnabled: true
     property var date: new Date()
     readonly property string font: "MesloLGS Nerd Font"
     readonly property bool toolTip: true
-    readonly property string walVesktop: Qt.resolvedUrl(homeDir + "/.src/wal-vesktop/wal-discord")
-    readonly property string imageFolder: Qt.resolvedUrl(homeDir + "/paper")
     readonly property color backgroundColor: "#BB" + colors.colors.color0
-    readonly property string secondaryFont: "Rubik"
     readonly property var popupContext: PopupContext {}
     readonly property string homeDir: Quickshell.env("HOME")
     readonly property string cacheDir: Quickshell.env("XDG_CACHE_HOME")

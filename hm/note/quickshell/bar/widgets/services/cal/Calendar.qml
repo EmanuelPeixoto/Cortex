@@ -90,7 +90,7 @@ Item {
                                     relativeItem: viewToggle.containsMouse ? toggleButton : null
 
                                     Label {
-                                        font.family: Globals.secondaryFont
+                                        font.family: Globals.font
                                         font.pixelSize: 13
                                         color: "white"
                                         text: "Planner View"
@@ -118,7 +118,7 @@ Item {
                                         horizontalAlignment: Text.AlignHCenter
                                         verticalAlignment: Text.AlignVCenter
                                     }
-                                    
+
                                     MouseArea {
                                         id: viewToggle
                                         anchors.fill: parent
@@ -142,12 +142,12 @@ Item {
                                 anchors.fill: parent
                                 selectedDate: calendarRoot.selectedDate
                                 displayDate: calendarRoot.selectedDate
-                                
+
                                 onDateClicked: function(clickedDate) {
                                     calendarRoot.selectedDate = clickedDate
                                     calendarRoot.dateSelected(clickedDate)
                                 }
-                                
+
                                 onDateDoubleClicked: function(clickedDate) {
                                     if (eventPopup.visible) {
                                         eventPopup.closeWithAnimation()
@@ -182,12 +182,12 @@ Item {
             }
 
             onBackToCalendar: showWeeklyView = false
-            
+
             onEventClicked: function(event, eventDate) {
                 eventPopup.selectedDate = eventDate
                 eventPopup.openForEdit(event)
             }
-            
+
             onTimeSlotClicked: function(slotDate, hour) {
                 eventPopup.selectedDate = slotDate
                 if (eventPopup.startHourSpinBox) {

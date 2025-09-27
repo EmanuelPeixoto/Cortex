@@ -48,7 +48,7 @@ Item {
                 id: tooltipText
                 text: customTooltip.tooltipText
                 anchors.centerIn: parent
-                font.family: Globals.secondaryFont
+                font.family: Globals.font
                 font.pixelSize: 13
                 color: "white"
             }

@@ -18,7 +18,6 @@ PopupWindow {
 
     property int timeout: 5000
 
-    signal closed
     signal activated
 
     color: "transparent"

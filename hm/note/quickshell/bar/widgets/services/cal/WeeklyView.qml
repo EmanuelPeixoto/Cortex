@@ -85,7 +85,7 @@ Item {
                         });
                     }
                     color: "#" + Globals.colors.colors.color6
-                    font.family: Globals.secondaryFont
+                    font.family: Globals.font
                     font.pixelSize: 14
                     font.weight: Font.Medium
                     horizontalAlignment: Text.AlignHCenter
@@ -175,7 +175,7 @@ Item {
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         text: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][index]
                                         color: "#" + Globals.colors.colors.color6
-                                        font.family: Globals.secondaryFont
+                                        font.family: Globals.font
                                         font.pixelSize: 12
                                         font.weight: Font.Medium
                                     }
@@ -188,7 +188,7 @@ Item {
                                             const isToday = dayDate.toDateString() === today.toDateString();
                                             return isToday ? "#" + Globals.colors.colors.color11 : "#" + Globals.colors.colors.color5;
                                         }
-                                        font.family: Globals.secondaryFont
+                                        font.family: Globals.font
                                         font.pixelSize: 12
                                         font.weight: Font.Medium
                                     }

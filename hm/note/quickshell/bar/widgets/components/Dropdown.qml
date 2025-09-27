@@ -3,9 +3,7 @@ import QtQuick
 Column {
     id: root
     property var model: []
-    // property var anchorItem: null
     property bool visibleOverlay: false
-    // property int widgewidth: 200
     signal itemClicked(var item)
 
     width: 280
@@ -17,7 +15,6 @@ Column {
         height: listView.contentHeight
         color: "transparent"
         radius: 6
-        // height: 100
         border.color: "transparent"
         clip: true
 

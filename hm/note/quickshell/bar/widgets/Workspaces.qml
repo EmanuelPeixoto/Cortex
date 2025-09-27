@@ -5,11 +5,9 @@ import "components" as Components
 
 Components.BarWidget {
     id: root
-    // property var japaneseNumerals: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+    property var japaneseNumerals: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
     function calculateDynamicWidth() {
-        if (Globals.vertical)
-            return 26;
 
         const count = workspaceListView.count;
 
@@ -25,7 +23,7 @@ Components.BarWidget {
     }
 
     implicitWidth: calculateDynamicWidth()
-    implicitHeight: Globals.vertical ? 180 : 23
+    implicitHeight: 23
 
     color: "transparent"
     radius: 8
@@ -41,11 +39,10 @@ Components.BarWidget {
 
         anchors {
             fill: parent
-            // leftMargin: Globals.vertical ? 0 : 10
-            topMargin: Globals.vertical ? 18 : 0
+            topMargin: 0
         }
 
-        orientation: Globals.vertical ? ListView.Vertical : ListView.Horizontal
+        orientation: ListView.Horizontal
         model: Hyprland.workspaces
         spacing: Math.max(2, 10 - count)
         clip: true
@@ -56,8 +53,8 @@ Components.BarWidget {
             property bool isValid: modelData.id > 0
             visible: isValid
 
-            width: isValid ? (Globals.vertical ? workspaceListView.width : workspaceRect.width) : 0
-            height: isValid ? (Globals.vertical ? workspaceRect.height : workspaceListView.height) : 0
+            width: workspaceRect.width
+            height: workspaceListView.height
 
             Rectangle {
                 id: workspaceRect
@@ -73,39 +70,27 @@ Components.BarWidget {
                 color: isActive ? "#" + Globals.colors.colors.color6 : "#33" + Globals.colors.colors.color7
 
                 function calculateWidth() {
-                    if (Globals.vertical) {
-                        return workspaceListView.width * 0.8;
-                    } else {
                         const totalWorkspaces = workspaceListView.count;
                         const availableWidth = 175;
                         const baseWidth = availableWidth / (totalWorkspaces + 2.5);
                         return isActive ? baseWidth * 2.5 : baseWidth;
-                    }
                 }
 
                 function calculateHeight() {
-                    if (Globals.vertical) {
-                        const totalWorkspaces = workspaceListView.count;
-                        const availableHeight = workspaceListView.height;
-                        const baseHeight = availableHeight / (totalWorkspaces + 2.5);
-                        return isActive ? baseHeight * 2.5 : baseHeight;
-                    } else {
                         return workspaceListView.height * 0.8;
-                    }
                 }
 
-                // Text {
-                //     id: workspaceId
-                //     text: root.japaneseNumerals[modelData.id] || modelData.id
-                //     color: "#" + Globals.colors.colors.color6
-                //     font {
-                //         family: Globals.secondaryFont
-                //         pixelSize: 10
-                //         // pixelSize: Math.max(8, Math.min(8, Globals.vertical ? parent.height * 0.3 : parent.width * 0.3))
-                //         bold: true
-                //     }
-                //     anchors.centerIn: parent
-                // }
+                Text {
+                    id: workspaceId
+                    text: root.japaneseNumerals[modelData.id] || modelData.id
+                    color: "#" + Globals.colors.colors.color6
+                    font {
+                        family: Globals.font
+                        pixelSize: 10
+                        bold: true
+                    }
+                    anchors.centerIn: parent
+                }
 
                 MouseArea {
                     cursorShape: Qt.PointingHandCursor

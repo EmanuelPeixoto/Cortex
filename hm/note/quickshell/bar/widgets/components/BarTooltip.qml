@@ -110,8 +110,6 @@ LazyLoader {
                     ClippingRectangle {
                         color: "#" + Globals.colors.colors.color0
                         radius: 6
-                        // border.width: 1
-                        // border.color: "#" + Globals.colors.colors.color2
                         anchors.horizontalCenter: parent.horizontalCenter
                         contentInsideBorder: true
 
