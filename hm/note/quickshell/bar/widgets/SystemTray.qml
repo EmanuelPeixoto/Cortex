@@ -19,12 +19,10 @@ Components.BarWidget {
     property color backgroundColor: Globals.backgroundColor
     widgetAnchors {
         margins: 0
-        leftMargin: Globals.vertical ? 3 : 0
-        topMargin: Globals.vertical ? 5 : 0
     }
 
-    implicitWidth: Globals.vertical ? 28 : (trayExpanded ? contentLayout.implicitWidth + 5 : toggleBtn.width)
-    implicitHeight: Globals.vertical ? (Globals.vertical ? 28 : (trayExpanded ? contentLayout.implicitHeight + 5 : toggleBtn.height)) : 22
+    implicitWidth: trayExpanded ? contentLayout.implicitWidth + 5 : toggleBtn.width
+    implicitHeight: 22
 
     QsMenuOpener {
         id: menuOpener
@@ -85,7 +83,7 @@ Components.BarWidget {
                 offset: 6
 
                 Label {
-                    font.family: Globals.secondaryFont
+                    font.family: Globals.font
                     font.hintingPreference: Font.PreferFullHinting
                     font.pixelSize: 11
                     color: "white"
@@ -163,19 +161,6 @@ Components.BarWidget {
                                 source: Qt.resolvedUrl(item.icon)
                                 implicitSize: 16
                             }
-
-                            // Components.BarTooltip {
-                            //     relativeItem: delegate.containsMouse && !trayPopup.visible ? delegate : null
-                            //     offset: 2
-                            //
-                            //     Label {
-                            //         font.hintingPreference: Font.PreferFullHinting
-                            //         font.family: Globals.secondaryFont
-                            //         font.pixelSize: 11
-                            //         color: "white"
-                            //         text: delegate.item.tooltipTitle || delegate.item.id
-                            //     }
-                            // }
                         }
                     }
                 }
@@ -272,7 +257,7 @@ Components.BarWidget {
                                     id: textItem
                                     text: modelData.text
                                     font.pixelSize: 12
-                                    font.family: Globals.secondaryFont
+                                    font.family: Globals.font
                                     color: someMouse.containsMouse ? "#" + Globals.colors.colors.color11 : "#" + Globals.colors.colors.color6
                                     verticalAlignment: Text.AlignVCenter
                                 }

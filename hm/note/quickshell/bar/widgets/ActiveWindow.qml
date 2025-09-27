@@ -168,7 +168,7 @@ Components.BarWidget {
                         spacing: 2
 
                         Label {
-                            font.family: Globals.secondaryFont
+                            font.family: Globals.font
                             font.pixelSize: 11
                             color: "white"
                             text: modelData.title || "Untitled Event"
@@ -178,7 +178,7 @@ Components.BarWidget {
                         }
 
                         Label {
-                            font.family: Globals.secondaryFont
+                            font.family: Globals.font
                             font.pixelSize: 11
                             color: "#cccccc"
                             text: formatEventTime(modelData)
@@ -186,7 +186,7 @@ Components.BarWidget {
                         }
 
                         Label {
-                            font.family: Globals.secondaryFont
+                            font.family: Globals.font
                             font.pixelSize: 11
                             color: "#aaaaaa"
                             text: modelData.description || ""
@@ -205,7 +205,7 @@ Components.BarWidget {
 
                 Label {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    font.family: Globals.secondaryFont
+                    font.family: Globals.font
                     font.pixelSize: 11
                     color: "#888888"
                     text: "No events today"

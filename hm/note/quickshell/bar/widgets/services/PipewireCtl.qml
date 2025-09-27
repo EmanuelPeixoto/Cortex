@@ -3,7 +3,6 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Quickshell.Services.Pipewire
 import "pw" as Pw
-import "visualizer" as Viz
 import qs
 
 Item {
@@ -13,7 +12,7 @@ Item {
     anchors.right: parent.right
 
     property color backgroundColor: Globals.backgroundColor
-    property string fontFamily: Globals.secondaryFont
+    property string fontFamily: Globals.font
 
     height: mainContainer.height
     implicitHeight: mainContainer.height

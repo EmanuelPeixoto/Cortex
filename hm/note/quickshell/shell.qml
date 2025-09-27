@@ -3,8 +3,6 @@ import Quickshell
 import Quickshell.Hyprland
 import "bar" as Status
 
-// import "bar/widgets/services/dock" as Docks
-
 ShellRoot {
     id: root
 

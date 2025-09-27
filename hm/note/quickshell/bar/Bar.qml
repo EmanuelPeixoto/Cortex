@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Qt5Compat.GraphicalEffects
-// import "widgets/notis" as Notis
 import Quickshell.Wayland
 import "widgets" as Widgets
 import qs
@@ -13,14 +12,11 @@ Variants {
         id: root
 
         required property var modelData
-        readonly property bool vert: Globals.vertical
         property int vertMargin: 3
         screen: modelData
         property color backgroundColor: Globals.backgroundColor
 
         WlrLayershell.namespace: "thorn"
-        // WlrLayershell.layer: WlrLayer.Top
-        // exclusionMode: ExclusionMode.Normal
 
         implicitHeight: 42
         implicitWidth: 44
@@ -29,8 +25,7 @@ Variants {
         anchors {
             top: true
             left: true
-            bottom: root.vert
-            right: !root.vert
+            right: true
         }
 
         Rectangle {
@@ -41,7 +36,7 @@ Variants {
             }
             layer.effect: DropShadow {
                 transparentBorder: true
-                horizontalOffset: root.vert ? 2 : -2
+                horizontalOffset: -2
                 verticalOffset: 2
                 radius: 6
                 spread: 0.2
@@ -49,10 +44,9 @@ Variants {
                 color: "#30000000"
             }
 
-            x: root.vert ?? 10
-            y: !root.vert ?? 10
-            implicitWidth: root.vert ? 48 : Screen.width - 8
-            implicitHeight: root.vert ? Screen.height - 8 : 42
+            y: 10
+            implicitWidth: Screen.width - 8
+            implicitHeight: 42
             color: root.backgroundColor
             radius: 8
             layer.enabled: true
@@ -61,7 +55,7 @@ Variants {
 
             Loader {
                 anchors.fill: parent
-                sourceComponent: root.vert ? verticalLayoutComponent : horizontalLayoutComponent
+                sourceComponent: horizontalLayoutComponent
             }
             Component {
                 id: horizontalLayoutComponent
@@ -77,36 +71,17 @@ Variants {
                             Layout.fillWidth: true
                             Layout.leftMargin: 8
                         }
-                        // Widgets.Overview {
-                        //     Layout.fillWidth: true
-                        //     Layout.topMargin: -3
-                        //
-                        //     Layout.leftMargin: 4
-                        // }
-
-                        // Notis.NotificationIndicator {
-                        //     Layout.fillHeight: true
-                        // }
                         Widgets.Workspaces {
                             Layout.fillWidth: true
 
                             Layout.alignment: Qt.AlignHCenter
-                            // Layout.preferredWidth: 180
                             Layout.topMargin: -2
                             Layout.leftMargin: 4
                         }
 
-                        // Layout.rightMargin: 10
-                        // Widgets.Pomodoro {
-                        //     // Layout.leftMargin: -4
-                        //     Layout.rightMargin: 4
-                        //     Layout.topMargin: 3
-                        // }
-
                         Widgets.ActiveWindow {
                             layer.enabled: true
                             Layout.fillHeight: true
-                            // Layout.leftMargin: 400
                             Layout.topMargin: -9
                         }
                     }
@@ -114,12 +89,6 @@ Variants {
                     Item {
                         Layout.fillWidth: true
                     }
-
-                    // Widgets.Faces {
-                    //     // anchors.centerIn: parent
-                    //     Layout.topMargin: -5
-                    //     Layout.preferredWidth: 70
-                    // }
 
                     Item {
                         Layout.fillWidth: true
@@ -157,13 +126,6 @@ Variants {
                     ColumnLayout {
                         Layout.alignment: Qt.AlignTop
                         Layout.fillHeight: false
-
-                        // Widgets.Overview {
-                        //     // Layout.fillWidth: true
-                        //
-                        //     Layout.topMargin: 14
-                        //     Layout.leftMargin: root.vertMargin
-                        // }
 
                         Widgets.Workspaces {
                             Layout.topMargin: 2

@@ -3,14 +3,8 @@ import qs
 
 Rectangle {
     width: 200
-    // implicitWidth: children[0].implicitWidth - children[0].implicitWidth / 2
     implicitHeight: children[0].implicitHeight
     color: "transparent"
-
-    // border {
-    //     color: "red"
-    //     width: 1
-    // }
 
     property alias text: t.text
 

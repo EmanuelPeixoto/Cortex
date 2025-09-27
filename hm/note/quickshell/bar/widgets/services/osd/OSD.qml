@@ -22,7 +22,7 @@ PopupWindow {
     property int barHeight: 16
     property bool isClosing: false
 
-    signal closed
+    signal activated
 
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]

@@ -72,7 +72,7 @@ Components.BarWidget {
 
         Label {
             font.hintingPreference: Font.PreferFullHinting
-            font.family: Globals.secondaryFont
+            font.family: Globals.font
             font.pixelSize: 11
             color: "white"
             text: "Power"
