@@ -83,7 +83,10 @@ Components.BarWidget {
         Text {
           id: workspaceId
           text: root.japaneseNumerals[modelData.id] || modelData.id
-          color: "#" + Globals.colors.colors.color6
+
+          property bool isActive: Hyprland.focusedMonitor && Hyprland.focusedMonitor.activeWorkspace && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
+
+          color: isActive ? "#" + Globals.colors.colors.color1 : "#" + Globals.colors.colors.color6
           font {
             family: Globals.font
             pixelSize: 10
