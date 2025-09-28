@@ -4,17 +4,17 @@ import Quickshell.Hyprland
 import "bar" as Status
 
 ShellRoot {
-    id: root
+  id: root
 
-    Status.Bar {
-        id: topbar
-    }
+  Status.Bar {
+    id: topbar
+  }
 
-    Component.onCompleted: {
-        Globals.reloadColors();
-    }
+  Component.onCompleted: {
+    Globals.reloadColors();
+  }
 
-    Runner {
-        id: launcher
-    }
+  Runner {
+    id: launcher
+  }
 }

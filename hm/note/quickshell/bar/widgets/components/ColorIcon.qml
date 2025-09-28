@@ -5,17 +5,17 @@ import Quickshell.Widgets
 import qs
 
 Item {
-    id: root
-    required property var implicitSize
-    required property var source
-    property bool hovered: false
+  id: root
+  required property var implicitSize
+  required property var source
+  property bool hovered: false
 
-    width: implicitSize
-    height: implicitSize
+  width: implicitSize
+  height: implicitSize
 
-    IconImage {
-        id: iconImage
-        anchors.fill: parent
-        source: root.source
-    }
+  IconImage {
+    id: iconImage
+    anchors.fill: parent
+    source: root.source
+  }
 }

@@ -5,70 +5,70 @@ import Quickshell
 import qs
 
 Singleton {
-    id: noteSaver
+  id: noteSaver
 
-    property bool isSaving: false
-    property string lastSavedPath: ""
-    property string statusMessage: ""
-    property string notePath: Globals.notePath
+  property bool isSaving: false
+  property string lastSavedPath: ""
+  property string statusMessage: ""
+  property string notePath: Globals.notePath
 
-    signal saveCompleted(bool success, string message)
+  signal saveCompleted(bool success, string message)
 
-    property var fileWriter: FileView {
-        id: fileWriter
-        atomicWrites: true
-        printErrors: true
+  property var fileWriter: FileView {
+    id: fileWriter
+    atomicWrites: true
+    printErrors: true
 
-        onSaved: {
-            noteSaver.isSaving = false;
-            noteSaver.statusMessage = "Note saved successfully";
-            noteSaver.saveCompleted(true, "Note saved to " + noteSaver.lastSavedPath);
-        }
-
-        onSaveFailed: function (error) {
-            noteSaver.isSaving = false;
-            noteSaver.statusMessage = "Failed to save note";
-            noteSaver.saveCompleted(false, "Error saving note: " + error);
-        }
+    onSaved: {
+      noteSaver.isSaving = false;
+      noteSaver.statusMessage = "Note saved successfully";
+      noteSaver.saveCompleted(true, "Note saved to " + noteSaver.lastSavedPath);
     }
 
-    function saveNote(noteText, filePath) {
-        if (isSaving) {
-            return false;
-        }
+    onSaveFailed: function (error) {
+      noteSaver.isSaving = false;
+      noteSaver.statusMessage = "Failed to save note";
+      noteSaver.saveCompleted(false, "Error saving note: " + error);
+    }
+  }
 
-        if (!noteText || !filePath) {
-            return false;
-        }
-
-        isSaving = true;
-        lastSavedPath = filePath;
-        statusMessage = "Saving note...";
-
-        fileWriter.path = filePath;
-        fileWriter.setText(noteText);
-
-        return true;
+  function saveNote(noteText, filePath) {
+    if (isSaving) {
+      return false;
     }
 
-    function generateNotePath() {
-        return notePath + "/note_" + new Date().toISOString().replace(/[:.]/g, "_") + ".md";
+    if (!noteText || !filePath) {
+      return false;
     }
 
-    function saveAndClear(noteText, filePath, onSuccess) {
-        if (saveNote(noteText, filePath)) {
-            _successCallback = onSuccess;
-            return true;
-        }
-        return false;
-    }
+    isSaving = true;
+    lastSavedPath = filePath;
+    statusMessage = "Saving note...";
 
-    property var _successCallback: null
+    fileWriter.path = filePath;
+    fileWriter.setText(noteText);
 
-    onSaveCompleted: function (success, message) {
-        if (success && _successCallback) {
-            _successCallback();
-        }
-        _successCallback = null;
+    return true;
+  }
+
+  function generateNotePath() {
+    return notePath + "/note_" + new Date().toISOString().replace(/[:.]/g, "_") + ".md";
+  }
+
+  function saveAndClear(noteText, filePath, onSuccess) {
+    if (saveNote(noteText, filePath)) {
+      _successCallback = onSuccess;
+      return true;
     }
+    return false;
+  }
+
+  property var _successCallback: null
+
+  onSaveCompleted: function (success, message) {
+    if (success && _successCallback) {
+      _successCallback();
+    }
+    _successCallback = null;
+  }
 }
