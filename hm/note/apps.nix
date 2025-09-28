@@ -40,6 +40,7 @@ in
     lazygit                   # Simple terminal UI for git commands
     libmtp                    # Implementation of Microsoft's Media Transfer Protocol
     libreoffice               # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
+    librepcb                  # Free EDA software to develop printed circuit boards
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     metasploit                # Metasploit Framework - a collection of exploits
@@ -61,7 +62,6 @@ in
     superTuxKart              # Free 3D kart racing game
     telegram-desktop          # Telegram Desktop messaging app
     texliveFull               # TeX Live environment
-    thunderbird               # Full-featured e-mail client
     tor                       # Anonymizing overlay network
     tor-browser               # Privacy-focused browser routing traffic through the Tor network
     unrar                     # Utility for RAR archives

@@ -1,6 +1,6 @@
 {
   programs.go = {
     enable = true;
-    goPath = ".config/go";
+    env.GOPATH = ".config/go";
   };
 }
