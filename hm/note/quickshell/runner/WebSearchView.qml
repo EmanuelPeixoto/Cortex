@@ -3,5 +3,5 @@ import QtQuick
 import qs
 
 Column {
-    spacing: 16
+  spacing: 16
 }
