@@ -27,6 +27,7 @@
     ./quickshell.nix
     ./stylix.nix
     ./swww.nix
+    ./thunderbird.nix
     ./zen-browser.nix
   ];
 
