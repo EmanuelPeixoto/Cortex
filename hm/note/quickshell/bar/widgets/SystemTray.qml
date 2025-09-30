@@ -163,6 +163,9 @@ Components.BarWidget {
               }
             }
           }
+          Pomodoro {
+            id: pomodoroTimer
+          }
         }
       }
     }
