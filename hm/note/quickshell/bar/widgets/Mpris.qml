@@ -728,30 +728,6 @@ Components.BarWidget {
             Layout.preferredHeight: 18
             Layout.preferredWidth: 18
           }
-
-          Components.SimpleImage {
-            id: wifiIcon
-            source: wifiIcon.source
-            size: 17
-            Layout.preferredHeight: 17
-            Layout.preferredWidth: 17
-            // Layout.alignment: Qt.AlignHCenter
-          }
-        }
-
-        property string wifiSignalIcon: Quickshell.iconPath("network-cellular-offline")
-
-        // Hopefully wifi module soontm
-
-        Timer {
-          id: wifiUpdateTimer
-          interval: 4000
-          repeat: true
-          running: true
-          triggeredOnStart: true
-          onTriggered: {
-            wifiSignalProcess.running = true;
-          }
         }
 
         HyprlandFocusGrab {
@@ -762,30 +738,6 @@ Components.BarWidget {
           }
         }
 
-        Process {
-          id: wifiSignalProcess
-          command: ["sh", "-c", "iw dev wlan0 link | awk '/signal/ {gsub(\"-\", \"\"); print $2}'"]
-          stdout: SplitParser {
-            onRead: data => {
-              const signal = parseInt(data.trim());
-              if (!isNaN(signal)) {
-                let iconPath;
-                if (signal >= 75) {
-                  iconPath = Quickshell.iconPath("network-cellular-signal-excellent");
-                } else if (signal >= 50) {
-                  iconPath = Quickshell.iconPath("network-cellular-signal-good");
-                } else if (signal >= 25) {
-                  iconPath = Quickshell.iconPath("network-cellular-signal-ok");
-                } else if (signal >= 0) {
-                  iconPath = Quickshell.iconPath("network-cellular-signal-weak");
-                } else {
-                  iconPath = Quickshell.iconPath("network-cellular-signal-none");
-                }
-                wifiIcon.source = iconPath;
-              }
-            }
-          }
-        }
 
         MouseArea {
           id: mouseAreaTwo

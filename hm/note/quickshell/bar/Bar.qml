@@ -112,6 +112,10 @@ Variants {
               Layout.topMargin: 2
               Layout.rightMargin: 6
             }
+
+            Widgets.Wifi {
+              Layout.fillHeight: true
+            }
           }
         }
       }
