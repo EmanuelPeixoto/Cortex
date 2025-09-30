@@ -11,7 +11,7 @@
     ./nextcloud
     ./nvidia.nix
     ./ssh.nix
-    ./steam.nix
+    # ./steam.nix
     ./users.nix
     ./web
   ];
