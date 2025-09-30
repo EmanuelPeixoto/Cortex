@@ -10,9 +10,24 @@ Singleton {
   property var eventData: ({})
   property bool isReady: false
 
+  Process {
+    id: initPlannerFileProcess
+    property string plannerPath: root.cacheDir + "/qs/planner-data.json"
+    command: ["sh", "-c", "mkdir -p $(dirname " + plannerPath + ") && ([ -f " + plannerPath + " ] || echo '{}' > " + plannerPath + ")"]
+    onRunningChanged: {
+      if (!running && plannerFile.path !== plannerPath) {
+        plannerFile.path = plannerPath
+      }
+    }
+  }
+
+  Component.onCompleted: function() {
+    initPlannerFileProcess.running = true
+  }
+
   FileView {
     id: plannerFile
-    path: root.cacheDir + "/qs/planner-data.json"
+    path: ""
 
     onLoaded: {
       try {
@@ -26,7 +41,7 @@ Singleton {
     }
 
     onLoadFailed: function (error) {
-      console.warn("Failed to load planner data:", error)
+      console.warn("Unexpectedly failed to load planner data:", error)
       root.eventData = {}
       root.isReady = true
     }
