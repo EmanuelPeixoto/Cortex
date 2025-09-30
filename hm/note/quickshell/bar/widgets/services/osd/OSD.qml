@@ -256,11 +256,12 @@ PopupWindow {
   }
 
   Connections {
-    target: Pipewire.defaultAudioSink?.audio
-    onVolumeChanged: {
+    target: Pipewire.defaultAudioSink ? Pipewire.defaultAudioSink.audio : null
+    ignoreUnknownSignals: true
+    function onVolumeChanged() {
       osdPopupWindow.handleVolumeChange();
     }
-    onMutedChanged: {
+    function onMutedChanged() {
       osdPopupWindow.handleVolumeChange();
     }
   }

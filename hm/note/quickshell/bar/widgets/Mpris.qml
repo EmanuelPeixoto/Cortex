@@ -114,7 +114,7 @@ Components.BarWidget {
                     clickable: true
                     useMask: false
 
-                    icon: DesktopEntries.byId(player.desktopEntry)?.icon ?? ""
+                    icon: DesktopEntries.byId(player.desktopEntry)?.icon ?? "tools-rip-audio-cd"
                     highlight: mprisd.player == player
                     size: 20
                     outerSize: size + 10
@@ -609,7 +609,7 @@ Components.BarWidget {
 
       ColorQuantizer {
         id: colorQuantizer
-        source: mprisd.player?.trackArtUrl ? Qt.resolvedUrl(mprisd.player.trackArtUrl) : ""
+        source: mprisd.player?.trackArtUrl ? Qt.resolvedUrl(mprisd.player.trackArtUrl) : Qt.resolvedUrl("icons/noalbum.png")
         depth: 3
         rescaleSize: 64
         onColorsChanged: {
@@ -721,7 +721,7 @@ Components.BarWidget {
 
           Components.SimpleImage {
             id: playerIcon
-            source: mprisd.player?.desktopEntry ? Quickshell.iconPath(DesktopEntries.byId(mprisd.player.desktopEntry)?.icon) : ""
+            source: mprisd.player?.desktopEntry ? Quickshell.iconPath(DesktopEntries.byId(mprisd.player.desktopEntry)?.icon) : Quickshell.iconPath("tools-rip-audio-cd")
             visible: mprisd.player != null
             size: 12
             cache: true
