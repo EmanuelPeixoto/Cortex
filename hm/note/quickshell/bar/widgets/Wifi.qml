@@ -5,6 +5,9 @@ import Quickshell.Io
 import "components" as Components
 
 Item {
+  id: wifiItem
+
+  property string wifiIconSource: Quickshell.iconPath("network-wireless-signal-none")
 
   Process {
     id: wifiSignalProcess
@@ -25,13 +28,12 @@ Item {
           } else {
             iconPath = Quickshell.iconPath("network-wireless-signal-none");
           }
-          wifiIcon.source = iconPath;
+          wifiItem.wifiIconSource = iconPath;
         }
       }
     }
   }
 
-  id: wifiItem
   Layout.preferredHeight: 24
   Layout.preferredWidth: 24
 
@@ -39,7 +41,7 @@ Item {
   Components.SimpleImage {
     id: wifiIcon
     anchors.centerIn: parent
-    source: wifiSignalIcon
+    source: wifiItem.wifiIconSource
     implicitHeight: 24
     implicitWidth: 24
   }
