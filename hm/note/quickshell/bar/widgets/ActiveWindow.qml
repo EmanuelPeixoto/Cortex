@@ -18,8 +18,6 @@ Components.BarWidget {
   property date selectedDate: Globals.date
   property color backgroundColor: Globals.backgroundColor
 
-  property var todaysEvents: Cal.PersistentEvents.getEventsForDate(new Date())
-
   Row {
     id: row
     anchors.fill: parent
@@ -118,129 +116,6 @@ Components.BarWidget {
     }
   }
 
-  Components.BarTooltip {
-    id: recentEvents
-    relativeItem: mouseAreaButton.containsMouse ? button : null
-    offset: 2
-
-    Column {
-      spacing: 8
-      width: Math.max(100, childrenRect.width)
-
-      Rectangle {
-        width: 100
-        height: 20
-        color: "#88" + Globals.colors.colors.color2
-        radius: 8
-        anchors.horizontalCenter: parent.horizontalCenter
-        visible: todaysEvents.length > 0
-
-        Label {
-          font.family: Globals.font
-          font.pixelSize: 11
-          width: 78
-          anchors.centerIn: parent
-          font.weight: 600
-          font.hintingPreference: Font.PreferFullHinting
-          color: "#ffffff"
-          text: "Today's Events"
-          visible: todaysEvents.length > 0
-        }
-      }
-
-      Repeater {
-        model: todaysEvents
-
-        Row {
-          spacing: 8
-
-          Rectangle {
-            width: 12
-            height: 12
-            radius: 6
-            anchors.verticalCenter: parent.verticalCenter
-            color: modelData.categoryColor || "#" + Globals.colors.colors.color6
-            border.width: 1
-            border.color: Qt.darker(color, 1.2)
-          }
-
-          Column {
-            spacing: 2
-
-            Label {
-              font.family: Globals.font
-              font.pixelSize: 11
-              color: "white"
-              text: modelData.title || "Untitled Event"
-              font.hintingPreference: Font.PreferFullHinting
-              width: 80
-              elide: Text.ElideRight
-            }
-
-            Label {
-              font.family: Globals.font
-              font.pixelSize: 11
-              color: "#cccccc"
-              text: formatEventTime(modelData)
-              visible: text !== ""
-            }
-
-            Label {
-              font.family: Globals.font
-              font.pixelSize: 11
-              color: "#aaaaaa"
-              text: modelData.description || ""
-              visible: text !== ""
-              wrapMode: Text.WordWrap
-              width: Math.min(implicitWidth, 250)
-            }
-          }
-        }
-      }
-      Item {
-        width: parent.width
-        visible: todaysEvents.length === 0
-
-        height: 14
-
-        Label {
-          anchors.horizontalCenter: parent.horizontalCenter
-          font.family: Globals.font
-          font.pixelSize: 11
-          color: "#888888"
-          text: "No events today"
-
-          horizontalAlignment: Text.AlignHCenter
-          verticalAlignment: Text.AlignVCenter
-          visible: todaysEvents.length === 0
-        }
-      }
-    }
-  }
-
-  function formatEventTime(event) {
-    if (!event.time)
-    return "";
-
-    let timeStr = "";
-    if (event.time.hour !== undefined) {
-      const hour = event.time.hour;
-      const minute = event.time.minute || 0;
-      const ampm = hour >= 12 ? "PM" : "AM";
-      const displayHour = hour === 0 ? 12 : (hour > 12 ? hour - 12 : hour);
-      timeStr = displayHour + ":" + String(minute).padStart(2, '0') + " " + ampm;
-    }
-
-    if (event.endTime && event.endTime.hour !== undefined) {
-      const endHour = event.endTime.hour;
-      const endMinute = event.endTime.minute || 0;
-      const endAmpm = endHour >= 12 ? "PM" : "AM";
-      const displayEndHour = endHour === 0 ? 12 : (endHour > 12 ? endHour - 12 : endHour);
-      timeStr += " - " + displayEndHour + ":" + String(endMinute).padStart(2, '0') + " " + endAmpm;
-    }
-
-    return timeStr;
-  }
   RowLayout {
     spacing: 8
     Layout.fillWidth: true
@@ -305,10 +180,9 @@ Components.BarWidget {
 
     HyprlandFocusGrab {
       id: grab
-      windows: [dashboardPopup, calendarComponent.calendarPopup]
+      windows: [dashboardPopup]
       onCleared: {
         dashboardPopup.closeWithAnimation();
-        calendarComponent.calendarPopup.closeWithAnimation();
       }
     }
   }
