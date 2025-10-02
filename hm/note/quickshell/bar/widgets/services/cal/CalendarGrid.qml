@@ -8,7 +8,6 @@ Item {
   property date displayDate: selectedDate
 
   signal dateClicked(date clickedDate)
-  signal dateDoubleClicked(date clickedDate)
 
   readonly property var monthData: {
     const year = displayDate.getFullYear();
@@ -33,14 +32,12 @@ Item {
     // Days of current month
     for (let i = 1; i <= daysInMonth; i++) {
       const date = new Date(year, month, i);
-      const events = PersistentEvents ? PersistentEvents.getEventsForDate(date) : [];
       days.push({
         day: i,
         date: date,
         isCurrentMonth: true,
         isToday: date.toDateString() === today.toDateString(),
         isSelected: date.toDateString() === selectedDate.toDateString(),
-        hasEvents: events && events.length > 0
       });
     }
 
@@ -121,18 +118,6 @@ Item {
             border.width: 1
           }
 
-          // Event indicator
-          Rectangle {
-            visible: modelData.hasEvents === true
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottomMargin: 4
-            width: 6
-            height: 6
-            radius: 3
-            color: "#909090"
-          }
-
           Text {
             anchors.centerIn: parent
             text: modelData.day
@@ -158,12 +143,6 @@ Item {
             onClicked: {
               if (modelData.isCurrentMonth) {
                 gridRoot.dateClicked(modelData.date);
-              }
-            }
-
-            onDoubleClicked: {
-              if (modelData.isCurrentMonth) {
-                gridRoot.dateDoubleClicked(modelData.date);
               }
             }
           }
