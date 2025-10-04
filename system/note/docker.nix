@@ -6,7 +6,7 @@
 
   virtualisation.docker = {
     enable = false;
-    rootless = {
+    rootless = lib.mkIf config.virtualisation.docker.enable {
       enable = true;
       setSocketVariable = true;
     };
