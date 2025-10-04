@@ -14,7 +14,7 @@ Components.BarWidget {
     if (count === 0)
     return 180;
 
-    const baseWidth = 175 / (count + 2.5);
+    const baseWidth = 300 / (count + 2.5);
     const totalWorkspaceWidth = baseWidth * (count + 1.5);
     const spacing = Math.max(2, 10 - count) * (count - 1);
     const padding = 10;
@@ -71,7 +71,7 @@ Components.BarWidget {
 
         function calculateWidth() {
           const totalWorkspaces = workspaceListView.count;
-          const availableWidth = 175;
+          const availableWidth = 300;
           const baseWidth = availableWidth / (totalWorkspaces + 2.5);
           return isActive ? baseWidth * 2.5 : baseWidth;
         }
@@ -89,7 +89,7 @@ Components.BarWidget {
           color: isActive ? "#" + Globals.colors.colors.color1 : "#" + Globals.colors.colors.color6
           font {
             family: Globals.font
-            pixelSize: 10
+            pixelSize: 8
             bold: true
           }
           anchors.centerIn: parent
