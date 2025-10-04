@@ -36,7 +36,7 @@ Item {
     // Calendar section
     Rectangle {
       Layout.fillWidth: true
-      Layout.preferredHeight: 320
+      Layout.preferredHeight: 300
       color: "transparent"
       radius: 8
 
