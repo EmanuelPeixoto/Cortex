@@ -37,6 +37,11 @@ in
         force_default_wallpaper = "0";
       };
 
+      windowrulev2 = [
+        "float, title:^(Picture-in-Picture)$"
+        "pin, title:^(Picture-in-Picture)$"
+      ];
+
       "$mainMod" = "SUPER";
 
       bind = [
