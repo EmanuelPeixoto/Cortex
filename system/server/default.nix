@@ -3,6 +3,7 @@
     ../shared/avahi.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
+    ../shared/ssh.nix
     ./acme.nix
     ./apps.nix
     ./docker.nix
@@ -10,7 +11,6 @@
     ./hardware-configuration.nix
     ./nextcloud
     ./nvidia.nix
-    ./ssh.nix
     # ./steam.nix
     ./users.nix
     ./web
