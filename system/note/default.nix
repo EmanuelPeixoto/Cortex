@@ -4,7 +4,7 @@
     ../shared/bluetooth.nix
     ../shared/flake-config.nix
     ../shared/locale.nix
-    ../shared/wireshark.nix
+    ../shared/ssh.nix
     ./apps.nix
     ./battery.nix
     ./docker.nix
@@ -22,6 +22,7 @@
     ./temp.nix
     ./users.nix
     ./webserver.nix
+    ./wireshark.nix
   ];
 
   # Hostname
@@ -42,7 +43,6 @@
 
   services = {
     blueman.enable = true;
-    openssh.enable = true;
     upower.enable = true;
     vnstat.enable = true;
     logind.lidSwitch = "lock";
