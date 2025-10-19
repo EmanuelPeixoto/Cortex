@@ -45,11 +45,11 @@
     blueman.enable = true;
     upower.enable = true;
     vnstat.enable = true;
-    logind.lidSwitch = "lock";
   };
 
   # Hyprlock pam
   security.pam.services.hyprlock = {};
+  services.logind.settings.Login.HandleLidSwitch = "lock";
 
   system.stateVersion = "25.05";
 }

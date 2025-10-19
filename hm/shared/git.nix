@@ -12,7 +12,7 @@
 
     difftastic = {
       enable = true;
-      display = "side-by-side-show-both";
+      options.display = "side-by-side-show-both";
     };
   };
 }
