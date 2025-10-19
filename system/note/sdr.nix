@@ -4,10 +4,8 @@
 
   environment.systemPackages = with pkgs; [
     gpredict
-    gqrx
     noaa-apt
-    sdrpp
-    inputs.dsdfme.packages."x86_64-linux".default
+    stable.sdrpp
   ];
 
   boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" ];

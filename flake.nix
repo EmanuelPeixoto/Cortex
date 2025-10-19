@@ -2,7 +2,6 @@
   description = "My NixOS flake";
 
   inputs = {
-    dsdfme.url = "github:lwvmobile/dsd-fme";
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";

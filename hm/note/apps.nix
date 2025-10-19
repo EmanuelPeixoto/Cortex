@@ -17,7 +17,6 @@ in
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
     blender                   # 3D Creation/Animation/Publishing System
-    code-cursor               # AI-powered code editor built on vscode
     curl                      # Command line tool for transferring files with URL syntax
     davinci-resolve           # Professional video editing, color, effects and audio post-processing
     discord                   # All-in-one cross-platform voice and text chat for gamers
@@ -40,7 +39,7 @@ in
     lazygit                   # Simple terminal UI for git commands
     libmtp                    # Implementation of Microsoft's Media Transfer Protocol
     libreoffice               # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
-    librepcb                  # Free EDA software to develop printed circuit boards
+    stable.librepcb           # Free EDA software to develop printed circuit boards
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     metasploit                # Metasploit Framework - a collection of exploits
@@ -50,7 +49,6 @@ in
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
-    stable.openshot-qt        # Free, open-source video editor
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
@@ -62,7 +60,6 @@ in
     superTuxKart              # Free 3D kart racing game
     telegram-desktop          # Telegram Desktop messaging app
     texliveFull               # TeX Live environment
-    tor                       # Anonymizing overlay network
     tor-browser               # Privacy-focused browser routing traffic through the Tor network
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
