@@ -80,6 +80,7 @@ in
         "$mainMod, H, exec, ${pkgs.systemd}/bin/systemctl hibernate"
         "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
         "$mainMod, M, togglespecialworkspace, magic"
+        "$mainMod, P, exec, pkill clipse || ${pkgs.ghostty}/bin/ghostty --title='clipse' -e ${pkgs.clipse}/bin/clipse"
         "$mainMod, S, exec, ${pkgs.systemd}/bin/systemctl hybrid-sleep"
         "$mainMod, down, movefocus, d"
         "$mainMod, left, movefocus, l"

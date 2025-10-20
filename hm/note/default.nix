@@ -10,6 +10,7 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
+    ./clipse.nix
     ./default-apps.nix
     ./firefox.nix
     ./ghostty.nix
