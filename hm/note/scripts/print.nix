@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 pkgs.writeShellScriptBin "print" ''
-  ${pkgs.grim}/bin/grim -l 0 - | ${pkgs.swappy}/bin/swappy -f -
+  ${pkgs.grimblast}/bin/grimblast save screen - | ${pkgs.swappy}/bin/swappy -f -
 ''
