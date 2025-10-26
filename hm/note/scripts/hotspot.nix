@@ -8,7 +8,7 @@ pkgs.writeShellScriptBin "hotspot" ''
 
   show_usage() {
       echo "Modo de uso:"
-      echo "  $0 [SSID] [SENHA] - Ativa hotspot com SSID e senha"
+      echo "  $0 [SSID] [SENHA] [-2] - Ativa hotspot (por padrão 5GHz, use -2 para 2.4GHz)"
       echo "  $0 --stop - Desativa hotspot ativo"
       echo ""
       echo "Exemplo: $0 MeuWifi senha1234"
@@ -29,12 +29,13 @@ pkgs.writeShellScriptBin "hotspot" ''
 
   if [[ "$1" == "--stop" ]]; then
       stop_hotspot
-  elif [ $# -ne 2 ]; then
+  elif [ $# -lt 2 ] || [ $# -gt 3 ]; then
       show_usage
   fi
 
   SSID="$1"
   PASSWORD="$2"
+  BAND_OPTION="$3"
 
   if [ ''${#PASSWORD} -lt 8 ]; then
       echo "Erro: Senha deve ter no mínimo 8 caracteres!" >&2
@@ -51,10 +52,16 @@ pkgs.writeShellScriptBin "hotspot" ''
   ${pkgs.networkmanager}/bin/nmcli connection add type wifi ifname "$IFACE" con-name "$CONN_NAME" \
     ssid "$SSID" mode ap ipv4.method shared >/dev/null
 
-  echo "[+] Configurando banda 5 GHz..."
-  ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.band a >/dev/null
-  ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel 161 >/dev/null
-  ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel-width 40 >/dev/null
+  if [[ "$BAND_OPTION" == "-2" ]]; then
+      echo "[+] Configurando banda 2.4 GHz..."
+      ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.band bg >/dev/null
+      ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel 6 >/dev/null
+  else
+      echo "[+] Configurando banda 5 GHz..."
+      ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.band a >/dev/null
+      ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel 161 >/dev/null
+      ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel-width 40 >/dev/null
+  fi
 
   echo "[+] Configurando segurança WPA2-PSK..."
   ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" \
@@ -68,5 +75,6 @@ pkgs.writeShellScriptBin "hotspot" ''
   echo "SSID:     $SSID"
   echo "Senha:    $PASSWORD"
   echo "Interface: $IFACE"
+  echo "Banda:    $([[ "$BAND_OPTION" == "-2" ]] && echo '2.4GHz' || echo '5GHz')"
   echo "Para desativar: $0 --stop"
 ''
