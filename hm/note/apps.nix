@@ -16,6 +16,7 @@ in
     android-tools             # Android SDK platform tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
+    bison                     # Yacc-compatible parser generator
     blender                   # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
     davinci-resolve           # Professional video editing, color, effects and audio post-processing
@@ -23,6 +24,7 @@ in
     exfatprogs                # exFAT filesystem userspace utilities
     f3                        # Fight Flash Fraud
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
+    flex                      # Fast lexical analyser generator
     gcc                       # GNU Compiler Collection
     gdb                       # GNU Project debugger
     gemini-cli                # AI agent that brings the power of Gemini directly into your terminal
