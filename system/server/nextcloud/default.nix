@@ -10,7 +10,7 @@
     enable = true;
     https = true;
     hostName = "epeixoto.ddns.net";
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud32;
     maxUploadSize = "16384M";
 
     settings = {
