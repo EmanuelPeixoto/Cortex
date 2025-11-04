@@ -1,7 +1,7 @@
 { config, pkgs, ...}:
 {
   environment.systemPackages = [
-    pkgs.glxinfo
+    pkgs.mesa-demos
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
