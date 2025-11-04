@@ -12,6 +12,7 @@
     ./nextcloud
     ./nvidia.nix
     # ./steam.nix
+    ./sunshine.nix
     ./users.nix
     ./web
   ];
