@@ -5,7 +5,7 @@
   environment.systemPackages = with pkgs; [
     gpredict
     noaa-apt
-    stable.sdrpp
+    sdrpp
   ];
 
   boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" ];
