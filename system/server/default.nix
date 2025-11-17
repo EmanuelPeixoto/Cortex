@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ./nextcloud
     ./nvidia.nix
+    ./rstudio.nix
     # ./steam.nix
     ./sunshine.nix
     ./users.nix

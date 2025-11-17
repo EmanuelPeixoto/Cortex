@@ -5,6 +5,7 @@
     ./gabriela.nix
     ./localhost.nix
     ./nextcloud.nix
+    ./rstudio.nix
     ./speedtest.nix
   ];
   services.nginx = {
