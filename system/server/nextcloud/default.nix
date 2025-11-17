@@ -2,7 +2,7 @@
 {
   imports = [
     ./database.nix
-    ./facerecognition.nix
+    # ./facerecognition.nix
     ./php.nix
   ];
 
