@@ -13,6 +13,7 @@ in
     curl                      # Command line tool for transferring files with URL syntax
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
     gcc                       # GNU Compiler Collection
+    gnumake                   # Tool to control the generation of non-source files from sources
     iftop                     # Display bandwidth usage on a network interface
     lazygit                   # Simple terminal UI for git commands
     lm_sensors                # Tools for reading hardware sensors
