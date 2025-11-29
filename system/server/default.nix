@@ -22,11 +22,8 @@
   networking.hostName = "NixOS-Server";
 
   # Boot
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
-    useOSProber = false;
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
   networking.networkmanager.enable = true;
