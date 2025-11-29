@@ -4,7 +4,7 @@
     enable = true;
     listenAddr = "0.0.0.0";
     package = pkgs.rstudioServerWrapper.override {
-      packages = with pkgs.rPackages; [
+      packages = with pkgs.stable.rPackages; [
         BiocManager
         DiagrammeR
         DiagrammeRsvg
