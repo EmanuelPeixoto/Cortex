@@ -2,6 +2,7 @@
   imports = [
     ./acme.nix
     ./catch-all.nix
+    ./corrida.nix
     ./gabriela.nix
     ./localhost.nix
     ./nextcloud.nix
