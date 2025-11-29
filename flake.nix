@@ -29,22 +29,39 @@
           (final: prev: {
             stable = import nixpkgs-stable {
               inherit system;
-              config = prev.config;
+              inherit (prev) config;
             };
           })
         ];
       };
-    in {
-      nixosConfigurations = {
-        NixOS-Note = nixpkgs.lib.nixosSystem {
+
+      # Lista dos sistemas para gerar configurações
+      systems = [ "note" "server" ];
+
+      # Função para gerar uma configuração NixOS
+      mkNixosSystem = name:
+        nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
-            ./system/note
+            ./system/${name}
             home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
+      
+      # Função para gerar uma configuração do Home Manager
+      mkHomeConfig = name:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hm/${name} ];
+          extraSpecialArgs = { inherit inputs; };
+        };
 
+    in {
+      nixosConfigurations = {
+        NixOS-Note = mkNixosSystem "note";
+        NixOS-Server = mkNixosSystem "server";
+        # Caso especial para a ISO
         NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
@@ -61,29 +78,8 @@
           ];
           specialArgs = { inherit inputs; };
         };
-
-        NixOS-Server = nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          modules = [
-            ./system/server
-            home-manager.nixosModules.home-manager
-          ];
-          specialArgs = { inherit inputs; };
-        };
       };
 
-      homeConfigurations = {
-        note = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./hm/note ];
-          extraSpecialArgs = { inherit inputs; };
-        };
-
-        server = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./hm/server ];
-          extraSpecialArgs = { inherit inputs; };
-        };
-      };
+      homeConfigurations = nixpkgs.lib.genAttrs systems (name: mkHomeConfig name);
     };
 }
