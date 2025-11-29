@@ -19,35 +19,25 @@
     lexis.url = "github:EmanuelPeixoto/Lexis";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
     let
-      lib = nixpkgs.lib;
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
-
-      forAllSystems = lib.genAttrs supportedSystems;
-
-      overlay-stable = final: prev: {
-        stable = import nixpkgs-stable {
-          inherit (prev) system;
-          config = {
-            inherit (prev.config) allowUnfree;
-          };
-        };
-      };
-
-      mkPkgs = system: import nixpkgs {
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ overlay-stable ];
+        overlays = [
+          (final: prev: {
+            stable = import nixpkgs-stable {
+              inherit system;
+              config = prev.config;
+            };
+          })
+        ];
       };
-
     in {
-      pkgs = forAllSystems mkPkgs;
-
       nixosConfigurations = {
-        NixOS-Note = lib.nixosSystem {
-          system = "x86_64-linux";
-          pkgs = mkPkgs "x86_64-linux";
+        NixOS-Note = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           modules = [
             ./system/note
             home-manager.nixosModules.home-manager
@@ -55,9 +45,8 @@
           specialArgs = { inherit inputs; };
         };
 
-        NixOS-Note-ISO = lib.nixosSystem {
-          system = "x86_64-linux";
-          pkgs = mkPkgs "x86_64-linux";
+        NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           modules = [
             ./system/note/iso.nix
             home-manager.nixosModules.home-manager
@@ -73,9 +62,8 @@
           specialArgs = { inherit inputs; };
         };
 
-        NixOS-Server = lib.nixosSystem {
-          system = "x86_64-linux";
-          pkgs = mkPkgs "x86_64-linux";
+        NixOS-Server = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           modules = [
             ./system/server
             home-manager.nixosModules.home-manager
@@ -86,20 +74,14 @@
 
       homeConfigurations = {
         note = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
+          inherit pkgs;
           modules = [ ./hm/note ];
           extraSpecialArgs = { inherit inputs; };
         };
 
         server = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
+          inherit pkgs;
           modules = [ ./hm/server ];
-          extraSpecialArgs = { inherit inputs; };
-        };
-
-        rpi3 = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "aarch64-linux";
-          modules = [ ./hm/rpi3 ];
           extraSpecialArgs = { inherit inputs; };
         };
       };
