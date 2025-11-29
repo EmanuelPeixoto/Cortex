@@ -2,12 +2,21 @@
   description = "My NixOS flake";
 
   inputs = {
-    home-manager.url = "github:nix-community/home-manager";
-    lexis.url = "github:EmanuelPeixoto/Lexis";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    stylix.url = "github:danth/stylix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lexis.url = "github:EmanuelPeixoto/Lexis";
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:

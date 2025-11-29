@@ -8,6 +8,7 @@
 
   stylix = {
     enable = true;
+    enableReleaseChecks = false;
     targets.qt.enable = true;
     targets.zen-browser.profileNames = [ "default" ];
 
