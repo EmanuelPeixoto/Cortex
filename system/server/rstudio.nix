@@ -5,7 +5,7 @@
     listenAddr = "0.0.0.0";
     rserverExtraConfig = "www-root-path=/rstudio";
     package = pkgs.rstudioServerWrapper.override {
-      packages = with pkgs.rPackages; [
+      packages = with pkgs.stable.rPackages; [
         BiocManager
         DiagrammeR
         DiagrammeRsvg
