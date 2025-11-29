@@ -18,15 +18,6 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **RAM:** 32GB DDR4
 - **Disc:** SSD SATA 512GB Weijinto
 
-## RPI3 Autopsy
-
-- **Model:** Raspberry Pi 3 Model B
-- **CPU:** Broadcom BCM2837 (1.2GHz quad-core ARM Cortex-A53)
-- **GPU:** Broadcom VideoCore IV
-- **RAM:** 1GB LPDDR2
-- **Disc:** Micro SD Netac 256GB
-- **Graphical Interface:** Hyprland
-
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
 ---
@@ -35,8 +26,6 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 
 - conectar em wi-fi pelo menu (quickshell)
 - suporte multi-tela (quickshell)
-- app launcher e notificação pelo quickshell
-- menu de musicas na barra (quickshell)
 - grafana no servidor
 - melhorar a segurança ssh
 - tunelamento wireguard ou headscale
