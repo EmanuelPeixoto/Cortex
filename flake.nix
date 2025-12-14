@@ -36,7 +36,7 @@
       };
 
       # Lista dos sistemas para gerar configurações
-      systems = [ "note" "server" ];
+      systems = [ "note" "server" "light" ];
 
       # Função para gerar uma configuração NixOS
       mkNixosSystem = name:
@@ -61,6 +61,7 @@
       nixosConfigurations = {
         NixOS-Note = mkNixosSystem "note";
         NixOS-Server = mkNixosSystem "server";
+        NixOS-Light = mkNixosSystem "light";
         # Caso especial para a ISO
         NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
           inherit pkgs;

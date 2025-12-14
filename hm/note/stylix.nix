@@ -10,6 +10,7 @@
     enable = true;
     enableReleaseChecks = false;
     targets.qt.enable = true;
+    targets.firefox.profileNames = [ "default" ];
     targets.zen-browser.profileNames = [ "default" ];
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
