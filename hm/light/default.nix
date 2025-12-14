@@ -3,7 +3,6 @@
     ../note/clipse.nix
     ../note/default-apps.nix
     ../note/firefox.nix
-    ../note/go.nix
     ../note/keepassxc.nix
     ../note/keyring.nix
     ../note/minecraft-overlay.nix

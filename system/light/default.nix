@@ -1,6 +1,7 @@
 {
   imports = [
     ../note/apps.nix
+    ../note/battery.nix
     ../note/firewall.nix
     ../note/hotspot.nix
     ../note/keyring.nix
@@ -18,9 +19,8 @@
     ../shared/locale.nix
     ../shared/ssh.nix
     ./amd.nix
-    ./apps.nix
     ./hardware-configuration.nix
-    ./power.nix
+    ./remote-build.nix
     ./xserver.nix
     ./zram.nix
   ];

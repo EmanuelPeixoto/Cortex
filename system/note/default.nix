@@ -43,7 +43,6 @@
   };
 
   services = {
-    blueman.enable = true;
     upower.enable = true;
     vnstat.enable = true;
   };
