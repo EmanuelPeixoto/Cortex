@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   catfolder = import ../shared/scripts/catfolder.nix { inherit pkgs; };
-  hotspot = import ./scripts/hotspot.nix { inherit pkgs; };
+  hotspot = import ../note/scripts/hotspot.nix { inherit pkgs; };
   motd = import ../shared/scripts/motd.nix { inherit pkgs; };
   yt-tlp-menu = import ../shared/scripts/yt-dlp-menu.nix { inherit pkgs; };
 in
@@ -12,6 +12,7 @@ in
     motd
     yt-tlp-menu
 
+    gqrx
     audacity                  # Sound editor with graphical UI
     bison                     # Yacc-compatible parser generator
     curl                      # Command line tool for transferring files with URL syntax

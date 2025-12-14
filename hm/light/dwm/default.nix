@@ -64,7 +64,7 @@ let
     static char dmenumon[2] = "0";
     static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_text, "-sb", col_accent, "-sf", col_bg, NULL };
     static const char *termcmd[]  = { "kitty", NULL };
-    static const char *falkoncmd[] = { "falkon", NULL };
+    static const char *browsercmd[] = { "firefox", NULL };
 
     /* Screenshots */
     static const char *printcmd[] = { "sh", "-c", "maim ~/Pictures/screenshot_$(date +%s).png", NULL };
@@ -74,7 +74,7 @@ let
         /* modifier                     key              function        argument */
         { MODKEY,                       XK_d,            spawn,          {.v = dmenucmd } },
         { MODKEY,                       XK_Return,       spawn,          {.v = termcmd } },
-        { 0,                            XF86HomePage,     spawn,          {.v = falkoncmd } },
+        { 0,                            XF86XK_HomePage, spawn,          {.v = browsercmd } },
 
         /* RESTART BARRA (Mod + Shift + R) - Usa o PID file */
         { MODKEY|ShiftMask,             XK_r,            spawn,          SHCMD("kill $(cat ~/.cache/pidofbar); sleep 0.5; ~/.local/bin/dwm-status &") },
