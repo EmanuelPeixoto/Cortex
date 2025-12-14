@@ -6,16 +6,19 @@
     ../shared/ssh.nix
     ./acme.nix
     ./apps.nix
+    ./backup.nix
     ./docker.nix
     ./firewall.nix
     ./hardware-configuration.nix
     ./nextcloud
     ./nvidia.nix
     ./rstudio.nix
+    ./smartd.nix
     # ./steam.nix
     ./sunshine.nix
     ./users.nix
     ./web
+    ./zfs.nix
   ];
 
   # Hostname

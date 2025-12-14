@@ -16,7 +16,9 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **CPU:** Intel Xeon E-2660 v3
 - **GPU:** Zotac GT 1030
 - **RAM:** 32GB DDR4
-- **Disc:** SSD SATA 512GB Weijinto
+- **Discs:**
+  - SSD M.2 256GB Samsung PM991a (System)
+  - 2x HDD 2TB Seagate Video 3.5 HDD (NAS - RAID1)
 
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
@@ -29,4 +31,3 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 - grafana no servidor
 - melhorar a segurança ssh
 - tunelamento wireguard ou headscale
-- backup offline semanal do servidor
