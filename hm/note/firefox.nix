@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.firefox = {
-    enable = false;
+    enable = true;
     nativeMessagingHosts = [ pkgs.keepassxc ];
   };
 }
