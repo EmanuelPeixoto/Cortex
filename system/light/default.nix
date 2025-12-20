@@ -20,7 +20,7 @@
     ../shared/ssh.nix
     ./amd.nix
     ./hardware-configuration.nix
-    ./remote-build.nix
+    # ./remote-build.nix
     ./xserver.nix
     ./zram.nix
   ];
@@ -41,6 +41,8 @@
     dconf.enable = true;
     zsh.enable = true;
   };
+
+  services.logind.settings.Login.HandleLidSwitch = "lock";
 
   system.stateVersion = "25.05";
 }
