@@ -12,6 +12,8 @@
     ./hardware-configuration.nix
     ./nextcloud
     ./nvidia.nix
+    ./qbittorrent.nix
+    ./remote-build.nix
     ./rstudio.nix
     ./smartd.nix
     # ./steam.nix
