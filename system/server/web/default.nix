@@ -8,6 +8,7 @@
     ./nextcloud.nix
     ./rstudio.nix
     ./speedtest.nix
+    ./torrent.nix
   ];
   services.nginx = {
     enable = true;
