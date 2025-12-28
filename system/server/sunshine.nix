@@ -17,9 +17,6 @@ in
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
-
-    # Configuração declarativa dos Apps
-    # Isso gera o apps.json automaticamente
     applications = {
       apps = [
         {
@@ -44,27 +41,21 @@ in
     };
   };
 
-  # 1. Habilita o Greetd (Gerenciador de Login Leve)
   services.greetd = {
     enable = true;
     settings = {
-      # 2. Configura a SESSÃO INICIAL (Auto-Login)
-      # Isso faz com que, ao bootar, ele logue imediatamente sem pedir senha.
       initial_session = {
-        command = "Hyprland"; # O comando que inicia a interface
-        user = "emanuel";    # SEU USUÁRIO AQUI
+        command = "Hyprland";
+        user = "emanuel";
       };
 
-      # Sessão padrão (caso o auto-login falhe ou você faça logout)
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
         user = "greeter";
       };
     };
   };
 
-  # 3. Workaround importante para o Greetd funcionar bem com logs/sessão
-  # Isso evita que o Hyprland feche imediatamente em alguns casos.
   security.pam.services.greetd.enableGnomeKeyring = true;
   programs.hyprland.enable = true;
 }
