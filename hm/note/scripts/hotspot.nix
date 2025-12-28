@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "hotspot" ''
   set -e
 
   CONN_NAME="hotspot"
-  IFACE="wlp9s0"
+  IFACE="wlp2s0b1"
 
   show_usage() {
       echo "Modo de uso:"
