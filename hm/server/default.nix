@@ -10,6 +10,7 @@
     ../shared/zsh.nix
     ../shared/user.nix
     ./apps.nix
+    ./virtual-monitor.nix
   ];
 
   home.stateVersion = "24.11";
