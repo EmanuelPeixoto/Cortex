@@ -12,11 +12,11 @@
     ./hardware-configuration.nix
     ./hotspot.nix
     ./keyring.nix
-    ./ly.nix
+    # ./ly.nix
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
-    ./rstudio.nix
+    # ./rstudio.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
@@ -51,5 +51,5 @@
   security.pam.services.hyprlock = {};
   services.logind.settings.Login.HandleLidSwitch = "lock";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
