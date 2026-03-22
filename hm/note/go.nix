@@ -1,7 +1,7 @@
 { config, ... }:
 {
   programs.go = {
-    enable = true;
+    enable = false;
     env.GOPATH = "${config.home.homeDirectory}/.config/go";
   };
 }
