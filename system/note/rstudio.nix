@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   services.rstudio-server = {
-    enable = true;
+    enable = false;
     listenAddr = "0.0.0.0";
     package = pkgs.rstudioServerWrapper.override {
       packages = with pkgs.stable.rPackages; [
