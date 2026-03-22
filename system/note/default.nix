@@ -12,11 +12,11 @@
     ./hardware-configuration.nix
     ./hotspot.nix
     ./keyring.nix
-    # ./ly.nix
+    ./ly.nix
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
-    # ./rstudio.nix
+    ./rstudio.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
