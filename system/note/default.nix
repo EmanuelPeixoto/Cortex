@@ -51,5 +51,5 @@
   security.pam.services.hyprlock = {};
   services.logind.settings.Login.HandleLidSwitch = "lock";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

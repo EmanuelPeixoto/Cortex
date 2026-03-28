@@ -8,7 +8,7 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **CPU:** Intel i5-12450H
 - **GPU:** NVidia RTX 2050
 - **RAM:** 24GB DDR5
-- **Disc:** SSD M.2 1TB Netac NV7000
+- **Disc:** SSD M.2 128GB Patriot P300
 - **Graphical Interface:** Hyprland
 
 ## Server Autopsy

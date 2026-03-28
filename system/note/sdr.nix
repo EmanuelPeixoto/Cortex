@@ -4,7 +4,7 @@
 
   environment.systemPackages = with pkgs; [
     gpredict
-    noaa-apt
+    qsstv
     sdrpp
   ];
 
