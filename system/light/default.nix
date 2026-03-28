@@ -42,5 +42,7 @@
     zsh.enable = true;
   };
 
+  services.logind.settings.Login.HandleLidSwitch = "lock";
+
   system.stateVersion = "25.05";
 }
