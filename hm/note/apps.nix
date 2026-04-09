@@ -16,7 +16,6 @@ in
     android-tools             # Android SDK platform tools
     arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
-    bison                     # Yacc-compatible parser generator
     blender                   # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
     davinci-resolve           # Professional video editing, color, effects and audio post-processing
@@ -24,7 +23,6 @@ in
     exfatprogs                # exFAT filesystem userspace utilities
     f3                        # Fight Flash Fraud
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
-    flex                      # Fast lexical analyser generator
     gcc                       # GNU Compiler Collection
     gdb                       # GNU Project debugger
     gemini-cli                # AI agent that brings the power of Gemini directly into your terminal
@@ -39,9 +37,7 @@ in
     jmtpfs                    # FUSE filesystem for MTP devices like Android phones
     killall                   # No description :/
     lazygit                   # Simple terminal UI for git commands
-    libmtp                    # Implementation of Microsoft's Media Transfer Protocol
-    libreoffice               # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
-    stable.librepcb           # Free EDA software to develop printed circuit boards
+    librepcb                  # Free EDA software to develop printed circuit boards
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     metasploit                # Metasploit Framework - a collection of exploits
@@ -59,14 +55,12 @@ in
     rustup                    # Rust toolchain installer
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
-    superTuxKart              # Free 3D kart racing game
     telegram-desktop          # Telegram Desktop messaging app
     texliveFull               # TeX Live environment
     tor-browser               # Privacy-focused browser routing traffic through the Tor network
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
     usbutils                  # Tools for working with USB devices, such as lsusb
-    # ventoy                    # New Bootable USB Solution
     vlc                       # Cross-platform media player and streaming server
     wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP
     wl-clipboard              # Command-line copy/paste utilities for Wayland
