@@ -10,6 +10,7 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
+    ./awww.nix
     ./clipse.nix
     ./default-apps.nix
     ./firefox.nix
@@ -27,7 +28,6 @@
     ./obs.nix
     ./quickshell.nix
     ./stylix.nix
-    ./swww.nix
     ./thunderbird.nix
     ./zen-browser.nix
   ];

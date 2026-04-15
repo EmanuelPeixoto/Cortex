@@ -23,7 +23,7 @@ pkgs.writeShellScriptBin "wallpaper" ''
   WALLPAPER="''${WALLPAPERS[$NEXT_INDEX]}"
 
   # Apply wallpaper
-  ${pkgs.swww}/bin/swww img "$WALLPAPER" \
+  ${pkgs.awww}/bin/awww img "$WALLPAPER" \
     --transition-step 90 \
     --transition-type outer \
     --transition-pos 1.0,0.5

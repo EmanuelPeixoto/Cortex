@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   imports = [ inputs.stylix.homeModules.stylix ];
 
@@ -6,12 +6,16 @@
     nerd-fonts.meslo-lg
   ];
 
+  gtk.gtk4.theme = config.gtk.theme;
+
   stylix = {
     enable = true;
     enableReleaseChecks = false;
-    targets.qt.enable = true;
-    targets.firefox.profileNames = [ "default" ];
-    targets.zen-browser.profileNames = [ "default" ];
+    targets = {
+      qt.enable = true;
+      firefox.profileNames = [ "default" ];
+      zen-browser.profileNames = [ "default" ];
+    };
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     polarity = "dark";

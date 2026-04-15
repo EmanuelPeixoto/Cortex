@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    swww
+    awww
   ];
 
-  services.swww.enable = true;
+  services.awww.enable = true;
 
-  systemd.user.services.swww = {
+  systemd.user.services.awww = {
     Unit = {
       PartOf = [ "hyprland-session.target" ];
       After = [ "hyprland-session.target" ];

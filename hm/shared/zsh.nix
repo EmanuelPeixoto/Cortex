@@ -10,7 +10,7 @@ in
     initContent = "${motd}/bin/motd";
 
     shellAliases = {
-      cfg = "yy ${config.home.homeDirectory}/.config/Cortex";
+      cfg = "y ${config.home.homeDirectory}/.config/Cortex";
     };
 
     oh-my-zsh = {

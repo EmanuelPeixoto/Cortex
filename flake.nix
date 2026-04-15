@@ -29,7 +29,7 @@
           (final: prev: {
             stable = import nixpkgs-stable {
               inherit system;
-              inherit (prev) config;
+              config.allowUnfree = true;
             };
           })
         ];
@@ -48,7 +48,7 @@
           ];
           specialArgs = { inherit inputs; };
         };
-      
+
       # Função para gerar uma configuração do Home Manager
       mkHomeConfig = name:
         home-manager.lib.homeManagerConfiguration {
