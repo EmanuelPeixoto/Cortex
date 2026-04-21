@@ -16,12 +16,10 @@ in
   services.nginx.virtualHosts = {
     "catchall-https" = {
       serverName = "_";
-      listen = [{
-        addr = "0.0.0.0";
-        port = 443;
-        ssl = true;
-        extraParameters = [ "default_server" ];
-      }];
+      listen = [
+        { addr = "0.0.0.0"; port = 443; ssl = true; extraParameters = [ "default_server" ]; }
+        { addr = "[::]"; port = 443; ssl = true; extraParameters = [ "default_server" ]; }
+      ];
 
       extraConfig = ''
         ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
@@ -34,11 +32,10 @@ in
 
     "catchall-http" = {
       serverName = "_";
-      listen = [{
-        addr = "0.0.0.0";
-        port = 80;
-        extraParameters = [ "default_server" ];
-      }];
+      listen = [
+        { addr = "0.0.0.0"; port = 80; extraParameters = [ "default_server" ]; }
+        { addr = "[::]"; port = 80; extraParameters = [ "default_server" ]; }
+      ];
 
       extraConfig = ''
         access_log /var/log/nginx/catchall-access.log;

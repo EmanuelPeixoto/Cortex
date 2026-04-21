@@ -20,7 +20,6 @@
     ../shared/ssh.nix
     ./amd.nix
     ./hardware-configuration.nix
-    ./remote-build.nix
     ./xserver.nix
     ./zram.nix
   ];

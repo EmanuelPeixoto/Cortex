@@ -13,25 +13,25 @@
     ./nextcloud
     ./nvidia.nix
     ./qbittorrent.nix
-    ./remote-build.nix
-    ./rstudio.nix
+    # ./rstudio.nix
     ./smartd.nix
     ./steam.nix
     ./sunshine.nix
+    ./tailscale.nix
     ./users.nix
     ./web
     ./zfs.nix
   ];
 
-  # Hostname
-  networking.hostName = "NixOS-Server";
+  # Networking
+  networking = {
+    hostName = "NixOS-Server";
+    networkmanager.enable = true;
+  };
 
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Networking
-  networking.networkmanager.enable = true;
 
   programs = {
     dconf.enable = true;

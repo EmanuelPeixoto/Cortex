@@ -1,6 +1,5 @@
 {
   imports = [
-    ./acme.nix
     ./catch-all.nix
     ./corrida.nix
     ./localhost.nix

@@ -9,8 +9,8 @@
   services.nextcloud = {
     enable = true;
     https = true;
-    hostName = "epeixoto.ddns.net";
-    package = pkgs.nextcloud32;
+    hostName = "www.google.com";
+    package = pkgs.nextcloud33;
     maxUploadSize = "16384M";
 
     settings = {
@@ -20,9 +20,9 @@
       logLevel = 1;
       log_type = "file";
       trusted_domains = [
+        "${config.services.nextcloud.hostName}"
         "${config.networking.hostName}.local"
         "192.168.0.10"
-        "epeixoto.ddns.net"
       ];
       memcache.local = "\\OC\\Memcache\\APCu";
       filelocking.enabled = true;

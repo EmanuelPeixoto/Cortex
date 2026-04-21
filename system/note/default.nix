@@ -20,21 +20,23 @@
     ./sdr.nix
     ./sound.nix
     ./steam.nix
+    ./tailscale.nix
     ./temp.nix
     ./users.nix
     ./webserver.nix
     ./wireshark.nix
   ];
 
-  # Hostname
-  networking.hostName = "NixOS-Note";
+  # Networking
+  networking = {
+    hostName = "NixOS-Note";
+    networkmanager.enable = true;
+  };
 
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Network Manager
-  networking.networkmanager.enable = true;
 
   programs = {
     dconf.enable = true;

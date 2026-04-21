@@ -8,10 +8,9 @@ in
 
   services.nginx.virtualHosts."${config.networking.hostName}.local" = {
     serverName = config.networking.hostName+".local";
-    listen = [{
-      addr = "0.0.0.0";
-      port = 80;
-    }];
+    listen = [
+      { addr = "0.0.0.0"; port = 80; }
+    ];
 
     root = "/var/www/";
 

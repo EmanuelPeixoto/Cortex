@@ -17,10 +17,9 @@
 
     virtualHosts = {
       "${config.networking.hostName}.local" = {
-        listen = [{
-          addr = "0.0.0.0";
-          port = 80;
-        }];
+        listen = [
+          { addr = "0.0.0.0"; port = 80; }
+        ];
 
         root = "/nginx";
 

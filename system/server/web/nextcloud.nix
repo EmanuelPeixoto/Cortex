@@ -2,11 +2,10 @@
 {
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     serverName = config.services.nextcloud.hostName;
-    listen = [{
-      addr = "0.0.0.0";
-      port = 443;
-      ssl = true;
-    }];
+    listen = [
+      { addr = "0.0.0.0"; port = 443; ssl = true; }
+      { addr = "[::]"; port = 443; ssl = true; }
+    ];
 
     enableACME = true;
     forceSSL = true;
