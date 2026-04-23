@@ -47,11 +47,13 @@ in
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
+    openssl                   # Cryptographic library that implements the SSL and TLS protocols
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer
+    qpwgraph                  # Qt graph manager for PipeWire, similar to QjackCtl
     rustup                    # Rust toolchain installer
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
