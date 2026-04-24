@@ -19,6 +19,7 @@
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./hyprsunset.nix
     ./java.nix
     ./keepassxc.nix
     ./keyring.nix
