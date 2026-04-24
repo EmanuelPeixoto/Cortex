@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+  cfg = import ./domain.nix;
+in
 {
   imports = [
     ./database.nix
@@ -9,7 +12,7 @@
   services.nextcloud = {
     enable = true;
     https = true;
-    hostName = "www.google.com";
+    hostName = cfg.nextcloudDomain;
     package = pkgs.nextcloud33;
     maxUploadSize = "16384M";
 

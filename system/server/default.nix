@@ -8,6 +8,7 @@
     ./apps.nix
     ./backup.nix
     ./docker.nix
+    ./duckdns.nix
     ./firewall.nix
     ./hardware-configuration.nix
     ./nextcloud

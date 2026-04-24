@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  cfg = import ../server/nextcloud/domain.nix;
+in
 {
   services.ollama = {
     enable = true;
@@ -11,6 +14,6 @@
   ];
 
   # networking.extraHosts = ''
-  #   192.168.0.10   epeixoto.ddns.net
+  #   192.168.0.10   ${cfg.noteDomain}
   # '';
 }
