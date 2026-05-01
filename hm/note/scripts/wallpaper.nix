@@ -1,33 +1,35 @@
 { config, pkgs, ... }:
-
 pkgs.writeShellScriptBin "wallpaper" ''
   WALLPAPER_DIR="${config.home.homeDirectory}/Nextcloud/Wallpapers"
-  INDEX_FILE="${config.home.homeDirectory}/.config/.wallpaper_index"
+  QUEUE_FILE="/tmp/wallpaper_queue"
+  INDEX_FILE="/tmp/wallpaper_index"
 
-  # Create an array of all wallpapers
   mapfile -t WALLPAPERS < <(${pkgs.coreutils}/bin/ls -1 "$WALLPAPER_DIR"/*)
   TOTAL_WALLPAPERS=''${#WALLPAPERS[@]}
 
-  # If the index file does not exist, creates with value 0
-  if [ ! -f "$INDEX_FILE" ]; then
+  generate_queue() {
+    printf '%s\n' "''${WALLPAPERS[@]}" | ${pkgs.coreutils}/bin/shuf > "$QUEUE_FILE"
     echo "0" > "$INDEX_FILE"
+  }
+
+  if [ ! -f "$QUEUE_FILE" ] || [ ! -f "$INDEX_FILE" ]; then
+    generate_queue
   fi
 
-  # Read the current index
   CURRENT_INDEX=$(${pkgs.coreutils}/bin/cat "$INDEX_FILE")
 
-  # Increments the index and returns to the beginning if necessary
-  NEXT_INDEX=$(( (CURRENT_INDEX + 1) % TOTAL_WALLPAPERS ))
+  if [ "$CURRENT_INDEX" -ge "$TOTAL_WALLPAPERS" ]; then
+    generate_queue
+    CURRENT_INDEX=0
+  fi
 
-  # Grab the next wallpaper
-  WALLPAPER="''${WALLPAPERS[$NEXT_INDEX]}"
+  mapfile -t QUEUE < "$QUEUE_FILE"
+  WALLPAPER="''${QUEUE[$CURRENT_INDEX]}"
 
-  # Apply wallpaper
   ${pkgs.awww}/bin/awww img "$WALLPAPER" \
     --transition-step 90 \
     --transition-type outer \
     --transition-pos 1.0,0.5
 
-  # Saves the new index
-  echo "$NEXT_INDEX" > "$INDEX_FILE"
+  echo "$((CURRENT_INDEX + 1))" > "$INDEX_FILE"
 ''
