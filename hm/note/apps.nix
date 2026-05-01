@@ -18,7 +18,7 @@ in
     audacity                  # Sound editor with graphical UI
     blender                   # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
-    davinci-resolve           # Professional video editing, color, effects and audio post-processing
+    # davinci-resolve           # Professional video editing, color, effects and audio post-processing
     discord                   # All-in-one cross-platform voice and text chat for gamers
     exfatprogs                # exFAT filesystem userspace utilities
     f3                        # Fight Flash Fraud
@@ -37,7 +37,7 @@ in
     jmtpfs                    # FUSE filesystem for MTP devices like Android phones
     killall                   # No description :/
     lazygit                   # Simple terminal UI for git commands
-    librepcb                  # Free EDA software to develop printed circuit boards
+    # librepcb                  # Free EDA software to develop printed circuit boards
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
     metasploit                # Metasploit Framework - a collection of exploits
