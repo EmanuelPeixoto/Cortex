@@ -2,69 +2,81 @@
 let
   occ = "/run/current-system/sw/bin/nextcloud-occ";
   nextcloudUser = "root";
-  analyzeJobs = 12;
-in {
+  analyzeJobs = 18;
+in
+{
+  system.activationScripts.nextcloud-facerecognition-app = {
+    deps = [ "var" ];
+    text = ''
+      ${occ} app:enable facerecognition 2>/dev/null || true
+    '';
+  };
+
   systemd.services = {
 
-    # Sync service - runs only once, must finish before analyze
     nextcloud-face-sync = {
-      description = "Nextcloud Face Recognition Sync Mode";
+      description = "Nextcloud Face Recognition – Sync";
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${occ} face:background_job -u ${nextcloudUser} --sync-mode";
+        User = "nextcloud";
+        Group = "nextcloud";
       };
     };
 
-    # Template analyze
     "nextcloud-face-analyze@" = {
-      description = "Nextcloud Face Recognition Analyze Mode Instance %i";
+      description = "Nextcloud Face Recognition – Analyze (instance %i)";
       serviceConfig = {
-        Type = "simple";
+        Type = "oneshot";
         ExecStart = "${occ} face:background_job -u ${nextcloudUser} --analyze-mode";
+        User = "nextcloud";
+        Group = "nextcloud";
         PrivateTmp = true;
         NoNewPrivileges = true;
       };
     };
 
-    # Service that runs all analyze instances in parallel and waits to finish
-    nextcloud-face-analyze-parallel-run = {
-      description = "Run multiple analyze instances in parallel and wait";
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = pkgs.writeShellScript "nextcloud-face-parallel" ''
-          for i in $(seq 1 ${toString analyzeJobs}); do
-          systemctl start nextcloud-face-analyze@$i.service &
-          done
-          wait
-        '';
-      };
+    nextcloud-face-analyze-all = {
+      description = "Nextcloud Face Recognition – Analyze (parallel)";
       after = [ "nextcloud-face-sync.service" ];
       requires = [ "nextcloud-face-sync.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+        ExecStart = pkgs.writeShellScript "face-analyze-parallel" ''
+          set -e
+          pids=()
+          for i in $(seq 1 ${toString analyzeJobs}); do
+            systemctl start --wait nextcloud-face-analyze@"$i".service &
+            pids+=($!)
+          done
+          for pid in "''${pids[@]}"; do
+            wait "$pid"
+          done
+        '';
+      };
     };
 
-    # Cluster service - runs after parallel analyze finishes
     nextcloud-face-cluster = {
-      description = "Nextcloud Face Recognition Cluster Mode";
+      description = "Nextcloud Face Recognition – Cluster";
+      after = [ "nextcloud-face-analyze-all.service" ];
+      requires = [ "nextcloud-face-analyze-all.service" ];
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${occ} face:background_job -u ${nextcloudUser} --cluster-mode";
+        User = "nextcloud";
+        Group = "nextcloud";
       };
-      after = [ "nextcloud-face-analyze-parallel-run.service" ];
-      requires = [ "nextcloud-face-analyze-parallel-run.service" ];
     };
 
   };
 
-  # Timer to trigger the whole sequence of jobs every hour
-  systemd.timers.nextcloud-face-run-all-timer = {
+  systemd.timers.nextcloud-face-sync = {
     wantedBy = [ "timers.target" ];
+    unitConfig.Description = "Nextcloud Face Recognition – hourly pipeline trigger";
     timerConfig = {
       OnCalendar = "hourly";
       Persistent = true;
-    };
-    unitConfig = {
-      Description = "Run all Nextcloud Face Recognition steps hourly";
-      Requires = [ "nextcloud-face-sync.service" ];
     };
   };
 }
