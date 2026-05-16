@@ -11,6 +11,7 @@
     ../shared/zsh.nix
     ./apps.nix
     ./awww.nix
+    ./chirp.nix
     ./clipse.nix
     ./default-apps.nix
     ./firefox.nix
