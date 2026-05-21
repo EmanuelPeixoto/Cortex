@@ -16,6 +16,9 @@ in
       TOKEN=$(cat ${tokenFile})
       DOMAIN=$(cat ${domainFile})
       if [ -n "$IPV6" ] && [ -n "$DOMAIN" ]; then
+      echo "IPV6: $IPV6"
+      echo "TOKEN: $TOKEN"
+      echo "DOMAIN: $DOMAIN"
       ${pkgs.curl}/bin/curl -s "https://www.duckdns.org/update?domains=$DOMAIN&token=$TOKEN&ip=&ipv6=$IPV6"
       else
       echo "Erro: IPv6 ou arquivos de configuração não encontrados"
