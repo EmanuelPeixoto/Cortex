@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 let
   driver = pkgs.fetchurl {
-    url = "https://github.com/armel/uv-k1-k5v3-firmware-custom/releases/download/v5.3.1/f4hwn.fusion.chirp.v5.3.1.py";
-    hash = "sha256-BSMV9NLSaJlbNXt/k3NLoglVeOSgK87mBbP8PudyHNI=";
+    url = "https://github.com/armel/uv-k1-k5v3-firmware-custom/releases/download/v5.5.0/f4hwn.fusion.chirp.v5.5.0.py";
+    hash = "sha256-3yQSQ5SacJIIZLkoSZAofU57oAKA4fNoQaC0mMbNIDw=";
   };
 
   chirp-with-driver = pkgs.chirp.overrideAttrs (old: {
