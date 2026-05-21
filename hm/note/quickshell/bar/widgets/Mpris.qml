@@ -721,7 +721,15 @@ Components.BarWidget {
 
           Components.SimpleImage {
             id: playerIcon
-            source: mprisd.player?.desktopEntry ? Quickshell.iconPath(DesktopEntries.byId(mprisd.player.desktopEntry)?.icon) : Quickshell.iconPath("tools-rip-audio-cd")
+            source: {
+              if (mprisd.player == null)
+              return "";
+              const entry = mprisd.player.desktopEntry;
+              if (!entry || entry === "" || entry === "mpd") {
+                return Quickshell.iconPath("audio-x-generic-symbolic");
+              }
+              return Quickshell.iconPath(DesktopEntries.byId(entry)?.icon ?? "audio-x-generic-symbolic");
+            }
             visible: mprisd.player != null
             size: 12
             cache: true

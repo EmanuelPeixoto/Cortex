@@ -124,7 +124,6 @@ Components.BarWidget {
 
         onCloseAnimationFinished: {
           focusManager.removePopup(pipewirePopup);
-          popupLoader.active = false;
         }
 
         Service.PipewireCtl {

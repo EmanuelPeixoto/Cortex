@@ -32,7 +32,7 @@ Rectangle {
       if (audioNode.audio.muted)
       return 0;
 
-      return (audioNode.audio.volume * volumeBackground.width);
+      return Math.min((audioNode.audio.volume / 1.25) * volumeBackground.width, volumeBackground.width);
     });
 
     volumeHandle.x = Qt.binding(function () {
@@ -85,7 +85,7 @@ Rectangle {
             const clickX = Math.min(Math.max(xPos, 0), volumeBackground.width);
             const fraction = clickX / volumeBackground.width;
 
-            audioNode.audio.volume = fraction;
+            audioNode.audio.volume = fraction * 1.25;
 
             if (audioNode.audio.muted && fraction > 0) {
               audioNode.audio.muted = false;
@@ -118,7 +118,7 @@ Rectangle {
               if (audioNode.audio.muted)
               return 0;
 
-              return (audioNode.audio.volume * volumeBackground.width);
+              return Math.min((audioNode.audio.volume / 1.25) * volumeBackground.width, volumeBackground.width);
             }
             color: slider.accentColor
             radius: 2
