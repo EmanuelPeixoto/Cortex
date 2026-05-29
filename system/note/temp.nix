@@ -3,18 +3,12 @@ let
   cfg = import ../server/nextcloud/domain.nix;
 in
 {
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
-  };
-
   environment.systemPackages = with pkgs; [
     # chromium
-    cheese
     rars
   ];
 
   # networking.extraHosts = ''
-  #   192.168.0.10   ${cfg.noteDomain}
+  #   192.168.0.10   ${cfg.Domain}
   # '';
 }

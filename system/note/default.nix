@@ -11,6 +11,7 @@
     ./firewall.nix
     ./hardware-configuration.nix
     ./hotspot.nix
+    ./ia.nix
     ./keyring.nix
     ./ly.nix
     ./nvidia.nix
