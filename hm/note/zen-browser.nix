@@ -13,7 +13,6 @@
       DisableTelemetry = true;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
-      TranslateEnabled = false;
       SearchEngines = {
         Default = "DuckDuckGo";
         PreventInstalls = true;
@@ -33,8 +32,6 @@
         "browser.download.autohideButton" = true;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.shell.didSkipDefaultBrowserCheck" = true;
-        "browser.translation.detectLanguage" = false;
-        "browser.translation.enable" = false;
         "browser.translation.ui.show" = false;
         "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":["keepassxc-browser_keepassxc_org-browser-action","gelprec_smd_gmail_com-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","vertical-spacer","urlbar-container","unified-extensions-button","ublock0_raymondhill_net-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs"],"vertical-tabs":[],"PersonalToolbar":["personal-bookmarks"],"zen-sidebar-top-buttons":[],"zen-sidebar-foot-buttons":["downloads-button","zen-workspaces-button","zen-expand-sidebar-button"]},"seen":["developer-button","screenshot-button","keepassxc-browser_keepassxc_org-browser-action","gelprec_smd_gmail_com-browser-action","ublock0_raymondhill_net-browser-action"],"dirtyAreaCache":["nav-bar","vertical-tabs","zen-sidebar-foot-buttons","PersonalToolbar","toolbar-menubar","TabsToolbar","zen-sidebar-top-buttons","unified-extensions-area","widget-overflow-fixed-list"],"currentVersion":23,"newElementCount":9}'';
         "intl.locale.requested" = "pt-BR,en-US";
