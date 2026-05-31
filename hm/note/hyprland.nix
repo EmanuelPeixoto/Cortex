@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   hyprland-exec = import ./scripts/hyprland-exec.nix { inherit config pkgs; };
   print = import ./scripts/print.nix { inherit pkgs; };
@@ -9,113 +9,465 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
+
     settings = {
-      monitor = "eDP-1, 1920x1080, 0x0, 1";
-
-      input = {
-        accel_profile = "flat";
-        kb_layout = "br";
-        kb_variant = "abnt2";
-        touchpad.disable_while_typing = 0;
+      # Monitor
+      monitor = {
+        output = "eDP-1";
+        mode = "preferred";
+        position = "0x0";
+        scale = 1;
       };
 
-      general = {
-        border_size = 2;
-        gaps_in = 5;
-        gaps_out = 10;
+      # Configurações gerais
+      config = {
+        input = {
+          accel_profile = "flat";
+          kb_layout = "br";
+          kb_variant = "abnt2";
+          "touchpad.disable_while_typing" = 0;
+        };
+
+        general = {
+          border_size = 2;
+          gaps_in = 5;
+          gaps_out = 10;
+        };
+
+        decoration = {
+          shadow = {
+            enabled = 0;
+          };
+          blur = {
+            enabled = 0;
+          };
+        };
+
+        misc = {
+          disable_splash_rendering = true;
+          force_default_wallpaper = 0;
+        };
+
+        "animations.enabled" = 0;
       };
 
-      decoration = {
-        shadow.enabled = 0;
-        blur.enabled = 0;
-      };
-
-      animations.enabled = 0;
-
-      misc = {
-        disable_splash_rendering = true;
-        force_default_wallpaper = "0";
-      };
-
-      # windowrule = [
-      #   "float, title:^(Picture-in-Picture)$"
-      #   "pin, title:^(Picture-in-Picture)$"
-      # ];
-
-      "$mainMod" = "SUPER";
-
+      # Binds
       bind = [
-        "$mainMod, P, exec, ${monitor-mode}/bin/monitor-mode"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, E, exit,"
-        "$mainMod SHIFT, M, movetoworkspace, special:magic"
-        "$mainMod SHIFT, Q, killactive,"
-        "$mainMod SHIFT, S, exec, ${print-selection}/bin/print-selection"
-        "$mainMod SHIFT, down, movewindow, d"
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, space, togglefloating,"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod, 0, workspace, 10"
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, C, exec, pkill clipse || ${pkgs.ghostty}/bin/ghostty --title='clipse' -e ${pkgs.clipse}/bin/clipse"
-        "$mainMod, D, global, shell:runner"
-        "$mainMod, F, fullscreen,"
-        "$mainMod, H, exec, ${pkgs.systemd}/bin/systemctl hibernate"
-        "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock --immediate"
-        "$mainMod, M, togglespecialworkspace, magic"
-        "$mainMod, S, exec, ${pkgs.systemd}/bin/systemctl hybrid-sleep"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-        "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        ", XF86Calculator, exec, ${pkgs.qalculate-qt}/bin/qalculate-qt"
-        ", XF86Favorites, exec, ${wallpaper}/bin/wallpaper"
-        ", XF86SelectiveScreenshot, exec, ${print-selection}/bin/print-selection"
-        ", print, exec, ${print}/bin/print"
+        # === mover janela para workspace (SUPER + SHIFT + N) ===
+        {
+          _args = [
+            "SUPER + SHIFT + 0"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "10" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 1"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "1" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 2"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "2" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 3"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "3" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 4"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "4" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 5"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "5" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 6"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "6" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 7"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "7" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 8"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "8" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + 9"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "9" })'')
+          ];
+        }
+
+        # === sair / matar / special workspace ===
+        {
+          _args = [
+            "SUPER + SHIFT + E"
+            (lib.generators.mkLuaInline "hl.dsp.exit()")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + M"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ workspace = "special:magic" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + Q"
+            (lib.generators.mkLuaInline "hl.dsp.window.kill()")
+          ];
+        }
+
+        # === mover janela (direcional) ===
+        {
+          _args = [
+            "SUPER + SHIFT + down"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "down" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + left"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "left" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + right"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "right" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + up"
+            (lib.generators.mkLuaInline ''hl.dsp.window.move({ direction = "up" })'')
+          ];
+        }
+
+        # === toggle floating ===
+        {
+          _args = [
+            "SUPER + SHIFT + space"
+            (lib.generators.mkLuaInline ''hl.dsp.window.float({ action = "toggle" })'')
+          ];
+        }
+
+        # === trocar workspace (SUPER + N) ===
+        {
+          _args = [
+            "SUPER + 0"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "10" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 1"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "1" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 2"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "2" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 3"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "3" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 4"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "4" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 5"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "5" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 6"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "6" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 7"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "7" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 8"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "8" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + 9"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "9" })'')
+          ];
+        }
+
+        # === movefocus (direcional) ===
+        {
+          _args = [
+            "SUPER + down"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "down" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + left"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "left" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + right"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "right" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + up"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ direction = "up" })'')
+          ];
+        }
+
+        # === mouse scroll workspace ===
+        {
+          _args = [
+            "SUPER + mouse_down"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e+1" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + mouse_up"
+            (lib.generators.mkLuaInline ''hl.dsp.focus({ workspace = "e-1" })'')
+          ];
+        }
+
+        # === mouse drag (mover e redimensionar janelas) ===
+        {
+          _args = [
+            "SUPER + mouse:272"
+            (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+            { mouse = true; }
+          ];
+        }
+        {
+          _args = [
+            "SUPER + mouse:273"
+            (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+            { mouse = true; }
+          ];
+        }
+
+        # === apps ===
+        {
+          _args = [
+            "SUPER + P"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${monitor-mode}/bin/monitor-mode\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + S"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${print-selection}/bin/print-selection\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + C"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill clipse || ${pkgs.ghostty}/bin/ghostty --title='clipse' -e ${pkgs.clipse}/bin/clipse\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + D"
+            (lib.generators.mkLuaInline ''hl.dsp.global("shell:runner")'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + F"
+            (lib.generators.mkLuaInline "hl.dsp.window.fullscreen()")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + H"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.systemd}/bin/systemctl hibernate\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + L"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.hyprlock}/bin/hyprlock --immediate\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + M"
+            (lib.generators.mkLuaInline ''hl.dsp.workspace.toggle_special("magic")'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + S"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.systemd}/bin/systemctl hybrid-sleep\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + return"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.ghostty}/bin/ghostty\")")
+          ];
+        }
+
+        # === XF86 / print keys (sem mod) ===
+        {
+          _args = [
+            "XF86Calculator"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.qalculate-qt}/bin/qalculate-qt\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86Favorites"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${wallpaper}/bin/wallpaper\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86SelectiveScreenshot"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${print-selection}/bin/print-selection\")")
+          ];
+        }
+        {
+          _args = [
+            "print"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${print}/bin/print\")")
+          ];
+        }
+
+        # === dpms ===
+        {
+          _args = [
+            "SUPER + XF86MonBrightnessDown"
+            (lib.generators.mkLuaInline ''hl.dsp.dpms({ state = "off" })'')
+          ];
+        }
+        {
+          _args = [
+            "SUPER + XF86MonBrightnessUp"
+            (lib.generators.mkLuaInline ''hl.dsp.dpms({ state = "on" })'')
+          ];
+        }
+
+        # === media keys (com locked/repeating) ===
+        {
+          _args = [
+            "XF86AudioLowerVolume"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25\")")
+            { locked = true; repeating = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioMicMute"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SOURCE@ toggle\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioMute"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioNext"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl next\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioPlay"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl play-pause\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioPrev"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl previous\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioStop"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.playerctl}/bin/playerctl stop\")")
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioRaiseVolume"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02+ -l 1.25\")")
+            { locked = true; repeating = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86MonBrightnessDown"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.brightnessctl}/bin/brightnessctl set 5%-\")")
+            { locked = true; repeating = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86MonBrightnessUp"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.brightnessctl}/bin/brightnessctl set 5%+\")")
+            { locked = true; repeating = true; }
+          ];
+        }
       ];
 
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
-
-      bindel = [
-        "$mainMod, XF86MonBrightnessDown, dpms, off"
-        "$mainMod, XF86MonBrightnessUp, dpms, on"
-        ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25"
-        ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SOURCE@ toggle"
-        ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle"
-        ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-        ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
-        ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop"
-        ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02+ -l 1.25"
-        ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
-        ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
-      ];
-
-      exec-once = "${hyprland-exec}/bin/hyprland-exec";
+      # exec-once (startup)
+      on = {
+        _args = [
+          "hyprland.start"
+          (lib.generators.mkLuaInline ''
+            function()
+              hl.exec_cmd("${hyprland-exec}/bin/hyprland-exec")
+            end
+          '')
+        ];
+      };
     };
   };
 }

@@ -49,7 +49,7 @@ in
     nomacs                    # Qt-based image viewer
     openssl                   # Cryptographic library that implements the SSL and TLS protocols
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
-    prismlauncher             # Free, open source launcher for Minecraft
+    # prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer

@@ -12,6 +12,7 @@
     enable = true;
     enableReleaseChecks = false;
     targets = {
+      hyprland.enable = false;
       qt.enable = true;
       firefox.profileNames = [ "default" ];
       zen-browser.profileNames = [ "default" ];
