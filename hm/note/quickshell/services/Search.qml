@@ -13,12 +13,11 @@ Singleton {
       searchProcess.running = true
     }
   }
+
+  Process {
     id: searchProcess
     running: false
     command: [Globals.homeDir + "/.config/quickshell/services/scripts/search.sh", root.searchTerm]
-    onRunningChanged: {
-      if (!running) console.log("search: process finished")
-    }
     stderr: SplitParser {
       onRead: d => { if (d.trim()) console.warn("search stderr:", d.trim()) }
     }
