@@ -134,7 +134,7 @@ Components.BarWidget {
           MouseArea {
             cursorShape: Qt.PointingHandCursor
             anchors.fill: parent
-            onClicked: Hyprland.dispatch("workspace " + modelData.id)
+            onClicked: Hyprland.dispatch("workspace", "" + modelData.id)
           }
         }
       }

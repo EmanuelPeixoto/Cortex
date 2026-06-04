@@ -25,7 +25,14 @@ GridView {
 
   highlightMoveDuration: 100
 
-  onCurrentIndexChanged: indexChanged(currentIndex)
+  onCurrentIndexChanged: {
+    if (currentIndex !== gridView.prevIndex) {
+      gridView.prevIndex = currentIndex
+      indexChanged(currentIndex)
+    }
+  }
+
+  property int prevIndex: -1
 
   delegate: Item {
     id: gridViewDelegate

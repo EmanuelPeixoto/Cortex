@@ -25,7 +25,14 @@ ListView {
   highlightMoveDuration: 100
   highlightResizeDuration: 0
 
-  onCurrentIndexChanged: indexChanged(currentIndex)
+  onCurrentIndexChanged: {
+    if (currentIndex !== listView.prevIdx) {
+      listView.prevIdx = currentIndex
+      indexChanged(currentIndex)
+    }
+  }
+
+  property int prevIdx: -1
 
   delegate: Item {
     id: listViewDelegate
@@ -113,7 +120,7 @@ ListView {
             spacing: 12
 
             Image {
-              source: Quickshell.iconPath(listViewDelegate.modelData.icon, "system-help")
+              source: Quickshell.iconPath(listViewDelegate.modelData.icon || "", "system-help")
               sourceSize.width: 34
               sourceSize.height: 34
               Layout.preferredWidth: 34
@@ -134,7 +141,7 @@ ListView {
 
               Text {
                 width: parent.width
-                text: listViewDelegate.modelData.highlightedName
+                text: listViewDelegate.modelData.highlightedName || listViewDelegate.modelData.name || ""
                 font.family: Globals.font
                 renderType: Text.NativeRendering
                 font.pointSize: 11
@@ -151,7 +158,7 @@ ListView {
 
               Text {
                 width: parent.width
-                text: listViewDelegate.modelData.genericName || listViewDelegate.modelData.comment
+                text: listViewDelegate.modelData.genericName || listViewDelegate.modelData.comment || ""
                 font.family: Globals.font
 
                 renderType: Text.NativeRendering
