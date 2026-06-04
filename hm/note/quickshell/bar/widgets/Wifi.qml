@@ -67,7 +67,7 @@ Components.BarWidget {
   }
 
   function parseScanResults(lines) {
-    console.log("wifi: processing", lines.length, "lines")
+    // console.log("wifi: processing", lines.length, "lines")
     let nets = []
     let foundConnected = false
     for (const line of lines) {
