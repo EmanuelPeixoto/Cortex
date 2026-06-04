@@ -32,7 +32,10 @@ Variants {
       id: bar
       anchors {
         fill: parent
-        margins: 5
+        leftMargin: 5
+        rightMargin: 2
+        topMargin: 5
+        bottomMargin: 5
       }
       layer.effect: DropShadow {
         transparentBorder: true
@@ -45,7 +48,7 @@ Variants {
       }
 
       y: 10
-      implicitWidth: Screen.width - 8
+      implicitWidth: Screen.width - 7
       implicitHeight: 42
       color: root.backgroundColor
       radius: 8
@@ -90,31 +93,26 @@ Variants {
             Layout.fillWidth: true
           }
 
-          Item {
-            Layout.fillWidth: true
-          }
-
           RowLayout {
-            Layout.alignment: Qt.AlignRight
+            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             Layout.fillWidth: false
+            spacing: 6
 
             Widgets.SystemTray {
               Layout.fillHeight: true
             }
 
             Widgets.PipewireCava {
-              Layout.bottomMargin: 1.3
-              Layout.rightMargin: 6
+              Layout.fillHeight: true
             }
 
             Widgets.Mpris {
               Layout.fillHeight: true
-              Layout.topMargin: 2
-              Layout.rightMargin: 6
             }
 
             Widgets.Wifi {
               Layout.fillHeight: true
+              Layout.rightMargin: 6
             }
           }
         }

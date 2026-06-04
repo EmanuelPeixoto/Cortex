@@ -225,18 +225,6 @@ Components.BarWidget {
 
   // ── UI: icon + popup ───────────────────────────────
 
-  Components.BarTooltip {
-    relativeItem: wifiBtn.containsMouse ? wifiBtn : null
-    offset: 3
-
-    Text {
-      font.family: Globals.font
-      font.pixelSize: 11
-      color: "white"
-      text: root.connected ? root.currentSsid : "Wi-Fi"
-    }
-  }
-
   Components.IconButton {
     id: wifiBtn
     anchors.centerIn: parent

@@ -21,8 +21,8 @@ Components.BarWidget {
   property var art: requestedPlayer?.trackArtUrl ?? ""
   readonly property var colors: Globals.colors
   property color backgroundColor: Globals.backgroundColor
-  implicitWidth: mprisd.player ? 48 : 24
-  implicitHeight: 32
+  implicitWidth: mprisd.player ? 30 : 0
+  implicitHeight: mprisd.player ? 32 : 0
 
   Behavior on implicitHeight {
     NumberAnimation {
