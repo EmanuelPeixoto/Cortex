@@ -8,9 +8,19 @@ Singleton {
   id: root
   property string searchTerm: ""
 
-  Process {
+  onSearchTermChanged: {
+    if (searchTerm !== "") {
+      searchProcess.running = true
+    }
+  }
     id: searchProcess
-    command: ["bash", "-c", Globals.homeDir + `/.config/quickshell/services/scripts/search.sh "${root.searchTerm}"`]
-    running: root.searchTerm !== ""
+    running: false
+    command: [Globals.homeDir + "/.config/quickshell/services/scripts/search.sh", root.searchTerm]
+    onRunningChanged: {
+      if (!running) console.log("search: process finished")
+    }
+    stderr: SplitParser {
+      onRead: d => { if (d.trim()) console.warn("search stderr:", d.trim()) }
+    }
   }
 }

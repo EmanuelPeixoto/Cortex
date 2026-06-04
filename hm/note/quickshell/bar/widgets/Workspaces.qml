@@ -6,112 +6,95 @@ import "components" as Components
 Components.BarWidget {
   id: root
   property var japaneseNumerals: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+  property var sortedModel: []
 
-  function calculateDynamicWidth() {
-
-    const count = workspaceListView.count;
-
-    if (count === 0)
-    return 180;
-
-    const baseWidth = 300 / (count + 2.5);
-    const totalWorkspaceWidth = baseWidth * (count + 1.5);
-    const spacing = Math.max(2, 10 - count) * (count - 1);
-    const padding = 10;
-
-    return Math.ceil(totalWorkspaceWidth + spacing + padding);
-  }
-
-  implicitWidth: calculateDynamicWidth()
+  implicitWidth: Math.max(60, wsRow.implicitWidth + 8)
   implicitHeight: 23
-
   color: "transparent"
   radius: 8
 
   Component.onCompleted: {
-    Hyprland.refreshWorkspaces();
-    Hyprland.refreshMonitors();
+    Hyprland.refreshWorkspaces()
+    Hyprland.refreshMonitors()
+    updateModel()
   }
 
-  ListView {
-    id: workspaceListView
-    width: 180
+  Timer {
+    interval: 500
+    repeat: true
+    running: true
+    onTriggered: updateModel()
+  }
 
-    anchors {
-      fill: parent
-      topMargin: 0
+  function updateModel() {
+    let all = []
+    const src = Hyprland.workspaces
+    if (src && src.values) {
+      for (let i = 0; i < src.values.length; i++) {
+        const ws = src.values[i]
+        if (ws && ws.id > 0) all.push(ws)
+      }
+    } else if (src) {
+      for (let i = 0; i < src.count; i++) {
+        const ws = src.get(i)
+        if (ws && ws.id > 0) all.push(ws)
+      }
     }
+    all.sort((a, b) => a.id - b.id)
+    if (all.length > 0) root.sortedModel = all
+  }
 
-    orientation: ListView.Horizontal
-    model: Hyprland.workspaces
-    spacing: Math.max(2, 10 - count)
-    clip: true
+  Row {
+    id: wsRow
+    anchors.fill: parent
+    spacing: Math.max(2, 10 - root.sortedModel.length)
 
-    delegate: Item {
-      id: workspaceContainer
+    Repeater {
+      model: root.sortedModel
 
-      property bool isValid: modelData.id > 0
-      visible: isValid
+      Item {
+        required property var modelData
+        width: wsRect.width
+        height: wsRow.height
 
-      width: workspaceRect.width
-      height: workspaceListView.height
+        Rectangle {
+          id: wsRect
+          property bool isActive: Hyprland.focusedMonitor
+            && Hyprland.focusedMonitor.activeWorkspace
+            && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
 
-      Rectangle {
-        id: workspaceRect
-        visible: workspaceContainer.isValid
-
-        property bool isActive: Hyprland.focusedMonitor && Hyprland.focusedMonitor.activeWorkspace && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
-
-        width: calculateWidth()
-        height: calculateHeight() + 1
-        anchors.centerIn: parent
-
-        radius: 10
-        color: isActive ? "#" + Globals.colors.colors.color6 : "#33" + Globals.colors.colors.color7
-
-        function calculateWidth() {
-          const totalWorkspaces = workspaceListView.count;
-          const availableWidth = 300;
-          const baseWidth = availableWidth / (totalWorkspaces + 2.5);
-          return isActive ? baseWidth * 2.5 : baseWidth;
-        }
-
-        function calculateHeight() {
-          return workspaceListView.height * 0.8;
-        }
-
-        Text {
-          id: workspaceId
-          text: root.japaneseNumerals[modelData.id] || modelData.id
-
-          property bool isActive: Hyprland.focusedMonitor && Hyprland.focusedMonitor.activeWorkspace && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
-
-          color: isActive ? "#" + Globals.colors.colors.color1 : "#" + Globals.colors.colors.color6
-          font {
-            family: Globals.font
-            pixelSize: 8
-            bold: true
+          width: {
+            const n = root.sortedModel.length || 1
+            const base = 300 / (n + 2.5)
+            return isActive ? base * 2.5 : base
           }
+          height: wsRow.height * 0.8
           anchors.centerIn: parent
-        }
+          radius: 10
+          color: isActive
+            ? "#" + Globals.colors.colors.color6
+            : "#33" + Globals.colors.colors.color7
 
-        MouseArea {
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + modelData.id + " })")
-        }
-
-        Behavior on width {
-          NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
+          Behavior on width {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
           }
-        }
+          Behavior on height {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+          }
 
-        Behavior on height {
-          NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
+          Text {
+            text: root.japaneseNumerals[modelData.id] || modelData.id
+            color: wsRect.isActive
+              ? "#" + Globals.colors.colors.color1
+              : "#" + Globals.colors.colors.color6
+            font { family: Globals.font; pixelSize: 8; bold: true }
+            anchors.centerIn: parent
+          }
+
+          MouseArea {
+            cursorShape: Qt.PointingHandCursor
+            anchors.fill: parent
+            onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + modelData.id + " })")
           }
         }
       }
