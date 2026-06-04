@@ -77,10 +77,6 @@ GridView {
 
     MouseArea {
       anchors.fill: parent
-      hoverEnabled: true
-      onEntered: {
-        gridView.currentIndex = index;
-      }
       onClicked: {
         gridView.executeApp(gridViewDelegate.modelData.entry);
       }

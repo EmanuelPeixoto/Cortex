@@ -259,7 +259,6 @@ PanelWindow {
           topMargin: 10
         }
         visible: !root.gridView && Service.RunnerAppModel.sortMode != "websearch"
-        currentIndex: root.currentIndex
         onExecuteApp: entry => root.executeApp(entry)
         onExecuteAction: action => root.executeAction(action)
         onIndexChanged: index => root.currentIndex = index
@@ -276,7 +275,6 @@ PanelWindow {
           topMargin: 10
         }
         visible: root.gridView
-        currentIndex: root.currentIndex
         itemsPerRow: root.itemsPerRow
         onExecuteApp: entry => root.executeApp(entry)
         onIndexChanged: index => root.currentIndex = index
