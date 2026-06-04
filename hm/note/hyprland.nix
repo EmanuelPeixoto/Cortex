@@ -33,14 +33,27 @@ in
           border_size = 2;
           gaps_in = 5;
           gaps_out = 10;
+          col = let c = config.lib.stylix.colors; in {
+            active_border = {
+              colors = [ "rgba(${c.base0D}ee)" "rgba(${c.base0E}ee)" ];
+              angle = 45;
+            };
+            inactive_border = "rgba(${c.base03}aa)";
+          };
         };
 
         decoration = {
+          rounding = 8;
           shadow = {
-            enabled = 0;
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            color = "rgba(${config.lib.stylix.colors.base00}ee)";
           };
           blur = {
-            enabled = 0;
+            enabled = true;
+            size = 3;
+            passes = 1;
           };
         };
 
@@ -51,6 +64,18 @@ in
 
         "animations.enabled" = 0;
       };
+
+      # Window rules
+      window_rule = [
+        {
+          name = "pip-follow";
+          match = {
+            title = "[Pp]icture.*[Pp]icture";
+          };
+          float = true;
+          pin = true;
+        }
+      ];
 
       # Binds
       bind = [
