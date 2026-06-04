@@ -1,12 +1,10 @@
-{ config, inputs, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [ inputs.stylix.homeModules.stylix ];
 
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
   ];
-
-  gtk.gtk4.theme = config.gtk.theme;
 
   stylix = {
     enable = true;
