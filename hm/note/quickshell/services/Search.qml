@@ -10,7 +10,7 @@ Singleton {
 
   Process {
     id: searchProcess
-    command: ["bash", "-c", Globals.homeDir + `/.config/quickshell/thorn/services/scripts/search.sh "${root.searchTerm}"`]
+    command: ["bash", "-c", Globals.homeDir + `/.config/quickshell/services/scripts/search.sh "${root.searchTerm}"`]
     running: root.searchTerm !== ""
   }
 }
