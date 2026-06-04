@@ -16,6 +16,9 @@
       "image/gif" = "nomacs.desktop";
       "image/jpeg" = "nomacs.desktop";
       "image/png" = "nomacs.desktop";
+      "image/webp" = "nomacs.desktop";
+      "image/bmp" = "nomacs.desktop";
+      "image/svg+xml" = "nomacs.desktop";
       "message/rfc822" = "userapp-Thunderbird-PO8FT2.desktop";
       "text/html" = "zen-beta.desktop";
       "text/plain" = "nvim.desktop";
@@ -39,7 +42,7 @@
     nomacs = {
       name = "Nomacs";
       exec = "${pkgs.nomacs}/bin/nomacs";
-      mimeType = [ "image/jpeg" "image/png" "image/gif" ];
+      mimeType = [ "image/jpeg" "image/png" "image/gif" "image/webp" "image/bmp" "image/svg+xml" ];
     };
   };
 }
