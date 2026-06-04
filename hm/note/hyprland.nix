@@ -157,7 +157,7 @@ in
         {
           _args = [
             "SUPER + SHIFT + Q"
-            (lib.generators.mkLuaInline "hl.dsp.window.kill()")
+            (lib.generators.mkLuaInline "hl.dsp.window.close()")
           ];
         }
 
