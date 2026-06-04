@@ -7,111 +7,134 @@ Components.BarWidget {
   id: root
   property var japaneseNumerals: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
-  function calculateDynamicWidth() {
-
-    const count = workspaceListView.count;
-
-    if (count === 0)
-    return 180;
-
-    const baseWidth = 300 / (count + 2.5);
-    const totalWorkspaceWidth = baseWidth * (count + 1.5);
-    const spacing = Math.max(2, 10 - count) * (count - 1);
-    const padding = 10;
-
-    return Math.ceil(totalWorkspaceWidth + spacing + padding);
-  }
+  // cached workspace list to prevent disappearing during model resets
+  property var cachedWorkspaces: []
+  property int cachedActiveId: -1
+  property int cachedCount: 0
 
   implicitWidth: calculateDynamicWidth()
   implicitHeight: 23
-
   color: "transparent"
   radius: 8
 
-  Component.onCompleted: {
-    Hyprland.refreshWorkspaces();
-    Hyprland.refreshMonitors();
+  function calculateDynamicWidth() {
+    const count = root.cachedCount
+    if (count <= 0) return 180
+    const baseWidth = 300 / (count + 2.5)
+    const totalWorkspaceWidth = baseWidth * (count + 1.5)
+    const spacing = Math.max(2, 10 - count) * (count - 1)
+    const padding = 10
+    return Math.ceil(totalWorkspaceWidth + spacing + padding)
   }
 
-  ListView {
-    id: workspaceListView
-    width: 180
+  Behavior on implicitWidth {
+    NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+  }
 
-    anchors {
-      fill: parent
-      topMargin: 0
+  Component.onCompleted: {
+    Hyprland.refreshWorkspaces()
+    Hyprland.refreshMonitors()
+    updateCache()
+  }
+
+  function updateCache() {
+    const all = Hyprland.workspaces.values || []
+    // filter: only real workspaces (id > 0), exclude special (-99, -1, etc.)
+    const valid = []
+    let active = -1
+    for (let i = 0; i < all.length; i++) {
+      const ws = all[i]
+      if (ws && ws.id > 0) {
+        valid.push({ id: ws.id, name: ws.name || "" + ws.id })
+        if (Hyprland.focusedMonitor &&
+            Hyprland.focusedMonitor.activeWorkspace &&
+            Hyprland.focusedMonitor.activeWorkspace.id === ws.id) {
+          active = ws.id
+        }
+      }
     }
+    // sort by id
+    valid.sort((a, b) => a.id - b.id)
 
-    orientation: ListView.Horizontal
-    model: Hyprland.workspaces
-    spacing: Math.max(2, 10 - count)
-    clip: true
+    // only update if we have real data (avoids flicker on empty)
+    if (valid.length > 0) {
+      root.cachedWorkspaces = valid
+      root.cachedCount = valid.length
+      root.cachedActiveId = active
+    } else if (root.cachedWorkspaces.length === 0) {
+      // first load with no workspaces: show 1
+      root.cachedWorkspaces = [{ id: 1, name: "1" }]
+      root.cachedCount = 1
+      root.cachedActiveId = 1
+    }
+    // else: keep previous cache, don't flicker
+  }
 
-    delegate: Item {
-      id: workspaceContainer
+  // poll Hyprland workspace state (avoids fragile Connections to null targets)
+  Timer {
+    interval: 300
+    repeat: true
+    running: true
+    onTriggered: updateCache()
+  }
 
-      property bool isValid: modelData.id > 0
-      visible: isValid
+  // ── visual ──
 
-      width: workspaceRect.width
-      height: workspaceListView.height
+  Row {
+    id: workspaceRow
+    anchors.fill: parent
+    spacing: Math.max(2, 10 - root.cachedCount)
 
-      Rectangle {
-        id: workspaceRect
-        visible: workspaceContainer.isValid
+    Repeater {
+      model: root.cachedWorkspaces
 
-        property bool isActive: Hyprland.focusedMonitor && Hyprland.focusedMonitor.activeWorkspace && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
+      Item {
+        id: workspaceContainer
+        required property var modelData
+        width: wsRect.width
+        height: workspaceRow.height
 
-        width: calculateWidth()
-        height: calculateHeight() + 1
-        anchors.centerIn: parent
+        Rectangle {
+          id: wsRect
+          property bool isActive: modelData.id === root.cachedActiveId
 
-        radius: 10
-        color: isActive ? "#" + Globals.colors.colors.color6 : "#33" + Globals.colors.colors.color7
-
-        function calculateWidth() {
-          const totalWorkspaces = workspaceListView.count;
-          const availableWidth = 300;
-          const baseWidth = availableWidth / (totalWorkspaces + 2.5);
-          return isActive ? baseWidth * 2.5 : baseWidth;
-        }
-
-        function calculateHeight() {
-          return workspaceListView.height * 0.8;
-        }
-
-        Text {
-          id: workspaceId
-          text: root.japaneseNumerals[modelData.id] || modelData.id
-
-          property bool isActive: Hyprland.focusedMonitor && Hyprland.focusedMonitor.activeWorkspace && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
-
-          color: isActive ? "#" + Globals.colors.colors.color1 : "#" + Globals.colors.colors.color6
-          font {
-            family: Globals.font
-            pixelSize: 8
-            bold: true
+          width: {
+            const n = root.cachedCount
+            const base = 300 / (n + 2.5)
+            return isActive ? base * 2.5 : base
           }
+          height: workspaceRow.height * 0.8
           anchors.centerIn: parent
-        }
+          radius: 10
+          color: isActive
+            ? "#" + Globals.colors.colors.color6
+            : "#33" + Globals.colors.colors.color7
 
-        MouseArea {
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          onClicked: Hyprland.dispatch("workspace " + modelData.id)
-        }
-
-        Behavior on width {
-          NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
+          Behavior on width {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
           }
-        }
+          Behavior on height {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+          }
 
-        Behavior on height {
-          NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
+          Text {
+            id: workspaceId
+            text: root.japaneseNumerals[modelData.id] || modelData.id
+            color: wsRect.isActive
+              ? "#" + Globals.colors.colors.color1
+              : "#" + Globals.colors.colors.color6
+            font {
+              family: Globals.font
+              pixelSize: 8
+              bold: true
+            }
+            anchors.centerIn: parent
+          }
+
+          MouseArea {
+            cursorShape: Qt.PointingHandCursor
+            anchors.fill: parent
+            onClicked: Hyprland.dispatch("workspace " + modelData.id)
           }
         }
       }
