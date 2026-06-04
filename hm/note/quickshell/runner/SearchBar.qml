@@ -10,6 +10,8 @@ import qs
 Rectangle {
   id: searchBar
 
+  property bool gridView: false
+
   property alias searchText: searchField.text
   property alias searchField: searchField
 
@@ -94,7 +96,7 @@ Rectangle {
       Layout.preferredHeight: 24
       Image {
         id: viewToggleIcon
-        source: root.gridView ? Quickshell.iconPath("view-list-symbolic") : Quickshell.iconPath("view-grid-symbolic")
+        source: searchBar.gridView ? Quickshell.iconPath("view-list-symbolic") : Quickshell.iconPath("view-grid-symbolic")
         sourceSize.width: 24
         sourceSize.height: 24
         anchors.fill: parent

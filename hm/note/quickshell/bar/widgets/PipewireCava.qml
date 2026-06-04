@@ -113,7 +113,7 @@ Components.BarWidget {
         id: pipewirePopup
         anchor {
           window: root.QsWindow.window
-          rect.x: Screen.width * 2 + pipewirePopup.width * 2
+          rect.x: Screen.width - pipewirePopup.width - 20
           rect.y: 30
         }
 

@@ -14,7 +14,6 @@ Item {
   property color backgroundColor: Globals.backgroundColor
   property string fontFamily: Globals.font
 
-  height: mainContainer.height
   implicitHeight: mainContainer.height
 
   Rectangle {

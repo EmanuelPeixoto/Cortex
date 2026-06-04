@@ -32,10 +32,7 @@ Variants {
       id: bar
       anchors {
         fill: parent
-        leftMargin: 5
-        rightMargin: 2
-        topMargin: 5
-        bottomMargin: 5
+        margins: 5
       }
       layer.effect: DropShadow {
         transparentBorder: true
@@ -48,7 +45,7 @@ Variants {
       }
 
       y: 10
-      implicitWidth: Screen.width - 7
+      implicitWidth: Screen.width - 10
       implicitHeight: 42
       color: root.backgroundColor
       radius: 8

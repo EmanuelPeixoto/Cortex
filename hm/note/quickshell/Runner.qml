@@ -242,6 +242,7 @@ PanelWindow {
 
       Run.SearchBar {
         id: searchBar
+        gridView: root.gridView
         onToggleSortMode: root.toggleSortMode()
         onToggleViewMode: root.toggleViewMode()
       }

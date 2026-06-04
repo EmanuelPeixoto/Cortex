@@ -45,7 +45,7 @@ Singleton {
     property bool colorsLoaded: false
 
     property FileView colorFile: FileView {
-      path: Qt.resolvedUrl(root.homeDir + "/.config/stylix/palette.json")
+      path: "file://" + root.homeDir + "/.config/stylix/palette.json"
       preload: true
       watchChanges: true
       onFileChanged: {
