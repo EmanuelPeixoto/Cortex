@@ -26,7 +26,6 @@ Take as much of the cortex as you want, or even all of it, but watch out for the
 
 ## TO DO LIST (in Portuguese)
 
-- conectar em wi-fi pelo menu (quickshell)
 - suporte multi-tela (quickshell)
 - grafana no servidor
 - melhorar a segurança ssh
