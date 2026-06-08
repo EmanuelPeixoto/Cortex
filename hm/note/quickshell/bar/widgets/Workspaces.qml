@@ -25,9 +25,7 @@ Components.BarWidget {
     repeat: true
     running: true
     onTriggered: {
-      if (root.sortedModel.length === 0) {
-        Hyprland.refreshWorkspaces()
-      }
+      Hyprland.refreshWorkspaces()
       updateModel()
     }
   }
@@ -80,9 +78,19 @@ Components.BarWidget {
 
         Rectangle {
           id: wsRect
-          property bool isActive: Hyprland.focusedMonitor
-            && Hyprland.focusedMonitor.activeWorkspace
-            && Hyprland.focusedMonitor.activeWorkspace.id === modelData.id
+          property bool isActive: false
+          property int monitorId: 0
+
+          Connections {
+            target: modelData
+            function onActiveChanged() { wsRect.isActive = modelData.active }
+            function onMonitorChanged() { wsRect.monitorId = modelData.monitor ? modelData.monitor.id : 0 }
+          }
+
+          Component.onCompleted: {
+            wsRect.isActive = modelData && modelData.active
+            wsRect.monitorId = modelData && modelData.monitor ? modelData.monitor.id : 0
+          }
 
           width: {
             const n = root.sortedModel.length || 1
@@ -92,9 +100,16 @@ Components.BarWidget {
           height: wsRow.height * 0.8
           anchors.centerIn: parent
           radius: 10
-          color: isActive
-            ? "#" + Globals.colors.colors.color6
-            : "#33" + Globals.colors.colors.color7
+          color: {
+            if (isActive) {
+              return monitorId === 0
+                ? "#" + Globals.colors.colors.color6
+                : "#" + Globals.colors.colors.color13
+            }
+            return monitorId === 0
+              ? "#4d" + Globals.colors.colors.color7
+              : "#4d" + Globals.colors.colors.color13
+          }
 
           Behavior on width {
             NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
