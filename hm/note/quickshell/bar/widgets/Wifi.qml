@@ -95,7 +95,7 @@ Components.BarWidget {
     }
     nets.sort((a, b) => b.signal - a.signal)
     root.networks = nets.slice(0, 20)
-    console.log("wifi: networks set, count:", root.networks.length, "connected:", foundConnected)
+    // console.log("wifi: networks set, count:", root.networks.length, "connected:", foundConnected)
 
     if (!foundConnected) {
       root.connected = false
