@@ -353,7 +353,7 @@ in
         {
           _args = [
             "SUPER + L"
-            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.hyprlock}/bin/hyprlock --immediate\")")
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.hyprlock}/bin/hyprlock --grace 0\")")
           ];
         }
         {
@@ -386,12 +386,6 @@ in
           _args = [
             "XF86Favorites"
             (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${wallpaper}/bin/wallpaper\")")
-          ];
-        }
-        {
-          _args = [
-            "XF86SelectiveScreenshot"
-            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${print-selection}/bin/print-selection\")")
           ];
         }
         {
