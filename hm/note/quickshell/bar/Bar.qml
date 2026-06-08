@@ -95,6 +95,10 @@ Variants {
             Layout.fillWidth: false
             spacing: 6
 
+            Widgets.Clock {
+              Layout.fillHeight: true
+            }
+
             Widgets.SystemTray {
               Layout.fillHeight: true
             }
@@ -132,6 +136,7 @@ Variants {
             }
 
             Widgets.Clock {
+              horizontal: false
               Layout.topMargin: 250
               Layout.leftMargin: root.vertMargin
             }
