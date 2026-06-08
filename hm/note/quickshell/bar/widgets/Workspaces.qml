@@ -5,6 +5,7 @@ import "components" as Components
 
 Components.BarWidget {
   id: root
+  property bool debug: false
   property var japaneseNumerals: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
   property var sortedModel: []
 
@@ -23,25 +24,45 @@ Components.BarWidget {
     interval: 500
     repeat: true
     running: true
-    onTriggered: updateModel()
+    onTriggered: {
+      if (root.sortedModel.length === 0) {
+        Hyprland.refreshWorkspaces()
+      }
+      updateModel()
+    }
   }
 
   function updateModel() {
     let all = []
     const src = Hyprland.workspaces
+
     if (src && src.values) {
       for (let i = 0; i < src.values.length; i++) {
         const ws = src.values[i]
         if (ws && ws.id > 0) all.push(ws)
       }
-    } else if (src) {
+    } else if (src && typeof src.count !== "undefined" && typeof src.get === "function") {
       for (let i = 0; i < src.count; i++) {
         const ws = src.get(i)
         if (ws && ws.id > 0) all.push(ws)
       }
+    } else if (Array.isArray(src)) {
+      for (let i = 0; i < src.length; i++) {
+        const ws = src[i]
+        if (ws && ws.id > 0) all.push(ws)
+      }
     }
+
     all.sort((a, b) => a.id - b.id)
-    if (all.length > 0) root.sortedModel = all
+
+    // only update if the workspace list changed (preserves animations)
+    const changed = all.length !== root.sortedModel.length
+      || all.some((ws, i) => ws.id !== root.sortedModel[i]?.id)
+
+    if (changed) {
+      if (root.debug) console.log("ws: updated", all.length, "workspaces")
+      root.sortedModel = all
+    }
   }
 
   Row {
