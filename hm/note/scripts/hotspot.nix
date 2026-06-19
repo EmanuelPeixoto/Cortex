@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "hotspot" ''
   set -e
 
   CONN_NAME="hotspot"
-  IFACE="wlp2s0b1"
+  IFACE="wlp9s0"
 
   show_usage() {
       echo "Modo de uso:"
@@ -18,8 +18,12 @@ pkgs.writeShellScriptBin "hotspot" ''
   stop_hotspot() {
       if ${pkgs.networkmanager}/bin/nmcli -t -f NAME,DEVICE connection show --active | ${pkgs.gnugrep}/bin/grep -q "$CONN_NAME:$IFACE"; then
           echo "[+] Desativando hotspot..."
-          ${pkgs.networkmanager}/bin/nmcli connection down "$CONN_NAME" 2>/dev/null
-          ${pkgs.networkmanager}/bin/nmcli connection delete "$CONN_NAME" 2>/dev/null
+          ${pkgs.networkmanager}/bin/nmcli connection down "$CONN_NAME" 2>/dev/null || true
+
+          # Remove todas as instâncias duplicadas pelo nome
+          for uuid in $(${pkgs.networkmanager}/bin/nmcli -t -f NAME,UUID connection show | ${pkgs.gnugrep}/bin/grep "^$CONN_NAME:" | cut -d: -f2); do
+              ${pkgs.networkmanager}/bin/nmcli connection delete "$uuid" 2>/dev/null || true
+          done
           exit 0
       else
           echo "[-] Hotspot não está ativo."
@@ -42,10 +46,13 @@ pkgs.writeShellScriptBin "hotspot" ''
       exit 1
   fi
 
-  if ${pkgs.networkmanager}/bin/nmcli -t -f NAME,DEVICE connection show --active | ${pkgs.gnugrep}/bin/grep -q "$CONN_NAME:$IFACE"; then
-      echo "[!] Hotspot já ativo. Desativando antes de criar novo..."
+  # Limpeza preventiva: remove qualquer conexão antiga com esse nome para evitar conflitos de UUID
+  if ${pkgs.networkmanager}/bin/nmcli connection show | ${pkgs.gnugrep}/bin/grep -q "$CONN_NAME"; then
+      echo "[!] Limpando conexões antigas com o nome '$CONN_NAME'..."
       ${pkgs.networkmanager}/bin/nmcli connection down "$CONN_NAME" 2>/dev/null || true
-      ${pkgs.networkmanager}/bin/nmcli connection delete "$CONN_NAME" 2>/dev/null || true
+      for uuid in $(${pkgs.networkmanager}/bin/nmcli -t -f NAME,UUID connection show | ${pkgs.gnugrep}/bin/grep "^$CONN_NAME:" | cut -d: -f2); do
+          ${pkgs.networkmanager}/bin/nmcli connection delete "$uuid" 2>/dev/null || true
+      done
   fi
 
   echo "[+] Criando hotspot '$SSID'..."
@@ -68,13 +75,14 @@ pkgs.writeShellScriptBin "hotspot" ''
     wifi-sec.key-mgmt wpa-psk \
     wifi-sec.psk "$PASSWORD" >/dev/null
 
-  echo "[+] Ativando hotspot..."
-  ${pkgs.networkmanager}/bin/nmcli connection up "$CONN_NAME" >/dev/null
+  echo "[+] Ativando hotspot na interface $IFACE..."
+  # Força o nmcli a subir a conexão especificamente na interface wireless desejada
+  ${pkgs.networkmanager}/bin/nmcli connection up "$CONN_NAME" ifname "$IFACE" >/dev/null
 
   echo -e "\n\033[1;32mHotspot ativado com sucesso!\033[0m"
-  echo "SSID:     $SSID"
-  echo "Senha:    $PASSWORD"
+  echo "SSID:      $SSID"
+  echo "Senha:     $PASSWORD"
   echo "Interface: $IFACE"
-  echo "Banda:    $([[ "$BAND_OPTION" == "-2" ]] && echo '2.4GHz' || echo '5GHz')"
+  echo "Banda:     $([[ "$BAND_OPTION" == "-2" ]] && echo '2.4GHz' || echo '5GHz')"
   echo "Para desativar: $0 --stop"
 ''
