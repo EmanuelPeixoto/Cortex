@@ -2,6 +2,7 @@
   imports = [
     ../shared/avahi.nix
     ../shared/flake-config.nix
+    ../shared/ia.nix
     ../shared/locale.nix
     ../shared/ssh.nix
     ./acme.nix

@@ -3,6 +3,7 @@
     ../shared/avahi.nix
     ../shared/bluetooth.nix
     ../shared/flake-config.nix
+    ../shared/ia.nix
     ../shared/locale.nix
     ../shared/ssh.nix
     ./apps.nix
@@ -11,7 +12,6 @@
     ./firewall.nix
     ./hardware-configuration.nix
     ./hotspot.nix
-    ./ia.nix
     ./keyring.nix
     ./ly.nix
     ./nvidia.nix
