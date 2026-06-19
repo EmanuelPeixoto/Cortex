@@ -11,6 +11,11 @@
       PartOf = [ "hyprland-session.target" ];
       After = [ "hyprland-session.target" ];
     };
+    Service = {
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
+      StandardOutput = "null";
+      StandardError = "null";
+    };
     Install.WantedBy = [ "hyprland-session.target" ];
   };
 
