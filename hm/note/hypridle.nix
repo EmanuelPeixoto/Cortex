@@ -25,4 +25,6 @@
       ];
     };
   };
+
+  systemd.user.services.hypridle.Service.StandardOutput = "null";
 }
