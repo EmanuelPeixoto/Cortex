@@ -51,6 +51,7 @@ in
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
     # prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
+    pwvucontrol               # Pipewire Volume Control
     qbittorrent               # Featureful free software BitTorrent client
     qemu                      # Generic and open source machine emulator and virtualizer
     qpwgraph                  # Qt graph manager for PipeWire, similar to QjackCtl
