@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./database.nix
-    # ./recognize.nix
+    ./recognize.nix
     ./php.nix
   ];
 

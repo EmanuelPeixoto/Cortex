@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   occ = "/run/current-system/sw/bin/nextcloud-occ";
-  nodeBin = "${pkgs.nodejs_20}/bin/node";
+  nodeBin = "${pkgs.nodejs_22}/bin/node";
   ffmpegBin = "${pkgs.ffmpeg}/bin/ffmpeg";
   niceBin = "${pkgs.coreutils}/bin/nice";
 in
@@ -34,6 +34,8 @@ in
   systemd.services = {
     nextcloud-recognize-classify = {
       description = "Nextcloud Recognize – Classify queued files";
+      after = [ "phpfpm-nextcloud.service" ];
+      requires = [ "phpfpm-nextcloud.service" ];
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${occ} recognize:classify";
