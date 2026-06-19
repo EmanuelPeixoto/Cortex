@@ -20,6 +20,7 @@ in {
     extraModprobeConfig = "options nvidia-drm modeset=1";
     initrd.kernelModules = [ "nvidia_modeset" ];
     blacklistedKernelModules = [ "nouveau" ];
+    kernelParams = [ "video=DP-2:d" ];
   };
 
   systemd.services.systemd-udev-trigger.restartIfChanged = false;
