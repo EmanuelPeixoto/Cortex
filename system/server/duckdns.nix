@@ -7,7 +7,8 @@ in
 {
   systemd.services.duckdns = {
     description = "DuckDNS IPv6-only Update";
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     startAt = "*:0/5";
 
@@ -16,10 +17,10 @@ in
       TOKEN=$(cat ${tokenFile})
       DOMAIN=$(cat ${domainFile})
       if [ -n "$IPV6" ] && [ -n "$DOMAIN" ]; then
-      echo "IPV6: $IPV6"
-      echo "TOKEN: $TOKEN"
-      echo "DOMAIN: $DOMAIN"
-      ${pkgs.curl}/bin/curl -s "https://www.duckdns.org/update?domains=$DOMAIN&token=$TOKEN&ip=&ipv6=$IPV6"
+      for i in $(seq 1 6); do
+        ${pkgs.curl}/bin/curl -s "https://www.duckdns.org/update?domains=$DOMAIN&token=$TOKEN&ip=&ipv6=$IPV6" && break
+        sleep 5
+      done
       else
       echo "Erro: IPv6 ou arquivos de configuração não encontrados"
       exit 1
