@@ -5,6 +5,7 @@
     musicDirectory = "${config.home.homeDirectory}/Nextcloud/Musicas";
     network.listenAddress = "any";
     extraConfig = ''
+      zeroconf_enabled "no"
       audio_output {
       type "pipewire"
       name "MPD pipewire"
