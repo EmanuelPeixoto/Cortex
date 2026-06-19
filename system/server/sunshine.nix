@@ -25,7 +25,7 @@ in
         }
         {
           name = "Prism Launcher";
-          cmd = "${prismPatched}/bin/prismlauncher";
+          # cmd = "${prismPatched}/bin/prismlauncher";
         }
         {
           name = "GTA SA";
