@@ -1,5 +1,6 @@
 {
   boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
   boot.zfs.extraPools = [ "HDs" ];
   networking.hostId = "e049c7ca"; # head -c 8 /etc/machine-id
 
