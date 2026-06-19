@@ -3,6 +3,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     settings = {
       monitor = "HEADLESS-2,1920x1080@60,auto,1";
 
