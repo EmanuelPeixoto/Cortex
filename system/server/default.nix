@@ -12,6 +12,7 @@
     ./duckdns.nix
     ./firewall.nix
     ./hardware-configuration.nix
+    ./ipv6-token.nix
     ./nextcloud
     ./nvidia.nix
     ./qbittorrent.nix

@@ -42,6 +42,8 @@ in
         User = "nextcloud";
         Group = "nextcloud";
         TimeoutStartSec = "6h";
+        StandardOutput = "null";
+        StandardError = "null";
       };
       environment = {
         LD_LIBRARY_PATH = "/run/opengl-driver/lib";
@@ -58,6 +60,8 @@ in
         User = "nextcloud";
         Group = "nextcloud";
         TimeoutStartSec = "2h";
+        StandardOutput = "null";
+        StandardError = "null";
       };
     };
   };
