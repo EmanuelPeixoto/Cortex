@@ -18,7 +18,7 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
 - **RAM:** 32GB DDR4
 - **Discs:**
   - SSD M.2 256GB Samsung PM991a (System)
-  - 2x HDD 2TB Seagate Video 3.5 HDD (NAS - RAID1)
+  - 2x HDD 2TB Seagate Video 3.5 HDD (ZFS send/receive — rotating backup)
 
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
 
