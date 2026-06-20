@@ -78,19 +78,18 @@ Components.BarWidget {
 
         Rectangle {
           id: wsRect
-          property bool isActive: false
-          property int monitorId: 0
 
-          Connections {
-            target: modelData
-            function onActiveChanged() { wsRect.isActive = modelData.active }
-            function onMonitorChanged() { wsRect.monitorId = modelData.monitor ? modelData.monitor.id : 0 }
+          // reactive: accesses Hyprland monitor refs which trigger re-eval on workspace switch
+          property bool isActive: {
+            if (!modelData) return false
+            const monitors = Hyprland.monitors.values
+            const m0 = monitors[0]
+            const m1 = monitors[1]
+            const aw0 = m0 ? m0.activeWorkspace : null
+            const aw1 = m1 ? m1.activeWorkspace : null
+            return (aw0 && aw0.id === modelData.id) || (aw1 && aw1.id === modelData.id)
           }
-
-          Component.onCompleted: {
-            wsRect.isActive = modelData && modelData.active
-            wsRect.monitorId = modelData && modelData.monitor ? modelData.monitor.id : 0
-          }
+          property int monitorId: modelData && modelData.monitor ? modelData.monitor.id : 0
 
           width: {
             const n = root.sortedModel.length || 1
