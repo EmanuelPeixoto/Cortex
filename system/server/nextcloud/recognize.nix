@@ -1,7 +1,13 @@
 { pkgs, ... }:
 let
   occ = "/run/current-system/sw/bin/nextcloud-occ";
-  nodeBin = "${pkgs.nodejs_22}/bin/node";
+  # Wrapper to force classifier Node processes to bind only to localhost
+  nodeBinSafe = pkgs.writeShellScriptBin "node-localhost" ''
+    export SERVER_HOST=127.0.0.1
+    export HOST=127.0.0.1
+    exec ${pkgs.nodejs_22}/bin/node "$@"
+  '';
+  nodeBin = "${nodeBinSafe}/bin/node-localhost";
   ffmpegBin = "${pkgs.ffmpeg}/bin/ffmpeg";
   niceBin = "${pkgs.coreutils}/bin/nice";
 in
