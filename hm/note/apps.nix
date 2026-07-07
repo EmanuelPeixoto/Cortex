@@ -14,7 +14,6 @@ in
 
     aircrack-ng               # Wireless encryption cracking tools
     android-tools             # Android SDK platform tools
-    arduino-ide               # Open-source electronics prototyping platform
     audacity                  # Sound editor with graphical UI
     blender                   # 3D Creation/Animation/Publishing System
     curl                      # Command line tool for transferring files with URL syntax
@@ -49,6 +48,7 @@ in
     nomacs                    # Qt-based image viewer
     openssl                   # Cryptographic library that implements the SSL and TLS protocols
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
+    platformio                # Open source ecosystem for IoT development
     # prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     pwvucontrol               # Pipewire Volume Control
