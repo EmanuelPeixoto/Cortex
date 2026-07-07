@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./ipv6-token.nix
     ./nextcloud
+    ./router-ipv6-update.nix
     ./nvidia.nix
     ./qbittorrent.nix
     # ./rstudio.nix
