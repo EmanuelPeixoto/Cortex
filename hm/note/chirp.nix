@@ -16,6 +16,8 @@ let
     '';
   });
 
+  chirp-exe = lib.getExe' chirp-with-driver "chirp";
+
 in
   {
   home.packages = [ chirp-with-driver ];
@@ -24,7 +26,7 @@ in
   xdg.desktopEntries.chirp = {
     name = "CHIRP";
     comment = "Programador de rádios (UV-K5 F4HWN)";
-    exec = "${lib.getExe chirp-with-driver}";
+    exec = "${chirp-exe}";
     icon = "chirp";
     terminal = false;
     categories = [ "Utility" "HamRadio" ];
