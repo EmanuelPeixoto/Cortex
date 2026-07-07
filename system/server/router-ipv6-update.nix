@@ -24,7 +24,7 @@ in
       Type = "oneshot";
       User = "emanuel";
       TimeoutStartSec = "120";
-      WorkingDirectory = "/home/emanuel";
+      WorkingDirectory = "/home/emanuel/.config";
       ExecStart = "${tplink-ipv6-set}/bin/tplink-ipv6-set $(${pkgs.iproute2}/bin/ip -6 addr show enp6s0 | ${pkgs.gnugrep}/bin/grep '::cafe' | ${pkgs.gawk}/bin/awk '{print $2}' | cut -d/ -f1)";
     };
   };
