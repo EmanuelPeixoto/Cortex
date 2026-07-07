@@ -24,10 +24,6 @@
         time = "17:30";
         temperature = 3700;
       }
-      {
-        time = "18:00";
-        temperature = 3000;
-      }
     ];
   };
   };
