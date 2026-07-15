@@ -3,6 +3,8 @@ let
   catfolder = import ../shared/scripts/catfolder.nix { inherit pkgs; };
   hotspot = import ./scripts/hotspot.nix { inherit pkgs; };
   motd = import ../shared/scripts/motd.nix { inherit pkgs; };
+  soundboard = import ./scripts/soundboard.nix { inherit pkgs; };
+  soundboard-setup = import ./scripts/soundboard-setup.nix { inherit pkgs; };
   yt-tlp-menu = import ../shared/scripts/yt-dlp-menu.nix { inherit pkgs; };
 in
 {
@@ -10,6 +12,8 @@ in
     catfolder
     hotspot
     motd
+    soundboard
+    soundboard-setup
     yt-tlp-menu
 
     aircrack-ng               # Wireless encryption cracking tools
