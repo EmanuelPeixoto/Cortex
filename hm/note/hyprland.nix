@@ -3,18 +3,8 @@ let
   hyprland-exec = import ./scripts/hyprland-exec.nix { inherit config pkgs; };
   print = import ./scripts/print.nix { inherit pkgs; };
   print-selection = import ./scripts/print-selection.nix { inherit pkgs; };
-  soundboard = import ./scripts/soundboard.nix { inherit pkgs; };
   wallpaper = import ./scripts/wallpaper.nix { inherit config pkgs; };
   monitor-mode = import ./scripts/monitor-mode.nix { inherit pkgs; };
-
-  sbDir = "${config.home.homeDirectory}/Nextcloud/Sounds";
-  sbBinds = [
-    { key = "code:87"; file = "manga.mp3"; }
-    { key = "code:88"; file = "mbappe.mp3"; }
-    { key = "code:89"; file = "mickey.mp3"; }
-    { key = "code:83"; file = "sono.mp3"; }
-    { key = "code:84"; file = "yamede.mp3"; }
-  ];
 
   # helpers — retornam { _args = [key, lua]; }
   mkBind = key: lua: { _args = [ key (lib.generators.mkLuaInline lua) ]; };
@@ -121,9 +111,6 @@ in
         (mkBind "SUPER + mouse_up"   ''hl.dsp.focus({ workspace = "e-1" })'')
         { _args = [ "SUPER + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()")    { mouse = true; } ]; }
         { _args = [ "SUPER + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()")  { mouse = true; } ]; }
-
-        # === soundboard (SUPER + numpad) ===
-        ] ++ map (b: mkCmd "SUPER + ${b.key}" "${soundboard}/bin/soundboard ${sbDir}/${b.file}") sbBinds ++ [
 
         # === apps ===
         (mkCmd  "SUPER + P"         "${monitor-mode}/bin/monitor-mode")

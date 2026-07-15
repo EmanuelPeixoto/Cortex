@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  soundboard-setup = import ./soundboard-setup.nix { inherit pkgs; };
   wallpaper = import ./wallpaper.nix { inherit config pkgs; };
 in
 pkgs.writeShellScriptBin "hyprland-exec" ''
@@ -12,7 +11,4 @@ pkgs.writeShellScriptBin "hyprland-exec" ''
     sleep 0.5
   done
   ${wallpaper}/bin/wallpaper || echo "Failed to change wallpaper"
-
-  # Soundboard: virtual mic for CS2 trolling
-  ${soundboard-setup}/bin/soundboard-setup || true
 ''
