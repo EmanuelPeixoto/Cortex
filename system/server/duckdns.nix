@@ -13,7 +13,9 @@ in
     startAt = "*:0/5";
 
     script = ''
-      IPV6=$(${pkgs.iproute2}/bin/ip -6 addr show enp6s0 | ${pkgs.gnugrep}/bin/grep "scope global" | head -n1 | ${pkgs.gawk}/bin/awk '{print $2}' | cut -d/ -f1)
+      # Prefer ::cafe address, fall back to any global
+      IPV6=$(${pkgs.iproute2}/bin/ip -6 addr show enp6s0 | ${pkgs.gnugrep}/bin/grep '::cafe' | ${pkgs.gawk}/bin/awk '{print $2}' | cut -d/ -f1)
+      [ -z "$IPV6" ] && IPV6=$(${pkgs.iproute2}/bin/ip -6 addr show enp6s0 | ${pkgs.gnugrep}/bin/grep 'scope global' | head -n1 | ${pkgs.gawk}/bin/awk '{print $2}' | cut -d/ -f1)
       TOKEN=$(cat ${tokenFile})
       DOMAIN=$(cat ${domainFile})
       if [ -n "$IPV6" ] && [ -n "$DOMAIN" ]; then
