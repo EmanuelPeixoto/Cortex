@@ -24,7 +24,7 @@ in
         sleep 5
       done
       else
-      echo "Erro: IPv6 ou arquivos de configuração não encontrados"
+      echo "Error: IPv6 or configuration files not found"
       exit 1
       fi
       '';

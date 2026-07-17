@@ -21,12 +21,3 @@ My NixOS system mirrors the intricate neural pathways of the brain, providing a 
   - 2x HDD 2TB Seagate Video 3.5 HDD (ZFS send/receive — rotating backup)
 
 Take as much of the cortex as you want, or even all of it, but watch out for the Frankensteins and the zombies!
-
----
-
-## TO DO LIST (in Portuguese)
-
-- suporte multi-tela (quickshell)
-- grafana no servidor
-- melhorar a segurança ssh
-- tunelamento wireguard ou headscale

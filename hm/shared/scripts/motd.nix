@@ -31,9 +31,9 @@ pkgs.writeShellScriptBin "motd" ''
 
   # Display functions
   print_header() {
-    echo -e "\n''${GREEN}======================="
-    echo -e "Seja Bem Vindo Emanuel!"
-    echo -e "=======================''${NC}\n"
+    echo -e "\n''${GREEN}================"
+    echo -e "Welcome Emanuel!"
+    echo -e "================''${NC}\n"
   }
 
   print_system_info() {

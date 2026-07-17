@@ -1,7 +1,4 @@
-# Define o arquivo do Pipe
 PIPE="/tmp/dwm-status-pipe"
-
-# Garante que o Pipe existe e está limpo
 rm -f "$PIPE"
 mkfifo "$PIPE"
 

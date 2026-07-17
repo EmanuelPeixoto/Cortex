@@ -39,10 +39,10 @@
         ];
       };
 
-      # Lista dos sistemas para gerar configurações
+      # List of systems to generate configurations
       systems = [ "note" "server" "light" ];
 
-      # Função para gerar uma configuração NixOS
+      # Function to generate a NixOS configuration
       mkNixosSystem = name:
         nixpkgs.lib.nixosSystem {
           inherit pkgs;
@@ -53,7 +53,7 @@
           specialArgs = { inherit inputs; };
         };
 
-      # Função para gerar uma configuração do Home Manager
+      # Function to generate a Home Manager configuration
       mkHomeConfig = name:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -66,7 +66,7 @@
         NixOS-Note = mkNixosSystem "note";
         NixOS-Server = mkNixosSystem "server";
         NixOS-Light = mkNixosSystem "light";
-        # Caso especial para a ISO
+        # Special case for the ISO
         NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [

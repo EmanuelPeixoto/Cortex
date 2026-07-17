@@ -11,7 +11,7 @@
       listener = [
         {
           timeout = 230;
-          on-timeout = "${pkgs.libnotify}/bin/notify-send 'Aviso de Inatividade' 'Você está ausente. O computador entrará em modo de descanso em 30 segundos.' -a Hypridle";
+          on-timeout = "${pkgs.libnotify}/bin/notify-send 'Inactivity Warning' 'You are away. The computer will enter sleep mode in 30 seconds.' -a Hypridle";
         }
         {
           timeout = 300;

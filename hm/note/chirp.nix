@@ -25,7 +25,7 @@ in
   # 🔹 entry desktop (corrigido)
   xdg.desktopEntries.chirp = {
     name = "CHIRP";
-    comment = "Programador de rádios (UV-K5 F4HWN)";
+    comment = "Radio programmer (UV-K5 F4HWN)";
     exec = "${chirp-exe}";
     icon = "chirp";
     terminal = false;

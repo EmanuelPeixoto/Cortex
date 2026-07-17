@@ -7,26 +7,25 @@ pkgs.writeShellScriptBin "hotspot" ''
   IFACE="wlp9s0"
 
   show_usage() {
-      echo "Modo de uso:"
-      echo "  $0 [SSID] [SENHA] [-2] - Ativa hotspot (por padrão 5GHz, use -2 para 2.4GHz)"
-      echo "  $0 --stop - Desativa hotspot ativo"
+      echo "Usage:"
+      echo "  $0 [SSID] [PASSWORD] [-2] - Activate hotspot (default 5GHz, use -2 for 2.4GHz)"
+      echo "  $0 --stop - Deactivate active hotspot"
       echo ""
-      echo "Exemplo: $0 MeuWifi senha1234"
+      echo "Example: $0 MyWifi pass1234"
       exit 1
   }
 
   stop_hotspot() {
       if ${pkgs.networkmanager}/bin/nmcli -t -f NAME,DEVICE connection show --active | ${pkgs.gnugrep}/bin/grep -q "$CONN_NAME:$IFACE"; then
-          echo "[+] Desativando hotspot..."
+          echo "[+] Deactivating hotspot..."
           ${pkgs.networkmanager}/bin/nmcli connection down "$CONN_NAME" 2>/dev/null || true
 
-          # Remove todas as instâncias duplicadas pelo nome
           for uuid in $(${pkgs.networkmanager}/bin/nmcli -t -f NAME,UUID connection show | ${pkgs.gnugrep}/bin/grep "^$CONN_NAME:" | cut -d: -f2); do
               ${pkgs.networkmanager}/bin/nmcli connection delete "$uuid" 2>/dev/null || true
           done
           exit 0
       else
-          echo "[-] Hotspot não está ativo."
+          echo "[-] Hotspot is not active."
           exit 1
       fi
   }
@@ -42,47 +41,45 @@ pkgs.writeShellScriptBin "hotspot" ''
   BAND_OPTION="$3"
 
   if [ ''${#PASSWORD} -lt 8 ]; then
-      echo "Erro: Senha deve ter no mínimo 8 caracteres!" >&2
+      echo "Error: Password must be at least 8 characters!" >&2
       exit 1
   fi
 
-  # Limpeza preventiva: remove qualquer conexão antiga com esse nome para evitar conflitos de UUID
   if ${pkgs.networkmanager}/bin/nmcli connection show | ${pkgs.gnugrep}/bin/grep -q "$CONN_NAME"; then
-      echo "[!] Limpando conexões antigas com o nome '$CONN_NAME'..."
+      echo "[!] Cleaning old connections named '$CONN_NAME'..."
       ${pkgs.networkmanager}/bin/nmcli connection down "$CONN_NAME" 2>/dev/null || true
       for uuid in $(${pkgs.networkmanager}/bin/nmcli -t -f NAME,UUID connection show | ${pkgs.gnugrep}/bin/grep "^$CONN_NAME:" | cut -d: -f2); do
           ${pkgs.networkmanager}/bin/nmcli connection delete "$uuid" 2>/dev/null || true
       done
   fi
 
-  echo "[+] Criando hotspot '$SSID'..."
+  echo "[+] Creating hotspot '$SSID'..."
   ${pkgs.networkmanager}/bin/nmcli connection add type wifi ifname "$IFACE" con-name "$CONN_NAME" \
     ssid "$SSID" mode ap ipv4.method shared >/dev/null
 
   if [[ "$BAND_OPTION" == "-2" ]]; then
-      echo "[+] Configurando banda 2.4 GHz..."
+      echo "[+] Configuring 2.4 GHz band..."
       ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.band bg >/dev/null
       ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel 6 >/dev/null
   else
-      echo "[+] Configurando banda 5 GHz..."
+      echo "[+] Configuring 5 GHz band..."
       ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.band a >/dev/null
       ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel 161 >/dev/null
       ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" 802-11-wireless.channel-width 40 >/dev/null
   fi
 
-  echo "[+] Configurando segurança WPA2-PSK..."
+  echo "[+] Configuring WPA2-PSK security..."
   ${pkgs.networkmanager}/bin/nmcli connection modify "$CONN_NAME" \
     wifi-sec.key-mgmt wpa-psk \
     wifi-sec.psk "$PASSWORD" >/dev/null
 
-  echo "[+] Ativando hotspot na interface $IFACE..."
-  # Força o nmcli a subir a conexão especificamente na interface wireless desejada
+  echo "[+] Activating hotspot on interface $IFACE..."
   ${pkgs.networkmanager}/bin/nmcli connection up "$CONN_NAME" ifname "$IFACE" >/dev/null
 
-  echo -e "\n\033[1;32mHotspot ativado com sucesso!\033[0m"
+  echo -e "\n\033[1;32mHotspot activated successfully!\033[0m"
   echo "SSID:      $SSID"
-  echo "Senha:     $PASSWORD"
+  echo "Password:  $PASSWORD"
   echo "Interface: $IFACE"
-  echo "Banda:     $([[ "$BAND_OPTION" == "-2" ]] && echo '2.4GHz' || echo '5GHz')"
-  echo "Para desativar: $0 --stop"
+  echo "Band:      $([[ "$BAND_OPTION" == "-2" ]] && echo '2.4GHz' || echo '5GHz')"
+  echo "To deactivate: $0 --stop"
 ''

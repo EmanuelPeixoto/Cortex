@@ -115,12 +115,10 @@ let
         { MODKEY|ShiftMask,             XK_r,            spawn,          SHCMD("killall dwm-status; ~/.local/bin/dwm-status &") },
 
 
-        /* Audio e Brilho (MÉTODO PIPE FIFO - Instantâneo) */
         { 0, XF86XK_AudioMute,          spawn, SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; echo > /tmp/dwm-status-pipe") },
         { 0, XF86XK_AudioLowerVolume,   spawn, SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; echo > /tmp/dwm-status-pipe") },
         { 0, XF86XK_AudioRaiseVolume,   spawn, SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.25; echo > /tmp/dwm-status-pipe") },
 
-        /* Controle de Mídia (Playerctl) */
         { 0, XF86XK_AudioPlay,          spawn, SHCMD("playerctl play-pause") },
         { 0, XF86XK_AudioNext,          spawn, SHCMD("playerctl next") },
         { 0, XF86XK_AudioPrev,          spawn, SHCMD("playerctl previous") },
