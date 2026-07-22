@@ -42,6 +42,7 @@
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
+    nix-ld.enable = true;
     zsh.enable = true;
   };
 
