@@ -21,7 +21,6 @@ in
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
     gcc                       # GNU Compiler Collection
     gdb                       # GNU Project debugger
-    gimp                      # GNU Image Manipulation Program
     glibc                     # GNU C Library
     gnumake                   # Tool to control the generation of non-source files from sources
     iftop                     # Display bandwidth usage on a network interface

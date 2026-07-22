@@ -16,6 +16,7 @@
     ./default-apps.nix
     ./firefox.nix
     ./ghostty.nix
+    ./gimp.nix
     ./go.nix
     ./hypridle.nix
     ./hyprland.nix
