@@ -7,9 +7,10 @@ in
   imports = [ phpPool ];
 
   services.nginx.virtualHosts."${config.networking.hostName}.local" = {
-    serverName = config.networking.hostName+".local";
+    serverName = "${config.networking.hostName}.local ${lib.toLower config.networking.hostName}.local";
     listen = [
       { addr = "0.0.0.0"; port = 80; }
+      { addr = "[::]"; port = 80; }
     ];
 
     root = "/var/www/";
