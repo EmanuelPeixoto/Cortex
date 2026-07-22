@@ -6,7 +6,7 @@
     certs.${config.services.nextcloud.hostName} = {
        webroot = null;
       dnsProvider = "duckdns";
-      credentialFiles = { "DUCK_DNS_TOKEN_FILE" = "/var/lib/acme/duckdns-token"; };
+      credentialFiles = { "DUCKDNS_TOKEN_FILE" = "/var/lib/acme/duckdns-token"; };
       group = "www";
     };
   };
