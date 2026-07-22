@@ -31,7 +31,7 @@ pkgs.writeShellScriptBin "motd" ''
 
   # Display functions
   print_header() {
-    echo -e "\n''${GREEN}================"
+    echo -e "''${GREEN}================"
     echo -e "Welcome Emanuel!"
     echo -e "================''${NC}\n"
   }
