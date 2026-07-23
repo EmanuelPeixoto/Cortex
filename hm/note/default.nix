@@ -3,6 +3,7 @@
     ../shared/btop.nix
     ../shared/fastfetch.nix
     ../shared/git.nix
+    ../shared/ia.nix
     ../shared/lexis.nix
     ../shared/nix-index.nix
     ../shared/tmux.nix

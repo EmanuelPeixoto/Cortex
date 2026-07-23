@@ -3,7 +3,6 @@
     ../shared/avahi.nix
     ../shared/bluetooth.nix
     ../shared/flake-config.nix
-    ../shared/ia.nix
     ../shared/locale.nix
     ../shared/ssh.nix
     ./apps.nix
