@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
+  micPort = 12345;
   prismPatched = pkgs.prismlauncher.override {
     prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
       patches = (old.patches or []) ++ [
@@ -12,11 +13,18 @@ let
   };
 in
 {
+  networking.firewall.allowedTCPPorts = [ micPort ];
+
   services.sunshine = {
     enable = true;
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
+
+    settings = {
+      csrf_allowed_origins = "https://localhost:47990,https://127.0.0.1:47990,https://192.168.0.10:47990";
+    };
+
     applications = {
       apps = [
         {
@@ -32,12 +40,49 @@ in
           cmd = "${pkgs.wine}/bin/wine gta_sa.EXE";
           working_dir = "/home/emanuel/.wine/drive_c/Program Files/Rockstar Games/GTA San Andreas/";
         }
-
         {
           name = "Desktop";
           cmd = "${pkgs.bash}/bin/sh -c 'while true; do sleep 1000; done'";
         }
       ];
+    };
+  };
+
+  services.pipewire = {
+    enable = true;
+
+    extraConfig.pipewire."99-sunshine-mic" = {
+      "context.modules" = [
+        {
+          name = "libpipewire-module-loopback";
+          args = {
+            "node.name" = "sunshine-mic";
+            "node.description" = "Sunshine Microphone";
+            "capture.props" = {
+              "media.class" = "Audio/Sink";
+              "node.name" = "sunshine-mic-sink";
+            };
+            "playback.props" = {
+              "media.class" = "Audio/Source";
+              "node.name" = "sunshine-mic";
+            };
+          };
+        }
+      ];
+    };
+  };
+
+  systemd.user.services.mic-receiver = {
+    description = "Receive mic audio from Moonlight notebook";
+    wantedBy = [ "default.target" ];
+    after = [ "pipewire.service" ];
+    serviceConfig = {
+      Type = "simple";
+            # Para reduzir delay, adicione --latency 480/48000 (10ms) ou 256/48000 (~5ms) no pw-cat.
+      # Valores menores que 256 podem causar picote (underrun).
+      ExecStart = "${pkgs.bash}/bin/bash -c 'while true; do ${pkgs.netcat}/bin/nc -l ${toString micPort} | ${pkgs.pipewire}/bin/pw-cat -ap --target=sunshine-mic-sink --format s16 --rate 48000 --channels 1 -; done'";
+      Restart = "always";
+      RestartSec = 3;
     };
   };
 
