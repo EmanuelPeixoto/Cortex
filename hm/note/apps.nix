@@ -12,53 +12,49 @@ in
     motd
     yt-tlp-menu
 
-    aircrack-ng               # Wireless encryption cracking tools
-    audacity                  # Sound editor with graphical UI
-    curl                      # Command line tool for transferring files with URL syntax
-    # davinci-resolve           # Professional video editing, color, effects and audio post-processing
-    discord                   # All-in-one cross-platform voice and text chat for gamers
-    exfatprogs                # exFAT filesystem userspace utilities
-    ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
-    gcc                       # GNU Compiler Collection
-    gdb                       # GNU Project debugger
-    glibc                     # GNU C Library
-    gnumake                   # Tool to control the generation of non-source files from sources
-    iftop                     # Display bandwidth usage on a network interface
-    inetutils                 # Collection of common network programs
-    iw                        # Tool to use nl80211
-    jmtpfs                    # FUSE filesystem for MTP devices like Android phones
-    killall                   # No description :/
-    lazygit                   # Simple terminal UI for git commands
-    lm_sensors                # Tools for reading hardware sensors
-    lshw                      # Provide detailed information on the hardware configuration of the machine
-    metasploit                # Metasploit Framework - a collection of exploits
-    ncdu                      # Disk usage analyzer with an ncurses interface
-    netcat                    # Free TLS/SSL implementation
-    nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
-    nmap                      # Free and open source utility for network discovery and security auditing
-    nomacs                    # Qt-based image viewer
-    openssl                   # Cryptographic library that implements the SSL and TLS protocols
-    pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
-    platformio                # Open source ecosystem for IoT development
-    # prismlauncher             # Free, open source launcher for Minecraft
-    progress                  # Tool that shows the progress of coreutils programs
-    pwvucontrol               # Pipewire Volume Control
-    qbittorrent               # Featureful free software BitTorrent client
-    qemu                      # Generic and open source machine emulator and virtualizer
-    qpwgraph                  # Qt graph manager for PipeWire, similar to QjackCtl
-    speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
-    stress                    # Simple workload generator for POSIX systems.
-    telegram-desktop          # Telegram Desktop messaging app
-    # texliveFull               # TeX Live environment
-    tor-browser               # Privacy-focused browser routing traffic through the Tor network
-    unrar                     # Utility for RAR archives
-    unzip                     # Extraction utility for archives compressed in .zip format
-    usbutils                  # Tools for working with USB devices, such as lsusb
-    vlc                       # Cross-platform media player and streaming server
-    wget                      # Tool for retrieving files using HTTP, HTTPS, and FTP
-    wl-clipboard              # Command-line copy/paste utilities for Wayland
-    yt-dlp                    # Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-    zathura                   # Highly customizable and functional PDF viewer
-    zip                       # Compressor/archiver for creating and modifying zipfiles
+    aircrack-ng
+    audacity
+    curl
+    # davinci-resolve
+    discord
+    exfatprogs
+    ffmpeg
+    glibc
+    gnumake
+    iftop
+    inetutils
+    iw
+    killall
+    lazygit
+    lm_sensors
+    lshw
+    ncdu
+    netcat
+    nload
+    nmap
+    nomacs
+    openssl
+    pciutils
+    # platformio
+    progress
+    pwvucontrol
+    qbittorrent
+    qemu_kvm
+    qpwgraph
+    simple-mtpfs
+    speedtest-cli
+    stress
+    telegram-desktop
+    texlive.combined.scheme-small
+    tor-browser
+    unrar
+    unzip
+    usbutils
+    vlc
+    wget
+    wl-clipboard
+    yt-dlp
+    zathura
+    zip
   ];
 }
