@@ -45,7 +45,7 @@ in
     speedtest-cli
     stress
     telegram-desktop
-    texlive.combined.scheme-small
+    texliveSmall
     tor-browser
     unrar
     unzip
