@@ -5,7 +5,6 @@ in
 {
   environment.systemPackages = with pkgs; [
     # chromium
-    rars
   ];
 
   # networking.extraHosts = ''
