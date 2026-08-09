@@ -16,7 +16,6 @@
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
-    ./rstudio.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
