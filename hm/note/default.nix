@@ -28,6 +28,7 @@
     ./nextcloud-client.nix
     ./noctalia.nix
     ./obs.nix
+    ./satty.nix
     ./stylix.nix
     ./thunderbird.nix
     ./zen-browser.nix

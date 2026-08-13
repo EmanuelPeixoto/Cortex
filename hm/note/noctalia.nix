@@ -1,15 +1,5 @@
 { config, pkgs, ... }:
 {
-  home.packages = [ pkgs.satty ];
-
-  xdg.configFile."satty/config.toml".text = ''
-    [general]
-    output-filename = "~/Pictures/satty-%Y-%m-%d_%H:%M:%S.png"
-    floating-hack = true
-    early-exit = ["all"]
-    resize = { mode = "smart" }
-  '';
-
   programs.noctalia = {
     enable = true;
 
@@ -49,7 +39,7 @@
       };
 
       audio = {
-        enable_overdrive = true;  # volume slider até 150%
+        enable_overdrive = true;
       };
 
       nightlight = {
