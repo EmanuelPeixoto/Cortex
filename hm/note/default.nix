@@ -19,7 +19,6 @@
     ./ghostty.nix
     ./gimp.nix
     ./go.nix
-    ./hypridle.nix
     ./hyprland.nix
     ./java.nix
     ./keepassxc.nix

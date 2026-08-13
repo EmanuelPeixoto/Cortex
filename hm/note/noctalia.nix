@@ -70,6 +70,25 @@
         blur_intensity = 0.6;
       };
 
+      idle = {
+        behavior_order = [ "warn" "lock" "screen-off" ];
+        behavior = {
+          warn = {
+            timeout = 230;
+            action = "command";
+            command = "${pkgs.libnotify}/bin/notify-send 'Inactivity Warning' 'You are away. The computer will enter sleep mode in 30 seconds.' -a Noctalia";
+          };
+          lock = {
+            timeout = 300;
+            action = "lock";
+          };
+          screen-off = {
+            timeout = 450;
+            action = "screen_off";
+          };
+        };
+      };
+
       shell = {
         polkit_agent = true;
         settings_show_advanced = true;
