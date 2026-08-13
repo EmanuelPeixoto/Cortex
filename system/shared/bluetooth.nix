@@ -5,7 +5,7 @@
       ControllerMode = "dual";
     };
     Policy = {
-      AutoEnable = true;
+      AutoEnable = false;
     };
   };
   services.blueman.enable = true;
