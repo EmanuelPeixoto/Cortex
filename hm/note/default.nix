@@ -1,5 +1,7 @@
+{ inputs, ... }:
 {
     imports = [
+    inputs.noctalia.homeModules.default
     ../shared/btop.nix
     ../shared/fastfetch.nix
     ../shared/git.nix
@@ -11,9 +13,7 @@
     ../shared/yazi.nix
     ../shared/zsh.nix
     ./apps.nix
-    ./awww.nix
     ./chirp.nix
-    ./clipse.nix
     ./default-apps.nix
     ./firefox.nix
     ./ghostty.nix
@@ -21,16 +21,14 @@
     ./go.nix
     ./hypridle.nix
     ./hyprland.nix
-    ./hyprlock.nix
-    ./hyprsunset.nix
     ./java.nix
     ./keepassxc.nix
     ./keyring.nix
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix
+    ./noctalia.nix
     ./obs.nix
-    ./quickshell.nix
     ./stylix.nix
     ./thunderbird.nix
     ./zen-browser.nix

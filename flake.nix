@@ -21,6 +21,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
@@ -30,6 +34,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
+          inputs.noctalia.overlays.default
           (final: prev: {
             stable = import nixpkgs-stable {
               inherit system;

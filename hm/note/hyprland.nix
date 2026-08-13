@@ -1,14 +1,12 @@
 { config, lib, pkgs, ... }:
 let
-  hyprland-exec = import ./scripts/hyprland-exec.nix { inherit config pkgs; };
-  print = import ./scripts/print.nix { inherit pkgs; };
-  print-selection = import ./scripts/print-selection.nix { inherit pkgs; };
-  wallpaper = import ./scripts/wallpaper.nix { inherit config pkgs; };
   monitor-mode = import ./scripts/monitor-mode.nix { inherit pkgs; };
 
   # helpers — retornam { _args = [key, lua]; }
   mkBind = key: lua: { _args = [ key (lib.generators.mkLuaInline lua) ]; };
   mkCmd = key: cmd: mkBind key "hl.dsp.exec_cmd(\"${cmd}\")";
+
+  noct = "${pkgs.noctalia}/bin/noctalia msg";
 
   direction = [ "up" "down" "left" "right" ];
 in
@@ -71,7 +69,23 @@ in
         match = { title = "[Pp]icture.*[Pp]icture"; };
         float = true;
         pin = true;
+      } {
+        match = { class = "^(com\.gabm\.satty|satty|ksnip)$"; };
+        float = true;
+      } {
+        match = { class = "dev.noctalia.Noctalia"; };
+        float = true;
+        size = [ 1080 920 ];
       }];
+
+      layer_rule = {
+        name = "noctalia";
+        match = { namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$"; };
+        no_anim = true;
+        "ignore_alpha" = 0.5;
+        blur = true;
+        "blur_popups" = true;
+      };
 
       bind = [
         # === workspace: mover janela (SUPER + SHIFT + 0..9) ===
@@ -114,36 +128,43 @@ in
 
         # === apps ===
         (mkCmd  "SUPER + P"         "${monitor-mode}/bin/monitor-mode")
-        (mkCmd  "SUPER + SHIFT + S" "${print-selection}/bin/print-selection")
-        (mkCmd  "SUPER + C"         "pkill clipse || ${pkgs.ghostty}/bin/ghostty --title='clipse' -e ${pkgs.clipse}/bin/clipse")
-        (mkBind "SUPER + D"         ''hl.dsp.global("shell:runner")'')
+        (mkCmd  "SUPER + SHIFT + S" "${noct} screenshot-region")
+        (mkCmd  "SUPER + C"         "${noct} panel-toggle clipboard")
         (mkBind "SUPER + F"         "hl.dsp.window.fullscreen()")
         (mkCmd  "SUPER + H"         "${pkgs.systemd}/bin/systemctl hibernate")
-        (mkCmd  "SUPER + L"         "${pkgs.hyprlock}/bin/hyprlock --grace 0")
         (mkBind "SUPER + M"         ''hl.dsp.workspace.toggle_special("magic")'')
         (mkCmd  "SUPER + S"         "${pkgs.systemd}/bin/systemctl hybrid-sleep")
         (mkCmd  "SUPER + return"    "${pkgs.ghostty}/bin/ghostty")
 
+        # === noctalia ===
+        (mkCmd  "SUPER + D"        "${noct} panel-toggle launcher")
+        (mkCmd  "SUPER + TAB"      "${noct} window-switcher")
+        (mkCmd  "SUPER + L"        "${noct} session lock")
+        (mkCmd  "SUPER + X"        "${noct} panel-toggle control-center")
+        (mkCmd  "SUPER + comma"     "${noct} settings-toggle")
+        (mkCmd  "SUPER + ALT + C"  "${noct} panel-toggle session")
+        (mkCmd  "SUPER + SHIFT + W" "${noct} panel-toggle wallpaper")
+        (mkCmd  "print"            "${noct} screenshot-fullscreen")
+
         # === XF86 / print ===
         (mkCmd  "XF86Calculator" "${pkgs.qalculate-qt}/bin/qalculate-qt")
-        (mkCmd  "XF86Favorites"  "${wallpaper}/bin/wallpaper")
-        (mkCmd  "print"          "${print}/bin/print")
+        (mkCmd  "XF86Favorites"  "${noct} wallpaper-random")
 
         # === dpms ===
         (mkBind "SUPER + XF86MonBrightnessDown" ''hl.dsp.dpms({ state = "off" })'')
         (mkBind "SUPER + XF86MonBrightnessUp"   ''hl.dsp.dpms({ state = "on" })'')
 
-        # === media keys ===
-        { _args = [ "XF86AudioLowerVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02- -l 1.25\")")  { locked = true; repeating = true; } ]; }
-        (mkCmd  "XF86AudioMicMute"      "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SOURCE@ toggle")
-        (mkCmd  "XF86AudioMute"         "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle")
-        (mkCmd  "XF86AudioNext"         "${pkgs.playerctl}/bin/playerctl next")
-        (mkCmd  "XF86AudioPlay"         "${pkgs.playerctl}/bin/playerctl play-pause")
-        (mkCmd  "XF86AudioPrev"         "${pkgs.playerctl}/bin/playerctl previous")
-        (mkCmd  "XF86AudioStop"         "${pkgs.playerctl}/bin/playerctl stop")
-        { _args = [ "XF86AudioRaiseVolume" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 0.02+ -l 1.25\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.brightnessctl}/bin/brightnessctl set 5%-\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${pkgs.brightnessctl}/bin/brightnessctl set 5%+\")") { locked = true; repeating = true; } ]; }
+        # === media keys (noctalia) ===
+        { _args = [ "XF86AudioLowerVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} volume-down\")")  { locked = true; repeating = true; } ]; }
+        (mkCmd  "XF86AudioMicMute"      "${noct} mic-mute")
+        (mkCmd  "XF86AudioMute"         "${noct} volume-mute")
+        (mkCmd  "XF86AudioNext"         "${noct} media next")
+        (mkCmd  "XF86AudioPlay"         "${noct} media toggle")
+        (mkCmd  "XF86AudioPrev"         "${noct} media previous")
+        (mkCmd  "XF86AudioStop"         "${noct} media toggle")
+        { _args = [ "XF86AudioRaiseVolume" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} volume-up\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-down\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-up\")") { locked = true; repeating = true; } ]; }
       ];
 
       on = {
@@ -151,7 +172,7 @@ in
           "hyprland.start"
           (lib.generators.mkLuaInline ''
             function()
-              hl.exec_cmd("${hyprland-exec}/bin/hyprland-exec")
+              hl.exec_cmd("${pkgs.noctalia}/bin/noctalia")
             end
           '')
         ];
