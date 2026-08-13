@@ -48,7 +48,7 @@
     cursor = {
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
-      size = 30;
+      size = 15;
     };
   };
 }
