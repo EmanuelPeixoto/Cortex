@@ -4,7 +4,7 @@ let
 in
 {
   home.packages = [
-    (nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
+    (nixvim.legacyPackages.${pkgs.stdenv.hostPlatform.system}.makeNixvimWithModule {
       inherit pkgs;
       module = {
         imports = [ (import (inputs.lexis + "/config")) ];
