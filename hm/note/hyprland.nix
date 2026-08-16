@@ -166,17 +166,6 @@ in
         { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-down\")") { locked = true; repeating = true; } ]; }
         { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-up\")") { locked = true; repeating = true; } ]; }
       ];
-
-      on = {
-        _args = [
-          "hyprland.start"
-          (lib.generators.mkLuaInline ''
-            function()
-              hl.exec_cmd("${pkgs.noctalia}/bin/noctalia")
-            end
-          '')
-        ];
-      };
     };
   };
 }
