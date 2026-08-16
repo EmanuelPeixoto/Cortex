@@ -50,7 +50,7 @@
       };
 
       location = {
-        auto_locate = true;  # resolve coordenadas pelo IP
+        auto_locate = true;
       };
 
       weather = {
