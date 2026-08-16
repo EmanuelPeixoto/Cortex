@@ -53,7 +53,6 @@
           inherit pkgs;
           modules = [
             ./system/${name}
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
