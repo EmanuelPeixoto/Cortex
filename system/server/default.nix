@@ -16,6 +16,7 @@
     ./router-ipv6-update.nix
     ./nvidia.nix
     ./qbittorrent.nix
+    ./remote-build.nix
     ./smartd.nix
     ./steam.nix
     ./sunshine.nix
