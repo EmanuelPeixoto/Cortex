@@ -8,5 +8,6 @@
     floating-hack = true
     early-exit = ["all"]
     resize = { mode = "smart" }
+    copy-command = "wl-copy --type image/png"
   '';
 }
