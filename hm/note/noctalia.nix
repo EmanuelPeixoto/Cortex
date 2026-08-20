@@ -79,11 +79,6 @@
       idle = {
         behavior_order = [ "warn" "lock" "screen-off" ];
         behavior = {
-          warn = {
-            timeout = 230;
-            action = "command";
-            command = "${pkgs.libnotify}/bin/notify-send 'Inactivity Warning' 'You are away. The computer will enter sleep mode in 30 seconds.' -a Noctalia";
-          };
           lock = {
             timeout = 300;
             action = "lock";
