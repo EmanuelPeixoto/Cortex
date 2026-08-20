@@ -4,7 +4,6 @@
     ./corrida.nix
     ./localhost.nix
     ./nextcloud.nix
-    ./rstudio.nix
     ./speedtest.nix
     ./torrent.nix
   ];
