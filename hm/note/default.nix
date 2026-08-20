@@ -6,7 +6,6 @@
     ../shared/fastfetch.nix
     ../shared/git.nix
     ../shared/ia.nix
-    ../shared/lexis.nix
     ../shared/nix-index.nix
     ../shared/tmux.nix
     ../shared/user.nix
@@ -23,6 +22,7 @@
     ./java.nix
     ./keepassxc.nix
     ./keyring.nix
+    ./lexis.nix
     ./minecraft-overlay.nix
     ./mpd.nix
     ./nextcloud-client.nix

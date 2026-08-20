@@ -4,13 +4,13 @@
     ../shared/fastfetch.nix
     ../shared/git.nix
     ../shared/ia.nix
-    ../shared/lexis.nix
     ../shared/nix-index.nix
     ../shared/tmux.nix
+    ../shared/user.nix
     ../shared/yazi.nix
     ../shared/zsh.nix
-    ../shared/user.nix
     ./apps.nix
+    ./lexis.nix
     ./virtual-monitor.nix
   ];
 
