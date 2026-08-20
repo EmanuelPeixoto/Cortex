@@ -23,7 +23,7 @@ in
     progress
     speedtest-cli
     unzip
-    # ventoy
+    vlc
     wget
     wl-clipboard
     yt-dlp
