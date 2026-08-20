@@ -24,8 +24,8 @@ in
       extraConfig = ''
         ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
         ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
-        access_log /var/log/nginx/gabriela-access.log;
-        error_log /var/log/nginx/gabriela-error.log;
+        access_log /var/log/nginx/cas-access.log;
+        error_log /var/log/nginx/cas-error.log;
         return 444;
       '';
     };
@@ -38,8 +38,8 @@ in
       ];
 
       extraConfig = ''
-        access_log /var/log/nginx/catchall-access.log;
-        error_log /var/log/nginx/catchall-error.log;
+        access_log /var/log/nginx/ca-access.log;
+        error_log /var/log/nginx/ca-error.log;
         return 444;
       '';
     };
