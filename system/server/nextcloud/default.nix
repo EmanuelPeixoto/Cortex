@@ -13,7 +13,7 @@ in
     enable = true;
     https = true;
     hostName = cfg.nextcloudDomain;
-    package = pkgs.nextcloud33;
+    package = pkgs.nextcloud34;
     maxUploadSize = "16384M";
 
     settings = {
