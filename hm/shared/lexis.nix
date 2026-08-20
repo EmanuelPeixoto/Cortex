@@ -8,8 +8,7 @@ in
       inherit pkgs;
       module = {
         imports = [ (import (inputs.lexis + "/config")) ];
-        # only C/C++ (clangd) and Nix (nixd)
-        plugins.vimtex.enable = lib.mkForce false;
+        # C/C++ (clangd), Nix (nixd) and TeX (vimtex + texlab)
         plugins.lsp.servers = {
           bashls.enable = lib.mkForce false;
           cssls.enable = lib.mkForce false;
@@ -18,7 +17,6 @@ in
           html.enable = lib.mkForce false;
           jsonls.enable = lib.mkForce false;
           rust_analyzer.enable = lib.mkForce false;
-          texlab.enable = lib.mkForce false;
           ts_ls.enable = lib.mkForce false;
         };
       };
