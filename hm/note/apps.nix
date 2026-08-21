@@ -13,6 +13,7 @@ in
     yt-tlp-menu
 
     aircrack-ng
+    android-tools
     audacity
     curl
     # davinci-resolve
