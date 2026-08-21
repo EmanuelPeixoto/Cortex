@@ -16,6 +16,7 @@ in
     android-tools
     audacity
     curl
+    czkawka-full
     # davinci-resolve
     discord
     exfatprogs
