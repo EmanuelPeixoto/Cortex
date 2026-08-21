@@ -15,5 +15,8 @@
     certs."speedtest.${config.services.nextcloud.hostName}" = {
       group = "www";
     };
+    certs."corrida.${config.services.nextcloud.hostName}" = {
+      group = "www";
+    };
   };
 }
