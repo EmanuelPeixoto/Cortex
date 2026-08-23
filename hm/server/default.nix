@@ -11,7 +11,7 @@
     ../shared/zsh.nix
     ./apps.nix
     ./lexis.nix
-    ./virtual-monitor.nix
+    ./monitor.nix
   ];
 
   home.stateVersion = "24.11";
