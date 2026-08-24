@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./database.nix
-    ./recognize.nix
+    ./facerecognition.nix
     ./php.nix
   ];
 

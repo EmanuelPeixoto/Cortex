@@ -20,6 +20,7 @@
     ./smartd.nix
     ./steam.nix
     ./sunshine.nix
+    ./swap.nix
     ./tailscale.nix
     ./users.nix
     ./web
