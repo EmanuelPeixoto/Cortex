@@ -2,13 +2,13 @@
 {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "backup-hd" ''
-      set -e
+      set -euo pipefail
 
       SOURCE="HDs"
       DEST="HD_Backup"
       SHOW_DIFF=true
 
-      if [ "$1" == "--no-diff" ]; then
+      if [ "''${1:-}" == "--no-diff" ]; then
         SHOW_DIFF=false
       fi
 
@@ -53,8 +53,12 @@
       fi
 
       echo ">>> 4. Finalizando..."
-      zpool export $DEST
-      echo ">>> SUCESSO. Pode desconectar."
+      if zpool export $DEST; then
+        echo ">>> SUCESSO. Pode desconectar."
+      else
+        echo ">>> AVISO: Backup OK, mas o disco nao foi ejetado limpo."
+        echo "    Feche processos usando $DEST e rode: zpool export $DEST"
+      fi
     '')
   ];
 }

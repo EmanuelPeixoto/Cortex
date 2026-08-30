@@ -5,7 +5,7 @@
     enable = true;
     configType = "hyprlang";
     settings = {
-      monitor = "HEADLESS-2,1920x1080@60,auto,1";
+      monitor = "HDMI-A-1,1920x1080@60,auto,1";
 
       env = [
         "LIBVA_DRIVER_NAME,nvidia"
@@ -13,10 +13,6 @@
         "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "WLR_NO_HARDWARE_CURSORS,1"
-      ];
-
-      exec-once = [
-        "hyprctl output create headless"
       ];
 
       input = {
