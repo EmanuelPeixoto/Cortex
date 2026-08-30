@@ -7,9 +7,22 @@
     settings = {
       bar.default = {
         position = "top";
-        start = [ "session" "clock" "group:g1" "privacy" ];
+        start = [
+          "session"
+          "clock"
+          "group:g1"
+          "privacy"
+          "clipboard"
+        ];
         center = [ "workspaces" ];
-        end = [ "weather" "media" "volume" "network" "notifications" "tray" ];
+        end = [
+          "weather"
+          "media"
+          "volume"
+          "network"
+          "notifications"
+          "tray"
+        ];
         thickness = 35;
         margin_edge = 0;
         margin_ends = 0;
@@ -22,7 +35,12 @@
         capsule_group = [
           {
             id = "g1";
-            members = [ "temp" "sysmon_2" "battery" "sysmon_3" ];
+            members = [
+              "temp"
+              "sysmon_2"
+              "battery"
+              "sysmon_3"
+            ];
           }
         ];
       };
@@ -77,7 +95,11 @@
       };
 
       idle = {
-        behavior_order = [ "warn" "lock" "screen-off" ];
+        behavior_order = [
+          "warn"
+          "lock"
+          "screen-off"
+        ];
         behavior = {
           lock = {
             timeout = 300;
