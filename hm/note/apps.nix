@@ -21,8 +21,10 @@ in
     discord
     exfatprogs
     ffmpeg
+    gcc
     glibc
     gnumake
+    google-chrome
     iftop
     inetutils
     iw
