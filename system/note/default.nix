@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   imports = [
     ../shared/avahi.nix
@@ -5,6 +6,7 @@
     ../shared/flake-config.nix
     ../shared/locale.nix
     ../shared/ssh.nix
+    inputs.home-manager.nixosModules.home-manager
     ./apps.nix
     ./battery.nix
     ./docker.nix
@@ -16,6 +18,7 @@
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
+    ./printing.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
@@ -36,7 +39,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
@@ -50,8 +52,16 @@
   };
 
   # Hyprlock pam
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
   services.logind.settings.Login.HandleLidSwitch = "lock";
+
+  # Home-manager only for scti (emanuel stays standalone)
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.scti = import ../../hm/scti.nix;
+    extraSpecialArgs = { inherit inputs; };
+  };
 
   system.stateVersion = "25.11";
 }

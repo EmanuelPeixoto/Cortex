@@ -45,7 +45,7 @@
       };
 
       # List of systems to generate configurations
-      systems = [ "note" "server" "light" ];
+      systems = [ "note" "server" "light" "scti" ];
 
       # Function to generate a NixOS configuration
       mkNixosSystem = name:

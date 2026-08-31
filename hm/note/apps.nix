@@ -25,6 +25,11 @@ in
     glibc
     gnumake
     google-chrome
+    poppler-utils
+    (python313.withPackages (ps: with ps; [
+      pdf2image
+      pillow
+    ]))
     iftop
     inetutils
     iw
