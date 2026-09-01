@@ -20,6 +20,11 @@ in
         output = "eDP-1"; mode = "preferred"; position = "0x0"; scale = 1;
       };
 
+      # GTK 4.20+ needs an IME for dead keys on Wayland; fall back to GTK's own.
+      env = {
+        _args = [ "GTK_IM_MODULE" "simple" ];
+      };
+
       config = {
         input = {
           accel_profile = "flat";
