@@ -13,12 +13,4 @@
       "avahi"
     ];
   };
-
-  users.users.scti = {
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [
-      "lp"
-    ];
-  };
 }
