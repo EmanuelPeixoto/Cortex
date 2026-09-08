@@ -13,6 +13,7 @@ in
     yt-tlp-menu
 
     aircrack-ng
+    libreoffice
     android-tools
     audacity
     curl
@@ -21,8 +22,17 @@ in
     discord
     exfatprogs
     ffmpeg
+    gcc
     glibc
     gnumake
+    google-chrome
+    poppler-utils
+    (python313.withPackages (
+      ps: with ps; [
+        pdf2image
+        pillow
+      ]
+    ))
     iftop
     inetutils
     iw

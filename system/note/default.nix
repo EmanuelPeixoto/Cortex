@@ -16,6 +16,7 @@
     ./nvidia.nix
     ./plymouth.nix
     ./postgres.nix
+    ./printing.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
@@ -36,7 +37,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   programs = {
     dconf.enable = true;
     hyprland.enable = true;
@@ -50,7 +50,7 @@
   };
 
   # Hyprlock pam
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
   services.logind.settings.Login.HandleLidSwitch = "lock";
 
   system.stateVersion = "25.11";

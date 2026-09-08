@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lexis = {
-      url ="github:EmanuelPeixoto/Lexis";
+      url = "github:EmanuelPeixoto/Lexis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
@@ -27,7 +27,13 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -45,10 +51,15 @@
       };
 
       # List of systems to generate configurations
-      systems = [ "note" "server" "light" ];
+      systems = [
+        "note"
+        "server"
+        "light"
+      ];
 
       # Function to generate a NixOS configuration
-      mkNixosSystem = name:
+      mkNixosSystem =
+        name:
         nixpkgs.lib.nixosSystem {
           inherit pkgs;
           modules = [
@@ -58,14 +69,16 @@
         };
 
       # Function to generate a Home Manager configuration
-      mkHomeConfig = name:
+      mkHomeConfig =
+        name:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./hm/${name} ];
           extraSpecialArgs = { inherit inputs; };
         };
 
-    in {
+    in
+    {
       nixosConfigurations = {
         NixOS-Note = mkNixosSystem "note";
         NixOS-Server = mkNixosSystem "server";
