@@ -64,11 +64,11 @@ in
     extraConf = "FileDevice Yes";
   };
 
-  # Mantém o usblp ativo (o CUPS do NixOS o bloqueia por padrão, mas o filtro
-  # e o script escrevem direto em /dev/usb/lp0).
-  boot.blacklistedKernelModules = lib.mkForce [];
+  # Keep usblp (CUPS blacklists it; filter writes to /dev/usb/lp0).
+  # mkForce must be on the value, not the whole set, or it wipes the other blacklists.
+  boot.blacklistedKernelModules = { usblp = lib.mkForce false; };
 
-  # Cadastra a fila no boot (idempotente) e define como padrão.
+  # Register the queue at boot (idempotent) and set it as default.
   systemd.services.cups-diebold = {
     wantedBy = [ "multi-user.target" ];
     after = [ "cups.service" ];
