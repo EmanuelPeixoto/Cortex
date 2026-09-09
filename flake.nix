@@ -54,7 +54,6 @@
       systems = [
         "note"
         "server"
-        "light"
       ];
 
       # Function to generate a NixOS configuration
@@ -82,7 +81,6 @@
       nixosConfigurations = {
         NixOS-Note = mkNixosSystem "note";
         NixOS-Server = mkNixosSystem "server";
-        NixOS-Light = mkNixosSystem "light";
         # Special case for the ISO
         NixOS-Note-ISO = nixpkgs.lib.nixosSystem {
           inherit pkgs;
