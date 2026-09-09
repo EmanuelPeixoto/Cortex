@@ -15,13 +15,11 @@
     ./ly.nix
     ./nvidia.nix
     ./plymouth.nix
-    ./postgres.nix
     ./printing.nix
     ./sdr.nix
     ./sound.nix
     ./steam.nix
     ./tailscale.nix
-    ./temp.nix
     ./users.nix
     ./webserver.nix
     ./wireshark.nix
