@@ -20,7 +20,7 @@
       aio threads;
       keepalive_requests 1000;
 
-      # Limites
+      # Limits
       client_body_buffer_size 128k;
       client_header_buffer_size 4k;
       large_client_header_buffers 4 16k;

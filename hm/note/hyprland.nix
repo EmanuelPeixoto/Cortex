@@ -7,7 +7,7 @@
 let
   monitor-mode = import ./scripts/monitor-mode.nix { inherit pkgs; };
 
-  # helpers — retornam { _args = [key, lua]; }
+  # helpers — return { _args = [key, lua]; }
   mkBind = key: lua: {
     _args = [
       key
@@ -121,7 +121,7 @@ in
       };
 
       bind = [
-        # === workspace: mover janela (SUPER + SHIFT + 0..9) ===
+        # === workspace: move window (SUPER + SHIFT + 0..9) ===
       ]
       ++ map (
         n:
@@ -131,12 +131,12 @@ in
       ) (lib.range 0 9)
       ++ [
 
-        # === sair / matar / special ===
+        # === exit / kill / special ===
         (mkBind "SUPER + SHIFT + E" "hl.dsp.exit()")
         (mkBind "SUPER + SHIFT + M" ''hl.dsp.window.move({ workspace = "special:magic" })'')
         (mkBind "SUPER + SHIFT + Q" "hl.dsp.window.close()")
 
-        # === mover janela (direcional) ===
+        # === move window (directional) ===
       ]
       ++ map (d: mkBind "SUPER + SHIFT + ${d}" ''hl.dsp.window.move({ direction = "${d}" })'') direction
       ++ [
@@ -144,7 +144,7 @@ in
         # === toggle floating ===
         (mkBind "SUPER + SHIFT + space" ''hl.dsp.window.float({ action = "toggle" })'')
 
-        # === workspace: trocar (SUPER + 0..9) ===
+        # === workspace: switch (SUPER + 0..9) ===
       ]
       ++ map (
         n:
@@ -154,7 +154,7 @@ in
       ) (lib.range 0 9)
       ++ [
 
-        # === movefocus (direcional) ===
+        # === move focus (directional) ===
       ]
       ++ map (d: mkBind "SUPER + ${d}" ''hl.dsp.focus({ direction = "${d}" })'') direction
       ++ [

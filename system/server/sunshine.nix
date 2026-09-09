@@ -69,8 +69,8 @@ in
     after = [ "pipewire.service" ];
     serviceConfig = {
       Type = "simple";
-      # Para reduzir delay, adicione --latency 480/48000 (10ms) ou 256/48000 (~5ms) no pw-cat.
-      # Valores menores que 256 podem causar picote (underrun).
+      # To reduce latency, add --latency 480/48000 (10ms) or 256/48000 (~5ms) to pw-cat.
+      # Values below 256 can cause stutter (underrun).
       ExecStart = "${pkgs.bash}/bin/bash -c 'while true; do ${pkgs.netcat}/bin/nc -l ${toString micPort} | ${pkgs.pipewire}/bin/pw-cat -ap --latency 480/48000 --target=sunshine-mic-sink --format s16 --rate 48000 --channels 1 -; done'";
       Restart = "always";
       RestartSec = 3;
