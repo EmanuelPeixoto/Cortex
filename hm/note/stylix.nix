@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [ inputs.stylix.homeModules.stylix ];
 
@@ -10,7 +15,7 @@
     enable = true;
     enableReleaseChecks = false;
     targets = {
-      hyprland.enable = false;
+      hyprland.enable = true;
       qt.enable = true;
       firefox.profileNames = [ "default" ];
       zen-browser.profileNames = [ "default" ];
@@ -50,5 +55,14 @@
       package = pkgs.bibata-cursors;
       size = 15;
     };
+  };
+
+  # home.pointerCursor only exports XCURSOR_* to login shells.
+  # Apps launched by systemd services (noctalia → KeePassXC) don't inherit it,
+  # so Qt uses the default size (24) and the cursor is larger than the compositor's.
+  # Also propagate to systemd to match the size (15 above).
+  systemd.user.sessionVariables = {
+    XCURSOR_SIZE = toString config.stylix.cursor.size;
+    XCURSOR_THEME = config.stylix.cursor.name;
   };
 }
