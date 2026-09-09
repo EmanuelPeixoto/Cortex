@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-    motd = import ./scripts/motd.nix { inherit pkgs; };
+  motd = import ./scripts/motd.nix { inherit pkgs; };
 in
 {
   programs.zsh = {

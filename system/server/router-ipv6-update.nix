@@ -39,7 +39,11 @@ let
   '';
 in
 {
-  environment.systemPackages = with pkgs; [ tplink-ipv6-set updateScript chromium ];
+  environment.systemPackages = with pkgs; [
+    tplink-ipv6-set
+    updateScript
+    chromium
+  ];
 
   systemd.services.tplink-ipv6-update = {
     description = "Update TP-Link IPv6 firewall rules";

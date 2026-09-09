@@ -8,6 +8,10 @@
   networking.firewall = {
     trustedInterfaces = [ "wlp9s0" ];
     allowedTCPPorts = [ 53 ]; # DNS
-    allowedUDPPorts = [ 53 67 68 ]; # DNS + DHCP
+    allowedUDPPorts = [
+      53
+      67
+      68
+    ]; # DNS + DHCP
   };
 }

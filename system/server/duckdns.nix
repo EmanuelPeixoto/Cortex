@@ -27,7 +27,7 @@ in
       echo "Error: IPv6 or configuration files not found"
       exit 1
       fi
-      '';
+    '';
 
     serviceConfig = {
       Type = "oneshot";

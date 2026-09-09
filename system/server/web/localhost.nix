@@ -1,7 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   poolName = "localhost";
-  phpPool = import ./php-pools.nix { inherit config lib pkgs poolName; };
+  phpPool = import ./php-pools.nix {
+    inherit
+      config
+      lib
+      pkgs
+      poolName
+      ;
+  };
 in
 {
   imports = [ phpPool ];
@@ -9,8 +21,14 @@ in
   services.nginx.virtualHosts."${config.networking.hostName}.local" = {
     serverName = "${config.networking.hostName}.local ${lib.toLower config.networking.hostName}.local";
     listen = [
-      { addr = "0.0.0.0"; port = 80; }
-      { addr = "[::]"; port = 80; }
+      {
+        addr = "0.0.0.0";
+        port = 80;
+      }
+      {
+        addr = "[::]";
+        port = 80;
+      }
     ];
 
     root = "/var/www/";

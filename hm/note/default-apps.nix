@@ -42,7 +42,14 @@
     nomacs = {
       name = "Nomacs";
       exec = "${pkgs.nomacs}/bin/nomacs";
-      mimeType = [ "image/jpeg" "image/png" "image/gif" "image/webp" "image/bmp" "image/svg+xml" ];
+      mimeType = [
+        "image/jpeg"
+        "image/png"
+        "image/gif"
+        "image/webp"
+        "image/bmp"
+        "image/svg+xml"
+      ];
     };
   };
 }

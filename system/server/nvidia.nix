@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
   environment.systemPackages = [
     pkgs.mesa-demos
@@ -22,6 +22,5 @@
 
       nvidiaSettings = true;
     };
-    # nvidia-container-toolkit.enable = true;
   };
 }

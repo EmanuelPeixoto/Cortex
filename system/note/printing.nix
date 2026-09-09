@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   py = pkgs.python3.withPackages (p: [ p.pillow ]);
   pdftoppm = pkgs."poppler-utils";
@@ -66,7 +71,9 @@ in
 
   # Keep usblp (CUPS blacklists it; filter writes to /dev/usb/lp0).
   # mkForce must be on the value, not the whole set, or it wipes the other blacklists.
-  boot.blacklistedKernelModules = { usblp = lib.mkForce false; };
+  boot.blacklistedKernelModules = {
+    usblp = lib.mkForce false;
+  };
 
   # Register the queue at boot (idempotent) and set it as default.
   systemd.services.cups-diebold = {

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   environment.systemPackages = lib.mkIf config.virtualisation.docker.enable [
     pkgs.docker-compose

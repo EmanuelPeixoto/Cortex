@@ -19,16 +19,18 @@ let
   chirp-exe = lib.getExe' chirp-with-driver "chirp";
 
 in
-  {
+{
   home.packages = [ chirp-with-driver ];
 
-  # 🔹 entry desktop (corrigido)
   xdg.desktopEntries.chirp = {
     name = "CHIRP";
     comment = "Radio programmer (UV-K5 F4HWN)";
     exec = "${chirp-exe}";
     icon = "chirp";
     terminal = false;
-    categories = [ "Utility" "HamRadio" ];
+    categories = [
+      "Utility"
+      "HamRadio"
+    ];
   };
 }

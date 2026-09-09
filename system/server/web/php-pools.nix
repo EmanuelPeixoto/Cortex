@@ -1,4 +1,11 @@
-{ config, lib, pkgs, poolName ? "default", user ? "nginx", group ? "www" }:
+{
+  config,
+  lib,
+  pkgs,
+  poolName ? "default",
+  user ? "nginx",
+  group ? "www",
+}:
 
 {
   services.phpfpm.pools."${poolName}" = {

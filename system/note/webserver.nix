@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.nginx = {
     enable = true;
@@ -18,7 +23,10 @@
     virtualHosts = {
       "${config.networking.hostName}.local" = {
         listen = [
-          { addr = "0.0.0.0"; port = 80; }
+          {
+            addr = "0.0.0.0";
+            port = 80;
+          }
         ];
 
         root = "/nginx";
@@ -32,10 +40,10 @@
         locations = {
           "/" = {
             index = "index.html index.php";
-            extraConfig = '' location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.nginx.socket}; } '';
+            extraConfig = ''location ~ \.php$ { fastcgi_pass unix:${config.services.phpfpm.pools.nginx.socket}; } '';
           };
 
-          "/favicon.ico".extraConfig = ''access_log off; log_not_found off;'';
+          "/favicon.ico".extraConfig = "access_log off; log_not_found off;";
         };
       };
     };
@@ -45,7 +53,14 @@
     user = "nginx";
     group = "nginx";
 
-    phpPackage = pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.pdo_pgsql all.pgsql ]);
+    phpPackage = pkgs.php.withExtensions (
+      { enabled, all }:
+      enabled
+      ++ [
+        all.pdo_pgsql
+        all.pgsql
+      ]
+    );
 
     phpEnv.PATH = lib.makeBinPath [ pkgs.php ];
 

@@ -1,5 +1,8 @@
 {
   nix.settings = {
-    trusted-users = [ "root" "emanuel" ];
+    trusted-users = [
+      "root"
+      "emanuel"
+    ];
   };
 }

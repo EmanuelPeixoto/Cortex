@@ -12,7 +12,10 @@
     };
     Unit = {
       PartOf = [ "hyprland-session.target" ];
-      After = [ "hyprland-session.target" "gnome-keyring.service" ];
+      After = [
+        "hyprland-session.target"
+        "gnome-keyring.service"
+      ];
     };
     Install.WantedBy = [ "hyprland-session.target" ];
   };
