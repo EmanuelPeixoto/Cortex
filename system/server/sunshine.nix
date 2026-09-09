@@ -3,7 +3,7 @@ let
   micPort = 12345;
   prismPatched = pkgs.prismlauncher.override {
     prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [
+      patches = (old.patches or [ ]) ++ [
         (pkgs.fetchurl {
           url = "https://github.com/Misterio77/PrismLauncher/commit/2051b0b886b70d4efa9fbebc22d7d2fbe1e89255.diff";
           hash = "sha256-9/yYOPUkcHD5kL2PN9Ri8TsuthwbhHj4erx0wrr2mPQ=";
@@ -30,15 +30,6 @@ in
         {
           name = "Steam Big Picture";
           cmd = "${pkgs.steam}/bin/steam -bigpicture";
-        }
-        {
-          name = "Prism Launcher";
-          # cmd = "${prismPatched}/bin/prismlauncher";
-        }
-        {
-          name = "GTA SA";
-          cmd = "${pkgs.wine}/bin/wine gta_sa.EXE";
-          working_dir = "/home/emanuel/.wine/drive_c/Program Files/Rockstar Games/GTA San Andreas/";
         }
         {
           name = "Desktop";
@@ -78,7 +69,7 @@ in
     after = [ "pipewire.service" ];
     serviceConfig = {
       Type = "simple";
-            # Para reduzir delay, adicione --latency 480/48000 (10ms) ou 256/48000 (~5ms) no pw-cat.
+      # Para reduzir delay, adicione --latency 480/48000 (10ms) ou 256/48000 (~5ms) no pw-cat.
       # Valores menores que 256 podem causar picote (underrun).
       ExecStart = "${pkgs.bash}/bin/bash -c 'while true; do ${pkgs.netcat}/bin/nc -l ${toString micPort} | ${pkgs.pipewire}/bin/pw-cat -ap --latency 480/48000 --target=sunshine-mic-sink --format s16 --rate 48000 --channels 1 -; done'";
       Restart = "always";
