@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
-    imports = [
-    inputs.noctalia.homeModules.default
+  imports = [
     ../shared/btop.nix
     ../shared/fastfetch.nix
     ../shared/git.nix
