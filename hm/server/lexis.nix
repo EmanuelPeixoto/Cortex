@@ -15,6 +15,18 @@ in
         imports = [ (import (inputs.lexis + "/config")) ];
         # C/C++ (clangd), Nix (nixd)
         plugins.vimtex.enable = lib.mkForce false;
+        plugins.conform-nvim.settings.formatters_by_ft = lib.mkForce {
+          c = [ "clang_format" ];
+          cpp = [ "clang_format" ];
+          nix = [ "nixfmt" ];
+          "*" = [
+            "trim_whitespace"
+            "trim_newlines"
+          ];
+        };
+        plugins.lint.lintersByFt = lib.mkForce {
+          nix = [ "statix" ];
+        };
         plugins.lsp.servers = {
           bashls.enable = lib.mkForce false;
           cssls.enable = lib.mkForce false;
