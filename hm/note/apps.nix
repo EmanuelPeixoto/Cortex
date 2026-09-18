@@ -44,6 +44,7 @@ in
     netcat
     nload
     nmap
+    nodejs_22
     nomacs
     openssl
     pciutils
@@ -55,6 +56,7 @@ in
     qpwgraph
     simple-mtpfs
     speedtest-cli
+    sqlite
     stress
     telegram-desktop
     texliveSmall
