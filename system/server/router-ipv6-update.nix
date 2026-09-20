@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "EmanuelPeixoto";
       repo = "tplink-ipv6-set";
-      rev = "main";
-      hash = "sha256-3iypHTKLWOY+xPNZZ7922NGFAxrVHRGi9wbBqOAFK5A=";
+      rev = "b085858fecdc76e76fcf833e1d9d62e9b8a72bb8";
+      hash = "sha256-Dc6tgouw3bYw6x9eCJdEv3H8f8kFnstghIpBLHBOtQw=";
     };
     vendorHash = "sha256-h4U43W3hLoF+p25/jNRaW8okeEzAZQEmKtwB5l4kGW4=";
   };
@@ -28,13 +28,11 @@ let
       echo "Added $CAFE"
     fi
 
-    # Check if prefix changed
+    # Always (re)apply the router rules. They are idempotent, so re-applying
+    # hourly also recovers from a router reboot that lost the rules without a
+    # prefix change (previously it only ran when the prefix changed).
     CACHE="$HOME/.cache/ipv6-prefix"
-    if [ -f "$CACHE" ] && [ "$(cat $CACHE)" = "$PREFIX" ]; then
-      exit 0
-    fi
-
-    ${tplink-ipv6-set}/bin/tplink-ipv6-set "$CAFE"
+    ${tplink-ipv6-set}/bin/tplink-ipv6-set -password-file /home/emanuel/.config/senha-wifi.txt "$CAFE"
     echo "$PREFIX" > "$CACHE"
   '';
 in
