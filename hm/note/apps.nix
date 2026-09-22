@@ -64,6 +64,7 @@ in
     unrar
     unzip
     usbutils
+    ventoy
     vlc
     wget
     wl-clipboard

@@ -38,7 +38,10 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "ventoy-1.1.17" ];
+        };
         overlays = [
           inputs.noctalia.overlays.default
           (final: prev: {
