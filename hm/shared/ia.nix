@@ -14,5 +14,7 @@
     pi install npm:pi-web-providers
     pi install git:github.com/joelhooks/pi-tools
     pi install git:github.com/tintinweb/pi-gitnexus
+    pi install git:github.com/emilkowalski/skills
+    pi install git:github.com/Leonxlnx/taste-skill
   */
 }
