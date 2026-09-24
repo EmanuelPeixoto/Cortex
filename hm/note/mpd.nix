@@ -5,6 +5,7 @@
     musicDirectory = "${config.home.homeDirectory}/Nextcloud/Musicas";
     network.listenAddress = "any";
     extraConfig = ''
+      bind_to_address "::"
       zeroconf_enabled "no"
 
       # Remote clients (phone) need a password; local clients (rmpc, mpris)
