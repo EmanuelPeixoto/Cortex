@@ -10,7 +10,7 @@ let
 in
 {
   services.nextcloud = {
-    # Keep the app store enabled so recognize and other store-apps keep working.
+    # Keep the app store enabled so store-installed apps and auto-updates keep working.
     appstoreEnable = true;
     extraApps.facerecognition = facerecognitionApp;
   };
@@ -26,9 +26,6 @@ in
       # Model 4 = Model 1 detection + HOG validation (fewer clustering errors).
       # It reuses Model 1, so it must be installed first.
       ${occ} face:setup -m 4 2>&1 || true
-
-      # Recognize also detects faces; disable it to avoid double processing.
-      ${occ} app:disable recognize 2>/dev/null || true
     '';
   };
 

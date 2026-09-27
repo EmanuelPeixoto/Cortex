@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "backup-hd" ''
@@ -8,9 +8,20 @@
       DEST="HD_Backup"
       SHOW_DIFF=true
 
+      PG_DUMP="${config.services.postgresql.package}/bin/pg_dump"
+      GZIP="${pkgs.gzip}/bin/gzip"
+      RUNUSER="${pkgs.util-linux}/bin/runuser"
+      DUMP_DIR="/var/lib/nextcloud/backups"
+      DUMP_FILE="$DUMP_DIR/nextcloud.sql.gz"
+
       if [ "''${1:-}" == "--no-diff" ]; then
         SHOW_DIFF=false
       fi
+
+      echo ">>> 0. Despejando banco PostgreSQL (nextcloud)..."
+      mkdir -p "$DUMP_DIR"
+      "$RUNUSER" -u postgres -- "$PG_DUMP" -h /run/postgresql -d nextcloud | "$GZIP" -c > "$DUMP_FILE"
+      echo "Dump criado em: $DUMP_FILE"
 
       echo ">>> 1. Importando disco de Backup..."
       zpool import $DEST 2>/dev/null || true
