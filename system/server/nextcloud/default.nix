@@ -6,6 +6,7 @@ in
   imports = [
     ./database.nix
     ./facerecognition.nix
+    ./facerecognition-share.nix
     ./php.nix
   ];
 
