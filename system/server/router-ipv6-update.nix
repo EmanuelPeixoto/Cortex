@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "EmanuelPeixoto";
       repo = "tplink-ipv6-set";
-      rev = "b085858fecdc76e76fcf833e1d9d62e9b8a72bb8";
-      hash = "sha256-Dc6tgouw3bYw6x9eCJdEv3H8f8kFnstghIpBLHBOtQw=";
+      rev = "f75fc9880c6472e215e566cf6ebc2b07274fccb5";
+      hash = "sha256-dIvumz3+DiF/vPbnFnOQcV2swvAHWT6KFc+eVHVWMWc=";
     };
     vendorHash = "sha256-h4U43W3hLoF+p25/jNRaW8okeEzAZQEmKtwB5l4kGW4=";
   };
