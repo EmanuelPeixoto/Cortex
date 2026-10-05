@@ -54,7 +54,7 @@ in
     qbittorrent
     qemu_kvm
     qpwgraph
-    simple-mtpfs
+    # simple-mtpfs
     speedtest-cli
     sqlite
     stress
