@@ -15,6 +15,14 @@ let
     ];
   };
   mkCmd = key: cmd: mkBind key "hl.dsp.exec_cmd(\"${cmd}\")";
+  # same as mkCmd but fires when the session is locked
+  mkCmdL = key: cmd: {
+    _args = [
+      key
+      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${cmd}\")")
+      { locked = true; }
+    ];
+  };
 
   noct = "${pkgs.noctalia}/bin/noctalia msg";
 
@@ -216,12 +224,12 @@ in
             }
           ];
         }
-        (mkCmd "XF86AudioMicMute" "${noct} mic-mute")
-        (mkCmd "XF86AudioMute" "${noct} volume-mute")
-        (mkCmd "XF86AudioNext" "${noct} media next")
-        (mkCmd "XF86AudioPlay" "${noct} media toggle")
-        (mkCmd "XF86AudioPrev" "${noct} media previous")
-        (mkCmd "XF86AudioStop" "${noct} media toggle")
+        (mkCmdL "XF86AudioMicMute" "${noct} mic-mute")
+        (mkCmdL "XF86AudioMute" "${noct} volume-mute")
+        (mkCmdL "XF86AudioNext" "${noct} media next")
+        (mkCmdL "XF86AudioPlay" "${noct} media toggle")
+        (mkCmdL "XF86AudioPrev" "${noct} media previous")
+        (mkCmdL "XF86AudioStop" "${noct} media toggle")
         {
           _args = [
             "XF86AudioRaiseVolume"
