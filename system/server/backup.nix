@@ -4,8 +4,8 @@
     (pkgs.writeShellScriptBin "backup-hd" ''
       set -euo pipefail
 
-      SOURCE="HDs"
-      DEST="HD_Backup"
+      SOURCE="HD"
+      DEST="HD_backup"
       SHOW_DIFF=true
 
       PG_DUMP="${config.services.postgresql.package}/bin/pg_dump"

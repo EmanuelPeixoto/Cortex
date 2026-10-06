@@ -45,7 +45,14 @@ pkgs.writeShellScriptBin "motd" ''
 
   print_disk_usage() {
     echo "Disk Usage:"
-    timeout --signal=kill 2s df -h | grep -E "^(/dev/|Sist)"
+
+    timeout --signal=kill 2s df -h -x tmpfs -x devtmpfs -x efivarfs -x overlay -x squashfs 2>/dev/null \
+        | grep -E '^/dev/'
+
+    if command -v zfs >/dev/null 2>&1; then
+        echo -e "\n''${GREEN}ZFS Datasets:''${NC}"
+        timeout --signal=kill 2s zfs list -H -o name,used,avail,refer 2>/dev/null
+    fi
   }
 
   # Main function
