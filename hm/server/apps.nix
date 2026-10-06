@@ -17,6 +17,7 @@ in
     iftop
     lazygit
     lm_sensors
+    mpv
     ncdu
     nload
     pciutils
