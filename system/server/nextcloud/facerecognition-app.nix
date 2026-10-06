@@ -28,6 +28,17 @@ buildNpmPackage {
 
   npmDepsHash = "sha256-0ZapLtm85T7vYZZ7q8tAR5wmejAEqWUDnwBQZK15d1Q=";
 
+  # TEMPORARY: facerecognition 0.9.95 only supports Nextcloud 34 upstream.
+  # Force it to run on Nextcloud 35 (bump max-version) and add the `: int`
+  # return type that Symfony 7 requires on Command::execute().
+  #
+  # Remove this entire `postPatch` block once a version compatible with
+  # Nextcloud 35 is released.
+  postPatch = ''
+    sed -i 's|<nextcloud min-version="34" max-version="34"/>|<nextcloud min-version="34" max-version="35"/>|' appinfo/info.xml
+    sed -i -E 's/(protected function execute\(InputInterface \$input, OutputInterface \$output\)) \{/\1: int {/' lib/Command/*.php
+  '';
+
   # After webpack builds the JS bundles, vendor the small JS helpers and
   # compile the Handlebars templates exactly like the upstream `make` does.
   postBuild = ''
