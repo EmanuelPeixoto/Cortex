@@ -26,6 +26,18 @@ in
 
   systemd.services.systemd-udev-trigger.restartIfChanged = false;
 
+  # Enable dGPU runtime PM (D3cold when idle). NixOS udev rule uses
+  # ACTION=="bind", which misses the initrd bind.
+  systemd.services.nvidia-runtime-pm = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      for d in /sys/bus/pci/devices/0000:01:00.*/power/control; do
+        echo auto > "$d"
+      done
+    '';
+  };
+
   hardware = {
     graphics = {
       enable = true;
