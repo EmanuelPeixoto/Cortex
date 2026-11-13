@@ -31,7 +31,5 @@ in
       memcache.local = "\\OC\\Memcache\\APCu";
       filelocking.enabled = true;
     };
-
-    config.adminpassFile = "${pkgs.writeText "adminpass" "test123"}";
   };
 }

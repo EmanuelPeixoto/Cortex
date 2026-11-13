@@ -32,11 +32,14 @@ buildNpmPackage {
   # Force it to run on Nextcloud 35 (bump max-version) and add the `: int`
   # return type that Symfony 7 requires on Command::execute().
   #
-  # Remove this entire `postPatch` block once a version compatible with
+  # Remove the two NC35 sed lines below once a version compatible with
   # Nextcloud 35 is released.
   postPatch = ''
     sed -i 's|<nextcloud min-version="34" max-version="34"/>|<nextcloud min-version="34" max-version="35"/>|' appinfo/info.xml
     sed -i -E 's/(protected function execute\(InputInterface \$input, OutputInterface \$output\)) \{/\1: int {/' lib/Command/*.php
+
+    # Personal settings list persons by number of photos; sort them by name.
+    sed -i '/self._persons = response.persons.sort(function (a, b) {/,+2 { s/return b.count - a.count;/return a.name.localeCompare(b.name);/ }' src/personal.js
   '';
 
   # After webpack builds the JS bundles, vendor the small JS helpers and
