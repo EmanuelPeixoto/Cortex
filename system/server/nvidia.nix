@@ -8,7 +8,6 @@
 
   boot = {
     extraModprobeConfig = "options nvidia-drm modeset=1";
-    initrd.kernelModules = [ "nvidia_modeset" ];
     blacklistedKernelModules = [ "nouveau" ];
   };
 
