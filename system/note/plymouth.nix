@@ -5,7 +5,6 @@
     };
 
     consoleLogLevel = 0;
-    initrd.verbose = false;
     loader.timeout = 0;
 
     kernelParams = [

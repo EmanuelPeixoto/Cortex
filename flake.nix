@@ -40,7 +40,7 @@
         inherit system;
         config = {
           allowUnfree = true;
-          permittedInsecurePackages = [ "ventoy-1.1.17" ];
+          permittedInsecurePackages = [ "ventoy-1.1.18" ];
         };
         overlays = [
           inputs.noctalia.overlays.default
